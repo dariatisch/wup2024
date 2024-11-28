@@ -21,6 +21,8 @@ website:
         text: Schedule
       - href: materials.qmd
         text: Materials
+		-href: 01_uebung.qmd
+		text: Sitzung01
 
 
 format:
