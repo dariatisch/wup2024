@@ -10,14 +10,11 @@
     ]
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Course Title",
+    "objectID": "slides/test02.html",
+    "href": "slides/test02.html",
+    "title": "R Workshop 1",
     "section": "",
-    "text": "Course info & details here",
-    "crumbs": [
-      "Home"
-    ]
+    "text": "Please enable JavaScript to experience the dynamic code cell content on this page.\nQ1: What is the mean of mpg in the mtcars data?\nAnswer\nCalculate the mean using the mean() function:\n\nSourceResults\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n1 + 1\n\n[1] 2"
   },
   {
     "objectID": "schedule.html",
@@ -30,10 +27,34 @@
     ]
   },
   {
-    "objectID": "slides/test02.html",
-    "href": "slides/test02.html",
-    "title": "R Workshop 1",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Course Title",
     "section": "",
-    "text": "Please enable JavaScript to experience the dynamic code cell content on this page.\nQ1: What is the mean of mpg in the mtcars data?\nAnswer\nCalculate the mean using the mean() function:\n\nSourceResults\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n1 + 1\n\n[1] 2"
+    "text": "Course info & details here",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "slides/01_uebung.html#quarto",
+    "href": "slides/01_uebung.html#quarto",
+    "title": "1. Übung",
+    "section": "Quarto",
+    "text": "Quarto\nQuarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see https://quarto.org/docs/presentations/."
+  },
+  {
+    "objectID": "slides/01_uebung.html#bullets",
+    "href": "slides/01_uebung.html#bullets",
+    "title": "1. Übung",
+    "section": "Bullets",
+    "text": "Bullets\nWhen you click the Render button a document will be generated that includes:\n\nContent authored with markdown\nOutput from executable code"
+  },
+  {
+    "objectID": "slides/01_uebung.html#code",
+    "href": "slides/01_uebung.html#code",
+    "title": "1. Übung",
+    "section": "Code",
+    "text": "Code\nWhen you click the Render button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n\n[1] 2"
   }
 ]
