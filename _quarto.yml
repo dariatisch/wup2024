@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 website:
-  title: "Course Title"
+  title: "Fortgeschrittene quantitative Methoden"
   sidebar:
     background: primary
     # logo: "images/logo.png"
@@ -19,11 +19,16 @@ website:
         text: Home
       - href: schedule.qmd
         text: Schedule
-      - href: materials.qmd
-        text: Materials
-		-href: 01_uebung.qmd
-		text: Sitzung01
-
+      - text: Materials
+        menu:
+          - href: materials.qmd
+            text: Overview
+          - href: slides/week1.html
+            text: Week 1 Slides
+          - href: slides/week2.html
+            text: Week 2 Slides
+          - href: 01_uebung.qmd
+            text: Sitzung01
 
 format:
   html:
