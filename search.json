@@ -10,6 +10,16 @@
     ]
   },
   {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Course Title",
+    "section": "",
+    "text": "Course info & details here",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
     "objectID": "schedule.html",
     "href": "schedule.html",
     "title": "Schedule",
@@ -20,13 +30,10 @@
     ]
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Course Title",
+    "objectID": "slides/test02.html",
+    "href": "slides/test02.html",
+    "title": "R Workshop 1",
     "section": "",
-    "text": "Course info & details here",
-    "crumbs": [
-      "Home"
-    ]
+    "text": "Please enable JavaScript to experience the dynamic code cell content on this page.\nQ1: What is the mean of mpg in the mtcars data?\nAnswer\nCalculate the mean using the mean() function:\n\nSourceResults\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n1 + 1\n\n[1] 2"
   }
 ]

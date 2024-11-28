@@ -2,14 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://dariatisch.github.io/wup2024/materials.html</loc>
-    <lastmod>2024-11-28T20:34:24.092Z</lastmod>
-  </url>
-  <url>
-    <loc>https://dariatisch.github.io/wup2024/schedule.html</loc>
-    <lastmod>2024-11-28T20:34:24.092Z</lastmod>
+    <lastmod>2024-11-28T20:46:42.604Z</lastmod>
   </url>
   <url>
     <loc>https://dariatisch.github.io/wup2024/index.html</loc>
-    <lastmod>2024-11-28T20:34:24.092Z</lastmod>
+    <lastmod>2024-11-28T20:46:42.604Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dariatisch.github.io/wup2024/schedule.html</loc>
+    <lastmod>2024-11-28T20:46:42.604Z</lastmod>
+  </url>
+  <url>
+    <loc>https://dariatisch.github.io/wup2024/slides/test02.html</loc>
+    <lastmod>2024-11-28T20:46:42.604Z</lastmod>
   </url>
 </urlset>
