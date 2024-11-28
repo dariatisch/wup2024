@@ -4,5 +4,5 @@ title: "Course Materials"
 
 [Datasets](data/)
 
-[Slides](slides/)
+[Slide Session Test](slides/test02.html)
 
