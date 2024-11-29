@@ -19,18 +19,17 @@ website:
     collapse-level: 1
     contents:
       - section: "Course information"
-	contents:
-      		- href: index.qmd
-        	text: Home
+        contents:
+          - href: index.qmd
+            text: Home
       - section: "Schedule"
-	contents:
-      		- href: schedule.qmd
-        	text: Schedule
-      - section: Materials
-	contents:
-	 	- href: slides/1_uebung.qmd
-       		text: "Übung 1"
-     	
+        contents:
+          - href: schedule.qmd
+            text: Schedule
+      - section: "Materials"
+        contents:
+          - href: slides/1_uebung.qmd
+            text: "Übung 1"
 
 format:
   html:
@@ -40,4 +39,3 @@ format:
 
 execute:
   freeze: auto
-
