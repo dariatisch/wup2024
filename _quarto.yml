@@ -19,7 +19,7 @@ website:
     collapse-level: 1
     contents:
       - href: index.qmd
-            text: "Course information"
+        text: "Course information"
       - section: "Schedule"
         contents:
           - href: schedule.qmd

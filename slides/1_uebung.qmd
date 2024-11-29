@@ -3,7 +3,7 @@ format:
   live-revealjs:
     theme: default
 title: "1. Übung"
-subtitle: "Fortgeschrittene quantitative Methoden"
+subtitle: "Fortgeschrittene quantitative Methoden <br> Wintersemester 2024-2025"
 author: "Daria Tisch"
 webr:
   cell-options:
