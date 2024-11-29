@@ -28,7 +28,7 @@ website:
         	text: Schedule
       - section: Materials
 	contents:
-	 	- href: "slides/1_uebung.qmd"
+	 	- href: slides/1_uebung.qmd
        		text: "Übung 1"
      	
 
