@@ -3,9 +3,10 @@ project:
   output-dir: docs
 
 website:
-  title: "Course Title"
+  page-navigation: true
+  title: "Fortgeschrittene quantitative Methoden"
   sidebar:
-    background: primary
+    background: "#D9E3E4"
     # logo: "images/logo.png"
     pinned: true
     align: center
@@ -14,15 +15,22 @@ website:
         href: https://github.com/dariatisch/wup2024
         text: GitHub
     style: docked
+    search: true
+    collapse-level: 1
     contents:
-      - href: index.qmd
-        text: Home
-      - href: schedule.qmd
-        text: Schedule
-      - href: materials.qmd
-        text: Materials
-      - href: https://github.com/dariatisch/wup2024
-        text: Forum
+      - section: "Course information"
+	contents:
+      		- href: index.qmd
+        	text: Home
+      - section: "Schedule"
+	contents:
+      		- href: schedule.qmd
+        	text: Schedule
+      - section: Materials
+	contents:
+	 	- href: slides/1_uebung.qmd
+       		text: "Übung 1"
+     	
 
 format:
   html:
