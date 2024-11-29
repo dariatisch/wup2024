@@ -3,19 +3,26 @@ project:
   output-dir: docs
 
 website:
-
-  title: "Fortgeschrittene quantitative Methoden"
+  title: "Course Title"
   sidebar:
-    background: "#D9E3E4"
+    background: primary
     # logo: "images/logo.png"
     pinned: true
     align: center
     tools:
       - icon: github
-        href: https://github.com/dariatisch/wup2024
+        href: https://github.com/Pakillo/quarto-course-website-template
         text: GitHub
     style: docked
-
+    contents:
+      - href: index.qmd
+        text: Home
+      - href: schedule.qmd
+        text: Schedule
+      - href: materials.qmd
+        text: Materials
+      - href: https://github.com/Pakillo/quarto-course-website-template/discussions
+        text: Forum
 
 format:
   html:

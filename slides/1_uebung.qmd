@@ -61,9 +61,11 @@ Tipp
 :::
 
 ::: {.solution exercise="ex1"}
+::: {.callout-tip title="Solution" collapse="true"}
 **Lösung:**
 
 ``` r
 1 + 2 + 3 + 4
 ```
+:::
 :::
