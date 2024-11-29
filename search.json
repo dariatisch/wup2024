@@ -4,10 +4,7 @@
     "href": "materials.html",
     "title": "Course Materials",
     "section": "",
-    "text": "Datasets\nSlide Session Test\nPresentation Session Test",
-    "crumbs": [
-      "Materials"
-    ]
+    "text": "Datasets\nSlide Session Test\nPresentation Session Test"
   },
   {
     "objectID": "index.html",
@@ -16,6 +13,7 @@
     "section": "",
     "text": "Course info & details here",
     "crumbs": [
+      "Course information",
       "Home"
     ]
   },
@@ -26,6 +24,7 @@
     "section": "",
     "text": "Example schedule:\n\n\n\n\n\n\n\n\n\nMorning\nAfternoon\n\n\n\n\nL\nIntro + Data manipulation\ngit / GitHub\n\n\nM\nGeneralised Linear Models\nData visualisation\n\n\nX\nMixed models / GAM / Bayes\nFunctional programming + Students work\n\n\nJ\nMultivariate analyses\nReproducible workflows\n\n\nV\nUsing R as GIS + Students work\nProject presentations",
     "crumbs": [
+      "Schedule",
       "Schedule"
     ]
   },
@@ -34,27 +33,43 @@
     "href": "slides/1_uebung.html#editable-examples",
     "title": "1. Übung",
     "section": "Editable examples",
-    "text": "Editable examples"
+    "text": "Editable examples",
+    "crumbs": [
+      "Schedule",
+      "bung1"
+    ]
   },
   {
     "objectID": "slides/1_uebung.html#scrollable-output",
     "href": "slides/1_uebung.html#scrollable-output",
     "title": "1. Übung",
     "section": "Scrollable output",
-    "text": "Scrollable output"
+    "text": "Scrollable output",
+    "crumbs": [
+      "Schedule",
+      "bung1"
+    ]
   },
   {
     "objectID": "slides/1_uebung.html#read-only",
     "href": "slides/1_uebung.html#read-only",
     "title": "1. Übung",
     "section": "Read Only",
-    "text": "Read Only"
+    "text": "Read Only",
+    "crumbs": [
+      "Schedule",
+      "bung1"
+    ]
   },
   {
     "objectID": "slides/1_uebung.html#übung-1",
     "href": "slides/1_uebung.html#übung-1",
     "title": "1. Übung",
     "section": "Übung 1",
-    "text": "Übung 1\nBitte vervollständige den Code, sodass die Summe 10 ergibt.\n\n\n\n\n\n\n\n\n\n\n\n\nTipp\n\n\n\n\n\n\n\n\n\nSolution\n\n\nLösung:\n1 + 2 + 3 + 4"
+    "text": "Übung 1\nBitte vervollständige den Code, sodass die Summe 10 ergibt.\n\n\n\n\n\n\n\n\n\n\n\n\nTipp\n\n\n\n\n\n\n\n\n\nSolution\n\n\nLösung:\n1 + 2 + 3 + 4",
+    "crumbs": [
+      "Schedule",
+      "bung1"
+    ]
   }
 ]
