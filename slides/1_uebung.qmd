@@ -37,11 +37,12 @@ mod <- lm(mpg ~ cyl, data = mtcars)
 summary(mod)
 ```
 
-## Exercises
+## Übung 1
 
+Bitte vervollständige den Code, sodass die Summe 10 ergibt.
 ```{webr}
 #| exercise: ex1
-#| caption: Exercise 1
+#| caption: Übung 1
 1 + 2 + 3 + ______
 ```
 
@@ -49,18 +50,18 @@ summary(mod)
 #| exercise: ex1
 #| check: true
 if (.result == 10) {
-  list(message = "Great work!", correct = TRUE)
+  list(message = "Hervorragend!", correct = TRUE)
 } else {
-  list(message = "That's incorrect.", correct = FALSE)
+  list(message = "Das ist leider falsch", correct = FALSE)
 }
 ```
 
 ::: {.hint exercise="ex1"}
-You should make the expression sum to 10.
+Tipp
 :::
 
 ::: {.solution exercise="ex1"}
-**Solution:**
+**Lösung:**
 
 ``` r
 1 + 2 + 3 + 4
