@@ -7,27 +7,6 @@
     "text": "Datasets\nSlide Session Test\nPresentation Session Test"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Course Title",
-    "section": "",
-    "text": "Course info & details here",
-    "crumbs": [
-      "Course information"
-    ]
-  },
-  {
-    "objectID": "schedule.html",
-    "href": "schedule.html",
-    "title": "Schedule",
-    "section": "",
-    "text": "Example schedule:\n\n\n\n\n\n\n\n\n\nMorning\nAfternoon\n\n\n\n\nL\nIntro + Data manipulation\ngit / GitHub\n\n\nM\nGeneralised Linear Models\nData visualisation\n\n\nX\nMixed models / GAM / Bayes\nFunctional programming + Students work\n\n\nJ\nMultivariate analyses\nReproducible workflows\n\n\nV\nUsing R as GIS + Students work\nProject presentations",
-    "crumbs": [
-      "Schedule",
-      "Schedule"
-    ]
-  },
-  {
     "objectID": "slides/1_uebung.html#editable-examples",
     "href": "slides/1_uebung.html#editable-examples",
     "title": "1. Übung",
@@ -35,7 +14,7 @@
     "text": "Editable examples",
     "crumbs": [
       "Schedule",
-      "bung1"
+      "Übung 01"
     ]
   },
   {
@@ -46,7 +25,7 @@
     "text": "Scrollable output",
     "crumbs": [
       "Schedule",
-      "bung1"
+      "Übung 01"
     ]
   },
   {
@@ -57,7 +36,7 @@
     "text": "Read Only",
     "crumbs": [
       "Schedule",
-      "bung1"
+      "Übung 01"
     ]
   },
   {
@@ -68,7 +47,63 @@
     "text": "Übung 1\nBitte vervollständige den Code, sodass die Summe 10 ergibt.\n\n\n\n\n\n\n\n\n\n\n\n\nTipp\n\n\n\n\n\n\n\n\n\nSolution\n\n\nLösung:\n1 + 2 + 3 + 4",
     "crumbs": [
       "Schedule",
-      "bung1"
+      "Übung 01"
     ]
+  },
+  {
+    "objectID": "schedule.html",
+    "href": "schedule.html",
+    "title": "Übersicht",
+    "section": "",
+    "text": "Zeitplan:\n\n\n\n\nMorgens\nNachmittags\n\n\n\n\n12.12.2024\nÜbersicht quantitative Methoden 🖥\nArbeitsablauf etablieren, Einführung in R\n\n\n19.12.2024\nPaneldaten Seminar\nPaneldaten Übung\n\n\n09.01.2025\nEreignisdaten Seminar\nEreignisdaten Übung\n\n\n23.01.2025\nFaktorielle Umfrageexperimente Seminar\nFaktorielle Umfrageexperimente Übung",
+    "crumbs": [
+      "Schedule",
+      "Schedule"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Course Title",
+    "section": "",
+    "text": "Course info & details here",
+    "crumbs": [
+      "Course information"
+    ]
+  },
+  {
+    "objectID": "slides/1_seminar.html#wie-arbeiten-wir-in-diesem-kurs",
+    "href": "slides/1_seminar.html#wie-arbeiten-wir-in-diesem-kurs",
+    "title": "1. Seminar",
+    "section": "Wie arbeiten wir in diesem Kurs?",
+    "text": "Wie arbeiten wir in diesem Kurs?\n\nVormittags: Seminar\nNachmittags: Übung (Datenanalyse in R)\nKurswebsite\n\nÜbersicht\nInteraktive Präsentationen\nDatensätze\n\nFragen + Anregungen jederzeit erwünscht"
+  },
+  {
+    "objectID": "slides/1_seminar.html#interaktive-folien",
+    "href": "slides/1_seminar.html#interaktive-folien",
+    "title": "1. Seminar",
+    "section": "Interaktive Folien",
+    "text": "Interaktive Folien"
+  },
+  {
+    "objectID": "slides/1_seminar.html#scrollable-output",
+    "href": "slides/1_seminar.html#scrollable-output",
+    "title": "1. Seminar",
+    "section": "Scrollable output",
+    "text": "Scrollable output"
+  },
+  {
+    "objectID": "slides/1_seminar.html#read-only",
+    "href": "slides/1_seminar.html#read-only",
+    "title": "1. Seminar",
+    "section": "Read Only",
+    "text": "Read Only"
+  },
+  {
+    "objectID": "slides/1_seminar.html#übung-1",
+    "href": "slides/1_seminar.html#übung-1",
+    "title": "1. Seminar",
+    "section": "Übung 1",
+    "text": "Übung 1\nBitte vervollständige den Code, sodass die Summe 10 ergibt.\n\n\n\n\n\n\n\n\n\n\n\n\nTipp\n\n\n\n\n\n\n\n\n\nSolution\n\n\nLösung:\n1 + 2 + 3 + 4"
   }
 ]
