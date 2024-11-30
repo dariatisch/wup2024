@@ -1,0 +1,83 @@
+---
+format:
+  live-revealjs:
+    theme: default
+title: "1. Seminar"
+subtitle: "Fortgeschrittene quantitative Methoden <br> Wintersemester 2024-2025"
+author: "Daria Tisch"
+webr:
+  cell-options:
+    autorun: true
+    fig-width: 11
+    fig-height: 5
+editor: visual
+---
+
+{{< include ../_extensions/r-wasm/live/_knitr.qmd >}}
+
+
+## Wie arbeiten wir in diesem Kurs?
+- Vormittags: Seminar
+- Nachmittags: Übung (Datenanalyse in R)
+- [Kurswebsite](https://dariatisch.github.io/wup2024/)
+    - Übersicht
+    - Interaktive Präsentationen
+    - Datensätze
+- Fragen + Anregungen jederzeit erwünscht
+
+
+
+## Interaktive Folien
+
+```{webr}
+2+2
+```
+
+## Scrollable output
+
+```{webr}
+mod <- lm(mpg ~ cyl, data = mtcars)
+plot(mod)
+summary(mod)
+```
+
+## Read Only
+
+```{webr}
+#| edit: false
+mod <- lm(mpg ~ cyl, data = mtcars)
+summary(mod)
+```
+
+## Übung 1
+
+Bitte vervollständige den Code, sodass die Summe 10 ergibt.
+```{webr}
+#| exercise: ex1
+#| caption: Übung 1
+1 + 2 + 3 + ______
+```
+
+```{webr}
+#| exercise: ex1
+#| check: true
+if (.result == 10) {
+  list(message = "Hervorragend!", correct = TRUE)
+} else {
+  list(message = "Das ist leider falsch", correct = FALSE)
+}
+```
+
+::: {.hint exercise="ex1"}
+Tipp
+:::
+
+::: {.solution exercise="ex1"}
+::: {.callout-tip title="Solution" collapse="true"}
+**Lösung:**
+
+``` r
+1 + 2 + 3 + 4
+```
+:::
+:::

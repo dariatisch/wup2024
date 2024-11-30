@@ -25,7 +25,7 @@ website:
           - href: schedule.qmd
             text: Schedule
           - href: slides/1_uebung.qmd
-            text: bung1
+            text: "Übung 01"
     	
 
 format:
