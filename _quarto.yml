@@ -9,10 +9,10 @@ website:
   page-footer:
     right: "This page is built with ❤️ and [Quarto](https://quarto.org/)."
     left: "&copy; Copyright 2024, Daria Tisch"
-    background: "#D92609"
+    background: "#20a1a1"
 
   sidebar:
-    background: "#D92609"
+    background: "#20a1a1"
     # logo: "images/logo.png"
     pinned: true
     align: center

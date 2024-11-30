@@ -1,5 +1,13 @@
 ---
-title: "Course Title"
+title: "Fortgeschrittene quantitative Methoden"
 ---
 
-Course info & details here
+Dies ist die Kurswebsite zum quantitativen Teil des Kurses Fortgeschrittene Methoden und Übung im Masterstudium Soziologie an der Universität Wuppertal (Wintersemester 24-25).
+
+Dozentin: Daria Tisch, Sprechstunde nach Vereinbarung per Zoom.
+
+Abgaben: 
+- 09.01.2025: Analyse von Paneldaten
+- 30.01.2025: Replikation einer Ereignisdatenanalyse
+
+Weitere Informationen in Moodle.
