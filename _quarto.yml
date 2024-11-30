@@ -5,8 +5,14 @@ project:
 website:
   page-navigation: true
   title: "Fortgeschrittene quantitative Methoden"
+
+  page-footer:
+    right: "This page is built with ❤️ and [Quarto](https://quarto.org/)."
+    left: "&copy; Copyright 2024, Daria Tisch"
+    background: "#D92609"
+
   sidebar:
-    background: "#D9E3E4"
+    background: "#D92609"
     # logo: "images/logo.png"
     pinned: true
     align: center
