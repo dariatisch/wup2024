@@ -7,47 +7,674 @@
     "text": "Datasets\nSlide Session Test\nPresentation Session Test"
   },
   {
-    "objectID": "slides/1_uebung.html#editable-examples",
-    "href": "slides/1_uebung.html#editable-examples",
-    "title": "1. Übung",
-    "section": "Editable examples",
-    "text": "Editable examples",
+    "objectID": "slides/1_seminar.html#wie-arbeiten-wir-in-diesem-kurs",
+    "href": "slides/1_seminar.html#wie-arbeiten-wir-in-diesem-kurs",
+    "title": "1. Seminar",
+    "section": "Wie arbeiten wir in diesem Kurs?",
+    "text": "Wie arbeiten wir in diesem Kurs?\n\nVormittags: Seminar\nNachmittags: Übung (Datenanalyse in R)\nKurswebsite\n\nÜbersicht\nInteraktive Präsentationen\nDatensätze\n\nFragen + Anregungen jederzeit erwünscht",
     "crumbs": [
       "Schedule",
-      "Übung 01"
+      "1 - Seminar"
     ]
   },
   {
-    "objectID": "slides/1_uebung.html#scrollable-output",
-    "href": "slides/1_uebung.html#scrollable-output",
-    "title": "1. Übung",
-    "section": "Scrollable output",
-    "text": "Scrollable output",
+    "objectID": "slides/1_seminar.html#interaktive-folien",
+    "href": "slides/1_seminar.html#interaktive-folien",
+    "title": "1. Seminar",
+    "section": "Interaktive Folien",
+    "text": "Interaktive Folien",
     "crumbs": [
       "Schedule",
-      "Übung 01"
+      "1 - Seminar"
     ]
   },
   {
-    "objectID": "slides/1_uebung.html#read-only",
-    "href": "slides/1_uebung.html#read-only",
-    "title": "1. Übung",
-    "section": "Read Only",
-    "text": "Read Only",
+    "objectID": "slides/1_seminar.html#interaktive-übungsaufgaben-mit-lösungen",
+    "href": "slides/1_seminar.html#interaktive-übungsaufgaben-mit-lösungen",
+    "title": "1. Seminar",
+    "section": "Interaktive Übungsaufgaben mit Lösungen",
+    "text": "Interaktive Übungsaufgaben mit Lösungen\nBitte vervollständige den Code, sodass die Summe 10 ergibt.\n\n\n\n\n\n\n\n\n\n\n\n\nTipp: Rechne: 10-1-2-3\n\n\n\n\n\n\n\n\n\nSolution\n\n\nLösung:\n1 + 2 + 3 + 4",
     "crumbs": [
       "Schedule",
-      "Übung 01"
+      "1 - Seminar"
     ]
   },
   {
-    "objectID": "slides/1_uebung.html#übung-1",
-    "href": "slides/1_uebung.html#übung-1",
-    "title": "1. Übung",
-    "section": "Übung 1",
-    "text": "Übung 1\nBitte vervollständige den Code, sodass die Summe 10 ergibt.\n\n\n\n\n\n\n\n\n\n\n\n\nTipp\n\n\n\n\n\n\n\n\n\nSolution\n\n\nLösung:\n1 + 2 + 3 + 4",
+    "objectID": "slides/1_seminar.html#themen-heute",
+    "href": "slides/1_seminar.html#themen-heute",
+    "title": "1. Seminar",
+    "section": "Themen heute",
+    "text": "Themen heute\n\nForschungsdesigns\nDatenquellen\nDatenauswertung\n\nPflichtlektüre: Hinz, T. (2018). Methoden der Arbeitsmarktforschung (S. 479-524). In: Abraham, M., Hinz, T. (eds) Arbeitsmarktsoziologie. Springer VS, Wiesbaden.",
     "crumbs": [
       "Schedule",
-      "Übung 01"
+      "1 - Seminar"
+    ]
+  },
+  {
+    "objectID": "slides/1_seminar.html#forschungsdesign-1",
+    "href": "slides/1_seminar.html#forschungsdesign-1",
+    "title": "1. Seminar",
+    "section": "Forschungsdesign",
+    "text": "Forschungsdesign\n“eine systematische, transparente sowie dem jeweiligen Forschungsproblem angemessene Vorgehensweise, um zu einer belastbaren Antwort auf die Forschungsfrage zu gelangen” (S.480).\nForschungsfragen:\n\nBeschreibend\nErklärend\n\nBeispiele?",
+    "crumbs": [
+      "Schedule",
+      "1 - Seminar"
+    ]
+  },
+  {
+    "objectID": "slides/1_seminar.html#forschungsdesign-2",
+    "href": "slides/1_seminar.html#forschungsdesign-2",
+    "title": "1. Seminar",
+    "section": "Forschungsdesign",
+    "text": "Forschungsdesign\n\nBeobachtungsdesign\n\nDatenerhebung (Messung), Dokumentation, Auswertung\nExplanandum (= zu erklärendes Phänomen) vom Forschungsprozess unabhängig\nZusammenhänge werden im Zuge des Forschungsprozesses “entdeckt”\n\n\n\n\nExperimentaldesigns\n\nManipulation: Forscherin greift in den zu erklärenden Prozess ein\nExperimentalgruppe erhält Treatment, Kontrollgruppe nicht\nRandomisierte Zuteilung\n\n\n\nwarum nicht nur Experimentaldesigns?",
+    "crumbs": [
+      "Schedule",
+      "1 - Seminar"
+    ]
+  },
+  {
+    "objectID": "slides/1_seminar.html#beobachtungsdesign",
+    "href": "slides/1_seminar.html#beobachtungsdesign",
+    "title": "1. Seminar",
+    "section": "Beobachtungsdesign",
+    "text": "Beobachtungsdesign\n\nLängsschnitt\nQuerschnitt\nBeispiele?",
+    "crumbs": [
+      "Schedule",
+      "1 - Seminar"
+    ]
+  },
+  {
+    "objectID": "slides/1_seminar.html#kausalanalyse-mit-beobachtungsdesign",
+    "href": "slides/1_seminar.html#kausalanalyse-mit-beobachtungsdesign",
+    "title": "1. Seminar",
+    "section": "Kausalanalyse mit Beobachtungsdesign",
+    "text": "Kausalanalyse mit Beobachtungsdesign\n\nExplanandum: Gender wage gap\nKonstanthaltung durch Drittvariablenkontrolle\nProbleme:\n\nEndogenous selection bias\nOmitted variable bias\nOvercontrol bias\nCollider Bias",
+    "crumbs": [
+      "Schedule",
+      "1 - Seminar"
+    ]
+  },
+  {
+    "objectID": "slides/1_seminar.html#experimentaldesign",
+    "href": "slides/1_seminar.html#experimentaldesign",
+    "title": "1. Seminar",
+    "section": "Experimentaldesign",
+    "text": "Experimentaldesign\n\nForscherin setzt experimentellen Stimulus (=Treatment)\nRandomisierte Zuteilung des Treatments schließt Einfluss von Drittvariablen aus\nEinfach Auswertung: Mittelwertunterschiede\nFür Identifikation von Kausaleffekten ist Randomisierung notwendig, aber keine Zufallsstichprobe. Warum trotzdem sinnvoll?\n\n\nExterne Validität",
+    "crumbs": [
+      "Schedule",
+      "1 - Seminar"
+    ]
+  },
+  {
+    "objectID": "slides/1_seminar.html#experimentaldesigns",
+    "href": "slides/1_seminar.html#experimentaldesigns",
+    "title": "1. Seminar",
+    "section": "Experimentaldesigns",
+    "text": "Experimentaldesigns\n\nLaborexperimente\nFeldexperimente\nUmfrageexperimente\nNatürliche Experimente (exogene Ereignisse sorgen für faktische Randomisierung eines Treatments)\n\n\nNatürliche Experimente: zB Gesetzesänderungen",
+    "crumbs": [
+      "Schedule",
+      "1 - Seminar"
+    ]
+  },
+  {
+    "objectID": "slides/1_seminar.html#datenquellen-1",
+    "href": "slides/1_seminar.html#datenquellen-1",
+    "title": "1. Seminar",
+    "section": "Datenquellen",
+    "text": "Datenquellen\n\n\nUmfragedaten\nProzessproduzierte Daten (aus administrativen Prozessen, die nicht zum Zweck der Forschung entstanden)\nSocial Media\nWelche noch?",
+    "crumbs": [
+      "Schedule",
+      "1 - Seminar"
+    ]
+  },
+  {
+    "objectID": "slides/1_seminar.html#umfragedaten",
+    "href": "slides/1_seminar.html#umfragedaten",
+    "title": "1. Seminar",
+    "section": "Umfragedaten",
+    "text": "Umfragedaten\n\nZufallsstichprobe - Wofür?\n\nVerallgemeinerbarkeit\nRepräsentativität\nInferenzstatistik",
+    "crumbs": [
+      "Schedule",
+      "1 - Seminar"
+    ]
+  },
+  {
+    "objectID": "slides/1_seminar.html#umfragedaten-beispiele",
+    "href": "slides/1_seminar.html#umfragedaten-beispiele",
+    "title": "1. Seminar",
+    "section": "Umfragedaten: Beispiele",
+    "text": "Umfragedaten: Beispiele\n\n\nBeispiele:\n\nSOEP\nAllbus\nNeps\nGESIS Panel\nMikrozensus",
+    "crumbs": [
+      "Schedule",
+      "1 - Seminar"
+    ]
+  },
+  {
+    "objectID": "slides/1_seminar.html#umfragedaten-inhalte",
+    "href": "slides/1_seminar.html#umfragedaten-inhalte",
+    "title": "1. Seminar",
+    "section": "Umfragedaten: Inhalte",
+    "text": "Umfragedaten: Inhalte\n\n\nEinstellungen\nBiographien\nEinkommen und Vermögen",
+    "crumbs": [
+      "Schedule",
+      "1 - Seminar"
+    ]
+  },
+  {
+    "objectID": "slides/1_seminar.html#umfragedaten-mit-experimentellen-teilen",
+    "href": "slides/1_seminar.html#umfragedaten-mit-experimentellen-teilen",
+    "title": "1. Seminar",
+    "section": "Umfragedaten mit experimentellen Teilen",
+    "text": "Umfragedaten mit experimentellen Teilen\n\nFactorial Survey Experimente\nConjoint-Analysen\nChoice-Experimente\n\n\nBeispiele: - FS: Fair earings, just gender wage gao - Conjoint: Bsp: Attraktivität in der Partnerwahl, Prioritäten setzen, Trad-offs, Entscheidungen zwischen diskreten Alternativen -Choice: Befragte wählen aus verschiedenen (Handlungs-)Alternativen die von ihnen am meisten präferierte aus https://link.springer.com/article/10.1007/s11577-011-0136-3",
+    "crumbs": [
+      "Schedule",
+      "1 - Seminar"
+    ]
+  },
+  {
+    "objectID": "slides/1_seminar.html#prozessproduzierte-daten",
+    "href": "slides/1_seminar.html#prozessproduzierte-daten",
+    "title": "1. Seminar",
+    "section": "Prozessproduzierte Daten",
+    "text": "Prozessproduzierte Daten\n= nicht für die sozialwissenschaftliche Analyse generierte Daten\n\n\nAdministrative Daten: Sozialversicherungen, Steuerdaten\n\nTeilweise Verknüpfung mit Umfragedaten\n\nFehlzeiten von Arbeitsnehmerinnen\nInternet Movie Base: Karriereinformationen\nGerichtsakten\nSoziale Medien\n…\n\n\n\nVorteile:objektiv (soziale Erwünschtheit kein Problem)",
+    "crumbs": [
+      "Schedule",
+      "1 - Seminar"
+    ]
+  },
+  {
+    "objectID": "slides/1_seminar.html#datenauswertung-1",
+    "href": "slides/1_seminar.html#datenauswertung-1",
+    "title": "1. Seminar",
+    "section": "Datenauswertung",
+    "text": "Datenauswertung\n\nBeschreibung von erkennbaren Mustern in den Daten\nKausalschlüsse ziehen",
+    "crumbs": [
+      "Schedule",
+      "1 - Seminar"
+    ]
+  },
+  {
+    "objectID": "slides/1_seminar.html#deskriptive-statistik",
+    "href": "slides/1_seminar.html#deskriptive-statistik",
+    "title": "1. Seminar",
+    "section": "Deskriptive Statistik",
+    "text": "Deskriptive Statistik\n\nUni- und bivariate Statistik\n\nVerteilungen von 1 bzw. 2 Variablen\nVerteilungen werden durch Ausprägungen (=Antwortkategorien) gebildet\nEigenschaften von Verteilungen durch statistische Maßzahlen\nDarstellung: Statistische Maßzahlen, Tabellen oder Diagramme",
+    "crumbs": [
+      "Schedule",
+      "1 - Seminar"
+    ]
+  },
+  {
+    "objectID": "slides/1_seminar.html#computational-setup",
+    "href": "slides/1_seminar.html#computational-setup",
+    "title": "1. Seminar",
+    "section": "Computational setup",
+    "text": "Computational setup\n\n## Packages\npkgs &lt;- c(\n  \"stevedata\",\n  \"tidyverse\",\n  \"broom.helpers\"\n)\n\n## Install uninstalled packages\nlapply(pkgs[!(pkgs %in% installed.packages())], install.packages)\n\nlist()\n\n## Load all packages to library\nlapply(pkgs, library, character.only = TRUE)\n\n[[1]]\n[1] \"stevedata\" \"stats\"     \"graphics\"  \"grDevices\" \"utils\"     \"datasets\" \n[7] \"methods\"   \"base\"     \n\n[[2]]\n [1] \"lubridate\" \"forcats\"   \"stringr\"   \"dplyr\"     \"purrr\"     \"readr\"    \n [7] \"tidyr\"     \"tibble\"    \"ggplot2\"   \"tidyverse\" \"stevedata\" \"stats\"    \n[13] \"graphics\"  \"grDevices\" \"utils\"     \"datasets\"  \"methods\"   \"base\"     \n\n[[3]]\n [1] \"broom.helpers\" \"lubridate\"     \"forcats\"       \"stringr\"      \n [5] \"dplyr\"         \"purrr\"         \"readr\"         \"tidyr\"        \n [9] \"tibble\"        \"ggplot2\"       \"tidyverse\"     \"stevedata\"    \n[13] \"stats\"         \"graphics\"      \"grDevices\"     \"utils\"        \n[17] \"datasets\"      \"methods\"       \"base\"         \n\n# set default theme and larger font size for ggplot2\nggplot2::theme_set(ggplot2::theme_minimal(base_size = 16))\n\n# set default figure parameters for knitr\nknitr::opts_chunk$set(\n  fig.width = 8,\n  fig.asp = 0.618,\n  fig.retina = 3,\n  dpi = 300,\n  out.width = \"80%\"\n)",
+    "crumbs": [
+      "Schedule",
+      "1 - Seminar"
+    ]
+  },
+  {
+    "objectID": "slides/1_seminar.html#gss",
+    "href": "slides/1_seminar.html#gss",
+    "title": "1. Seminar",
+    "section": "GSS",
+    "text": "GSS\n\nGeneral Social Survey (1974-2018)\nNur Einkommensdaten und ein paar weitere Variablen\nPackage: stevedata",
+    "crumbs": [
+      "Schedule",
+      "1 - Seminar"
+    ]
+  },
+  {
+    "objectID": "slides/1_seminar.html#daten-einlesen-und-überblick",
+    "href": "slides/1_seminar.html#daten-einlesen-und-überblick",
+    "title": "1. Seminar",
+    "section": "Daten Einlesen und Überblick",
+    "text": "Daten Einlesen und Überblick\n\nprestg10: respondent’s occupational prestige score\nrealrinc: respondent’s base income (in constant 1986 USD)\n\n\ndf &lt;- stevedata::gss_wages %&gt;% filter(year==2018) %&gt;%\n  filter(!is.na(age)) %&gt;% filter(!is.na(realrinc))\n         \nglimpse(df)\n\nRows: 1,358\nColumns: 11\n$ year       &lt;dbl&gt; 2018, 2018, 2018, 2018, 2018, 2018, 2018, 2018, 2018, 2018,…\n$ realrinc   &lt;dbl&gt; 45400.0, 54480.0, 8512.5, 17025.0, 908.0, 45400.0, 54480.0,…\n$ age        &lt;dbl&gt; 42, 63, 59, 43, 62, 55, 59, 34, 44, 75, 55, 40, 34, 40, 37,…\n$ occ10      &lt;dbl&gt; 1106, 3320, 3600, 5610, 4600, 6700, 10, 9120, 1720, 50, 325…\n$ occrecode  &lt;chr&gt; \"Professional\", \"Professional\", \"Service\", \"Office and Admi…\n$ prestg10   &lt;dbl&gt; 61, 59, 48, 35, 35, 39, 72, 35, 72, 53, 64, 64, 38, 64, 35,…\n$ childs     &lt;dbl&gt; 2, 2, 6, 0, 4, 2, 2, 3, 2, 4, 0, 2, 1, 1, 0, 3, 3, 0, 0, 5,…\n$ wrkstat    &lt;chr&gt; \"Full-Time\", \"Full-Time\", \"Full-Time\", \"Full-Time\", \"Full-T…\n$ gender     &lt;chr&gt; \"Male\", \"Female\", \"Female\", \"Male\", \"Female\", \"Male\", \"Male…\n$ educcat    &lt;chr&gt; \"Bachelor\", \"Bachelor\", \"High School\", \"High School\", \"Less…\n$ maritalcat &lt;chr&gt; \"Married\", \"Married\", \"Divorced\", \"Never Married\", \"Widowed…",
+    "crumbs": [
+      "Schedule",
+      "1 - Seminar"
+    ]
+  },
+  {
+    "objectID": "slides/1_seminar.html#datenvisualisierung",
+    "href": "slides/1_seminar.html#datenvisualisierung",
+    "title": "1. Seminar",
+    "section": "Datenvisualisierung",
+    "text": "Datenvisualisierung",
+    "crumbs": [
+      "Schedule",
+      "1 - Seminar"
+    ]
+  },
+  {
+    "objectID": "slides/1_seminar.html#fit-a-line",
+    "href": "slides/1_seminar.html#fit-a-line",
+    "title": "1. Seminar",
+    "section": "Fit a line",
+    "text": "Fit a line\n… um die Beziehung zwischen Alter und Einkommen zu beschreiben",
+    "crumbs": [
+      "Schedule",
+      "1 - Seminar"
+    ]
+  },
+  {
+    "objectID": "slides/1_seminar.html#terminologie",
+    "href": "slides/1_seminar.html#terminologie",
+    "title": "1. Seminar",
+    "section": "Terminologie",
+    "text": "Terminologie\n\nX → Y\n\n\n\n\nOutcome, Y: Variable, die das Merkmal von Interesse beinhaltet\nPredictor, X: Variable, die uns hilft, die Varianz des Outcomes zu verstehen",
+    "crumbs": [
+      "Schedule",
+      "1 - Seminar"
+    ]
+  },
+  {
+    "objectID": "slides/1_seminar.html#regressionsmodel-1",
+    "href": "slides/1_seminar.html#regressionsmodel-1",
+    "title": "1. Seminar",
+    "section": "Regressionsmodel",
+    "text": "Regressionsmodel\nEin Regressionsmodel ist eine Funktion, die den Zusammenhang zwischen dem Outcome, \\(Y\\), und dem Prädiktor, \\(X\\), beschreibt.\n\\[\\begin{aligned} Y &= \\color{black}{\\textbf{Model}} + \\text{Error} \\\\[8pt]\n&= \\color{black}{\\mathbf{f(X)}} + \\epsilon \\\\[8pt]\n&= \\color{black}{\\boldsymbol{\\mu_{Y|X}}} + \\epsilon \\end{aligned}\\]",
+    "crumbs": [
+      "Schedule",
+      "1 - Seminar"
+    ]
+  },
+  {
+    "objectID": "slides/1_seminar.html#regressionsmodel-2",
+    "href": "slides/1_seminar.html#regressionsmodel-2",
+    "title": "1. Seminar",
+    "section": "Regressionsmodel",
+    "text": "Regressionsmodel\n\n\n\\[\n  \\begin{aligned} Y &= \\color{purple}{\\textbf{Model}} + \\text{Error} \\\\[8pt]\n&= \\color{purple}{\\mathbf{f(X)}} + \\epsilon \\\\[8pt]\n&= \\color{purple}{\\boldsymbol{\\mu_{Y|X}}} + \\epsilon\n\\end{aligned}\n\\]",
+    "crumbs": [
+      "Schedule",
+      "1 - Seminar"
+    ]
+  },
+  {
+    "objectID": "slides/1_seminar.html#regressionsmodel-residuen",
+    "href": "slides/1_seminar.html#regressionsmodel-residuen",
+    "title": "1. Seminar",
+    "section": "Regressionsmodel + Residuen",
+    "text": "Regressionsmodel + Residuen\n\n\n\\[\\begin{aligned} Y &= \\color{purple}{\\textbf{Model}} + \\color{blue}{\\textbf{Error}} \\\\[8pt]\n&= \\color{purple}{\\mathbf{f(X)}} + \\color{blue}{\\boldsymbol{\\epsilon}} \\\\[8pt]\n&= \\color{purple}{\\boldsymbol{\\mu_{Y|X}}} + \\color{blue}{\\boldsymbol{\\epsilon}} \\\\[8pt]\n\\end{aligned}\\]",
+    "crumbs": [
+      "Schedule",
+      "1 - Seminar"
+    ]
+  },
+  {
+    "objectID": "slides/1_seminar.html#einfache-lineare-regression-1",
+    "href": "slides/1_seminar.html#einfache-lineare-regression-1",
+    "title": "1. Seminar",
+    "section": "Einfache lineare Regression",
+    "text": "Einfache lineare Regression\n\\[\\Large{Y = \\beta_0 + \\beta_1 X + \\epsilon}\\]\n\n\n\\(\\beta_1\\): Wahrer slope der Beziehung zwischen \\(X\\) und \\(Y\\)\n\\(\\beta_0\\): Wahrer intercept der Beziehung zwischen \\(X\\) und \\(Y\\)\n\\(\\epsilon\\): Error (Residuen)",
+    "crumbs": [
+      "Schedule",
+      "1 - Seminar"
+    ]
+  },
+  {
+    "objectID": "slides/1_seminar.html#einfache-lineare-regression-2",
+    "href": "slides/1_seminar.html#einfache-lineare-regression-2",
+    "title": "1. Seminar",
+    "section": "Einfache lineare Regression",
+    "text": "Einfache lineare Regression\n\\[\\Large{\\hat{Y} = \\hat{\\beta}_0 + \\hat{\\beta}_1 X}\\]\n\n\\(\\hat{\\beta}_1\\): Geschätzter slope\n\\(\\hat{\\beta}_0\\): Geschätzter intercept\nKein Fehlerterm!",
+    "crumbs": [
+      "Schedule",
+      "1 - Seminar"
+    ]
+  },
+  {
+    "objectID": "slides/1_seminar.html#residuen",
+    "href": "slides/1_seminar.html#residuen",
+    "title": "1. Seminar",
+    "section": "Residuen",
+    "text": "Residuen\n\nPlotCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nggplot(data = df, mapping = aes(x = age, y = log(realrinc))) +\n  geom_point(alpha = 0.5) +\n  geom_smooth(method = \"lm\", color = \"purple\", se = FALSE) +\n  geom_segment(aes(x = age, xend = age, y = log(realrinc), yend = predict(m)), color = \"steel blue\") +\n  labs(x = \"Alter\", y = \"Einkommen\") +\n  theme(legend.position = \"none\")\n\n\n\n\n\n\n\n\n\n\n\n\\[\\text{Residuen} = \\text{Beobachted} - \\text{Vorhergesagt} = y - \\hat{y}\\]\n\nSummer der Residuen = 0",
+    "crumbs": [
+      "Schedule",
+      "1 - Seminar"
+    ]
+  },
+  {
+    "objectID": "slides/1_seminar.html#kleinstquadrate",
+    "href": "slides/1_seminar.html#kleinstquadrate",
+    "title": "1. Seminar",
+    "section": "Kleinstquadrate",
+    "text": "Kleinstquadrate\n\nResiduum für die \\(i^{te}\\) Beobachtung\n\n\\[e_i = \\text{beobachtet} - \\text{vorhergesagt} = y_i - \\hat{y}_i\\]\n\nDie Summe der quadrierten Residuen ist\n\n\\[e^2_1 + e^2_2 + \\dots + e^2_n\\]\n\nMethode der kleinsten Quadrate minimiert die Summe der quadratischen Residuen",
+    "crumbs": [
+      "Schedule",
+      "1 - Seminar"
+    ]
+  },
+  {
+    "objectID": "slides/1_seminar.html#interpretation-1",
+    "href": "slides/1_seminar.html#interpretation-1",
+    "title": "1. Seminar",
+    "section": "Interpretation",
+    "text": "Interpretation\n\nOutputCode\n\n\n\n\n\nCall:\nlm(formula = log(realrinc) ~ age, data = df)\n\nCoefficients:\n(Intercept)          age  \n    8.91235      0.01444  \n\n\n\n\n\nm_income &lt;- lm(log(realrinc) ~ age, data = df)\nm_income  \n\n\nCall:\nlm(formula = log(realrinc) ~ age, data = df)\n\nCoefficients:\n(Intercept)          age  \n    8.91235      0.01444  \n\n\n\n\n\n\\[\\widehat{\\text{log(Einkommen)}} = 8.91 + 0.01 \\times \\text{Alter}\\]\n\n\nSlope: Für jedes zusätzliche Jahr im Alter erwarten wir eine Vergrößerung des logarithmierten Wertes des Einkommens um 0.01 oder: Für jedes zusätzliche Jahr im Alter erwarten wir einen Einkommensanstieg von etwa 1.005% (\\((e^{0.01} - 1) \\times 100\\))",
+    "crumbs": [
+      "Schedule",
+      "1 - Seminar"
+    ]
+  },
+  {
+    "objectID": "slides/1_seminar.html#interpretation-2",
+    "href": "slides/1_seminar.html#interpretation-2",
+    "title": "1. Seminar",
+    "section": "Interpretation",
+    "text": "Interpretation\n\n\n\nCall:\nlm(formula = log(realrinc) ~ age, data = df)\n\nCoefficients:\n(Intercept)          age  \n    8.91235      0.01444  \n\n\n\\[\\widehat{\\text{log(Einkommen)}} = 8.91 + 0.01 \\times \\text{Alter}\\]\n\n\nIntercept: Eine Person mit 0 Jahren hat ein durchschnittliches log. Einkommen von 8.91. Sinnvoll?",
+    "crumbs": [
+      "Schedule",
+      "1 - Seminar"
+    ]
+  },
+  {
+    "objectID": "slides/1_seminar.html#vorhersagen-machen",
+    "href": "slides/1_seminar.html#vorhersagen-machen",
+    "title": "1. Seminar",
+    "section": "Vorhersagen machen",
+    "text": "Vorhersagen machen\nJemand ist 28 Jahre alt. Wie hoch ist nach diesem Modell das Einkommen?\n\nHändischin R\n\n\n\\[\n\\begin{aligned}\n\\widehat{\\text{log(income)}} &= 8.91 + 0.01 \\times \\text{age} \\\\\n&= 8.91 + 0.01 \\times 28 \\\\\n&= 9.19\n\\end{aligned}\n\\]\n\n\n\n# Create a new data frame for age = 28\nnew_data &lt;- data.frame(age = 28)\n\n\n# Predict log(realrinc) for age = 28\npredicted_log_income &lt;- predict(m_income, newdata = new_data)\n\n# Optionally reverse the log transformation\npredicted_real_income &lt;- exp(predicted_log_income)\n\n# View results\npredicted_log_income  # log(realrinc)\n\n       1 \n9.316802 \n\npredicted_real_income # real income\n\n       1 \n11123.35",
+    "crumbs": [
+      "Schedule",
+      "1 - Seminar"
+    ]
+  },
+  {
+    "objectID": "slides/1_seminar.html#ols-regression-annahmen",
+    "href": "slides/1_seminar.html#ols-regression-annahmen",
+    "title": "1. Seminar",
+    "section": "OLS Regression: Annahmen",
+    "text": "OLS Regression: Annahmen\n\nFunktionaler linearer Zusammenhang der UV und AV (linear in parameters)\nAV ist metrisch\n\nKeine Multikollinearität der UVs\nNormalverteilung der Residuen\nHomoskedastizität der Residuen: \\(\\text{Var}(\\epsilon|X) = \\text{const}\\).\nResiduen haben einen Mittelwert von 0: \\(\\text{E}(\\varepsilon|X) = 0\\).\nStrikte Exogenitätsannahme: \\(\\text{Cov}(\\varepsilon|X) = 0\\).\nZufallsstichprobe (Inferenzstatistik)\nKeine Messfehler\n\n\n4-6: Verletzung führt zu verzerrten Standardfehlern (fehlerhafte Signifikanztests und Konfidenzintervalle)  ineffizient Verletzung führt nicht zu verzerrten Regressionskoeffizienten  konsistent 7:Verletzung führt zu verzerrten Regressionskoeffizienten und Standardfehlern (ineffizient und inkonsistent) Theoretische Modellspezifikation: „[Das Modell] muss also einerseits alle bedeutsamen unabhängigen Variablen enthalten und darf keine für die Erklärung der abhängigen Variablen irrelevanten unabhängigen Variablen enthalten.“ -&gt; „omitted variable bias“ / unbeobachtete Heterogenität",
+    "crumbs": [
+      "Schedule",
+      "1 - Seminar"
+    ]
+  },
+  {
+    "objectID": "slides/1_seminar.html#exkurs-variablen-und-skalenniveaus",
+    "href": "slides/1_seminar.html#exkurs-variablen-und-skalenniveaus",
+    "title": "1. Seminar",
+    "section": "Exkurs: Variablen und Skalenniveaus",
+    "text": "Exkurs: Variablen und Skalenniveaus\n\n\nVerhältnis (Rangordnung, Abstände und Verhältnisse, absoluter Nullpunkt)\n\nEinkommen\nAlter\n\nIntervallskala (Rangordnung und Abstände)\n\nGrad Celsius\nGeburtsjahr\n\nOrdinales Skalenniveau (Rangordnung)\n\nSchulnoten\nZufriedenheit\n\nNominalskala (gleich/ungleich)\n\nBlutgruppe\nFamilienname",
+    "crumbs": [
+      "Schedule",
+      "1 - Seminar"
+    ]
+  },
+  {
+    "objectID": "slides/1_seminar.html#regression",
+    "href": "slides/1_seminar.html#regression",
+    "title": "1. Seminar",
+    "section": "Regression",
+    "text": "Regression\nBitte ermittle anhand einer Regression den durchschnittlichen Geschlechterspezifischen Lohnunterschied.\n\nÜbungTippLösung\n\n\n\n\n\n\n\n\n\n\n\n\n\nDu brauchst die Variablen Geschlecht und Einkommen. Du findest sie, wenn Du Die alle Variablen anzeigen lässt:\n\nnames(df)\n\n [1] \"year\"       \"realrinc\"   \"age\"        \"occ10\"      \"occrecode\" \n [6] \"prestg10\"   \"childs\"     \"wrkstat\"    \"gender\"     \"educcat\"   \n[11] \"maritalcat\" \"predicted\" \n\n\n\n\n\n\nLösung:z.B.\n\n\nlibrary(\"stevedata\")\ndf &lt;- stevedata::gss_wages %&gt;% filter(year==2018) %&gt;%\n  filter(!is.na(age)) %&gt;% filter(!is.na(realrinc))\n\n# Lineare Regression\nmodel &lt;- lm(realrinc ~ gender, data = df)\n\n# Zusammenfassung der Regressionsergebnisse\nsummary(model)\n\n# Ergebnisse übersichtlich darstellen\nbroom::tidy(model)\nlibrary(\"stevedata\")\ndf &lt;- stevedata::gss_wages %&gt;% filter(year==2018) %&gt;%\n  filter(!is.na(age)) %&gt;% filter(!is.na(realrinc))\n\n# Lineare Regression\nmodel &lt;- lm(realrinc ~ gender, data = df)\n\n# Zusammenfassung der Regressionsergebnisse\nsummary(model)\n\n# Ergebnisse übersichtlich darstellen\nbroom::tidy(model)",
+    "crumbs": [
+      "Schedule",
+      "1 - Seminar"
+    ]
+  },
+  {
+    "objectID": "slides/1_seminar.html#geschlechterunterschiede-im-einkommen",
+    "href": "slides/1_seminar.html#geschlechterunterschiede-im-einkommen",
+    "title": "1. Seminar",
+    "section": "Geschlechterunterschiede im Einkommen",
+    "text": "Geschlechterunterschiede im Einkommen\nGraphische Darstellung\nBitte stelle Geschlechterunterschiede im Einkommen Graphisch dar.\n\nÜbungTippLösung\n\n\n\n\n\n\n\n\n\n\n\n\n\nThe gesuchte Variable lautet: gender\n\n\nDas findest Du heraus, indem Du dir die Daten anschaust\n\nnames(df)\n\n [1] \"year\"       \"realrinc\"   \"age\"        \"occ10\"      \"occrecode\" \n [6] \"prestg10\"   \"childs\"     \"wrkstat\"    \"gender\"     \"educcat\"   \n[11] \"maritalcat\" \"predicted\" \n\n\n\n\n\n\nLösung:\nEin Beispiel:\n\n\ndf &lt;- stevedata::gss_wages %&gt;% filter(year==2018) %&gt;%\n  filter(!is.na(age)) %&gt;% filter(!is.na(realrinc))\nggplot(df, aes(x = gender, y = realrinc, fill = gender)) +\n  geom_violin(trim = FALSE) +\n  labs(\n    title = \"Geschlechterunterschiede beim Einkommen (2018)\",\n    x = \"Geschlecht\",\n    y = \"Reales Einkommen\",\n    fill = \"Geschlecht\"\n  ) +\n  theme_minimal()\ndf &lt;- stevedata::gss_wages %&gt;% filter(year==2018) %&gt;%\n  filter(!is.na(age)) %&gt;% filter(!is.na(realrinc))\nggplot(df, aes(x = gender, y = realrinc, fill = gender)) +\n  geom_violin(trim = FALSE) +\n  labs(\n    title = \"Geschlechterunterschiede beim Einkommen (2018)\",\n    x = \"Geschlecht\",\n    y = \"Reales Einkommen\",\n    fill = \"Geschlecht\"\n  ) +\n  theme_minimal()",
+    "crumbs": [
+      "Schedule",
+      "1 - Seminar"
+    ]
+  },
+  {
+    "objectID": "slides/1_seminar.html#ende",
+    "href": "slides/1_seminar.html#ende",
+    "title": "1. Seminar",
+    "section": "Ende",
+    "text": "Ende\n\nDieser Foliensatz profitierte in großen Teilen von ehemaligen Veranstaltungen von Isabel Habicht sowie von:\n\nhttps://sta210-s22.github.io/website/slides/lec-2.html#/title-slide\n\nWeiterführende Informationen:\n\nHinz, T. (2018). Methoden der Arbeitsmarktforschung (S. 479-524). In: Abraham, M., Hinz, T. (eds) Arbeitsmarktsoziologie. Springer VS, Wiesbaden.",
+    "crumbs": [
+      "Schedule",
+      "1 - Seminar"
+    ]
+  },
+  {
+    "objectID": "slides/1_uebung.html#was-ist-forschungsdatenmanagement",
+    "href": "slides/1_uebung.html#was-ist-forschungsdatenmanagement",
+    "title": "1. Übung",
+    "section": "Was ist Forschungsdatenmanagement?",
+    "text": "Was ist Forschungsdatenmanagement?\n\n“Gesundheitsvorsorge” für Ihre Daten\nSchützt die Daten vor Schaden\nMacht Daten funktional, nutzbar und auffindbar\nAlle Strategien, Prozesse und Maßnahmen zum Sammeln, Organisieren, Strukturieren, Speichern, Analysieren, Veröffentlichen, Weitergeben und Archivieren von Informationen, die im Rahmen eines Forschungsprojekts verwendet oder erzeugt werden\nBehandelt auch rechtliche und ethische Fragen (z. B. Einwilligungserklärungen, Eigentum, Lizenzierung)",
+    "crumbs": [
+      "Schedule",
+      "1 - Übung"
+    ]
+  },
+  {
+    "objectID": "slides/1_uebung.html#übersicht-forschungsdatenmanagement",
+    "href": "slides/1_uebung.html#übersicht-forschungsdatenmanagement",
+    "title": "1. Übung",
+    "section": "Übersicht: Forschungsdatenmanagement",
+    "text": "Übersicht: Forschungsdatenmanagement",
+    "crumbs": [
+      "Schedule",
+      "1 - Übung"
+    ]
+  },
+  {
+    "objectID": "slides/1_uebung.html#warum-forschungsdatenmanagement",
+    "href": "slides/1_uebung.html#warum-forschungsdatenmanagement",
+    "title": "1. Übung",
+    "section": "Warum Forschungsdatenmanagement?",
+    "text": "Warum Forschungsdatenmanagement?\n\nVerbessert Arbeitsabläufe\nMinimiert das Risiko von Datenverlusten\nErfüllung der Anforderungen von Finanzierungs- und Aufsichtsbehörden\nAnerkennung für die Weitergabe eigener Daten\nGute wissenschaftliche Praxis\nErhält Datenqualität\nSpart Ressourcen und nutzt die öffentlichen Mittel optimal\n\n\nPreserves the integrity of research Transparent research Reproducible research",
+    "crumbs": [
+      "Schedule",
+      "1 - Übung"
+    ]
+  },
+  {
+    "objectID": "slides/1_uebung.html#konkrete-anwendung",
+    "href": "slides/1_uebung.html#konkrete-anwendung",
+    "title": "1. Übung",
+    "section": "Konkrete Anwendung",
+    "text": "Konkrete Anwendung\n\nAlle Übungsaufgaben werden mit Skripten gelöst → Reproduzierbarkeit\nGute Praktiken der Dateiverwaltung & -bennenung\nGute Dokumentation des Codes",
+    "crumbs": [
+      "Schedule",
+      "1 - Übung"
+    ]
+  },
+  {
+    "objectID": "slides/1_uebung.html#wie-wir-arbeiten",
+    "href": "slides/1_uebung.html#wie-wir-arbeiten",
+    "title": "1. Übung",
+    "section": "Wie wir arbeiten",
+    "text": "Wie wir arbeiten\n\nInteraktive Folien zum gemeinsamen Lernen\nQuarto Dokumente als Übungsaufgaben\nQuarto Dokumente als Abgaben (09. Jan und 30. Jan!)",
+    "crumbs": [
+      "Schedule",
+      "1 - Übung"
+    ]
+  },
+  {
+    "objectID": "slides/1_uebung.html#ordnerstruktur",
+    "href": "slides/1_uebung.html#ordnerstruktur",
+    "title": "1. Übung",
+    "section": "Ordnerstruktur",
+    "text": "Ordnerstruktur\nBitte folgende Ordnerstruktur anlegen:\n\n\nDatensätze entweder auf der Website oder in Moodle\nÜbungsblätter auf der Website\nAbgaben auf der Website\n\n→ Herunterladen und im richtigen Ordner abspeichern",
+    "crumbs": [
+      "Schedule",
+      "1 - Übung"
+    ]
+  },
+  {
+    "objectID": "slides/1_uebung.html#abgaben",
+    "href": "slides/1_uebung.html#abgaben",
+    "title": "1. Übung",
+    "section": "Abgaben",
+    "text": "Abgaben\n\nQuarto Dokument sowie PDF oder HTML Dokument\nGut kommentiert\nRechtzeitig über Moodle!",
+    "crumbs": [
+      "Schedule",
+      "1 - Übung"
+    ]
+  },
+  {
+    "objectID": "slides/1_uebung.html#was-ist-quarto",
+    "href": "slides/1_uebung.html#was-ist-quarto",
+    "title": "1. Übung",
+    "section": "Was ist Quarto?",
+    "text": "Was ist Quarto?\n\nist ein neues, quelloffenes, wissenschaftliches und technisches Publikationssystem\nDas Ziel von Quarto ist es, den Prozess der Erstellung und Zusammenarbeit an wissenschaftlichen und technischen Dokumenten deutlich zu verbessern",
+    "crumbs": [
+      "Schedule",
+      "1 - Übung"
+    ]
+  },
+  {
+    "objectID": "slides/1_uebung.html#warum-quarto",
+    "href": "slides/1_uebung.html#warum-quarto",
+    "title": "1. Übung",
+    "section": "Warum Quarto?",
+    "text": "Warum Quarto?\n\n\nCode und Ergbenisdokument in einem Zuge erstellen\nKein lästiges hin und herkopieren\nKonsistente Implementierung attraktiver und praktischer Funktionen für alle Ausgaben: Tabsets, Code-Folding, Syntax-Highlighting, etc.\nZugänglichere Standardeinstellungen\nVisual editor\nLeitplanken, besonders hilfreich für neue Lernende: YAML-Vervollständigung, informative Syntaxfehler, etc.",
+    "crumbs": [
+      "Schedule",
+      "1 - Übung"
+    ]
+  },
+  {
+    "objectID": "slides/1_uebung.html#warum-r",
+    "href": "slides/1_uebung.html#warum-r",
+    "title": "1. Übung",
+    "section": "Warum R?",
+    "text": "Warum R?\n\nmehr statistische Modellierungsmöglichkeiten als Stata\nkostenlos und open source\nviel Unterstützungsmaterial online",
+    "crumbs": [
+      "Schedule",
+      "1 - Übung"
+    ]
+  },
+  {
+    "objectID": "slides/1_uebung.html#hallo-welt",
+    "href": "slides/1_uebung.html#hallo-welt",
+    "title": "1. Übung",
+    "section": "“Hallo Welt!”",
+    "text": "“Hallo Welt!”",
+    "crumbs": [
+      "Schedule",
+      "1 - Übung"
+    ]
+  },
+  {
+    "objectID": "slides/1_uebung.html#hallo-pinguine",
+    "href": "slides/1_uebung.html#hallo-pinguine",
+    "title": "1. Übung",
+    "section": "Hallo Pinguine!",
+    "text": "Hallo Pinguine!\n\nArtwork by @allison_horst",
+    "crumbs": [
+      "Schedule",
+      "1 - Übung"
+    ]
+  },
+  {
+    "objectID": "slides/1_uebung.html#pinguine-datensatz-inspizieren",
+    "href": "slides/1_uebung.html#pinguine-datensatz-inspizieren",
+    "title": "1. Übung",
+    "section": "Pinguine Datensatz inspizieren",
+    "text": "Pinguine Datensatz inspizieren",
+    "crumbs": [
+      "Schedule",
+      "1 - Übung"
+    ]
+  },
+  {
+    "objectID": "slides/1_uebung.html#pinguine-datensatz-inspizieren-1",
+    "href": "slides/1_uebung.html#pinguine-datensatz-inspizieren-1",
+    "title": "1. Übung",
+    "section": "Pinguine Datensatz inspizieren",
+    "text": "Pinguine Datensatz inspizieren\n\nArtwork by @allison_horst",
+    "crumbs": [
+      "Schedule",
+      "1 - Übung"
+    ]
+  },
+  {
+    "objectID": "slides/1_uebung.html#pinguine-übung",
+    "href": "slides/1_uebung.html#pinguine-übung",
+    "title": "1. Übung",
+    "section": "Pinguine Übung",
+    "text": "Pinguine Übung\n\nWie viele Pinguine sind im Datensatz?\nWie viele Spezien?\n\n\n\n\n\n\n\n\n\n\nTipp: Suche die Variable, die die Spezie der Pinguine enthält\n\n\n\n\n\n\n\n\n\nSolution\n\n\nLösung:\n# Anzahl Pinguine im Datensatz\ncount(df)\n\n# Anzahl Pinguine pro Spezie\ndf %&gt;% \n  count(species)",
+    "crumbs": [
+      "Schedule",
+      "1 - Übung"
+    ]
+  },
+  {
+    "objectID": "slides/1_uebung.html#datenvisualisierung",
+    "href": "slides/1_uebung.html#datenvisualisierung",
+    "title": "1. Übung",
+    "section": "Datenvisualisierung",
+    "text": "Datenvisualisierung\n\nOutputCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n#install.packages(\"palmerpenguins\")\nlibrary(palmerpenguins)\ndf = penguins\n# Scatterplot: penguin bill length versus bill depth\nggplot(data = df, aes(x = bill_length_mm, y = bill_depth_mm)) +\n  geom_point(aes(color = species, \n                 shape = species),\n             size = 2)  +\n  scale_color_manual(values = c(\"darkorange\",\"darkorchid\",\"cyan4\"))",
+    "crumbs": [
+      "Schedule",
+      "1 - Übung"
+    ]
+  },
+  {
+    "objectID": "slides/1_uebung.html#yaml",
+    "href": "slides/1_uebung.html#yaml",
+    "title": "1. Übung",
+    "section": "YAML",
+    "text": "YAML\nDokument metadata\n\n\ntitle: \"Hello, Penguins!\"\nformat: html\neditor: visual",
+    "crumbs": [
+      "Schedule",
+      "1 - Übung"
+    ]
+  },
+  {
+    "objectID": "slides/1_uebung.html#yaml-ausführlicher",
+    "href": "slides/1_uebung.html#yaml-ausführlicher",
+    "title": "1. Übung",
+    "section": "YAML ausführlicher",
+    "text": "YAML ausführlicher\nDokument metadata\n\n\nformat:\n  live-revealjs:\n    theme: default\n    slideNumber: true\ntitle: \"1. Übung\"\nsubtitle: \"Fortgeschrittene quantitative Methoden &lt;br&gt; Wintersemester 2024-2025\"\nauthor: \"Daria Tisch\"\neditor: visual",
+    "crumbs": [
+      "Schedule",
+      "1 - Übung"
+    ]
+  },
+  {
+    "objectID": "slides/1_uebung.html#text",
+    "href": "slides/1_uebung.html#text",
+    "title": "1. Übung",
+    "section": "Text",
+    "text": "Text\nMarkdown kann mit jedem Editor bearbeitet werden, auch mit den Quelltext- oder visuellen Editoren von RStudio.",
+    "crumbs": [
+      "Schedule",
+      "1 - Übung"
+    ]
+  },
+  {
+    "objectID": "slides/1_uebung.html#code-1",
+    "href": "slides/1_uebung.html#code-1",
+    "title": "1. Übung",
+    "section": "Code",
+    "text": "Code\nCode kann auch mit den Quelltext- oder visuellen Editoren von RStudio bearbeitet werden",
+    "crumbs": [
+      "Schedule",
+      "1 - Übung"
+    ]
+  },
+  {
+    "objectID": "slides/1_uebung.html#quarto-output-dokumente",
+    "href": "slides/1_uebung.html#quarto-output-dokumente",
+    "title": "1. Übung",
+    "section": "Quarto Output Dokumente",
+    "text": "Quarto Output Dokumente\n\nFolien / Präsentation (HTML, PDF, PowerPoint)\nManuskripte (Word Dokument, PDF, HTML)\nWebsites (HTML)",
+    "crumbs": [
+      "Schedule",
+      "1 - Übung"
+    ]
+  },
+  {
+    "objectID": "slides/1_uebung.html#ende",
+    "href": "slides/1_uebung.html#ende",
+    "title": "1. Übung",
+    "section": "Ende",
+    "text": "Ende\n\nDieser Foliensatz profitierte in großen Teilen von ehemaligen Veranstaltungen von Isabel Habicht sowie von Mine Çetinkaya-Rundel Materialien:\n\nhttps://mine-cetinkaya-rundel.github.io/teach-with-quarto/talks/1-welcome/",
+    "crumbs": [
+      "Schedule",
+      "1 - Übung"
     ]
   },
   {
@@ -55,7 +682,7 @@
     "href": "schedule.html",
     "title": "Übersicht",
     "section": "",
-    "text": "Zeitplan:\n\n\n\n\nMorgens\nNachmittags\n\n\n\n\n12.12.2024\nÜbersicht quantitative Methoden 🖥\nArbeitsablauf etablieren, Einführung in R\n\n\n19.12.2024\nPaneldaten Seminar\nPaneldaten Übung\n\n\n09.01.2025\nEreignisdaten Seminar\nEreignisdaten Übung\n\n\n23.01.2025\nFaktorielle Umfrageexperimente Seminar\nFaktorielle Umfrageexperimente Übung",
+    "text": "Zeitplan:\n\n\n\n\nMorgens\nNachmittags\n\n\n\n\n12.12.2024\nÜbersicht quantitative Methoden 🖥\nArbeitsablauf etablieren, Einführung in Quarto und R 🖥 🖥\n\n\n19.12.2024\nPaneldaten Seminar\nPaneldaten Übung\n\n\n09.01.2025\nEreignisdaten Seminar\nEreignisdaten Übung\n\n\n23.01.2025\nFaktorielle Umfrageexperimente Seminar\nFaktorielle Umfrageexperimente Übung",
     "crumbs": [
       "Schedule",
       "Schedule"
@@ -66,44 +693,129 @@
     "href": "index.html",
     "title": "Fortgeschrittene quantitative Methoden",
     "section": "",
-    "text": "Dies ist die Kurswebsite zum quantitativen Teil des Kurses Fortgeschrittene Methoden und Übung im Masterstudium Soziologie an der Universität Wuppertal (Wintersemester 24-25).\nDozentin: Daria Tisch, Sprechstunde nach Vereinbarung per Zoom.\nAbgaben: - 09.01.2025: Analyse von Paneldaten - 30.01.2025: Replikation einer Ereignisdatenanalyse\nWeitere Informationen in Moodle.",
+    "text": "Dies ist die Kurswebsite zum quantitativen Teil des Kurses Fortgeschrittene Methoden und Übung im Masterstudium Soziologie an der Universität Wuppertal (Wintersemester 24-25).\nDozentin: Daria Tisch, Sprechstunde nach Vereinbarung per Zoom.\nAbgaben:\n\n09.01.2025: Analyse von Paneldaten\n30.01.2025: Replikation einer Ereignisdatenanalyse\n\nWeitere Informationen in Moodle.",
     "crumbs": [
       "Course information"
     ]
   },
   {
-    "objectID": "slides/1_seminar.html#wie-arbeiten-wir-in-diesem-kurs",
-    "href": "slides/1_seminar.html#wie-arbeiten-wir-in-diesem-kurs",
-    "title": "1. Seminar",
-    "section": "Wie arbeiten wir in diesem Kurs?",
-    "text": "Wie arbeiten wir in diesem Kurs?\n\nVormittags: Seminar\nNachmittags: Übung (Datenanalyse in R)\nKurswebsite\n\nÜbersicht\nInteraktive Präsentationen\nDatensätze\n\nFragen + Anregungen jederzeit erwünscht"
+    "objectID": "slides/1_uebungsblatt.html",
+    "href": "slides/1_uebungsblatt.html",
+    "title": "1. Übungsblatt",
+    "section": "",
+    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
   },
   {
-    "objectID": "slides/1_seminar.html#interaktive-folien",
-    "href": "slides/1_seminar.html#interaktive-folien",
-    "title": "1. Seminar",
-    "section": "Interaktive Folien",
-    "text": "Interaktive Folien"
+    "objectID": "slides/1_uebungsblatt.html#quarto",
+    "href": "slides/1_uebungsblatt.html#quarto",
+    "title": "1. Übungsblatt",
+    "section": "",
+    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
   },
   {
-    "objectID": "slides/1_seminar.html#scrollable-output",
-    "href": "slides/1_seminar.html#scrollable-output",
-    "title": "1. Seminar",
-    "section": "Scrollable output",
-    "text": "Scrollable output"
+    "objectID": "slides/1_uebungsblatt.html#running-code",
+    "href": "slides/1_uebungsblatt.html#running-code",
+    "title": "1. Übungsblatt",
+    "section": "Running Code",
+    "text": "Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n1 + 1\n\n[1] 2\n\n\nYou can add options to executable code like this\n\n\n[1] 4\n\n\nThe echo: false option disables the printing of code (only output is displayed)."
   },
   {
-    "objectID": "slides/1_seminar.html#read-only",
-    "href": "slides/1_seminar.html#read-only",
-    "title": "1. Seminar",
-    "section": "Read Only",
-    "text": "Read Only"
+    "objectID": "uebungen/1_uebungsblatt.html",
+    "href": "uebungen/1_uebungsblatt.html",
+    "title": "1. Übungsblatt",
+    "section": "",
+    "text": "Quarto ermöglicht es, Inhalte und ausführbaren Code zu einem fertigen Dokument zu verweben. Mehr über Quarto unter https://quarto.org.",
+    "crumbs": [
+      "Schedule",
+      "1 - Übungsblatt"
+    ]
   },
   {
-    "objectID": "slides/1_seminar.html#übung-1",
-    "href": "slides/1_seminar.html#übung-1",
-    "title": "1. Seminar",
+    "objectID": "uebungen/1_uebungsblatt.html#quarto",
+    "href": "uebungen/1_uebungsblatt.html#quarto",
+    "title": "1. Übungsblatt",
+    "section": "",
+    "text": "Quarto ermöglicht es, Inhalte und ausführbaren Code zu einem fertigen Dokument zu verweben. Mehr über Quarto unter https://quarto.org.",
+    "crumbs": [
+      "Schedule",
+      "1 - Übungsblatt"
+    ]
+  },
+  {
+    "objectID": "uebungen/1_uebungsblatt.html#code-ausführen",
+    "href": "uebungen/1_uebungsblatt.html#code-ausführen",
+    "title": "1. Übungsblatt",
+    "section": "Code ausführen",
+    "text": "Code ausführen\nWenn Du auf die Schaltfläche Render klickst, wird ein Dokument erstellt, das sowohl den Inhalt als auch die Ausgabe des eingebetteten Codes enthält. Code kann wie folgt einbettet werden:\n\n\nCode\n# This is the first code chunk\n1 + 1\n\n\n[1] 2\n\n\nEs können Optionen zu ausführbarem Code wie folgt hinzugefügt werden\n\n\n[1] 4\n\n\necho: false deaktiviert das Drucken des Codes (nur die Ausgabe wird angezeigt).",
+    "crumbs": [
+      "Schedule",
+      "1 - Übungsblatt"
+    ]
+  },
+  {
+    "objectID": "uebungen/1_uebungsblatt.html#arbeitsverzeichnis-festsetzen",
+    "href": "uebungen/1_uebungsblatt.html#arbeitsverzeichnis-festsetzen",
+    "title": "1. Übungsblatt",
+    "section": "Arbeitsverzeichnis festsetzen",
+    "text": "Arbeitsverzeichnis festsetzen\n\n\nCode\n# set working directory\nsetwd(\"C:/Users/ti/Local/seafile/main/teaching/2024_wuppertal/wup2024/uebungen\")",
+    "crumbs": [
+      "Schedule",
+      "1 - Übungsblatt"
+    ]
+  },
+  {
+    "objectID": "uebungen/1_uebungsblatt.html#packages-installieren-und-laden",
+    "href": "uebungen/1_uebungsblatt.html#packages-installieren-und-laden",
+    "title": "1. Übungsblatt",
+    "section": "Packages installieren und laden",
+    "text": "Packages installieren und laden\n\n\nCode\n# Packages\npkgs &lt;- c(\n  \"tidyverse\",\n  \"ggplot2\"\n) \n\n## Install uninstalled packages\nlapply(pkgs[!(pkgs %in% installed.packages())], install.packages)\n\n## Load all packages to library\nlapply(pkgs, library, character.only = TRUE)",
+    "crumbs": [
+      "Schedule",
+      "1 - Übungsblatt"
+    ]
+  },
+  {
+    "objectID": "uebungen/1_uebungsblatt.html#daten-einlesen",
+    "href": "uebungen/1_uebungsblatt.html#daten-einlesen",
+    "title": "1. Übungsblatt",
+    "section": "Daten einlesen",
+    "text": "Daten einlesen\n\n\nCode\n# read data\ndf = read.csv(\"../daten/soep_uebung.csv\")",
+    "crumbs": [
+      "Schedule",
+      "1 - Übungsblatt"
+    ]
+  },
+  {
+    "objectID": "uebungen/1_uebungsblatt.html#datenexploration",
+    "href": "uebungen/1_uebungsblatt.html#datenexploration",
+    "title": "1. Übungsblatt",
+    "section": "Datenexploration",
+    "text": "Datenexploration\nThere are 23522 observations in our data.",
+    "crumbs": [
+      "Schedule",
+      "1 - Übungsblatt"
+    ]
+  },
+  {
+    "objectID": "uebungen/1_uebungsblatt.html#datenexploration-1",
+    "href": "uebungen/1_uebungsblatt.html#datenexploration-1",
+    "title": "1. Übungsblatt",
+    "section": "Datenexploration",
+    "text": "Datenexploration\nDie ersten Zeilen des Datensatzes anschauen\n\n\nCode\nhead(df)",
+    "crumbs": [
+      "Schedule",
+      "1 - Übungsblatt"
+    ]
+  },
+  {
+    "objectID": "uebungen/1_uebungsblatt.html#übung-1",
+    "href": "uebungen/1_uebungsblatt.html#übung-1",
+    "title": "1. Übungsblatt",
     "section": "Übung 1",
-    "text": "Übung 1\nBitte vervollständige den Code, sodass die Summe 10 ergibt.\n\n\n\n\n\n\n\n\n\n\n\n\nTipp\n\n\n\n\n\n\n\n\n\nSolution\n\n\nLösung:\n1 + 2 + 3 + 4"
+    "text": "Übung 1\nWie viele Beobachtungen im Datensatz sind Frauen?",
+    "crumbs": [
+      "Schedule",
+      "1 - Übungsblatt"
+    ]
   }
 ]
