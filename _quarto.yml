@@ -1,4 +1,6 @@
 project:
+  render:
+    - "!/downloads
   type: website
   output-dir: docs
 
@@ -46,5 +48,3 @@ format:
 execute:
   freeze: auto
 
-resources:
-    - downloads/1_uebungsblatt_studis.qmd.txt
