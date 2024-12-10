@@ -12,6 +12,8 @@ format:
     default
 editor: visual
 number-sections: true
+execute:
+  freeze: true 
 ---
 
 # Einführung in Quarto und R
@@ -102,7 +104,7 @@ table(df$sex)
 Erstelle ein Balkendiagramm, das die Verteilung des Alters darstellt.
 
 ```{r}
-ggplot(df, aes(x = alter)) +
+ggplot(______, aes(x = ______)) +
   geom_bar(fill = "skyblue", color = "black") +
   labs(
     title = "Verteilung des Alters",

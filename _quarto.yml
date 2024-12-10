@@ -45,3 +45,6 @@ format:
 
 execute:
   freeze: auto
+
+resources:
+    - downloads/1_uebungsblatt_studis.qmd

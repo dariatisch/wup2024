@@ -6,7 +6,7 @@ Zeitplan:
 
 |     |                Morgens         |          Nachmittags                     |
 |:---:|:-----------------------------------:|:--------------------------------------:|
-|  12.12.2024  |Übersicht quantitative Methoden  [🖥](/slides/1_seminar.html "Seminarfolien")         | Arbeitsablauf etablieren, Einführung in Quarto und R   [🖥](/slides/1_uebung.html "Übungsfolien")     [📋](/uebungen/1_uebungsblatt.html "1. Übungsblatt")    [Download Übungsblatt](uebungen/1_uebungsblatt.qmd)                 |
+|  12.12.2024  |Übersicht quantitative Methoden  [🖥](/slides/1_seminar.html "Seminarfolien")         | Arbeitsablauf etablieren, Einführung in Quarto und R   [🖥](/slides/1_uebung.html "Übungsfolien")     [📋](/uebungen/1_uebungsblatt.html "1. Übungsblatt")    [Download Übungsblatt](downloads/1_uebungsblatt_studis.qmd.txt)                 |
 |  19.12.2024  | Paneldaten Seminar         | Paneldaten Übung                          |
 |  09.01.2025  | Ereignisdaten Seminar          | Ereignisdaten Übung |
 |  23.01.2025  | Faktorielle Umfrageexperimente   Seminar            | Faktorielle Umfrageexperimente Übung                 |
