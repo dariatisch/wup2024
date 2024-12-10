@@ -1,0 +1,17 @@
+{
+  "hash": "b2c1f52571fc7e5fb17923029574a002",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"1. Übungsblatt\"\nauthor: \"Bitte Name einfügen\"\nformat: \n  html: default\n  pdf: default\neditor: visual\n---\n\n\n\n## Quarto\n\nQuarto ermöglicht es, Inhalte und ausführbaren Code zu einem fertigen Dokument zu verweben. Mehr über Quarto unter <https://quarto.org>.\n\n## Code ausführen\n\nWenn Du auf die Schaltfläche **Render** klickst, wird ein Dokument erstellt, das sowohl den Inhalt als auch die **Ausgabe** des eingebetteten Codes enthält. Code kann wie folgt einbettet werden:\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\n1 + 1\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] 2\n```\n\n\n:::\n:::\n\n\n\nEs können Optionen zu ausführbarem Code wie folgt hinzugefügt werden\n\n\n\n::: {.cell}\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] 4\n```\n\n\n:::\n:::\n\n\n\n`echo: false` deaktiviert das Drucken des Codes (nur die Ausgabe wird angezeigt).\n\n\n## \n",
+    "supporting": [
+      "1_uebungsblatt_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": null,
+    "postProcess": false
+  }
+}

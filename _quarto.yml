@@ -31,8 +31,11 @@ website:
           - href: schedule.qmd
             text: Schedule
           - href: slides/1_uebung.qmd
-            text: "Übung 01"
-    	
+            text: "1 - Übung"
+          - href: slides/1_seminar.qmd
+            text: "1 - Seminar"
+          - href: uebungen/1_uebungsblatt.qmd
+            text: "1 - Übungsblatt"   	
 
 format:
   html:
