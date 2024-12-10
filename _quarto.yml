@@ -47,4 +47,4 @@ execute:
   freeze: auto
 
 resources:
-    - downloads/1_uebungsblatt_studis.qmd
+    - downloads/1_uebungsblatt_studis.qmd.txt
