@@ -1,5 +1,499 @@
 [
   {
+    "objectID": "uebungen/1_uebungsblatt.html",
+    "href": "uebungen/1_uebungsblatt.html",
+    "title": "1. Übungsblatt",
+    "section": "",
+    "text": "Quarto ermöglicht es, Inhalte und ausführbaren Code zu einem fertigen Dokument zu verweben. Mehr über Quarto unter https://quarto.org.\n\n\n\nWenn Du auf die Schaltfläche Render klickst, wird ein Dokument erstellt, das sowohl den Inhalt als auch die Ausgabe des eingebetteten Codes enthält. Code kann wie folgt einbettet werden:\n\n\nCode\n# This is the first code chunk\n1 + 1\n\n\n[1] 2\n\n\nEs können Optionen zu ausführbarem Code wie folgt hinzugefügt werden\n\n\n[1] 4\n\n\necho: false deaktiviert das Drucken des Codes (nur die Ausgabe wird angezeigt).\n\n\n\n\n\nCode\n# set working directory\nsetwd(\"D:/Seafile/main/teaching/2024_wuppertal/wup2024/uebungen\")\n\n\n\n\n\n\n\nCode\n# Packages\npkgs &lt;- c(\n  \"tidyverse\",\n  \"ggplot2\"\n) \n\n## Install uninstalled packages\nlapply(pkgs[!(pkgs %in% installed.packages())], install.packages)\n\n## Load all packages to library\nlapply(pkgs, library, character.only = TRUE)\n\n\n\n\n\nWir arbeiten mit dem Übungsdatensatz des SOEP (DOI:10.5684/soep.practice.v36). Es werden zwei Datensätze eingelesen. Der erste Datensatz enthalt die tatsächlichen Umfragedaten, der zweite Datensatz enthält die Variablenlabels.\n\n\nCode\n# read data\ndf = read.csv(\"../daten/soep_uebung.csv\")\ndf_labels = read.csv(\"../daten/soep_labels.csv\")\n\n\n\n\n\nThere are 23522 observations in our data.\n\n\n\nSchauen wir uns die ersten Zeilen des Datensatzes an, um einen ersten Überblick über den Datensatz zu gewinnen.\n\n\nCode\nhead(df)",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
+  },
+  {
+    "objectID": "uebungen/1_uebungsblatt.html#quarto",
+    "href": "uebungen/1_uebungsblatt.html#quarto",
+    "title": "1. Übungsblatt",
+    "section": "",
+    "text": "Quarto ermöglicht es, Inhalte und ausführbaren Code zu einem fertigen Dokument zu verweben. Mehr über Quarto unter https://quarto.org.",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
+  },
+  {
+    "objectID": "uebungen/1_uebungsblatt.html#code-ausführen",
+    "href": "uebungen/1_uebungsblatt.html#code-ausführen",
+    "title": "1. Übungsblatt",
+    "section": "",
+    "text": "Wenn Du auf die Schaltfläche Render klickst, wird ein Dokument erstellt, das sowohl den Inhalt als auch die Ausgabe des eingebetteten Codes enthält. Code kann wie folgt einbettet werden:\n\n\nCode\n# This is the first code chunk\n1 + 1\n\n\n[1] 2\n\n\nEs können Optionen zu ausführbarem Code wie folgt hinzugefügt werden\n\n\n[1] 4\n\n\necho: false deaktiviert das Drucken des Codes (nur die Ausgabe wird angezeigt).",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
+  },
+  {
+    "objectID": "uebungen/1_uebungsblatt.html#arbeitsverzeichnis-festsetzen",
+    "href": "uebungen/1_uebungsblatt.html#arbeitsverzeichnis-festsetzen",
+    "title": "1. Übungsblatt",
+    "section": "",
+    "text": "Code\n# set working directory\nsetwd(\"D:/Seafile/main/teaching/2024_wuppertal/wup2024/uebungen\")",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
+  },
+  {
+    "objectID": "uebungen/1_uebungsblatt.html#packages-installieren-und-laden",
+    "href": "uebungen/1_uebungsblatt.html#packages-installieren-und-laden",
+    "title": "1. Übungsblatt",
+    "section": "",
+    "text": "Code\n# Packages\npkgs &lt;- c(\n  \"tidyverse\",\n  \"ggplot2\"\n) \n\n## Install uninstalled packages\nlapply(pkgs[!(pkgs %in% installed.packages())], install.packages)\n\n## Load all packages to library\nlapply(pkgs, library, character.only = TRUE)",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
+  },
+  {
+    "objectID": "uebungen/1_uebungsblatt.html#daten-einlesen",
+    "href": "uebungen/1_uebungsblatt.html#daten-einlesen",
+    "title": "1. Übungsblatt",
+    "section": "",
+    "text": "Wir arbeiten mit dem Übungsdatensatz des SOEP (DOI:10.5684/soep.practice.v36). Es werden zwei Datensätze eingelesen. Der erste Datensatz enthalt die tatsächlichen Umfragedaten, der zweite Datensatz enthält die Variablenlabels.\n\n\nCode\n# read data\ndf = read.csv(\"../daten/soep_uebung.csv\")\ndf_labels = read.csv(\"../daten/soep_labels.csv\")",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
+  },
+  {
+    "objectID": "uebungen/1_uebungsblatt.html#datenexploration",
+    "href": "uebungen/1_uebungsblatt.html#datenexploration",
+    "title": "1. Übungsblatt",
+    "section": "",
+    "text": "There are 23522 observations in our data.",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
+  },
+  {
+    "objectID": "uebungen/1_uebungsblatt.html#datenexploration-1",
+    "href": "uebungen/1_uebungsblatt.html#datenexploration-1",
+    "title": "1. Übungsblatt",
+    "section": "",
+    "text": "Schauen wir uns die ersten Zeilen des Datensatzes an, um einen ersten Überblick über den Datensatz zu gewinnen.\n\n\nCode\nhead(df)",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
+  },
+  {
+    "objectID": "uebungen/1_uebungsblatt.html#übung",
+    "href": "uebungen/1_uebungsblatt.html#übung",
+    "title": "1. Übungsblatt",
+    "section": "2.1 Übung",
+    "text": "2.1 Übung\nWie viele Beobachtungen im Datensatz sind Frauen?\n\n\nCode\ntable(df$sex)\n\n\n\n[0] männlich [1] weiblich \n       10762        12760",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
+  },
+  {
+    "objectID": "uebungen/1_uebungsblatt.html#übung-1",
+    "href": "uebungen/1_uebungsblatt.html#übung-1",
+    "title": "1. Übungsblatt",
+    "section": "2.2 Übung",
+    "text": "2.2 Übung\nErstelle ein Balkendiagramm, das die Verteilung des Alters darstellt.\n\n\nCode\nggplot(df, aes(x = alter)) +\n  geom_bar(fill = \"skyblue\", color = \"black\") +\n  labs(\n    title = \"Verteilung des Alters\",\n    x = \"Alter\",\n    y = \"Häufigkeit\"\n  ) +\n  theme_minimal()",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
+  },
+  {
+    "objectID": "uebungen/1_uebungsblatt.html#übung-2",
+    "href": "uebungen/1_uebungsblatt.html#übung-2",
+    "title": "1. Übungsblatt",
+    "section": "2.3 Übung",
+    "text": "2.3 Übung\nWir alt ist die jüngste und wie alt die älteste Person?\n\n\nCode\nsummary(df$alter)\n\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n  17.00   34.00   48.00   48.28   62.00  102.00",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
+  },
+  {
+    "objectID": "uebungen/1_uebungsblatt.html#übung-3",
+    "href": "uebungen/1_uebungsblatt.html#übung-3",
+    "title": "1. Übungsblatt",
+    "section": "2.4 Übung",
+    "text": "2.4 Übung\nWelcher Variablentyp ist Geschlecht (sex)? Welcher Alter? Welcher Bildung?\n\n\nCode\nglimpse(df)\n\n\nRows: 23,522\nColumns: 15\n$ id          &lt;int&gt; 194, 194, 194, 194, 194, 19052, 27495, 27495, 27495, 22539…\n$ syear       &lt;int&gt; 2015, 2016, 2017, 2018, 2019, 2015, 2016, 2018, 2019, 2015…\n$ sex         &lt;chr&gt; \"[1] weiblich\", \"[1] weiblich\", \"[1] weiblich\", \"[1] weibl…\n$ alter       &lt;int&gt; 59, 60, 61, 62, 63, 74, 35, 37, 38, 85, 73, 74, 43, 44, 45…\n$ anz_pers    &lt;int&gt; 2, 2, 2, 2, 2, 2, 3, 3, 3, 2, 1, 1, 4, 4, 4, 4, 4, 2, 2, 2…\n$ anz_kind    &lt;int&gt; 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 2, 2, 2, 2, 2, 0, 0, 0…\n$ bildung     &lt;dbl&gt; 10.5, 10.5, 10.5, 10.5, 10.5, 10.0, 15.0, 15.0, 15.0, 18.0…\n$ erwerb      &lt;chr&gt; \"[2] Teilzeitbeschäftigung\", \"[2] Teilzeitbeschäftigung\", …\n$ branche     &lt;chr&gt; \"[84] Oeffentliche Verwaltung, Verteidigung; Sozialversich…\n$ gesund_org  &lt;chr&gt; \"[4] Weniger gut\", \"[3] Zufriedenstellend\", \"[3] Zufrieden…\n$ lebensz_org &lt;chr&gt; \"6\", \"5\", \"7\", \"5\", \"6\", \"8\", \"8\", \"8\", \"8\", \"8\", \"5\", \"8\"…\n$ einkommenj1 &lt;dbl&gt; 28678.94, 19962.29, 22227.68, 22100.38, 23157.92, 0.00, 14…\n$ einkommenj2 &lt;dbl&gt; 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.…\n$ einkommenm1 &lt;dbl&gt; 1659.1285, 1809.3364, 1849.0375, 1616.5137, 1901.0012, 0.0…\n$ einkommenm2 &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
+  },
+  {
+    "objectID": "uebungen/1_uebungsblatt.html#übung-4",
+    "href": "uebungen/1_uebungsblatt.html#übung-4",
+    "title": "1. Übungsblatt",
+    "section": "2.5 Übung",
+    "text": "2.5 Übung\nWie viele Beobachtungen gibt es pro Jahr?\n\n\nCode\ntable(df$syear)\n\n\n\n2015 2016 2017 2018 2019 \n5527 4987 4720 4351 3937",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
+  },
+  {
+    "objectID": "uebungen/1_uebungsblatt.html#übung-5",
+    "href": "uebungen/1_uebungsblatt.html#übung-5",
+    "title": "1. Übungsblatt",
+    "section": "2.6 Übung",
+    "text": "2.6 Übung\nWas beinhaltet die Variable “einkommenj1” und “einkommenj2”?\n\n\nCode\ndf_labels",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
+  },
+  {
+    "objectID": "uebungen/1_uebungsblatt.html#übung-6",
+    "href": "uebungen/1_uebungsblatt.html#übung-6",
+    "title": "1. Übungsblatt",
+    "section": "2.7 Übung",
+    "text": "2.7 Übung\nErstelle einen Vektor, der die Ausprägungen der Variable “gesund_org” enthält. Und schaue Dir diesen Vektor an.\n\n\nCode\n# Eindeutige Ausprägungen der Variable 'gesund_org'\nvektor_gesund_org &lt;- unique(df$gesund_org)\n\n# Ausgabe der eindeutigen Ausprägungen\nprint(vektor_gesund_org)\n\n\n[1] \"[4] Weniger gut\"       \"[3] Zufriedenstellend\" \"[5] Schlecht\"         \n[4] \"[2] Gut\"               \"\"                      \"[1] Sehr gut\"",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
+  },
+  {
+    "objectID": "uebungen/1_uebungsblatt.html#übung-7",
+    "href": "uebungen/1_uebungsblatt.html#übung-7",
+    "title": "1. Übungsblatt",
+    "section": "2.8 Übung",
+    "text": "2.8 Übung\nWir möchten den subjektiven Gesundheitsstatus als numerische Variable nutzen. Wir müssen daher die Variable gesund_org in eine numerische Variable umwandeln. Achte auf fehlende Werte.\n\n\nCode\ntable(df$gesund_org, useNA = \"always\")\n\n\n\n                               [1] Sehr gut               [2] Gut \n                  102                  2535                  9488 \n[3] Zufriedenstellend       [4] Weniger gut          [5] Schlecht \n                 7576                  3089                   732 \n                 &lt;NA&gt; \n                    0 \n\n\nCode\n# Ersetze leere Zeichenketten \"\" durch NA in der Spalte 'gesund_org'\ndf$gesund_org[df$gesund_org == \"\"] &lt;- NA\n\n# Extrahiere die numerischen Werte aus der Spalte 'gesund_org'\ndf$gesund_org_numeric &lt;- as.numeric(sub(\"\\\\[([0-9]+)\\\\].*\", \"\\\\1\", df$gesund_org))\n\n# Überprüfe die Änderungen\ntable(df$gesund_org_numeric, useNA = \"always\")\n\n\n\n   1    2    3    4    5 &lt;NA&gt; \n2535 9488 7576 3089  732  102 \n\n\nCode\ntable(df$gesund_org, useNA = \"always\")\n\n\n\n         [1] Sehr gut               [2] Gut [3] Zufriedenstellend \n                 2535                  9488                  7576 \n      [4] Weniger gut          [5] Schlecht                  &lt;NA&gt; \n                 3089                   732                   102",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
+  },
+  {
+    "objectID": "uebungen/1_uebungsblatt.html#übung-8",
+    "href": "uebungen/1_uebungsblatt.html#übung-8",
+    "title": "1. Übungsblatt",
+    "section": "2.9 Übung",
+    "text": "2.9 Übung\nStelle die Verteilung des subjetiven Gesundheitsstatus graphisch dar\n\n\nCode\n# Barplot erstellen\nggplot(df, aes(x = factor(gesund_org_numeric))) +\n  geom_bar(fill = \"skyblue\", color = \"black\") +\n  labs(\n    title = \"Univariate Verteilung des subjektiven Gesundheitsstatus\",\n    x = \"Subjektiver Gesundheitsstatus (1 = Sehr gut, 5 = Schlecht)\",\n    y = \"Häufigkeit\"\n  ) +\n  theme_minimal()",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
+  },
+  {
+    "objectID": "uebungen/1_uebungsblatt.html#übung-9",
+    "href": "uebungen/1_uebungsblatt.html#übung-9",
+    "title": "1. Übungsblatt",
+    "section": "2.10 Übung",
+    "text": "2.10 Übung\nGibt es fehlende Werte auf der Variable monatliches Einkommen (einkommenm1) und auf der Variable Alter?\n\n\nCode\ntable(df$alter, useNA = \"always\")\n\n\n\n  17   18   19   20   21   22   23   24   25   26   27   28   29   30   31   32 \n 472  470  437  392  347  290  281  263  244  254  283  282  293  304  337  341 \n  33   34   35   36   37   38   39   40   41   42   43   44   45   46   47   48 \n 331  368  387  387  379  397  413  430  447  450  454  434  450  466  466  473 \n  49   50   51   52   53   54   55   56   57   58   59   60   61   62   63   64 \n 500  517  526  518  479  447  412  381  381  359  339  336  326  296  298  312 \n  65   66   67   68   69   70   71   72   73   74   75   76   77   78   79   80 \n 325  314  309  294  272  239  242  244  246  256  276  271  270  247  223  192 \n  81   82   83   84   85   86   87   88   89   90   91   92   93   94   95   96 \n 156  124  105   82   74   64   47   46   36   28   19   18   13   11    8    5 \n  97   98   99  100  101  102 &lt;NA&gt; \n   5    4    3    3    1    1    0 \n\n\nCode\nsummary(df$einkommenm1)\n\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n    0.0     0.0   852.9  1645.6  2687.4 35260.9",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
+  },
+  {
+    "objectID": "uebungen/1_uebungsblatt.html#übung-10",
+    "href": "uebungen/1_uebungsblatt.html#übung-10",
+    "title": "1. Übungsblatt",
+    "section": "2.11 Übung",
+    "text": "2.11 Übung\nSchaue Dir den Zusammenhang von subjektiven Gesundheitsstatus und Alter graphisch mit Hilfe eines Scatterplots an. Beschränke die Daten auf das Jahr 2019 und auf Personen, die jünger als 65 Jahre alt sind.\n\n\nCode\n# Scatterplot mit ggplot2 erstellen\nggplot(df %&gt;% filter(syear==\"2019\", alter &lt; 65), aes(x = alter , y = einkommenm1)) +\n  geom_point(color = \"blue\", alpha = 0.6) +  # Punkte hinzufügen\n  geom_smooth(method = \"lm\", color = \"red\", se = TRUE) +  # Lineare Trendlinie mit Konfidenzintervall\n  labs(\n    title = \"Zusammenhang zwischen Einkommen und Alter\",\n    x = \"Alter\",\n    y = \"Einkommen\"\n  ) +\n  theme_minimal()  # Minimalistisches Theme\n\n\n`geom_smooth()` using formula = 'y ~ x'",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
+  },
+  {
+    "objectID": "uebungen/1_uebungsblatt.html#übung-11",
+    "href": "uebungen/1_uebungsblatt.html#übung-11",
+    "title": "1. Übungsblatt",
+    "section": "2.12 Übung",
+    "text": "2.12 Übung\nUnd nun mit logarithmiertem Einkommen. Was fällt auf?\n\n\nCode\n# Scatterplot mit ggplot2 erstellen\nggplot(df %&gt;% filter(syear==\"2019\", alter &lt; 65), aes(x = alter , y = log(einkommenm1))) +\n  geom_point(color = \"blue\", alpha = 0.6) +  # Punkte hinzufügen\n  geom_smooth(method = \"lm\", color = \"red\", se = TRUE) +  # Lineare Trendlinie mit Konfidenzintervall\n  labs(\n    title = \"Zusammenhang zwischen Einkommen und Alter\",\n    x = \"Alter\",\n    y = \"Einkommen, log.\"\n  ) +\n  theme_minimal()  # Minimalistisches Theme\n\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\nWarning: Removed 660 rows containing non-finite outside the scale range\n(`stat_smooth()`).",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
+  },
+  {
+    "objectID": "uebungen/1_uebungsblatt.html#übung-12",
+    "href": "uebungen/1_uebungsblatt.html#übung-12",
+    "title": "1. Übungsblatt",
+    "section": "2.13 Übung",
+    "text": "2.13 Übung\nWandle dieses Dokument in ein PDF und ein HTML Dokument um.",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
+  },
+  {
+    "objectID": "slides/1_uebung.html#was-ist-forschungsdatenmanagement",
+    "href": "slides/1_uebung.html#was-ist-forschungsdatenmanagement",
+    "title": "1. Übung",
+    "section": "Was ist Forschungsdatenmanagement?",
+    "text": "Was ist Forschungsdatenmanagement?\n\n“Gesundheitsvorsorge” für Ihre Daten\nSchützt die Daten vor Schaden\nMacht Daten funktional, nutzbar und auffindbar\nAlle Strategien, Prozesse und Maßnahmen zum Sammeln, Organisieren, Strukturieren, Speichern, Analysieren, Veröffentlichen, Weitergeben und Archivieren von Informationen, die im Rahmen eines Forschungsprojekts verwendet oder erzeugt werden\nBehandelt auch rechtliche und ethische Fragen (z. B. Einwilligungserklärungen, Eigentum, Lizenzierung)",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übung"
+    ]
+  },
+  {
+    "objectID": "slides/1_uebung.html#übersicht-forschungsdatenmanagement",
+    "href": "slides/1_uebung.html#übersicht-forschungsdatenmanagement",
+    "title": "1. Übung",
+    "section": "Übersicht: Forschungsdatenmanagement",
+    "text": "Übersicht: Forschungsdatenmanagement",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übung"
+    ]
+  },
+  {
+    "objectID": "slides/1_uebung.html#warum-forschungsdatenmanagement",
+    "href": "slides/1_uebung.html#warum-forschungsdatenmanagement",
+    "title": "1. Übung",
+    "section": "Warum Forschungsdatenmanagement?",
+    "text": "Warum Forschungsdatenmanagement?\n\nVerbessert Arbeitsabläufe\nMinimiert das Risiko von Datenverlusten\nErfüllung der Anforderungen von Finanzierungs- und Aufsichtsbehörden\nAnerkennung für die Weitergabe eigener Daten\nGute wissenschaftliche Praxis\nErhält Datenqualität\nSpart Ressourcen und nutzt die öffentlichen Mittel optimal\n\n\nPreserves the integrity of research Transparent research Reproducible research",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übung"
+    ]
+  },
+  {
+    "objectID": "slides/1_uebung.html#konkrete-anwendung",
+    "href": "slides/1_uebung.html#konkrete-anwendung",
+    "title": "1. Übung",
+    "section": "Konkrete Anwendung",
+    "text": "Konkrete Anwendung\n\nAlle Übungsaufgaben werden mit Skripten gelöst → Reproduzierbarkeit\nGute Praktiken der Dateiverwaltung & -bennenung\nGute Dokumentation des Codes",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übung"
+    ]
+  },
+  {
+    "objectID": "slides/1_uebung.html#wie-wir-arbeiten",
+    "href": "slides/1_uebung.html#wie-wir-arbeiten",
+    "title": "1. Übung",
+    "section": "Wie wir arbeiten",
+    "text": "Wie wir arbeiten\n\nInteraktive Folien zum gemeinsamen Lernen\nQuarto Dokumente als Übungsaufgaben\nQuarto Dokumente als Abgaben (09. Jan und 30. Jan!)",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übung"
+    ]
+  },
+  {
+    "objectID": "slides/1_uebung.html#ordnerstruktur",
+    "href": "slides/1_uebung.html#ordnerstruktur",
+    "title": "1. Übung",
+    "section": "Ordnerstruktur",
+    "text": "Ordnerstruktur\nBitte folgende Ordnerstruktur anlegen:\n\n\nDatensätze entweder auf der Website oder in Moodle\nÜbungsblätter auf der Website\nAbgaben auf der Website\n\n→ Herunterladen und im richtigen Ordner abspeichern",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übung"
+    ]
+  },
+  {
+    "objectID": "slides/1_uebung.html#abgaben",
+    "href": "slides/1_uebung.html#abgaben",
+    "title": "1. Übung",
+    "section": "Abgaben",
+    "text": "Abgaben\n\nQuarto Dokument sowie PDF oder HTML Dokument\nGut kommentiert\nRechtzeitig über Moodle!",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übung"
+    ]
+  },
+  {
+    "objectID": "slides/1_uebung.html#was-ist-quarto",
+    "href": "slides/1_uebung.html#was-ist-quarto",
+    "title": "1. Übung",
+    "section": "Was ist Quarto?",
+    "text": "Was ist Quarto?\n\nist ein neues, quelloffenes, wissenschaftliches und technisches Publikationssystem\nDas Ziel von Quarto ist es, den Prozess der Erstellung und Zusammenarbeit an wissenschaftlichen und technischen Dokumenten deutlich zu verbessern",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übung"
+    ]
+  },
+  {
+    "objectID": "slides/1_uebung.html#warum-quarto",
+    "href": "slides/1_uebung.html#warum-quarto",
+    "title": "1. Übung",
+    "section": "Warum Quarto?",
+    "text": "Warum Quarto?\n\n\nCode und Ergbenisdokument in einem Zuge erstellen\nKein lästiges hin und herkopieren\nKonsistente Implementierung attraktiver und praktischer Funktionen für alle Ausgaben: Tabsets, Code-Folding, Syntax-Highlighting, etc.\nZugänglichere Standardeinstellungen\nVisual editor\nLeitplanken, besonders hilfreich für neue Lernende: YAML-Vervollständigung, informative Syntaxfehler, etc.",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übung"
+    ]
+  },
+  {
+    "objectID": "slides/1_uebung.html#warum-r",
+    "href": "slides/1_uebung.html#warum-r",
+    "title": "1. Übung",
+    "section": "Warum R?",
+    "text": "Warum R?\n\nmehr statistische Modellierungsmöglichkeiten als Stata\nkostenlos und open source\nviel Unterstützungsmaterial online",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übung"
+    ]
+  },
+  {
+    "objectID": "slides/1_uebung.html#hallo-welt",
+    "href": "slides/1_uebung.html#hallo-welt",
+    "title": "1. Übung",
+    "section": "“Hallo Welt!”",
+    "text": "“Hallo Welt!”",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übung"
+    ]
+  },
+  {
+    "objectID": "slides/1_uebung.html#hallo-pinguine",
+    "href": "slides/1_uebung.html#hallo-pinguine",
+    "title": "1. Übung",
+    "section": "Hallo Pinguine!",
+    "text": "Hallo Pinguine!\n\nArtwork by @allison_horst",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übung"
+    ]
+  },
+  {
+    "objectID": "slides/1_uebung.html#pinguine-datensatz-inspizieren",
+    "href": "slides/1_uebung.html#pinguine-datensatz-inspizieren",
+    "title": "1. Übung",
+    "section": "Pinguine Datensatz inspizieren",
+    "text": "Pinguine Datensatz inspizieren",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übung"
+    ]
+  },
+  {
+    "objectID": "slides/1_uebung.html#pinguine-datensatz-inspizieren-1",
+    "href": "slides/1_uebung.html#pinguine-datensatz-inspizieren-1",
+    "title": "1. Übung",
+    "section": "Pinguine Datensatz inspizieren",
+    "text": "Pinguine Datensatz inspizieren\n\nArtwork by @allison_horst",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übung"
+    ]
+  },
+  {
+    "objectID": "slides/1_uebung.html#pinguine-übung",
+    "href": "slides/1_uebung.html#pinguine-übung",
+    "title": "1. Übung",
+    "section": "Pinguine Übung",
+    "text": "Pinguine Übung\n\nWie viele Pinguine sind im Datensatz?\nWie viele Spezien?\n\n\n\n\n\n\n\n\n\n\nTipp: Suche die Variable, die die Spezie der Pinguine enthält\n\n\n\n\n\n\n\n\n\nSolution\n\n\nLösung:\n# Anzahl Pinguine im Datensatz\ncount(df)\n\n# Anzahl Pinguine pro Spezie\ndf %&gt;% \n  count(species)",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übung"
+    ]
+  },
+  {
+    "objectID": "slides/1_uebung.html#datenvisualisierung",
+    "href": "slides/1_uebung.html#datenvisualisierung",
+    "title": "1. Übung",
+    "section": "Datenvisualisierung",
+    "text": "Datenvisualisierung\n\nOutputCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n#install.packages(\"palmerpenguins\")\nlibrary(palmerpenguins)\ndf = penguins\n# Scatterplot: penguin bill length versus bill depth\nggplot(data = df, aes(x = bill_length_mm, y = bill_depth_mm)) +\n  geom_point(aes(color = species, \n                 shape = species),\n             size = 2)  +\n  scale_color_manual(values = c(\"darkorange\",\"darkorchid\",\"cyan4\"))",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übung"
+    ]
+  },
+  {
+    "objectID": "slides/1_uebung.html#yaml",
+    "href": "slides/1_uebung.html#yaml",
+    "title": "1. Übung",
+    "section": "YAML",
+    "text": "YAML\nDokument metadata\n\n\ntitle: \"Hello, Penguins!\"\nformat: html\neditor: visual",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übung"
+    ]
+  },
+  {
+    "objectID": "slides/1_uebung.html#yaml-ausführlicher",
+    "href": "slides/1_uebung.html#yaml-ausführlicher",
+    "title": "1. Übung",
+    "section": "YAML ausführlicher",
+    "text": "YAML ausführlicher\nDokument metadata\n\n\nformat:\n  live-revealjs:\n    theme: default\n    slideNumber: true\ntitle: \"1. Übung\"\nsubtitle: \"Fortgeschrittene quantitative Methoden &lt;br&gt; Wintersemester 2024-2025\"\nauthor: \"Daria Tisch\"\neditor: visual",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übung"
+    ]
+  },
+  {
+    "objectID": "slides/1_uebung.html#text",
+    "href": "slides/1_uebung.html#text",
+    "title": "1. Übung",
+    "section": "Text",
+    "text": "Text\nMarkdown kann mit jedem Editor bearbeitet werden, auch mit den Quelltext- oder visuellen Editoren von RStudio.",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übung"
+    ]
+  },
+  {
+    "objectID": "slides/1_uebung.html#code-1",
+    "href": "slides/1_uebung.html#code-1",
+    "title": "1. Übung",
+    "section": "Code",
+    "text": "Code\nCode kann auch mit den Quelltext- oder visuellen Editoren von RStudio bearbeitet werden",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übung"
+    ]
+  },
+  {
+    "objectID": "slides/1_uebung.html#quarto-output-dokumente",
+    "href": "slides/1_uebung.html#quarto-output-dokumente",
+    "title": "1. Übung",
+    "section": "Quarto Output Dokumente",
+    "text": "Quarto Output Dokumente\n\nFolien / Präsentation (HTML, PDF, PowerPoint)\nManuskripte (Word Dokument, PDF, HTML)\nWebsites (HTML)",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übung"
+    ]
+  },
+  {
+    "objectID": "slides/1_uebung.html#ende",
+    "href": "slides/1_uebung.html#ende",
+    "title": "1. Übung",
+    "section": "Ende",
+    "text": "Ende\n\nDieser Foliensatz profitierte in großen Teilen von ehemaligen Veranstaltungen von Isabel Habicht sowie von Mine Çetinkaya-Rundel Materialien:\n\nhttps://mine-cetinkaya-rundel.github.io/teach-with-quarto/talks/1-welcome/",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übung"
+    ]
+  },
+  {
+    "objectID": "schedule.html",
+    "href": "schedule.html",
+    "title": "Übersicht",
+    "section": "",
+    "text": "Zeitplan:\n\n\n\n\nMorgens\nNachmittags\n\n\n\n\n12.12.2024\nÜbersicht quantitative Methoden 🖥\nArbeitsablauf etablieren, Einführung in Quarto und R 🖥 📋 Download Übungsblatt\n\n\n19.12.2024\nPaneldaten Seminar\nPaneldaten Übung\n\n\n09.01.2025\nEreignisdaten Seminar\nEreignisdaten Übung\n\n\n23.01.2025\nFaktorielle Umfrageexperimente Seminar\nFaktorielle Umfrageexperimente Übung",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "Übersicht"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Fortgeschrittene quantitative Methoden",
+    "section": "",
+    "text": "Dies ist die Kurswebsite zum quantitativen Teil des Kurses Fortgeschrittene Methoden und Übung im Masterstudium Soziologie an der Universität Wuppertal (Wintersemester 24-25).\nDozentin: Daria Tisch, Sprechstunde nach Vereinbarung per Zoom.\nAbgaben:\n\n09.01.2025: Analyse von Paneldaten\n30.01.2025: Replikation einer Ereignisdatenanalyse\n\nWeitere Informationen in Moodle.",
+    "crumbs": [
+      "Kursinformationen"
+    ]
+  },
+  {
     "objectID": "materials.html",
     "href": "materials.html",
     "title": "Course Materials",
@@ -436,269 +930,6 @@
     ]
   },
   {
-    "objectID": "slides/1_uebung.html#was-ist-forschungsdatenmanagement",
-    "href": "slides/1_uebung.html#was-ist-forschungsdatenmanagement",
-    "title": "1. Übung",
-    "section": "Was ist Forschungsdatenmanagement?",
-    "text": "Was ist Forschungsdatenmanagement?\n\n“Gesundheitsvorsorge” für Ihre Daten\nSchützt die Daten vor Schaden\nMacht Daten funktional, nutzbar und auffindbar\nAlle Strategien, Prozesse und Maßnahmen zum Sammeln, Organisieren, Strukturieren, Speichern, Analysieren, Veröffentlichen, Weitergeben und Archivieren von Informationen, die im Rahmen eines Forschungsprojekts verwendet oder erzeugt werden\nBehandelt auch rechtliche und ethische Fragen (z. B. Einwilligungserklärungen, Eigentum, Lizenzierung)",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übung"
-    ]
-  },
-  {
-    "objectID": "slides/1_uebung.html#übersicht-forschungsdatenmanagement",
-    "href": "slides/1_uebung.html#übersicht-forschungsdatenmanagement",
-    "title": "1. Übung",
-    "section": "Übersicht: Forschungsdatenmanagement",
-    "text": "Übersicht: Forschungsdatenmanagement",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übung"
-    ]
-  },
-  {
-    "objectID": "slides/1_uebung.html#warum-forschungsdatenmanagement",
-    "href": "slides/1_uebung.html#warum-forschungsdatenmanagement",
-    "title": "1. Übung",
-    "section": "Warum Forschungsdatenmanagement?",
-    "text": "Warum Forschungsdatenmanagement?\n\nVerbessert Arbeitsabläufe\nMinimiert das Risiko von Datenverlusten\nErfüllung der Anforderungen von Finanzierungs- und Aufsichtsbehörden\nAnerkennung für die Weitergabe eigener Daten\nGute wissenschaftliche Praxis\nErhält Datenqualität\nSpart Ressourcen und nutzt die öffentlichen Mittel optimal\n\n\nPreserves the integrity of research Transparent research Reproducible research",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übung"
-    ]
-  },
-  {
-    "objectID": "slides/1_uebung.html#konkrete-anwendung",
-    "href": "slides/1_uebung.html#konkrete-anwendung",
-    "title": "1. Übung",
-    "section": "Konkrete Anwendung",
-    "text": "Konkrete Anwendung\n\nAlle Übungsaufgaben werden mit Skripten gelöst → Reproduzierbarkeit\nGute Praktiken der Dateiverwaltung & -bennenung\nGute Dokumentation des Codes",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übung"
-    ]
-  },
-  {
-    "objectID": "slides/1_uebung.html#wie-wir-arbeiten",
-    "href": "slides/1_uebung.html#wie-wir-arbeiten",
-    "title": "1. Übung",
-    "section": "Wie wir arbeiten",
-    "text": "Wie wir arbeiten\n\nInteraktive Folien zum gemeinsamen Lernen\nQuarto Dokumente als Übungsaufgaben\nQuarto Dokumente als Abgaben (09. Jan und 30. Jan!)",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übung"
-    ]
-  },
-  {
-    "objectID": "slides/1_uebung.html#ordnerstruktur",
-    "href": "slides/1_uebung.html#ordnerstruktur",
-    "title": "1. Übung",
-    "section": "Ordnerstruktur",
-    "text": "Ordnerstruktur\nBitte folgende Ordnerstruktur anlegen:\n\n\nDatensätze entweder auf der Website oder in Moodle\nÜbungsblätter auf der Website\nAbgaben auf der Website\n\n→ Herunterladen und im richtigen Ordner abspeichern",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übung"
-    ]
-  },
-  {
-    "objectID": "slides/1_uebung.html#abgaben",
-    "href": "slides/1_uebung.html#abgaben",
-    "title": "1. Übung",
-    "section": "Abgaben",
-    "text": "Abgaben\n\nQuarto Dokument sowie PDF oder HTML Dokument\nGut kommentiert\nRechtzeitig über Moodle!",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übung"
-    ]
-  },
-  {
-    "objectID": "slides/1_uebung.html#was-ist-quarto",
-    "href": "slides/1_uebung.html#was-ist-quarto",
-    "title": "1. Übung",
-    "section": "Was ist Quarto?",
-    "text": "Was ist Quarto?\n\nist ein neues, quelloffenes, wissenschaftliches und technisches Publikationssystem\nDas Ziel von Quarto ist es, den Prozess der Erstellung und Zusammenarbeit an wissenschaftlichen und technischen Dokumenten deutlich zu verbessern",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übung"
-    ]
-  },
-  {
-    "objectID": "slides/1_uebung.html#warum-quarto",
-    "href": "slides/1_uebung.html#warum-quarto",
-    "title": "1. Übung",
-    "section": "Warum Quarto?",
-    "text": "Warum Quarto?\n\n\nCode und Ergbenisdokument in einem Zuge erstellen\nKein lästiges hin und herkopieren\nKonsistente Implementierung attraktiver und praktischer Funktionen für alle Ausgaben: Tabsets, Code-Folding, Syntax-Highlighting, etc.\nZugänglichere Standardeinstellungen\nVisual editor\nLeitplanken, besonders hilfreich für neue Lernende: YAML-Vervollständigung, informative Syntaxfehler, etc.",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übung"
-    ]
-  },
-  {
-    "objectID": "slides/1_uebung.html#warum-r",
-    "href": "slides/1_uebung.html#warum-r",
-    "title": "1. Übung",
-    "section": "Warum R?",
-    "text": "Warum R?\n\nmehr statistische Modellierungsmöglichkeiten als Stata\nkostenlos und open source\nviel Unterstützungsmaterial online",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übung"
-    ]
-  },
-  {
-    "objectID": "slides/1_uebung.html#hallo-welt",
-    "href": "slides/1_uebung.html#hallo-welt",
-    "title": "1. Übung",
-    "section": "“Hallo Welt!”",
-    "text": "“Hallo Welt!”",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übung"
-    ]
-  },
-  {
-    "objectID": "slides/1_uebung.html#hallo-pinguine",
-    "href": "slides/1_uebung.html#hallo-pinguine",
-    "title": "1. Übung",
-    "section": "Hallo Pinguine!",
-    "text": "Hallo Pinguine!\n\nArtwork by @allison_horst",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übung"
-    ]
-  },
-  {
-    "objectID": "slides/1_uebung.html#pinguine-datensatz-inspizieren",
-    "href": "slides/1_uebung.html#pinguine-datensatz-inspizieren",
-    "title": "1. Übung",
-    "section": "Pinguine Datensatz inspizieren",
-    "text": "Pinguine Datensatz inspizieren",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übung"
-    ]
-  },
-  {
-    "objectID": "slides/1_uebung.html#pinguine-datensatz-inspizieren-1",
-    "href": "slides/1_uebung.html#pinguine-datensatz-inspizieren-1",
-    "title": "1. Übung",
-    "section": "Pinguine Datensatz inspizieren",
-    "text": "Pinguine Datensatz inspizieren\n\nArtwork by @allison_horst",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übung"
-    ]
-  },
-  {
-    "objectID": "slides/1_uebung.html#pinguine-übung",
-    "href": "slides/1_uebung.html#pinguine-übung",
-    "title": "1. Übung",
-    "section": "Pinguine Übung",
-    "text": "Pinguine Übung\n\nWie viele Pinguine sind im Datensatz?\nWie viele Spezien?\n\n\n\n\n\n\n\n\n\n\nTipp: Suche die Variable, die die Spezie der Pinguine enthält\n\n\n\n\n\n\n\n\n\nSolution\n\n\nLösung:\n# Anzahl Pinguine im Datensatz\ncount(df)\n\n# Anzahl Pinguine pro Spezie\ndf %&gt;% \n  count(species)",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übung"
-    ]
-  },
-  {
-    "objectID": "slides/1_uebung.html#datenvisualisierung",
-    "href": "slides/1_uebung.html#datenvisualisierung",
-    "title": "1. Übung",
-    "section": "Datenvisualisierung",
-    "text": "Datenvisualisierung\n\nOutputCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n#install.packages(\"palmerpenguins\")\nlibrary(palmerpenguins)\ndf = penguins\n# Scatterplot: penguin bill length versus bill depth\nggplot(data = df, aes(x = bill_length_mm, y = bill_depth_mm)) +\n  geom_point(aes(color = species, \n                 shape = species),\n             size = 2)  +\n  scale_color_manual(values = c(\"darkorange\",\"darkorchid\",\"cyan4\"))",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übung"
-    ]
-  },
-  {
-    "objectID": "slides/1_uebung.html#yaml",
-    "href": "slides/1_uebung.html#yaml",
-    "title": "1. Übung",
-    "section": "YAML",
-    "text": "YAML\nDokument metadata\n\n\ntitle: \"Hello, Penguins!\"\nformat: html\neditor: visual",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übung"
-    ]
-  },
-  {
-    "objectID": "slides/1_uebung.html#yaml-ausführlicher",
-    "href": "slides/1_uebung.html#yaml-ausführlicher",
-    "title": "1. Übung",
-    "section": "YAML ausführlicher",
-    "text": "YAML ausführlicher\nDokument metadata\n\n\nformat:\n  live-revealjs:\n    theme: default\n    slideNumber: true\ntitle: \"1. Übung\"\nsubtitle: \"Fortgeschrittene quantitative Methoden &lt;br&gt; Wintersemester 2024-2025\"\nauthor: \"Daria Tisch\"\neditor: visual",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übung"
-    ]
-  },
-  {
-    "objectID": "slides/1_uebung.html#text",
-    "href": "slides/1_uebung.html#text",
-    "title": "1. Übung",
-    "section": "Text",
-    "text": "Text\nMarkdown kann mit jedem Editor bearbeitet werden, auch mit den Quelltext- oder visuellen Editoren von RStudio.",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übung"
-    ]
-  },
-  {
-    "objectID": "slides/1_uebung.html#code-1",
-    "href": "slides/1_uebung.html#code-1",
-    "title": "1. Übung",
-    "section": "Code",
-    "text": "Code\nCode kann auch mit den Quelltext- oder visuellen Editoren von RStudio bearbeitet werden",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übung"
-    ]
-  },
-  {
-    "objectID": "slides/1_uebung.html#quarto-output-dokumente",
-    "href": "slides/1_uebung.html#quarto-output-dokumente",
-    "title": "1. Übung",
-    "section": "Quarto Output Dokumente",
-    "text": "Quarto Output Dokumente\n\nFolien / Präsentation (HTML, PDF, PowerPoint)\nManuskripte (Word Dokument, PDF, HTML)\nWebsites (HTML)",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übung"
-    ]
-  },
-  {
-    "objectID": "slides/1_uebung.html#ende",
-    "href": "slides/1_uebung.html#ende",
-    "title": "1. Übung",
-    "section": "Ende",
-    "text": "Ende\n\nDieser Foliensatz profitierte in großen Teilen von ehemaligen Veranstaltungen von Isabel Habicht sowie von Mine Çetinkaya-Rundel Materialien:\n\nhttps://mine-cetinkaya-rundel.github.io/teach-with-quarto/talks/1-welcome/",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übung"
-    ]
-  },
-  {
-    "objectID": "schedule.html",
-    "href": "schedule.html",
-    "title": "Übersicht",
-    "section": "",
-    "text": "Zeitplan:\n\n\n\n\nMorgens\nNachmittags\n\n\n\n\n12.12.2024\nÜbersicht quantitative Methoden 🖥\nArbeitsablauf etablieren, Einführung in Quarto und R 🖥 📋 Download Übungsblatt\n\n\n19.12.2024\nPaneldaten Seminar\nPaneldaten Übung\n\n\n09.01.2025\nEreignisdaten Seminar\nEreignisdaten Übung\n\n\n23.01.2025\nFaktorielle Umfrageexperimente Seminar\nFaktorielle Umfrageexperimente Übung",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "Übersicht"
-    ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Fortgeschrittene quantitative Methoden",
-    "section": "",
-    "text": "Dies ist die Kurswebsite zum quantitativen Teil des Kurses Fortgeschrittene Methoden und Übung im Masterstudium Soziologie an der Universität Wuppertal (Wintersemester 24-25).\nDozentin: Daria Tisch, Sprechstunde nach Vereinbarung per Zoom.\nAbgaben:\n\n09.01.2025: Analyse von Paneldaten\n30.01.2025: Replikation einer Ereignisdatenanalyse\n\nWeitere Informationen in Moodle.",
-    "crumbs": [
-      "Kursinformationen"
-    ]
-  },
-  {
     "objectID": "slides/1_uebungsblatt.html",
     "href": "slides/1_uebungsblatt.html",
     "title": "1. Übungsblatt",
@@ -718,236 +949,5 @@
     "title": "1. Übungsblatt",
     "section": "Running Code",
     "text": "Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n1 + 1\n\n[1] 2\n\n\nYou can add options to executable code like this\n\n\n[1] 4\n\n\nThe echo: false option disables the printing of code (only output is displayed)."
-  },
-  {
-    "objectID": "uebungen/1_uebungsblatt.html",
-    "href": "uebungen/1_uebungsblatt.html",
-    "title": "1. Übungsblatt",
-    "section": "",
-    "text": "Quarto ermöglicht es, Inhalte und ausführbaren Code zu einem fertigen Dokument zu verweben. Mehr über Quarto unter https://quarto.org.\n\n\n\nWenn Du auf die Schaltfläche Render klickst, wird ein Dokument erstellt, das sowohl den Inhalt als auch die Ausgabe des eingebetteten Codes enthält. Code kann wie folgt einbettet werden:\n\n\nCode\n# This is the first code chunk\n1 + 1\n\n\n[1] 2\n\n\nEs können Optionen zu ausführbarem Code wie folgt hinzugefügt werden\n\n\n[1] 4\n\n\necho: false deaktiviert das Drucken des Codes (nur die Ausgabe wird angezeigt).\n\n\n\n\n\nCode\n# set working directory\nsetwd(\"D:/Seafile/main/teaching/2024_wuppertal/wup2024/uebungen\")\n\n\n\n\n\n\n\nCode\n# Packages\npkgs &lt;- c(\n  \"tidyverse\",\n  \"ggplot2\"\n) \n\n## Install uninstalled packages\nlapply(pkgs[!(pkgs %in% installed.packages())], install.packages)\n\n## Load all packages to library\nlapply(pkgs, library, character.only = TRUE)\n\n\n\n\n\nWir arbeiten mit dem Übungsdatensatz des SOEP (DOI:10.5684/soep.practice.v36). Es werden zwei Datensätze eingelesen. Der erste Datensatz enthalt die tatsächlichen Umfragedaten, der zweite Datensatz enthält die Variablenlabels.\n\n\nCode\n# read data\ndf = read.csv(\"../daten/soep_uebung.csv\")\ndf_labels = read.csv(\"../daten/soep_labels.csv\")\n\n\n\n\n\nThere are 23522 observations in our data.\n\n\n\nSchauen wir uns die ersten Zeilen des Datensatzes an, um einen ersten Überblick über den Datensatz zu gewinnen.\n\n\nCode\nhead(df)",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übungsblatt"
-    ]
-  },
-  {
-    "objectID": "uebungen/1_uebungsblatt.html#quarto",
-    "href": "uebungen/1_uebungsblatt.html#quarto",
-    "title": "1. Übungsblatt",
-    "section": "",
-    "text": "Quarto ermöglicht es, Inhalte und ausführbaren Code zu einem fertigen Dokument zu verweben. Mehr über Quarto unter https://quarto.org.",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übungsblatt"
-    ]
-  },
-  {
-    "objectID": "uebungen/1_uebungsblatt.html#code-ausführen",
-    "href": "uebungen/1_uebungsblatt.html#code-ausführen",
-    "title": "1. Übungsblatt",
-    "section": "",
-    "text": "Wenn Du auf die Schaltfläche Render klickst, wird ein Dokument erstellt, das sowohl den Inhalt als auch die Ausgabe des eingebetteten Codes enthält. Code kann wie folgt einbettet werden:\n\n\nCode\n# This is the first code chunk\n1 + 1\n\n\n[1] 2\n\n\nEs können Optionen zu ausführbarem Code wie folgt hinzugefügt werden\n\n\n[1] 4\n\n\necho: false deaktiviert das Drucken des Codes (nur die Ausgabe wird angezeigt).",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übungsblatt"
-    ]
-  },
-  {
-    "objectID": "uebungen/1_uebungsblatt.html#arbeitsverzeichnis-festsetzen",
-    "href": "uebungen/1_uebungsblatt.html#arbeitsverzeichnis-festsetzen",
-    "title": "1. Übungsblatt",
-    "section": "",
-    "text": "Code\n# set working directory\nsetwd(\"D:/Seafile/main/teaching/2024_wuppertal/wup2024/uebungen\")",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übungsblatt"
-    ]
-  },
-  {
-    "objectID": "uebungen/1_uebungsblatt.html#packages-installieren-und-laden",
-    "href": "uebungen/1_uebungsblatt.html#packages-installieren-und-laden",
-    "title": "1. Übungsblatt",
-    "section": "",
-    "text": "Code\n# Packages\npkgs &lt;- c(\n  \"tidyverse\",\n  \"ggplot2\"\n) \n\n## Install uninstalled packages\nlapply(pkgs[!(pkgs %in% installed.packages())], install.packages)\n\n## Load all packages to library\nlapply(pkgs, library, character.only = TRUE)",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übungsblatt"
-    ]
-  },
-  {
-    "objectID": "uebungen/1_uebungsblatt.html#daten-einlesen",
-    "href": "uebungen/1_uebungsblatt.html#daten-einlesen",
-    "title": "1. Übungsblatt",
-    "section": "",
-    "text": "Wir arbeiten mit dem Übungsdatensatz des SOEP (DOI:10.5684/soep.practice.v36). Es werden zwei Datensätze eingelesen. Der erste Datensatz enthalt die tatsächlichen Umfragedaten, der zweite Datensatz enthält die Variablenlabels.\n\n\nCode\n# read data\ndf = read.csv(\"../daten/soep_uebung.csv\")\ndf_labels = read.csv(\"../daten/soep_labels.csv\")",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übungsblatt"
-    ]
-  },
-  {
-    "objectID": "uebungen/1_uebungsblatt.html#datenexploration",
-    "href": "uebungen/1_uebungsblatt.html#datenexploration",
-    "title": "1. Übungsblatt",
-    "section": "",
-    "text": "There are 23522 observations in our data.",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übungsblatt"
-    ]
-  },
-  {
-    "objectID": "uebungen/1_uebungsblatt.html#datenexploration-1",
-    "href": "uebungen/1_uebungsblatt.html#datenexploration-1",
-    "title": "1. Übungsblatt",
-    "section": "",
-    "text": "Schauen wir uns die ersten Zeilen des Datensatzes an, um einen ersten Überblick über den Datensatz zu gewinnen.\n\n\nCode\nhead(df)",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übungsblatt"
-    ]
-  },
-  {
-    "objectID": "uebungen/1_uebungsblatt.html#übung",
-    "href": "uebungen/1_uebungsblatt.html#übung",
-    "title": "1. Übungsblatt",
-    "section": "2.1 Übung",
-    "text": "2.1 Übung\nWie viele Beobachtungen im Datensatz sind Frauen?\n\n\nCode\ntable(df$sex)\n\n\n\n[0] männlich [1] weiblich \n       10762        12760",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übungsblatt"
-    ]
-  },
-  {
-    "objectID": "uebungen/1_uebungsblatt.html#übung-1",
-    "href": "uebungen/1_uebungsblatt.html#übung-1",
-    "title": "1. Übungsblatt",
-    "section": "2.2 Übung",
-    "text": "2.2 Übung\nErstelle ein Balkendiagramm, das die Verteilung des Alters darstellt.\n\n\nCode\nggplot(df, aes(x = alter)) +\n  geom_bar(fill = \"skyblue\", color = \"black\") +\n  labs(\n    title = \"Verteilung des Alters\",\n    x = \"Alter\",\n    y = \"Häufigkeit\"\n  ) +\n  theme_minimal()",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übungsblatt"
-    ]
-  },
-  {
-    "objectID": "uebungen/1_uebungsblatt.html#übung-2",
-    "href": "uebungen/1_uebungsblatt.html#übung-2",
-    "title": "1. Übungsblatt",
-    "section": "2.3 Übung",
-    "text": "2.3 Übung\nWir alt ist die jüngste und wie alt die älteste Person?\n\n\nCode\nsummary(df$alter)\n\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n  17.00   34.00   48.00   48.28   62.00  102.00",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übungsblatt"
-    ]
-  },
-  {
-    "objectID": "uebungen/1_uebungsblatt.html#übung-3",
-    "href": "uebungen/1_uebungsblatt.html#übung-3",
-    "title": "1. Übungsblatt",
-    "section": "2.4 Übung",
-    "text": "2.4 Übung\nWelcher Variablentyp ist Geschlecht (sex)? Welcher Alter? Welcher Bildung?\n\n\nCode\nglimpse(df)\n\n\nRows: 23,522\nColumns: 15\n$ id          &lt;int&gt; 194, 194, 194, 194, 194, 19052, 27495, 27495, 27495, 22539…\n$ syear       &lt;int&gt; 2015, 2016, 2017, 2018, 2019, 2015, 2016, 2018, 2019, 2015…\n$ sex         &lt;chr&gt; \"[1] weiblich\", \"[1] weiblich\", \"[1] weiblich\", \"[1] weibl…\n$ alter       &lt;int&gt; 59, 60, 61, 62, 63, 74, 35, 37, 38, 85, 73, 74, 43, 44, 45…\n$ anz_pers    &lt;int&gt; 2, 2, 2, 2, 2, 2, 3, 3, 3, 2, 1, 1, 4, 4, 4, 4, 4, 2, 2, 2…\n$ anz_kind    &lt;int&gt; 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 2, 2, 2, 2, 2, 0, 0, 0…\n$ bildung     &lt;dbl&gt; 10.5, 10.5, 10.5, 10.5, 10.5, 10.0, 15.0, 15.0, 15.0, 18.0…\n$ erwerb      &lt;chr&gt; \"[2] Teilzeitbeschäftigung\", \"[2] Teilzeitbeschäftigung\", …\n$ branche     &lt;chr&gt; \"[84] Oeffentliche Verwaltung, Verteidigung; Sozialversich…\n$ gesund_org  &lt;chr&gt; \"[4] Weniger gut\", \"[3] Zufriedenstellend\", \"[3] Zufrieden…\n$ lebensz_org &lt;chr&gt; \"6\", \"5\", \"7\", \"5\", \"6\", \"8\", \"8\", \"8\", \"8\", \"8\", \"5\", \"8\"…\n$ einkommenj1 &lt;dbl&gt; 28678.94, 19962.29, 22227.68, 22100.38, 23157.92, 0.00, 14…\n$ einkommenj2 &lt;dbl&gt; 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.…\n$ einkommenm1 &lt;dbl&gt; 1659.1285, 1809.3364, 1849.0375, 1616.5137, 1901.0012, 0.0…\n$ einkommenm2 &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übungsblatt"
-    ]
-  },
-  {
-    "objectID": "uebungen/1_uebungsblatt.html#übung-4",
-    "href": "uebungen/1_uebungsblatt.html#übung-4",
-    "title": "1. Übungsblatt",
-    "section": "2.5 Übung",
-    "text": "2.5 Übung\nWie viele Beobachtungen gibt es pro Jahr?\n\n\nCode\ntable(df$syear)\n\n\n\n2015 2016 2017 2018 2019 \n5527 4987 4720 4351 3937",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übungsblatt"
-    ]
-  },
-  {
-    "objectID": "uebungen/1_uebungsblatt.html#übung-5",
-    "href": "uebungen/1_uebungsblatt.html#übung-5",
-    "title": "1. Übungsblatt",
-    "section": "2.6 Übung",
-    "text": "2.6 Übung\nWas beinhaltet die Variable “einkommenj1” und “einkommenj2”?\n\n\nCode\ndf_labels",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übungsblatt"
-    ]
-  },
-  {
-    "objectID": "uebungen/1_uebungsblatt.html#übung-6",
-    "href": "uebungen/1_uebungsblatt.html#übung-6",
-    "title": "1. Übungsblatt",
-    "section": "2.7 Übung",
-    "text": "2.7 Übung\nErstelle einen Vektor, der die Ausprägungen der Variable “gesund_org” enthält. Und schaue Dir diesen Vektor an.\n\n\nCode\n# Eindeutige Ausprägungen der Variable 'gesund_org'\nvektor_gesund_org &lt;- unique(df$gesund_org)\n\n# Ausgabe der eindeutigen Ausprägungen\nprint(vektor_gesund_org)\n\n\n[1] \"[4] Weniger gut\"       \"[3] Zufriedenstellend\" \"[5] Schlecht\"         \n[4] \"[2] Gut\"               \"\"                      \"[1] Sehr gut\"",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übungsblatt"
-    ]
-  },
-  {
-    "objectID": "uebungen/1_uebungsblatt.html#übung-7",
-    "href": "uebungen/1_uebungsblatt.html#übung-7",
-    "title": "1. Übungsblatt",
-    "section": "2.8 Übung",
-    "text": "2.8 Übung\nWir möchten den subjektiven Gesundheitsstatus als numerische Variable nutzen. Wir müssen daher die Variable gesund_org in eine numerische Variable umwandeln. Achte auf fehlende Werte.\n\n\nCode\ntable(df$gesund_org, useNA = \"always\")\n\n\n\n                               [1] Sehr gut               [2] Gut \n                  102                  2535                  9488 \n[3] Zufriedenstellend       [4] Weniger gut          [5] Schlecht \n                 7576                  3089                   732 \n                 &lt;NA&gt; \n                    0 \n\n\nCode\n# Ersetze leere Zeichenketten \"\" durch NA in der Spalte 'gesund_org'\ndf$gesund_org[df$gesund_org == \"\"] &lt;- NA\n\n# Extrahiere die numerischen Werte aus der Spalte 'gesund_org'\ndf$gesund_org_numeric &lt;- as.numeric(sub(\"\\\\[([0-9]+)\\\\].*\", \"\\\\1\", df$gesund_org))\n\n# Überprüfe die Änderungen\ntable(df$gesund_org_numeric, useNA = \"always\")\n\n\n\n   1    2    3    4    5 &lt;NA&gt; \n2535 9488 7576 3089  732  102 \n\n\nCode\ntable(df$gesund_org, useNA = \"always\")\n\n\n\n         [1] Sehr gut               [2] Gut [3] Zufriedenstellend \n                 2535                  9488                  7576 \n      [4] Weniger gut          [5] Schlecht                  &lt;NA&gt; \n                 3089                   732                   102",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übungsblatt"
-    ]
-  },
-  {
-    "objectID": "uebungen/1_uebungsblatt.html#übung-8",
-    "href": "uebungen/1_uebungsblatt.html#übung-8",
-    "title": "1. Übungsblatt",
-    "section": "2.9 Übung",
-    "text": "2.9 Übung\nStelle die Verteilung des subjetiven Gesundheitsstatus graphisch dar\n\n\nCode\n# Barplot erstellen\nggplot(df, aes(x = factor(gesund_org_numeric))) +\n  geom_bar(fill = \"skyblue\", color = \"black\") +\n  labs(\n    title = \"Univariate Verteilung des subjektiven Gesundheitsstatus\",\n    x = \"Subjektiver Gesundheitsstatus (1 = Sehr gut, 5 = Schlecht)\",\n    y = \"Häufigkeit\"\n  ) +\n  theme_minimal()",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übungsblatt"
-    ]
-  },
-  {
-    "objectID": "uebungen/1_uebungsblatt.html#übung-9",
-    "href": "uebungen/1_uebungsblatt.html#übung-9",
-    "title": "1. Übungsblatt",
-    "section": "2.10 Übung",
-    "text": "2.10 Übung\nGibt es fehlende Werte auf der Variable monatliches Einkommen (einkommenm1) und auf der Variable Alter?\n\n\nCode\ntable(df$alter, useNA = \"always\")\n\n\n\n  17   18   19   20   21   22   23   24   25   26   27   28   29   30   31   32 \n 472  470  437  392  347  290  281  263  244  254  283  282  293  304  337  341 \n  33   34   35   36   37   38   39   40   41   42   43   44   45   46   47   48 \n 331  368  387  387  379  397  413  430  447  450  454  434  450  466  466  473 \n  49   50   51   52   53   54   55   56   57   58   59   60   61   62   63   64 \n 500  517  526  518  479  447  412  381  381  359  339  336  326  296  298  312 \n  65   66   67   68   69   70   71   72   73   74   75   76   77   78   79   80 \n 325  314  309  294  272  239  242  244  246  256  276  271  270  247  223  192 \n  81   82   83   84   85   86   87   88   89   90   91   92   93   94   95   96 \n 156  124  105   82   74   64   47   46   36   28   19   18   13   11    8    5 \n  97   98   99  100  101  102 &lt;NA&gt; \n   5    4    3    3    1    1    0 \n\n\nCode\nsummary(df$einkommenm1)\n\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n    0.0     0.0   852.9  1645.6  2687.4 35260.9",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übungsblatt"
-    ]
-  },
-  {
-    "objectID": "uebungen/1_uebungsblatt.html#übung-10",
-    "href": "uebungen/1_uebungsblatt.html#übung-10",
-    "title": "1. Übungsblatt",
-    "section": "2.11 Übung",
-    "text": "2.11 Übung\nSchaue Dir den Zusammenhang von subjektiven Gesundheitsstatus und Alter graphisch mit Hilfe eines Scatterplots an. Beschränke die Daten auf das Jahr 2019 und auf Personen, die jünger als 65 Jahre alt sind.\n\n\nCode\n# Scatterplot mit ggplot2 erstellen\nggplot(df %&gt;% filter(syear==\"2019\", alter &lt; 65), aes(x = alter , y = einkommenm1)) +\n  geom_point(color = \"blue\", alpha = 0.6) +  # Punkte hinzufügen\n  geom_smooth(method = \"lm\", color = \"red\", se = TRUE) +  # Lineare Trendlinie mit Konfidenzintervall\n  labs(\n    title = \"Zusammenhang zwischen Einkommen und Alter\",\n    x = \"Alter\",\n    y = \"Einkommen\"\n  ) +\n  theme_minimal()  # Minimalistisches Theme\n\n\n`geom_smooth()` using formula = 'y ~ x'",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übungsblatt"
-    ]
-  },
-  {
-    "objectID": "uebungen/1_uebungsblatt.html#übung-11",
-    "href": "uebungen/1_uebungsblatt.html#übung-11",
-    "title": "1. Übungsblatt",
-    "section": "2.12 Übung",
-    "text": "2.12 Übung\nUnd nun mit logarithmiertem Einkommen. Was fällt auf?\n\n\nCode\n# Scatterplot mit ggplot2 erstellen\nggplot(df %&gt;% filter(syear==\"2019\", alter &lt; 65), aes(x = alter , y = log(einkommenm1))) +\n  geom_point(color = \"blue\", alpha = 0.6) +  # Punkte hinzufügen\n  geom_smooth(method = \"lm\", color = \"red\", se = TRUE) +  # Lineare Trendlinie mit Konfidenzintervall\n  labs(\n    title = \"Zusammenhang zwischen Einkommen und Alter\",\n    x = \"Alter\",\n    y = \"Einkommen, log.\"\n  ) +\n  theme_minimal()  # Minimalistisches Theme\n\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\nWarning: Removed 660 rows containing non-finite outside the scale range\n(`stat_smooth()`).",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übungsblatt"
-    ]
-  },
-  {
-    "objectID": "uebungen/1_uebungsblatt.html#übung-12",
-    "href": "uebungen/1_uebungsblatt.html#übung-12",
-    "title": "1. Übungsblatt",
-    "section": "2.13 Übung",
-    "text": "2.13 Übung\nWandle dieses Dokument in ein PDF und ein HTML Dokument um.",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übungsblatt"
-    ]
   }
 ]
