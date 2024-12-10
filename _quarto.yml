@@ -1,6 +1,7 @@
 project:
   render:
-    - "!/downloads
+    - "*.qmd"
+    - "!/downloads"
   type: website
   output-dir: docs
 
