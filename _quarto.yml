@@ -25,11 +25,11 @@ website:
     collapse-level: 1
     contents:
       - href: index.qmd
-        text: "Course information"
-      - section: "Schedule"
+        text: "Kursinformationen"
+      - section: "Zeitplan und Dateien"
         contents:
           - href: schedule.qmd
-            text: Schedule
+            text: Übersicht
           - href: slides/1_uebung.qmd
             text: "1 - Übung"
           - href: slides/1_seminar.qmd

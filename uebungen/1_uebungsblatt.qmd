@@ -8,8 +8,13 @@ format:
     code-link: true
     df-print: paged
     code-line-numbers: true
+  pdf: 
+    default
 editor: visual
+number-sections: true
 ---
+
+# Einführung in Quarto und R
 
 ## Quarto
 
@@ -33,11 +38,11 @@ Es können Optionen zu ausführbarem Code wie folgt hinzugefügt werden
 
 `echo: false` deaktiviert das Drucken des Codes (nur die Ausgabe wird angezeigt).
 
-
 ## Arbeitsverzeichnis festsetzen
+
 ```{r}
 # set working directory
-setwd("C:/Users/ti/Local/seafile/main/teaching/2024_wuppertal/wup2024/uebungen")
+setwd("D:/Seafile/main/teaching/2024_wuppertal/wup2024/uebungen")
 ```
 
 ## Packages installieren und laden
@@ -60,36 +65,169 @@ lapply(pkgs, library, character.only = TRUE)
 
 ```
 
-
-
-
 ## Daten einlesen
-
+Wir arbeiten mit dem Übungsdatensatz des SOEP (DOI:10.5684/soep.practice.v36).
+Es werden zwei Datensätze eingelesen. Der erste Datensatz enthalt die tatsächlichen Umfragedaten, der zweite Datensatz enthält die Variablenlabels.
 ```{r}
 # read data
 df = read.csv("../daten/soep_uebung.csv")
+df_labels = read.csv("../daten/soep_labels.csv")
 ```
-
 
 ## Datenexploration
 
 There are `{r} nrow(df)` observations in our data.
 
-
 ## Datenexploration
 
-Die ersten Zeilen des Datensatzes anschauen
+Schauen wir uns die ersten Zeilen des Datensatzes an, um einen ersten Überblick über den Datensatz zu gewinnen.
+
 ```{r}
 head(df)
 ```
 
-
 # Übungsaufgaben
 
-## Übung 1
+## Übung
 
 Wie viele Beobachtungen im Datensatz sind Frauen?
 
 ```{r}
+table(df$sex)
+```
+## Übung
+
+Erstelle ein Balkendiagramm, das die Verteilung des Alters darstellt.
+
+```{r}
+ggplot(df, aes(x = alter)) +
+  geom_bar(fill = "skyblue", color = "black") +
+  labs(
+    title = "Verteilung des Alters",
+    x = "Alter",
+    y = "Häufigkeit"
+  ) +
+  theme_minimal()
+```
+## Übung
+Wir alt ist die jüngste und wie alt die älteste Person?
+```{r}
+summary(df$alter)
+```
+
+
+## Übung
+
+Welcher Variablentyp ist Geschlecht (sex)?
+Welcher Alter?
+Welcher Bildung?
+
+```{r}
+glimpse(df)
+```
+
+
+## Übung
+Wie viele Beobachtungen gibt es pro Jahr?
+```{r}
+table(df$syear)
+```
+
+## Übung 
+Was beinhaltet die Variable "einkommenj1" und "einkommenj2"?
+
+```{r}
+df_labels
+```
+## Übung
+Erstelle einen Vektor, der die Ausprägungen der Variable "gesund_org" enthält. Und schaue Dir diesen Vektor an. 
+```{r}
+# Eindeutige Ausprägungen der Variable 'gesund_org'
+vektor_gesund_org <- unique(df$gesund_org)
+
+# Ausgabe der eindeutigen Ausprägungen
+print(vektor_gesund_org)
+```
+## Übung
+Wir möchten den subjektiven Gesundheitsstatus als numerische Variable nutzen. Wir müssen daher die Variable gesund_org in eine numerische Variable umwandeln. Achte auf fehlende Werte.
+```{r}
+table(df$gesund_org, useNA = "always")
+# Ersetze leere Zeichenketten "" durch NA in der Spalte 'gesund_org'
+df$gesund_org[df$gesund_org == ""] <- NA
+
+# Extrahiere die numerischen Werte aus der Spalte 'gesund_org'
+df$gesund_org_numeric <- as.numeric(sub("\\[([0-9]+)\\].*", "\\1", df$gesund_org))
+
+# Überprüfe die Änderungen
+table(df$gesund_org_numeric, useNA = "always")
+table(df$gesund_org, useNA = "always")
+```
+
+## Übung 
+
+Stelle die Verteilung des subjetiven Gesundheitsstatus graphisch dar
+
+```{r}
+
+# Barplot erstellen
+ggplot(df, aes(x = factor(gesund_org_numeric))) +
+  geom_bar(fill = "skyblue", color = "black") +
+  labs(
+    title = "Univariate Verteilung des subjektiven Gesundheitsstatus",
+    x = "Subjektiver Gesundheitsstatus (1 = Sehr gut, 5 = Schlecht)",
+    y = "Häufigkeit"
+  ) +
+  theme_minimal()
 
 ```
+
+
+## Übung
+Gibt es fehlende Werte auf der Variable monatliches Einkommen (einkommenm1) und auf der Variable Alter?
+
+```{r}
+table(df$alter, useNA = "always")
+summary(df$einkommenm1)
+```
+
+
+
+## Übung
+
+Schaue Dir den Zusammenhang von subjektiven Gesundheitsstatus und Alter graphisch mit Hilfe eines Scatterplots an. Beschränke die Daten auf das Jahr 2019 und auf Personen, die jünger als 65 Jahre alt sind.
+
+```{r}
+# Scatterplot mit ggplot2 erstellen
+ggplot(df %>% filter(syear=="2019", alter < 65), aes(x = alter , y = einkommenm1)) +
+  geom_point(color = "blue", alpha = 0.6) +  # Punkte hinzufügen
+  geom_smooth(method = "lm", color = "red", se = TRUE) +  # Lineare Trendlinie mit Konfidenzintervall
+  labs(
+    title = "Zusammenhang zwischen Einkommen und Alter",
+    x = "Alter",
+    y = "Einkommen"
+  ) +
+  theme_minimal()  # Minimalistisches Theme
+```
+
+## Übung
+Und nun mit logarithmiertem Einkommen. Was fällt auf?
+
+```{r}
+# Scatterplot mit ggplot2 erstellen
+ggplot(df %>% filter(syear=="2019", alter < 65), aes(x = alter , y = log(einkommenm1))) +
+  geom_point(color = "blue", alpha = 0.6) +  # Punkte hinzufügen
+  geom_smooth(method = "lm", color = "red", se = TRUE) +  # Lineare Trendlinie mit Konfidenzintervall
+  labs(
+    title = "Zusammenhang zwischen Einkommen und Alter",
+    x = "Alter",
+    y = "Einkommen, log."
+  ) +
+  theme_minimal()  # Minimalistisches Theme
+```
+
+## Übung
+Wandle dieses Dokument in ein PDF und ein HTML Dokument um.
+
+
+# Weiterführende Literatur
+- [R for Data Science](https://r4ds.had.co.nz/)
