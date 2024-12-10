@@ -8,8 +8,6 @@ format:
     code-link: true
     df-print: paged
     code-line-numbers: true
-  pdf: 
-    default
 editor: visual
 number-sections: true
 ---
