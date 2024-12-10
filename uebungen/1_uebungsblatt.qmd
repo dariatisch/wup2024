@@ -1,6 +1,6 @@
 ---
 title: "1. Übungsblatt"
-author: "Bitte Name einfügen"
+author: "Daria Tisch"
 format: 
   html:
     code-fold: true
