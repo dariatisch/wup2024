@@ -38,7 +38,7 @@ editor: visual
 
 ## Übersicht: Forschungsdatenmanagement
 
-![](images/rdm.png){fig-align="center" width="1"} ![](rdm.png){fig-align="center" width="700"}
+![](images/rdm.png)
 
 ## Warum Forschungsdatenmanagement? {.smaller}
 
