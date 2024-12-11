@@ -45,6 +45,12 @@ format:
     theme: cosmo
     # css: styles.css
     toc: true
+  pdf: default
+
+steps:
+  - name: Install rmarkdown
+    run: Rscript -e "install.packages('rmarkdown')"
+
 
 execute:
   freeze: auto
