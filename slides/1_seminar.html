@@ -100,6 +100,8 @@
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
     .reveal div.sourceCode {
@@ -299,7 +301,7 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImNoZWNrIjp0cnVlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVl
 </ul>
 <p>Beispiele?</p>
 </section>
-<section id="forschungsdesign-2" class="slide level2">
+<section id="forschungsdesign-2" class="slide level2 smaller">
 <h2>Forschungsdesign</h2>
 <ol type="1">
 <li>Beobachtungsdesign
@@ -340,7 +342,7 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImNoZWNrIjp0cnVlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVl
 <li>Beispiele?</li>
 </ul>
 </section>
-<section id="kausalanalyse-mit-beobachtungsdesign" class="slide level2">
+<section id="kausalanalyse-mit-beobachtungsdesign" class="slide level2 smaller">
 <h2>Kausalanalyse mit Beobachtungsdesign</h2>
 <ul>
 <li>Explanandum: Gender wage gap</li>
@@ -471,7 +473,7 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImNoZWNrIjp0cnVlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVl
           display:block!important;
       }</style></aside>
 </section>
-<section id="prozessproduzierte-daten" class="slide level2">
+<section id="prozessproduzierte-daten" class="slide level2 smaller">
 <h2>Prozessproduzierte Daten</h2>
 <p>= nicht für die sozialwissenschaftliche Analyse generierte Daten</p>
 <div>
@@ -537,11 +539,12 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImNoZWNrIjp0cnVlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVl
 <span id="cb2-2"><a></a>pkgs <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
 <span id="cb2-3"><a></a>  <span class="st">"stevedata"</span>,</span>
 <span id="cb2-4"><a></a>  <span class="st">"tidyverse"</span>,</span>
-<span id="cb2-5"><a></a>  <span class="st">"broom.helpers"</span></span>
-<span id="cb2-6"><a></a>)</span>
-<span id="cb2-7"><a></a></span>
-<span id="cb2-8"><a></a><span class="do">## Install uninstalled packages</span></span>
-<span id="cb2-9"><a></a><span class="fu">lapply</span>(pkgs[<span class="sc">!</span>(pkgs <span class="sc">%in%</span> <span class="fu">installed.packages</span>())], install.packages)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-5"><a></a>  <span class="st">"broom.helpers"</span>,</span>
+<span id="cb2-6"><a></a>  <span class="st">"ggplot2"</span></span>
+<span id="cb2-7"><a></a>)</span>
+<span id="cb2-8"><a></a></span>
+<span id="cb2-9"><a></a><span class="do">## Install uninstalled packages</span></span>
+<span id="cb2-10"><a></a><span class="fu">lapply</span>(pkgs[<span class="sc">!</span>(pkgs <span class="sc">%in%</span> <span class="fu">installed.packages</span>())], install.packages)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>list()</code></pre>
 </div>
@@ -558,6 +561,13 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImNoZWNrIjp0cnVlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVl
 [13] "graphics"  "grDevices" "utils"     "datasets"  "methods"   "base"     
 
 [[3]]
+ [1] "broom.helpers" "lubridate"     "forcats"       "stringr"      
+ [5] "dplyr"         "purrr"         "readr"         "tidyr"        
+ [9] "tibble"        "ggplot2"       "tidyverse"     "stevedata"    
+[13] "stats"         "graphics"      "grDevices"     "utils"        
+[17] "datasets"      "methods"       "base"         
+
+[[4]]
  [1] "broom.helpers" "lubridate"     "forcats"       "stringr"      
  [5] "dplyr"         "purrr"         "readr"         "tidyr"        
  [9] "tibble"        "ggplot2"       "tidyverse"     "stevedata"    
@@ -1159,6 +1169,7 @@ W10=
   <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
   <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
   <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
   <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
@@ -1180,7 +1191,8 @@ W10=
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'jumpToSlide': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true,"theme":"whiteboard","boardmarkerWidth":5},
 'smaller': false,
  
         // Display controls in the bottom right corner
@@ -1351,7 +1363,7 @@ W10=
         },
 
         // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
 
           RevealMath,
           RevealNotes,
