@@ -3,6 +3,10 @@ format:
   live-revealjs:
     theme: default
     slideNumber: true
+    chalkboard:
+      theme: whiteboard
+      boardmarker-width: 5
+      buttons: true
 title: "1. Seminar"
 subtitle: "Fortgeschrittene quantitative Methoden <br> Wintersemester 2024-2025"
 author: "Daria Tisch"
@@ -95,7 +99,7 @@ Forschungsfragen:
 
 Beispiele?
 
-## Forschungsdesign
+## Forschungsdesign  {.smaller}
 
 1.  Beobachtungsdesign
     -   Datenerhebung (Messung), Dokumentation, Auswertung
@@ -119,7 +123,7 @@ warum nicht nur Experimentaldesigns?
 -   Querschnitt
 -   Beispiele?
 
-## Kausalanalyse mit Beobachtungsdesign
+## Kausalanalyse mit Beobachtungsdesign   {.smaller}
 
 -   Explanandum: Gender wage gap
 -   Konstanthaltung durch Drittvariablenkontrolle
@@ -201,7 +205,7 @@ Zufallsstichprobe - Wofür?
 Beispiele: - FS: Fair earings, just gender wage gao - Conjoint: Bsp: Attraktivität in der Partnerwahl, Prioritäten setzen, Trad-offs, Entscheidungen zwischen diskreten Alternativen -Choice: Befragte wählen aus verschiedenen (Handlungs-)Alternativen die von ihnen am meisten präferierte aus https://link.springer.com/article/10.1007/s11577-011-0136-3
 :::
 
-## Prozessproduzierte Daten
+## Prozessproduzierte Daten   {.smaller}
 
 = nicht für die sozialwissenschaftliche Analyse generierte Daten
 
@@ -225,7 +229,7 @@ Vorteile:objektiv (soziale Erwünschtheit kein Problem)
 1.  Beschreibung von erkennbaren Mustern in den Daten
 2.  Kausalschlüsse ziehen
 
-## Deskriptive Statistik
+## Deskriptive Statistik 
 
 -   Uni- und bivariate Statistik
     -   Verteilungen von 1 bzw. 2 Variablen
@@ -247,7 +251,8 @@ Vorteile:objektiv (soziale Erwünschtheit kein Problem)
 pkgs <- c(
   "stevedata",
   "tidyverse",
-  "broom.helpers"
+  "broom.helpers",
+  "ggplot2"
 )
 
 ## Install uninstalled packages
