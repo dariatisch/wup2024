@@ -67,7 +67,7 @@ if (.result == 10) {
 Tipp: Rechne: 10-1-2-3
 :::
 
-::: {.solution exercise="ex1"}
+:::: {.solution exercise="ex1"}
 ::: {.callout-tip title="Solution" collapse="true"}
 **Lösung:**
 
@@ -75,7 +75,7 @@ Tipp: Rechne: 10-1-2-3
 1 + 2 + 3 + 4
 ```
 :::
-:::
+::::
 
 ## Themen heute
 
@@ -99,7 +99,7 @@ Forschungsfragen:
 
 Beispiele?
 
-## Forschungsdesign  {.smaller}
+## Forschungsdesign {.smaller}
 
 1.  Beobachtungsdesign
     -   Datenerhebung (Messung), Dokumentation, Auswertung
@@ -123,7 +123,7 @@ warum nicht nur Experimentaldesigns?
 -   Querschnitt
 -   Beispiele?
 
-## Kausalanalyse mit Beobachtungsdesign   {.smaller}
+## Kausalanalyse mit Beobachtungsdesign {.smaller}
 
 -   Explanandum: Gender wage gap
 -   Konstanthaltung durch Drittvariablenkontrolle
@@ -205,7 +205,7 @@ Zufallsstichprobe - Wofür?
 Beispiele: - FS: Fair earings, just gender wage gao - Conjoint: Bsp: Attraktivität in der Partnerwahl, Prioritäten setzen, Trad-offs, Entscheidungen zwischen diskreten Alternativen -Choice: Befragte wählen aus verschiedenen (Handlungs-)Alternativen die von ihnen am meisten präferierte aus https://link.springer.com/article/10.1007/s11577-011-0136-3
 :::
 
-## Prozessproduzierte Daten   {.smaller}
+## Prozessproduzierte Daten {.smaller}
 
 = nicht für die sozialwissenschaftliche Analyse generierte Daten
 
@@ -224,20 +224,19 @@ Vorteile:objektiv (soziale Erwünschtheit kein Problem)
 :::
 
 # Datenauswertung
+
 ## Datenauswertung
 
 1.  Beschreibung von erkennbaren Mustern in den Daten
 2.  Kausalschlüsse ziehen
 
-## Deskriptive Statistik 
+## Deskriptive Statistik
 
 -   Uni- und bivariate Statistik
     -   Verteilungen von 1 bzw. 2 Variablen
     -   Verteilungen werden durch Ausprägungen (=Antwortkategorien) gebildet
     -   Eigenschaften von Verteilungen durch statistische Maßzahlen
     -   Darstellung: Statistische Maßzahlen, Tabellen oder Diagramme
-
-
 
 # Los geht's mit angewandter Regressionsanalyse
 
@@ -331,7 +330,7 @@ p
 
 <center>X → Y</center>
 
-::: columns
+::::: columns
 ::: {.column width="30%"}
 -   **Outcome, *Y***: Variable, die das Merkmal von Interesse beinhaltet
 -   **Predictor, X**: Variable, die uns hilft, die Varianz des Outcomes zu verstehen
@@ -343,7 +342,7 @@ p
 p
 ```
 :::
-:::
+:::::
 
 ## Regressionsmodel
 
@@ -355,7 +354,7 @@ $$\begin{aligned} Y &= \color{black}{\textbf{Model}} + \text{Error} \\[8pt]
 
 ## Regressionsmodel
 
-::: columns
+::::: columns
 ::: {.column width="30%"}
 $$
   \begin{aligned} Y &= \color{purple}{\textbf{Model}} + \text{Error} \\[8pt]
@@ -383,11 +382,11 @@ ggplot(data = df,
   )
 ```
 :::
-:::
+:::::
 
 ## Regressionsmodel + Residuen
 
-::: columns
+::::: columns
 ::: {.column width="30%"}
 $$\begin{aligned} Y &= \color{purple}{\textbf{Model}} + \color{blue}{\textbf{Error}} \\[8pt]
 &= \color{purple}{\mathbf{f(X)}} + \color{blue}{\boldsymbol{\epsilon}} \\[8pt]
@@ -413,7 +412,7 @@ ggplot(data = df,
   )
 ```
 :::
-:::
+:::::
 
 # Einfache lineare Regression
 
@@ -435,9 +434,11 @@ $$\Large{\hat{Y} = \hat{\beta}_0 + \hat{\beta}_1 X}$$
 -   $\hat{\beta}_0$: Geschätzter intercept
 -   Kein Fehlerterm!
 
-## Residuen  
-:::{.panel-tabset}
+## Residuen
+
+::: panel-tabset
 ## Plot
+
 ```{r}
 #| warning: false
 #| message: false
@@ -451,7 +452,6 @@ ggplot(data = df, mapping = aes(x = age, y = log(realrinc))) +
   theme(legend.position = "none")
 ```
 
-
 ## Code
 
 ```{r}
@@ -464,7 +464,6 @@ ggplot(data = df, mapping = aes(x = age, y = log(realrinc))) +
   labs(x = "Alter", y = "Einkommen") +
   theme(legend.position = "none")
 ```
-
 :::
 
 $$\text{Residuen} = \text{Beobachted} - \text{Vorhergesagt} = y - \hat{y}$$
@@ -487,9 +486,11 @@ $$e^2_1 + e^2_2 + \dots + e^2_n$$
 
 # Interpretation
 
-## Interpretation   {.smaller}
-:::{.panel-tabset}
+## Interpretation {.smaller}
+
+::: panel-tabset
 ## Output
+
 ```{r}
 #| warning: false
 #| message: false
@@ -498,7 +499,6 @@ m_income
 
 ```
 
-
 ## Code
 
 ```{r}
@@ -506,37 +506,34 @@ m_income
 m_income <- lm(log(realrinc) ~ age, data = df)
 m_income  
 ```
-
 :::
 
-
-    
-    
 $$\widehat{\text{log(Einkommen)}} = 8.91 + 0.01 \times \text{Alter}$$
-      
-::: incremental 
-- **Slope:** Für jedes zusätzliche Jahr im Alter erwarten wir eine Vergrößerung des logarithmierten Wertes des Einkommens um 0.01 oder: Für jedes zusätzliche Jahr im Alter erwarten wir einen Einkommensanstieg von etwa 1.005% ($(e^{0.01} - 1) \times 100$)
+
+::: incremental
+-   **Slope:** Für jedes zusätzliche Jahr im Alter erwarten wir eine Vergrößerung des logarithmierten Wertes des Einkommens um 0.01 oder: Für jedes zusätzliche Jahr im Alter erwarten wir einen Einkommensanstieg von etwa 1.005% ($(e^{0.01} - 1) \times 100$)
 :::
-   
-## Interpretation    {.smaller}
-```{r}    
+
+## Interpretation {.smaller}
+
+```{r}
 m_income <- lm(log(realrinc) ~ age, data = df)
 m_income    
-```    
-    
-    
+```
+
 $$\widehat{\text{log(Einkommen)}} = 8.91 + 0.01 \times \text{Alter}$$
-      
-::: incremental 
-- **Intercept:** Eine Person mit 0 Jahren hat ein durchschnittliches log. Einkommen von 8.91. Sinnvoll? 
+
+::: incremental
+-   **Intercept:** Eine Person mit 0 Jahren hat ein durchschnittliches log. Einkommen von 8.91. Sinnvoll?
 :::
 
-## Vorhersagen machen   {.smaller}
-    
+## Vorhersagen machen {.smaller}
+
 Jemand ist 28 Jahre alt. Wie hoch ist nach diesem Modell das Einkommen?
 
-:::{.panel-tabset}
+::: panel-tabset
 ## Händisch
+
 $$
 \begin{aligned}
 \widehat{\text{log(income)}} &= 8.91 + 0.01 \times \text{age} \\
@@ -545,9 +542,9 @@ $$
 \end{aligned}
 $$
 
-
 ## in R
-```{r}    
+
+```{r}
 #| echo: true
 # Create a new data frame for age = 28
 new_data <- data.frame(age = 28)
@@ -562,31 +559,26 @@ predicted_real_income <- exp(predicted_log_income)
 # View results
 predicted_log_income  # log(realrinc)
 predicted_real_income # real income
-``` 
+```
 :::
 
+## OLS Regression: Annahmen {.smaller}
 
-## OLS Regression: Annahmen   {.smaller}
-
-1. **Funktionaler** linearer Zusammenhang der UV und AV (linear in parameters)
-2. AV ist metrisch  
-3. Keine Multikollinearität der UVs
-4. Normalverteilung der Residuen
-5. Homoskedastizität der Residuen: $\text{Var}(\epsilon|X) = \text{const}$.
-6. Residuen haben einen Mittelwert von 0: $\text{E}(\varepsilon|X) = 0$.
-7. Strikte Exogenitätsannahme: $\text{Cov}(\varepsilon|X) = 0$.
-8. Zufallsstichprobe (Inferenzstatistik)
-9. Keine Messfehler
+1.  **Funktionaler** linearer Zusammenhang der UV und AV (linear in parameters)
+2.  AV ist metrisch\
+3.  Keine Multikollinearität der UVs
+4.  Normalverteilung der Residuen
+5.  Homoskedastizität der Residuen: $\text{Var}(\epsilon|X) = \text{const}$.
+6.  Residuen haben einen Mittelwert von 0: $\text{E}(\varepsilon|X) = 0$.
+7.  Strikte Exogenitätsannahme: $\text{Cov}(\varepsilon|X) = 0$.
+8.  Zufallsstichprobe (Inferenzstatistik)
+9.  Keine Messfehler
 
 ::: notes
-4-6: Verletzung führt zu verzerrten Standardfehlern (fehlerhafte Signifikanztests und Konfidenzintervalle)  ineffizient
-Verletzung führt nicht zu verzerrten Regressionskoeffizienten  konsistent
-7:Verletzung führt zu verzerrten Regressionskoeffizienten und Standardfehlern (ineffizient und inkonsistent)
-Theoretische Modellspezifikation: „[Das Modell] muss also einerseits alle bedeutsamen unabhängigen Variablen enthalten und darf keine für die Erklärung der abhängigen Variablen irrelevanten unabhängigen Variablen enthalten.“
--> „omitted variable bias“ / unbeobachtete Heterogenität
+4-6: Verletzung führt zu verzerrten Standardfehlern (fehlerhafte Signifikanztests und Konfidenzintervalle)  ineffizient Verletzung führt nicht zu verzerrten Regressionskoeffizienten  konsistent 7:Verletzung führt zu verzerrten Regressionskoeffizienten und Standardfehlern (ineffizient und inkonsistent) Theoretische Modellspezifikation: „\[Das Modell\] muss also einerseits alle bedeutsamen unabhängigen Variablen enthalten und darf keine für die Erklärung der abhängigen Variablen irrelevanten unabhängigen Variablen enthalten.“ -\> „omitted variable bias“ / unbeobachtete Heterogenität
 :::
 
-## Exkurs: Variablen und Skalenniveaus   {.smaller}
+## Exkurs: Variablen und Skalenniveaus {.smaller}
 
 ::: incremental
 -   Verhältnis (Rangordnung, Abstände und Verhältnisse, absoluter Nullpunkt)
@@ -603,32 +595,39 @@ Theoretische Modellspezifikation: „[Das Modell] muss also einerseits alle bede
     -   Familienname
 :::
 
-
 <!-- ## Nun wird es noch praktischer -->
 
 <!-- ```{webr} -->
+
 <!-- ## Packages -->
+
 <!-- pkgs <- c( -->
+
 <!--   "tidyverse", -->
+
 <!--   "tidymodels", -->
+
 <!--   "stevedata" -->
+
 <!-- ) -->
 
 <!-- ## Install uninstalled packages -->
+
 <!-- lapply(pkgs[!(pkgs %in% installed.packages())], install.packages) -->
 
 <!-- ## Load all packages to library -->
-<!-- lapply(pkgs, library, character.only = TRUE) -->
-<!-- ``` -->
 
+<!-- lapply(pkgs, library, character.only = TRUE) -->
+
+<!-- ``` -->
 
 # Nun wird es noch praktischer
 
 ## Regression {.smaller}
 
-Bitte ermittle anhand einer Regression den durchschnittlichen Geschlechterspezifischen Lohnunterschied.  
+Bitte ermittle anhand einer Regression den durchschnittlichen Geschlechterspezifischen Lohnunterschied.
 
-::: {.panel-tabset}
+::::: panel-tabset
 ## Übung
 
 ```{webr}
@@ -649,20 +648,24 @@ summary(model)
 broom::tidy(model)
 
 ```
+
 ## Tipp
+
 ::: {.hint exercise="ex1"}
 Du brauchst die Variablen Geschlecht und Einkommen. Du findest sie, wenn Du Die alle Variablen anzeigen lässt:
-``` {r}
+
+```{r}
 #| echo: true 
 names(df)
 ```
 :::
 
 ## Lösung
+
 ::: {.solution exercise="ex1"}
 **Lösung:z.B.**
 
-``` {webr}
+```{webr}
 #| exercise: ex1
 #| solution: true
 library("stevedata")
@@ -679,20 +682,15 @@ summary(model)
 broom::tidy(model)
 ```
 :::
-
-
-
-:::
-
+:::::
 
 ## Geschlechterunterschiede im Einkommen {.smaller}
 
-### Graphische Darstellung   
+### Graphische Darstellung
 
-Bitte stelle Geschlechterunterschiede im Einkommen Graphisch dar.  
+Bitte stelle Geschlechterunterschiede im Einkommen Graphisch dar.
 
-::: {.panel-tabset}
-
+:::::: panel-tabset
 ## Übung
 
 ```{webr}
@@ -715,15 +713,14 @@ ggplot(df, aes(x = ______, y = realrinc, fill = ______)) +
 
 ## Tipp
 
-::: { .hint exercise="ex2" }
+::: {.hint exercise="ex2"}
 The gesuchte Variable lautet: gender
-
 :::
 
-::: { .hint exercise="ex2" }
+::: {.hint exercise="ex2"}
 Das findest Du heraus, indem Du dir die Daten anschaust
 
-```  {r}
+```{r}
 #| echo: true 
 names(df)
 ```
@@ -731,8 +728,7 @@ names(df)
 
 ## Lösung
 
-::: { .solution exercise="ex2" }
-
+::: {.solution exercise="ex2"}
 **Lösung:**
 
 Ein Beispiel:
@@ -753,13 +749,12 @@ ggplot(df, aes(x = gender, y = realrinc, fill = gender)) +
   theme_minimal()
 
 ```
+:::
+::::::
 
-:::
-:::
 ## Ende
 
 -   Dieser Foliensatz profitierte in großen Teilen von ehemaligen Veranstaltungen von Isabel Habicht sowie von:
-      -   https://sta210-s22.github.io/website/slides/lec-2.html#/title-slide 
+    -   https://sta210-s22.github.io/website/slides/lec-2.html#/title-slide
 -   Weiterführende Informationen:
     -   Hinz, T. (2018). Methoden der Arbeitsmarktforschung (S. 479-524). In: Abraham, M., Hinz, T. (eds) Arbeitsmarktsoziologie. Springer VS, Wiesbaden.
-

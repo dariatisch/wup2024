@@ -3,6 +3,10 @@ format:
   live-revealjs:
     theme: default
     slideNumber: true
+    chalkboard:
+      theme: whiteboard
+      boardmarker-width: 5
+      buttons: true
 title: "1. Übung"
 subtitle: "Fortgeschrittene quantitative Methoden <br> Wintersemester 2024-2025"
 author: "Daria Tisch"
