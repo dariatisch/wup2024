@@ -46,10 +46,6 @@ format:
     # css: styles.css
     toc: true
 
-steps:
-  - name: Install rmarkdown
-    run: Rscript -e "install.packages('rmarkdown')"
-
 
 execute:
   freeze: auto

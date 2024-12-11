@@ -11,6 +11,8 @@ jobs:
     permissions:
       contents: write
     steps:
+      - name: Install rmarkdown
+        run: Rscript -e "install.packages('rmarkdown')"
       - name: Check out repository
         uses: actions/checkout@v2
 
