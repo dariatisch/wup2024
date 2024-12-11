@@ -22,9 +22,9 @@ editor: visual
 
 {{< include ../_extensions/r-wasm/live/_knitr.qmd >}}
 
-# Forschungsdatenmanagment
+# Forschungs-datenmanagement {.smaller}
 
-## Was ist Forschungsdatenmanagement?
+## Was ist Forschungsdatenmanagement? {.smaller}
 
 -   "Gesundheitsvorsorge" für Ihre Daten
 -   Schützt die Daten vor Schaden
@@ -36,7 +36,7 @@ editor: visual
 
 ![](images/rdm.png){fig-align="center" width="1"} ![](rdm.png){fig-align="center" width="700"}
 
-## Warum Forschungsdatenmanagement?
+## Warum Forschungsdatenmanagement?  {.smaller}
 
 -   Verbessert Arbeitsabläufe
 -   Minimiert das Risiko von Datenverlusten
@@ -72,7 +72,7 @@ Bitte folgende Ordnerstruktur anlegen:
 
 -   Datensätze entweder auf der Website oder in Moodle
 -   Übungsblätter auf der Website
--   Abgaben auf der Website
+-   Abgaben auf der Website, aber Einreichen über Moodle
 
 → Herunterladen und im richtigen Ordner abspeichern
 
@@ -92,7 +92,7 @@ Bitte folgende Ordnerstruktur anlegen:
 
     ![](images/rstudio-qmd-how-it-works.png)
 
-## Warum Quarto?
+## Warum Quarto?  {.smaller}
 
 ::: incremental
 -   Code und Ergbenisdokument in einem Zuge erstellen
@@ -155,7 +155,7 @@ df %>%
 Tipp: Suche die Variable, die die Spezie der Pinguine enthält
 :::
 
-::: {.solution exercise="pin1"}
+:::: {.solution exercise="pin1"}
 ::: {.callout-tip title="Solution" collapse="true"}
 **Lösung:**
 
@@ -168,9 +168,9 @@ df %>%
   count(species)
 ```
 :::
-:::
+::::
 
-## Datenvisualisierung
+## Datenvisualisierung  {.smaller}
 
 ::: panel-tabset
 ## Output
@@ -206,11 +206,11 @@ ggplot(data = df, aes(x = bill_length_mm, y = bill_depth_mm)) +
 
 # Und nun Quarto
 
-## YAML
+## YAML  {.smaller}
 
 Dokument metadata
 
-::: columns
+::::: columns
 ::: {.column width="50%"}
 ``` yaml
 title: "Hello, Penguins!"
@@ -222,13 +222,13 @@ editor: visual
 ::: {.column width="50%"}
 ![](images/yaml-less.png){fig-alt="Rendered YAML with title (Hello, Penguins!)."}
 :::
-:::
-
-## YAML ausführlicher
+:::::
+ 
+## YAML ausführlicher  {.smaller}
 
 Dokument metadata
 
-::: columns
+::::: columns
 ::: {.column width="50%"}
 ``` yaml
 format:
@@ -245,13 +245,13 @@ editor: visual
 ::: {.column width="50%"}
 ![](images/yaml-all.png){fig-alt="Rendered YAML with title (Hello, Penguins!)."}
 :::
-:::
+:::::
 
-## Text
+## Text   {.smaller}
 
 Markdown kann mit jedem Editor bearbeitet werden, auch mit den Quelltext- oder visuellen Editoren von RStudio.
 
-::: columns
+::::: columns
 ::: {.column width="50%"}
 ![](images/source.png)
 :::
@@ -259,13 +259,13 @@ Markdown kann mit jedem Editor bearbeitet werden, auch mit den Quelltext- oder v
 ::: {.column width="50%"}
 ![](images/visual.png)
 :::
-:::
+:::::
 
-## Code
+## Code  {.smaller}
 
 Code kann auch mit den Quelltext- oder visuellen Editoren von RStudio bearbeitet werden
 
-::: columns
+::::: columns
 ::: {.column width="50%"}
 ![](images/code_source.png)
 :::
@@ -273,18 +273,17 @@ Code kann auch mit den Quelltext- oder visuellen Editoren von RStudio bearbeitet
 ::: {.column width="50%"}
 ![](images/code_visual.png)
 :::
-:::
-
+:::::
 
 ## Quarto Output Dokumente
 
-- Folien / Präsentation (HTML, PDF, PowerPoint)
-- Manuskripte (Word Dokument, PDF, HTML)
-- Websites (HTML)
+-   Folien / Präsentation (HTML, PDF, PowerPoint)
+-   Manuskripte (Word Dokument, PDF, HTML)
+-   Websites (HTML)
 
 # Jetzt wechseln wir zum lokalen Quarto Übungsdokument
 
-## Ende
+## Ende  {.smaller}
 
 -   Dieser Foliensatz profitierte in großen Teilen von ehemaligen Veranstaltungen von Isabel Habicht sowie von Mine Çetinkaya-Rundel Materialien:
     -   https://mine-cetinkaya-rundel.github.io/teach-with-quarto/talks/1-welcome/
