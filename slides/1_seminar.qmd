@@ -487,7 +487,7 @@ $$e^2_1 + e^2_2 + \dots + e^2_n$$
 
 # Interpretation
 
-## Interpretation 
+## Interpretation   {.smaller}
 :::{.panel-tabset}
 ## Output
 ```{r}
@@ -518,7 +518,7 @@ $$\widehat{\text{log(Einkommen)}} = 8.91 + 0.01 \times \text{Alter}$$
 - **Slope:** Für jedes zusätzliche Jahr im Alter erwarten wir eine Vergrößerung des logarithmierten Wertes des Einkommens um 0.01 oder: Für jedes zusätzliche Jahr im Alter erwarten wir einen Einkommensanstieg von etwa 1.005% ($(e^{0.01} - 1) \times 100$)
 :::
    
-## Interpretation 
+## Interpretation    {.smaller}
 ```{r}    
 m_income <- lm(log(realrinc) ~ age, data = df)
 m_income    
@@ -531,7 +531,7 @@ $$\widehat{\text{log(Einkommen)}} = 8.91 + 0.01 \times \text{Alter}$$
 - **Intercept:** Eine Person mit 0 Jahren hat ein durchschnittliches log. Einkommen von 8.91. Sinnvoll? 
 :::
 
-## Vorhersagen machen
+## Vorhersagen machen   {.smaller}
     
 Jemand ist 28 Jahre alt. Wie hoch ist nach diesem Modell das Einkommen?
 
@@ -566,7 +566,7 @@ predicted_real_income # real income
 :::
 
 
-## OLS Regression: Annahmen
+## OLS Regression: Annahmen   {.smaller}
 
 1. **Funktionaler** linearer Zusammenhang der UV und AV (linear in parameters)
 2. AV ist metrisch  
@@ -586,7 +586,7 @@ Theoretische Modellspezifikation: „[Das Modell] muss also einerseits alle bede
 -> „omitted variable bias“ / unbeobachtete Heterogenität
 :::
 
-## Exkurs: Variablen und Skalenniveaus
+## Exkurs: Variablen und Skalenniveaus   {.smaller}
 
 ::: incremental
 -   Verhältnis (Rangordnung, Abstände und Verhältnisse, absoluter Nullpunkt)
@@ -624,7 +624,7 @@ Theoretische Modellspezifikation: „[Das Modell] muss also einerseits alle bede
 
 # Nun wird es noch praktischer
 
-## Regression{.scrollable}
+## Regression {.smaller}
 
 Bitte ermittle anhand einer Regression den durchschnittlichen Geschlechterspezifischen Lohnunterschied.  
 
@@ -685,9 +685,9 @@ broom::tidy(model)
 :::
 
 
-## Geschlechterunterschiede im Einkommen{.scrollable}
+## Geschlechterunterschiede im Einkommen {.smaller}
 
-### Graphische Darstellung
+### Graphische Darstellung   
 
 Bitte stelle Geschlechterunterschiede im Einkommen Graphisch dar.  
 
