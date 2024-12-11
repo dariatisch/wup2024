@@ -36,7 +36,7 @@ editor: visual
 
 ![](images/rdm.png){fig-align="center" width="1"} ![](rdm.png){fig-align="center" width="700"}
 
-## Warum Forschungsdatenmanagement?  {.smaller}
+## Warum Forschungsdatenmanagement? {.smaller}
 
 -   Verbessert Arbeitsabläufe
 -   Minimiert das Risiko von Datenverlusten
@@ -92,7 +92,7 @@ Bitte folgende Ordnerstruktur anlegen:
 
     ![](images/rstudio-qmd-how-it-works.png)
 
-## Warum Quarto?  {.smaller}
+## Warum Quarto? {.smaller}
 
 ::: incremental
 -   Code und Ergbenisdokument in einem Zuge erstellen
@@ -170,7 +170,7 @@ df %>%
 :::
 ::::
 
-## Datenvisualisierung  {.smaller}
+## Datenvisualisierung {.smaller}
 
 ::: panel-tabset
 ## Output
@@ -206,7 +206,7 @@ ggplot(data = df, aes(x = bill_length_mm, y = bill_depth_mm)) +
 
 # Und nun Quarto
 
-## YAML  {.smaller}
+## YAML {.smaller}
 
 Dokument metadata
 
@@ -223,8 +223,8 @@ editor: visual
 ![](images/yaml-less.png){fig-alt="Rendered YAML with title (Hello, Penguins!)."}
 :::
 :::::
- 
-## YAML ausführlicher  {.smaller}
+
+## YAML ausführlicher {.smaller}
 
 Dokument metadata
 
@@ -247,7 +247,7 @@ editor: visual
 :::
 :::::
 
-## Text   {.smaller}
+## Text {.smaller}
 
 Markdown kann mit jedem Editor bearbeitet werden, auch mit den Quelltext- oder visuellen Editoren von RStudio.
 
@@ -261,7 +261,7 @@ Markdown kann mit jedem Editor bearbeitet werden, auch mit den Quelltext- oder v
 :::
 :::::
 
-## Code  {.smaller}
+## Code {.smaller}
 
 Code kann auch mit den Quelltext- oder visuellen Editoren von RStudio bearbeitet werden
 
@@ -283,7 +283,7 @@ Code kann auch mit den Quelltext- oder visuellen Editoren von RStudio bearbeitet
 
 # Jetzt wechseln wir zum lokalen Quarto Übungsdokument
 
-## Ende  {.smaller}
+## Ende {.smaller}
 
 -   Dieser Foliensatz profitierte in großen Teilen von ehemaligen Veranstaltungen von Isabel Habicht sowie von Mine Çetinkaya-Rundel Materialien:
     -   https://mine-cetinkaya-rundel.github.io/teach-with-quarto/talks/1-welcome/

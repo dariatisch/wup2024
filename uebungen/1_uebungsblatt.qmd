@@ -8,8 +8,6 @@ format:
     code-link: true
     df-print: paged
     code-line-numbers: true
-  pdf: 
-    default
 editor: visual
 number-sections: true
 ---
@@ -55,10 +53,9 @@ Bevor Du (die meisten) Dinge in R tun kannst, musst Du zunächst Pakete (package
 
 Wir nutzen in dieser Übung zwei Pakete:
 
-1. tidyverse: Hilfreich, um Datensatz augzubereiten. Eine gute Einführung in das Paket ist [hier](https://bookdown.org/yih_huynh/Guide-to-R-Book/tidyverse.html) oder [hier](https://jaspertjaden.github.io/course-intro2r/week3.html) zu finden.
+1.  tidyverse: Hilfreich, um Datensatz augzubereiten. Eine gute Einführung in das Paket ist [hier](https://bookdown.org/yih_huynh/Guide-to-R-Book/tidyverse.html) oder [hier](https://jaspertjaden.github.io/course-intro2r/week3.html) zu finden.
 
-2. ggplot2: (im Paket tidyverse enthalten). Hilfreich, um schöne Graphen zu erstellen. Eine gute Einführung ist [hier](https://datacarpentry.github.io/r-socialsci/05-ggplot2.html) oder [hier](https://jaspertjaden.github.io/course-intro2r/week6.html) zu finden.
-
+2.  ggplot2: (im Paket tidyverse enthalten). Hilfreich, um schöne Graphen zu erstellen. Eine gute Einführung ist [hier](https://datacarpentry.github.io/r-socialsci/05-ggplot2.html) oder [hier](https://jaspertjaden.github.io/course-intro2r/week6.html) zu finden.
 
 ```{r}
 #| echo: true
@@ -89,7 +86,6 @@ df_labels = read.csv("../daten/soep_labels.csv")
 
 ## Datenexploration
 
-
 ```{r}
 # Wie viele Zeilen hat der Datensatz?
 nrow(df)
@@ -105,8 +101,8 @@ Schauen wir uns die ersten Zeilen des Datensatzes an, um einen ersten Überblick
 head(df)
 ```
 
-
 ## Welche Variablen sind im Datensatz enthalten?
+
 ```{r}
 # Namen der Variablen
 names(df)
@@ -115,7 +111,6 @@ names(df)
 glimpse(df)
 
 ```
-
 
 # Übungsaufgaben
 
