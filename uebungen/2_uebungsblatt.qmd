@@ -13,6 +13,8 @@ editor: visual
 number-sections: true
 ---
 
+# Organisation
+
 ## Arbeitsverzeichnis festsetzen
 
 ```{r}
@@ -61,11 +63,44 @@ for (i in 1:nrow(df_labels)) {
 get_label(df)
 ```
 
-## Datenexploration
+
+
+# Datenaufbereitung
+
+In dieser Übung möchten wir herausfinden, welche Faktoren mit Lebenszufriedenheit (lebensz_org) zusammenhängen. Denkbar wären zum Beispiel: Geschlecht (sex), Alter(alter), Anzahl an Kindern im Haushalt (anz_kind), Bildung (bildung) und Einkommen (einkommenj1).
+
+Um die Analysen durchzuführen, müssen wir die Variablen erst einmal aufbereiten.
+Überprüfe bei jeder Variable, 
+
+- ob fehlende Werte als solche markiert sind
+- um welchen Typ es sich bei den Variablen hanelt und ob etwa eine Umwandlung erforderlich ist.
+
+
+### Lebenszufriedenheit
+
+### Geschlecht
+
+### Alter
+
+### Anzahl an Kindern im Haushalt
+
+### Bildung 
+
+### Einkommen 
+
+
+# Datenexploration
+
+## Paneldaten
 
 
 
-## Render
+
+# Regressionen
+
+
+
+# Render
 
 Wandle dieses Dokument in ein PDF und ein HTML Dokument um. 
 
