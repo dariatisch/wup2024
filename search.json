@@ -1335,5 +1335,247 @@
       "Zeitplan und Dateien",
       "1 - Übung"
     ]
+  },
+  {
+    "objectID": "uebungen/1_uebungsblatt.html",
+    "href": "uebungen/1_uebungsblatt.html",
+    "title": "1. Übungsblatt",
+    "section": "",
+    "text": "Quarto ermöglicht es, Inhalte und ausführbaren Code zu einem fertigen Dokument zu verweben. Mehr über Quarto unter https://quarto.org.\n\n\n\nWenn Du auf die Schaltfläche Render klickst, wird ein Dokument erstellt, das sowohl den Inhalt als auch die Ausgabe des eingebetteten Codes enthält. Code kann wie folgt einbettet werden:\n\n\nCode\n# This is the first code chunk\n1 + 1\n\n\n[1] 2\n\n\nEs können Optionen zu ausführbarem Code wie folgt hinzugefügt werden\n\n\n[1] 4\n\n\necho: false deaktiviert das Drucken des Codes (nur die Ausgabe wird angezeigt).\n\n\n\nAls ersten Schritt sollte immer das Arbeitsverzeichnis festgelegt weren. Ändere dies bitte zu Deinem.\n\n\nCode\n# set working directory\nsetwd(\"D:/Seafile/main/teaching/2024_wuppertal/wup2024/uebungen\")\n\n\n\n\n\nR als Füller\nBevor Du (die meisten) Dinge in R tun kannst, musst Du zunächst Pakete (packages) installieren und laden, die eine Bibliothek (library) mit praktischen Funktionen enthalten. Stell Dir vor, R ist ein Füller. Die Pakete sind die Tinte. Du brauchst zunächst die Tinte (Paket installieren) und dann musst Du die Tinte in den Stift geben (Paket laden), bevor Du mit dem Schreiben beginnen kannst (einen Befehl ausführen). Base R mag Dir die Standardtinte liefern, aber andere Pakete können wertvollere und interessantere Farben liefern.\nWir nutzen in dieser Übung zwei Pakete:\n\ntidyverse: Hilfreich, um Datensatz augzubereiten. Eine gute Einführung in das Paket ist hier oder hier zu finden.\nggplot2: (im Paket tidyverse enthalten). Hilfreich, um schöne Graphen zu erstellen. Eine gute Einführung ist hier oder hier zu finden.\n\n\n\nCode\n# Packages\npkgs &lt;- c(\n  \"tidyverse\"\n)\n\n## Install uninstalled packages\nlapply(pkgs[!(pkgs %in% installed.packages())], install.packages)\n\n## Load all packages to library\nlapply(pkgs, library, character.only = TRUE)\n\n\n\n\n\nWir arbeiten mit dem Übungsdatensatz des SOEP (DOI:10.5684/soep.practice.v36). Es werden zwei Datensätze eingelesen. Der erste Datensatz enthalt die tatsächlichen Umfragedaten, der zweite Datensatz enthält die Variablenlabels.\n\n\nCode\n# read data\ndf = read.csv(\"../daten/soep_uebung.csv\")\ndf_labels = read.csv(\"../daten/soep_labels.csv\")\n\n\n\n\n\n\n\nCode\n# Wie viele Zeilen hat der Datensatz?\nnrow(df)\n\n\n[1] 23522\n\n\nDer Datensatz enthält 23522 Beobachtungen.\n\n\n\nSchauen wir uns die ersten Zeilen des Datensatzes an, um einen ersten Überblick über den Datensatz zu gewinnen.\n\n\nCode\nhead(df)\n\n\n\n  \n\n\n\n\n\n\n\n\nCode\n# Namen der Variablen\nnames(df)\n\n\n [1] \"id\"          \"syear\"       \"sex\"         \"alter\"       \"anz_pers\"   \n [6] \"anz_kind\"    \"bildung\"     \"erwerb\"      \"branche\"     \"gesund_org\" \n[11] \"lebensz_org\" \"einkommenj1\" \"einkommenj2\" \"einkommenm1\" \"einkommenm2\"\n\n\nCode\n#Namen, Datentyp und erste Einträge der Variablen\nglimpse(df)\n\n\nRows: 23,522\nColumns: 15\n$ id          &lt;int&gt; 194, 194, 194, 194, 194, 19052, 27495, 27495, 27495, 22539…\n$ syear       &lt;int&gt; 2015, 2016, 2017, 2018, 2019, 2015, 2016, 2018, 2019, 2015…\n$ sex         &lt;chr&gt; \"[1] weiblich\", \"[1] weiblich\", \"[1] weiblich\", \"[1] weibl…\n$ alter       &lt;int&gt; 59, 60, 61, 62, 63, 74, 35, 37, 38, 85, 73, 74, 43, 44, 45…\n$ anz_pers    &lt;int&gt; 2, 2, 2, 2, 2, 2, 3, 3, 3, 2, 1, 1, 4, 4, 4, 4, 4, 2, 2, 2…\n$ anz_kind    &lt;int&gt; 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 2, 2, 2, 2, 2, 0, 0, 0…\n$ bildung     &lt;dbl&gt; 10.5, 10.5, 10.5, 10.5, 10.5, 10.0, 15.0, 15.0, 15.0, 18.0…\n$ erwerb      &lt;chr&gt; \"[2] Teilzeitbeschäftigung\", \"[2] Teilzeitbeschäftigung\", …\n$ branche     &lt;chr&gt; \"[84] Oeffentliche Verwaltung, Verteidigung; Sozialversich…\n$ gesund_org  &lt;chr&gt; \"[4] Weniger gut\", \"[3] Zufriedenstellend\", \"[3] Zufrieden…\n$ lebensz_org &lt;chr&gt; \"6\", \"5\", \"7\", \"5\", \"6\", \"8\", \"8\", \"8\", \"8\", \"8\", \"5\", \"8\"…\n$ einkommenj1 &lt;dbl&gt; 28678.94, 19962.29, 22227.68, 22100.38, 23157.92, 0.00, 14…\n$ einkommenj2 &lt;dbl&gt; 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.…\n$ einkommenm1 &lt;dbl&gt; 1659.1285, 1809.3364, 1849.0375, 1616.5137, 1901.0012, 0.0…\n$ einkommenm2 &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
+  },
+  {
+    "objectID": "uebungen/1_uebungsblatt.html#quarto",
+    "href": "uebungen/1_uebungsblatt.html#quarto",
+    "title": "1. Übungsblatt",
+    "section": "",
+    "text": "Quarto ermöglicht es, Inhalte und ausführbaren Code zu einem fertigen Dokument zu verweben. Mehr über Quarto unter https://quarto.org.",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
+  },
+  {
+    "objectID": "uebungen/1_uebungsblatt.html#code-ausführen",
+    "href": "uebungen/1_uebungsblatt.html#code-ausführen",
+    "title": "1. Übungsblatt",
+    "section": "",
+    "text": "Wenn Du auf die Schaltfläche Render klickst, wird ein Dokument erstellt, das sowohl den Inhalt als auch die Ausgabe des eingebetteten Codes enthält. Code kann wie folgt einbettet werden:\n\n\nCode\n# This is the first code chunk\n1 + 1\n\n\n[1] 2\n\n\nEs können Optionen zu ausführbarem Code wie folgt hinzugefügt werden\n\n\n[1] 4\n\n\necho: false deaktiviert das Drucken des Codes (nur die Ausgabe wird angezeigt).",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
+  },
+  {
+    "objectID": "uebungen/1_uebungsblatt.html#arbeitsverzeichnis-festsetzen",
+    "href": "uebungen/1_uebungsblatt.html#arbeitsverzeichnis-festsetzen",
+    "title": "1. Übungsblatt",
+    "section": "",
+    "text": "Als ersten Schritt sollte immer das Arbeitsverzeichnis festgelegt weren. Ändere dies bitte zu Deinem.\n\n\nCode\n# set working directory\nsetwd(\"D:/Seafile/main/teaching/2024_wuppertal/wup2024/uebungen\")",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
+  },
+  {
+    "objectID": "uebungen/1_uebungsblatt.html#packages-installieren-und-laden",
+    "href": "uebungen/1_uebungsblatt.html#packages-installieren-und-laden",
+    "title": "1. Übungsblatt",
+    "section": "",
+    "text": "R als Füller\nBevor Du (die meisten) Dinge in R tun kannst, musst Du zunächst Pakete (packages) installieren und laden, die eine Bibliothek (library) mit praktischen Funktionen enthalten. Stell Dir vor, R ist ein Füller. Die Pakete sind die Tinte. Du brauchst zunächst die Tinte (Paket installieren) und dann musst Du die Tinte in den Stift geben (Paket laden), bevor Du mit dem Schreiben beginnen kannst (einen Befehl ausführen). Base R mag Dir die Standardtinte liefern, aber andere Pakete können wertvollere und interessantere Farben liefern.\nWir nutzen in dieser Übung zwei Pakete:\n\ntidyverse: Hilfreich, um Datensatz augzubereiten. Eine gute Einführung in das Paket ist hier oder hier zu finden.\nggplot2: (im Paket tidyverse enthalten). Hilfreich, um schöne Graphen zu erstellen. Eine gute Einführung ist hier oder hier zu finden.\n\n\n\nCode\n# Packages\npkgs &lt;- c(\n  \"tidyverse\"\n)\n\n## Install uninstalled packages\nlapply(pkgs[!(pkgs %in% installed.packages())], install.packages)\n\n## Load all packages to library\nlapply(pkgs, library, character.only = TRUE)",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
+  },
+  {
+    "objectID": "uebungen/1_uebungsblatt.html#daten-einlesen",
+    "href": "uebungen/1_uebungsblatt.html#daten-einlesen",
+    "title": "1. Übungsblatt",
+    "section": "",
+    "text": "Wir arbeiten mit dem Übungsdatensatz des SOEP (DOI:10.5684/soep.practice.v36). Es werden zwei Datensätze eingelesen. Der erste Datensatz enthalt die tatsächlichen Umfragedaten, der zweite Datensatz enthält die Variablenlabels.\n\n\nCode\n# read data\ndf = read.csv(\"../daten/soep_uebung.csv\")\ndf_labels = read.csv(\"../daten/soep_labels.csv\")",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
+  },
+  {
+    "objectID": "uebungen/1_uebungsblatt.html#datenexploration",
+    "href": "uebungen/1_uebungsblatt.html#datenexploration",
+    "title": "1. Übungsblatt",
+    "section": "",
+    "text": "Code\n# Wie viele Zeilen hat der Datensatz?\nnrow(df)\n\n\n[1] 23522\n\n\nDer Datensatz enthält 23522 Beobachtungen.",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
+  },
+  {
+    "objectID": "uebungen/1_uebungsblatt.html#datenexploration-1",
+    "href": "uebungen/1_uebungsblatt.html#datenexploration-1",
+    "title": "1. Übungsblatt",
+    "section": "",
+    "text": "Schauen wir uns die ersten Zeilen des Datensatzes an, um einen ersten Überblick über den Datensatz zu gewinnen.\n\n\nCode\nhead(df)",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
+  },
+  {
+    "objectID": "uebungen/1_uebungsblatt.html#welche-variablen-sind-im-datensatz-enthalten",
+    "href": "uebungen/1_uebungsblatt.html#welche-variablen-sind-im-datensatz-enthalten",
+    "title": "1. Übungsblatt",
+    "section": "",
+    "text": "Code\n# Namen der Variablen\nnames(df)\n\n\n [1] \"id\"          \"syear\"       \"sex\"         \"alter\"       \"anz_pers\"   \n [6] \"anz_kind\"    \"bildung\"     \"erwerb\"      \"branche\"     \"gesund_org\" \n[11] \"lebensz_org\" \"einkommenj1\" \"einkommenj2\" \"einkommenm1\" \"einkommenm2\"\n\n\nCode\n#Namen, Datentyp und erste Einträge der Variablen\nglimpse(df)\n\n\nRows: 23,522\nColumns: 15\n$ id          &lt;int&gt; 194, 194, 194, 194, 194, 19052, 27495, 27495, 27495, 22539…\n$ syear       &lt;int&gt; 2015, 2016, 2017, 2018, 2019, 2015, 2016, 2018, 2019, 2015…\n$ sex         &lt;chr&gt; \"[1] weiblich\", \"[1] weiblich\", \"[1] weiblich\", \"[1] weibl…\n$ alter       &lt;int&gt; 59, 60, 61, 62, 63, 74, 35, 37, 38, 85, 73, 74, 43, 44, 45…\n$ anz_pers    &lt;int&gt; 2, 2, 2, 2, 2, 2, 3, 3, 3, 2, 1, 1, 4, 4, 4, 4, 4, 2, 2, 2…\n$ anz_kind    &lt;int&gt; 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 2, 2, 2, 2, 2, 0, 0, 0…\n$ bildung     &lt;dbl&gt; 10.5, 10.5, 10.5, 10.5, 10.5, 10.0, 15.0, 15.0, 15.0, 18.0…\n$ erwerb      &lt;chr&gt; \"[2] Teilzeitbeschäftigung\", \"[2] Teilzeitbeschäftigung\", …\n$ branche     &lt;chr&gt; \"[84] Oeffentliche Verwaltung, Verteidigung; Sozialversich…\n$ gesund_org  &lt;chr&gt; \"[4] Weniger gut\", \"[3] Zufriedenstellend\", \"[3] Zufrieden…\n$ lebensz_org &lt;chr&gt; \"6\", \"5\", \"7\", \"5\", \"6\", \"8\", \"8\", \"8\", \"8\", \"8\", \"5\", \"8\"…\n$ einkommenj1 &lt;dbl&gt; 28678.94, 19962.29, 22227.68, 22100.38, 23157.92, 0.00, 14…\n$ einkommenj2 &lt;dbl&gt; 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.…\n$ einkommenm1 &lt;dbl&gt; 1659.1285, 1809.3364, 1849.0375, 1616.5137, 1901.0012, 0.0…\n$ einkommenm2 &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
+  },
+  {
+    "objectID": "uebungen/1_uebungsblatt.html#frauen-im-datensatz",
+    "href": "uebungen/1_uebungsblatt.html#frauen-im-datensatz",
+    "title": "1. Übungsblatt",
+    "section": "2.1 Frauen im Datensatz",
+    "text": "2.1 Frauen im Datensatz\nWie viele Beobachtungen im Datensatz sind Frauen?\n\n\nCode\ntable(df$sex)\n\n\n\n[0] männlich [1] weiblich \n       10762        12760",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
+  },
+  {
+    "objectID": "uebungen/1_uebungsblatt.html#balkendiagramm-mit-ggplot",
+    "href": "uebungen/1_uebungsblatt.html#balkendiagramm-mit-ggplot",
+    "title": "1. Übungsblatt",
+    "section": "2.2 Balkendiagramm mit ggplot()",
+    "text": "2.2 Balkendiagramm mit ggplot()\nErstelle ein Balkendiagramm, das die Verteilung des Alters darstellt.\n\n\nCode\nggplot(df, aes(x = alter)) +\n  geom_bar(fill = \"skyblue\", color = \"black\") +\n  labs(\n    title = \"Verteilung des Alters\",\n    x = \"Alter\",\n    y = \"Häufigkeit\"\n  ) +\n  theme_minimal()",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
+  },
+  {
+    "objectID": "uebungen/1_uebungsblatt.html#summary-statistics",
+    "href": "uebungen/1_uebungsblatt.html#summary-statistics",
+    "title": "1. Übungsblatt",
+    "section": "2.3 Summary Statistics",
+    "text": "2.3 Summary Statistics\nWir alt ist die jüngste und wie alt die älteste Person?\n\n\nCode\nsummary(df$alter)\n\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n  17.00   34.00   48.00   48.28   62.00  102.00",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
+  },
+  {
+    "objectID": "uebungen/1_uebungsblatt.html#variablentypen",
+    "href": "uebungen/1_uebungsblatt.html#variablentypen",
+    "title": "1. Übungsblatt",
+    "section": "2.4 Variablentypen",
+    "text": "2.4 Variablentypen\nWelcher Variablentyp ist Geschlecht (sex)? Welcher Alter? Welcher Bildung?\n\n\nCode\nglimpse(df)\n\n\nRows: 23,522\nColumns: 15\n$ id          &lt;int&gt; 194, 194, 194, 194, 194, 19052, 27495, 27495, 27495, 22539…\n$ syear       &lt;int&gt; 2015, 2016, 2017, 2018, 2019, 2015, 2016, 2018, 2019, 2015…\n$ sex         &lt;chr&gt; \"[1] weiblich\", \"[1] weiblich\", \"[1] weiblich\", \"[1] weibl…\n$ alter       &lt;int&gt; 59, 60, 61, 62, 63, 74, 35, 37, 38, 85, 73, 74, 43, 44, 45…\n$ anz_pers    &lt;int&gt; 2, 2, 2, 2, 2, 2, 3, 3, 3, 2, 1, 1, 4, 4, 4, 4, 4, 2, 2, 2…\n$ anz_kind    &lt;int&gt; 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 2, 2, 2, 2, 2, 0, 0, 0…\n$ bildung     &lt;dbl&gt; 10.5, 10.5, 10.5, 10.5, 10.5, 10.0, 15.0, 15.0, 15.0, 18.0…\n$ erwerb      &lt;chr&gt; \"[2] Teilzeitbeschäftigung\", \"[2] Teilzeitbeschäftigung\", …\n$ branche     &lt;chr&gt; \"[84] Oeffentliche Verwaltung, Verteidigung; Sozialversich…\n$ gesund_org  &lt;chr&gt; \"[4] Weniger gut\", \"[3] Zufriedenstellend\", \"[3] Zufrieden…\n$ lebensz_org &lt;chr&gt; \"6\", \"5\", \"7\", \"5\", \"6\", \"8\", \"8\", \"8\", \"8\", \"8\", \"5\", \"8\"…\n$ einkommenj1 &lt;dbl&gt; 28678.94, 19962.29, 22227.68, 22100.38, 23157.92, 0.00, 14…\n$ einkommenj2 &lt;dbl&gt; 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.…\n$ einkommenm1 &lt;dbl&gt; 1659.1285, 1809.3364, 1849.0375, 1616.5137, 1901.0012, 0.0…\n$ einkommenm2 &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
+  },
+  {
+    "objectID": "uebungen/1_uebungsblatt.html#kreuz-tabellen",
+    "href": "uebungen/1_uebungsblatt.html#kreuz-tabellen",
+    "title": "1. Übungsblatt",
+    "section": "2.5 (Kreuz-)tabellen",
+    "text": "2.5 (Kreuz-)tabellen\nWie viele Beobachtungen gibt es pro Jahr? Und getrennt nach Geschlecht?\n\n\nCode\ntable(df$syear)\n\n\n\n2015 2016 2017 2018 2019 \n5527 4987 4720 4351 3937 \n\n\nCode\ntable(df$syear, df$sex)\n\n\n      \n       [0] männlich [1] weiblich\n  2015         2533         2994\n  2016         2291         2696\n  2017         2167         2553\n  2018         1992         2359\n  2019         1779         2158",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
+  },
+  {
+    "objectID": "uebungen/1_uebungsblatt.html#datensatz-exploration",
+    "href": "uebungen/1_uebungsblatt.html#datensatz-exploration",
+    "title": "1. Übungsblatt",
+    "section": "2.6 Datensatz Exploration",
+    "text": "2.6 Datensatz Exploration\nWas beinhaltet die Variable “einkommenj1” und “einkommenj2”?\n\n\nCode\ndf_labels",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
+  },
+  {
+    "objectID": "uebungen/1_uebungsblatt.html#vektor",
+    "href": "uebungen/1_uebungsblatt.html#vektor",
+    "title": "1. Übungsblatt",
+    "section": "2.7 Vektor",
+    "text": "2.7 Vektor\nErstelle einen Vektor, der die Ausprägungen der Variable “gesund_org” enthält. Und schaue Dir diesen Vektor an.\n\n\nCode\n# Eindeutige Ausprägungen der Variable 'gesund_org'\nvektor_gesund_org &lt;- unique(df$gesund_org)\n\n# Ausgabe der eindeutigen Ausprägungen\nprint(vektor_gesund_org)\n\n\n[1] \"[4] Weniger gut\"       \"[3] Zufriedenstellend\" \"[5] Schlecht\"         \n[4] \"[2] Gut\"               \"\"                      \"[1] Sehr gut\"",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
+  },
+  {
+    "objectID": "uebungen/1_uebungsblatt.html#data-wrlangling",
+    "href": "uebungen/1_uebungsblatt.html#data-wrlangling",
+    "title": "1. Übungsblatt",
+    "section": "2.8 Data wrlangling",
+    "text": "2.8 Data wrlangling\nWir möchten den subjektiven Gesundheitsstatus als numerische Variable nutzen. Wir müssen daher die Variable gesund_org in eine numerische Variable umwandeln. Achte auf fehlende Werte.\n\n\nCode\ntable(df$gesund_org, useNA = \"always\")\n\n\n\n                               [1] Sehr gut               [2] Gut \n                  102                  2535                  9488 \n[3] Zufriedenstellend       [4] Weniger gut          [5] Schlecht \n                 7576                  3089                   732 \n                 &lt;NA&gt; \n                    0 \n\n\nCode\n# Ersetze leere Zeichenketten \"\" durch NA in der Spalte 'gesund_org'\ndf$gesund_org[df$gesund_org == \"\"] &lt;- NA\n\n# Extrahiere die numerischen Werte aus der Spalte 'gesund_org'\ndf$gesund_org_numeric &lt;- as.numeric(sub(\"\\\\[([0-9]+)\\\\].*\", \"\\\\1\", df$gesund_org))\n\n# Überprüfe die Änderungen\ntable(df$gesund_org_numeric, useNA = \"always\")\n\n\n\n   1    2    3    4    5 &lt;NA&gt; \n2535 9488 7576 3089  732  102 \n\n\nCode\ntable(df$gesund_org, useNA = \"always\")\n\n\n\n         [1] Sehr gut               [2] Gut [3] Zufriedenstellend \n                 2535                  9488                  7576 \n      [4] Weniger gut          [5] Schlecht                  &lt;NA&gt; \n                 3089                   732                   102",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
+  },
+  {
+    "objectID": "uebungen/1_uebungsblatt.html#balkendiagramm",
+    "href": "uebungen/1_uebungsblatt.html#balkendiagramm",
+    "title": "1. Übungsblatt",
+    "section": "2.9 Balkendiagramm",
+    "text": "2.9 Balkendiagramm\nStelle die Verteilung des subjetiven Gesundheitsstatus graphisch dar\n\n\nCode\n# Barplot erstellen\nggplot(df, aes(x = factor(gesund_org_numeric))) +\n  geom_bar(fill = \"skyblue\", color = \"black\") +\n  labs(\n    title = \"Univariate Verteilung des subjektiven Gesundheitsstatus\",\n    x = \"Subjektiver Gesundheitsstatus (1 = Sehr gut, 5 = Schlecht)\",\n    y = \"Häufigkeit\"\n  ) +\n  theme_minimal()",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
+  },
+  {
+    "objectID": "uebungen/1_uebungsblatt.html#fehlende-werte",
+    "href": "uebungen/1_uebungsblatt.html#fehlende-werte",
+    "title": "1. Übungsblatt",
+    "section": "2.10 Fehlende Werte",
+    "text": "2.10 Fehlende Werte\nGibt es fehlende Werte auf der Variable monatliches Einkommen (einkommenm1) und auf der Variable Alter?\n\n\nCode\ntable(df$alter, useNA = \"always\")\n\n\n\n  17   18   19   20   21   22   23   24   25   26   27   28   29   30   31   32 \n 472  470  437  392  347  290  281  263  244  254  283  282  293  304  337  341 \n  33   34   35   36   37   38   39   40   41   42   43   44   45   46   47   48 \n 331  368  387  387  379  397  413  430  447  450  454  434  450  466  466  473 \n  49   50   51   52   53   54   55   56   57   58   59   60   61   62   63   64 \n 500  517  526  518  479  447  412  381  381  359  339  336  326  296  298  312 \n  65   66   67   68   69   70   71   72   73   74   75   76   77   78   79   80 \n 325  314  309  294  272  239  242  244  246  256  276  271  270  247  223  192 \n  81   82   83   84   85   86   87   88   89   90   91   92   93   94   95   96 \n 156  124  105   82   74   64   47   46   36   28   19   18   13   11    8    5 \n  97   98   99  100  101  102 &lt;NA&gt; \n   5    4    3    3    1    1    0 \n\n\nCode\nsummary(df$einkommenm1)\n\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n    0.0     0.0   852.9  1645.6  2687.4 35260.9",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
+  },
+  {
+    "objectID": "uebungen/1_uebungsblatt.html#zusammenhangsanalyse",
+    "href": "uebungen/1_uebungsblatt.html#zusammenhangsanalyse",
+    "title": "1. Übungsblatt",
+    "section": "2.11 Zusammenhangsanalyse",
+    "text": "2.11 Zusammenhangsanalyse\nSchaue Dir den Zusammenhang von subjektiven Gesundheitsstatus und Alter graphisch mit Hilfe eines Scatterplots an. Beschränke die Daten auf das Jahr 2019 und auf Personen, die jünger als 65 Jahre alt sind.\n\n\nCode\n# Scatterplot mit ggplot2 erstellen\nggplot(df %&gt;% filter(syear==\"2019\", alter &lt; 65), aes(x = alter , y = einkommenm1)) +\n  geom_point(color = \"blue\", alpha = 0.6) +  # Punkte hinzufügen\n  geom_smooth(method = \"lm\", color = \"red\", se = TRUE) +  # Lineare Trendlinie mit Konfidenzintervall\n  labs(\n    title = \"Zusammenhang zwischen Einkommen und Alter\",\n    x = \"Alter\",\n    y = \"Einkommen\"\n  ) +\n  theme_minimal()  # Minimalistisches Theme\n\n\n`geom_smooth()` using formula = 'y ~ x'",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
+  },
+  {
+    "objectID": "uebungen/1_uebungsblatt.html#zusammenhangsanalyse-mit-log.-daten",
+    "href": "uebungen/1_uebungsblatt.html#zusammenhangsanalyse-mit-log.-daten",
+    "title": "1. Übungsblatt",
+    "section": "2.12 Zusammenhangsanalyse mit log. Daten",
+    "text": "2.12 Zusammenhangsanalyse mit log. Daten\nUnd nun mit logarithmiertem Einkommen. Was fällt auf?\n\n\nCode\n# Scatterplot mit ggplot2 erstellen\nggplot(df %&gt;% filter(syear==\"2019\", alter &lt; 65), aes(x = alter , y = log(einkommenm1))) +\n  geom_point(color = \"blue\", alpha = 0.6) +  # Punkte hinzufügen\n  geom_smooth(method = \"lm\", color = \"red\", se = TRUE) +  # Lineare Trendlinie mit Konfidenzintervall\n  labs(\n    title = \"Zusammenhang zwischen Einkommen und Alter\",\n    x = \"Alter\",\n    y = \"Einkommen, log.\"\n  ) +\n  theme_minimal()  # Minimalistisches Theme\n\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\nWarning: Removed 660 rows containing non-finite outside the scale range\n(`stat_smooth()`).",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
+  },
+  {
+    "objectID": "uebungen/1_uebungsblatt.html#render",
+    "href": "uebungen/1_uebungsblatt.html#render",
+    "title": "1. Übungsblatt",
+    "section": "2.13 Render",
+    "text": "2.13 Render\nWandle dieses Dokument in ein PDF und ein HTML Dokument um. Wo wird es gespeichert?",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
   }
 ]
