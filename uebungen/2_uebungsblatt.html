@@ -1,0 +1,2035 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.39">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Daria Tisch">
+
+<title>2. Übungsblatt (Paneldaten) – Fortgeschrittene quantitative Methoden</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../slides/2_seminar.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-d97e300dad0fdeedbbab20cb1319fd80.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link href="../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="../site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../schedule.html">Zeitplan und Dateien</a></li><li class="breadcrumb-item"><a href="../uebungen/2_uebungsblatt.html">2 - Übungsblatt (Paneldaten)</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Fortgeschrittene quantitative Methoden</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/dariatisch/wup2024" title="GitHub" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Kursinformationen</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Zeitplan und Dateien</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../schedule.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Übersicht</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../slides/1_seminar.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1 - Seminar</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../slides/1_uebung.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1 - Übung</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../uebungen/1_uebungsblatt.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1 - Übungsblatt</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../slides/2_seminar.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2 - Seminar (Paneldaten)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../uebungen/2_uebungsblatt.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">2 - Übungsblatt (Paneldaten)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#organisation" id="toc-organisation" class="nav-link active" data-scroll-target="#organisation"><span class="header-section-number">1</span> Organisation</a>
+  <ul class="collapse">
+  <li><a href="#arbeitsverzeichnis-festsetzen" id="toc-arbeitsverzeichnis-festsetzen" class="nav-link" data-scroll-target="#arbeitsverzeichnis-festsetzen"><span class="header-section-number">1.1</span> Arbeitsverzeichnis festsetzen</a></li>
+  <li><a href="#packages-installieren-und-laden" id="toc-packages-installieren-und-laden" class="nav-link" data-scroll-target="#packages-installieren-und-laden"><span class="header-section-number">1.2</span> Packages installieren und laden</a></li>
+  <li><a href="#daten-einlesen" id="toc-daten-einlesen" class="nav-link" data-scroll-target="#daten-einlesen"><span class="header-section-number">1.3</span> Daten einlesen</a></li>
+  </ul></li>
+  <li><a href="#datenaufbereitung" id="toc-datenaufbereitung" class="nav-link" data-scroll-target="#datenaufbereitung"><span class="header-section-number">2</span> Datenaufbereitung</a>
+  <ul class="collapse">
+  <li><a href="#lebenszufriedenheit" id="toc-lebenszufriedenheit" class="nav-link" data-scroll-target="#lebenszufriedenheit"><span class="header-section-number">2.1</span> Lebenszufriedenheit</a></li>
+  <li><a href="#geschlecht" id="toc-geschlecht" class="nav-link" data-scroll-target="#geschlecht"><span class="header-section-number">2.2</span> Geschlecht</a></li>
+  <li><a href="#alter" id="toc-alter" class="nav-link" data-scroll-target="#alter"><span class="header-section-number">2.3</span> Alter</a></li>
+  <li><a href="#anzahl-an-kindern-im-haushalt" id="toc-anzahl-an-kindern-im-haushalt" class="nav-link" data-scroll-target="#anzahl-an-kindern-im-haushalt"><span class="header-section-number">2.4</span> Anzahl an Kindern im Haushalt</a></li>
+  <li><a href="#bildung" id="toc-bildung" class="nav-link" data-scroll-target="#bildung"><span class="header-section-number">2.5</span> Bildung</a></li>
+  <li><a href="#einkommen" id="toc-einkommen" class="nav-link" data-scroll-target="#einkommen"><span class="header-section-number">2.6</span> Einkommen</a></li>
+  <li><a href="#analysesample-bilden" id="toc-analysesample-bilden" class="nav-link" data-scroll-target="#analysesample-bilden"><span class="header-section-number">2.7</span> Analysesample bilden</a></li>
+  </ul></li>
+  <li><a href="#datenexploration" id="toc-datenexploration" class="nav-link" data-scroll-target="#datenexploration"><span class="header-section-number">3</span> Datenexploration</a>
+  <ul class="collapse">
+  <li><a href="#wieviele-personenjahre-sind-im-datensatz" id="toc-wieviele-personenjahre-sind-im-datensatz" class="nav-link" data-scroll-target="#wieviele-personenjahre-sind-im-datensatz"><span class="header-section-number">3.1</span> Wieviele Personenjahre sind im Datensatz?</a></li>
+  <li><a href="#wie-viele-personen-sind-im-datensatz" id="toc-wie-viele-personen-sind-im-datensatz" class="nav-link" data-scroll-target="#wie-viele-personen-sind-im-datensatz"><span class="header-section-number">3.2</span> Wie viele Personen sind im Datensatz?</a></li>
+  <li><a href="#wieviele-personen-nehmen-pro-jahr-teil" id="toc-wieviele-personen-nehmen-pro-jahr-teil" class="nav-link" data-scroll-target="#wieviele-personen-nehmen-pro-jahr-teil"><span class="header-section-number">3.3</span> Wieviele Personen nehmen pro Jahr teil?</a></li>
+  <li><a href="#was-ist-das-durchschnittsalter-im-jahr-2015" id="toc-was-ist-das-durchschnittsalter-im-jahr-2015" class="nav-link" data-scroll-target="#was-ist-das-durchschnittsalter-im-jahr-2015"><span class="header-section-number">3.4</span> Was ist das Durchschnittsalter im Jahr 2015</a></li>
+  <li><a href="#welche-variablen-sind-zeitkonstant-und-welche-zeitveränderlich" id="toc-welche-variablen-sind-zeitkonstant-und-welche-zeitveränderlich" class="nav-link" data-scroll-target="#welche-variablen-sind-zeitkonstant-und-welche-zeitveränderlich"><span class="header-section-number">3.5</span> Welche Variablen sind zeitkonstant und welche zeitveränderlich?</a></li>
+  <li><a href="#wie-viele-personen-nahmen-an-allen-fünf-wellen-teil-und-wie-viele-jahre-nahmen-personen-durchschnittlich-teil" id="toc-wie-viele-personen-nahmen-an-allen-fünf-wellen-teil-und-wie-viele-jahre-nahmen-personen-durchschnittlich-teil" class="nav-link" data-scroll-target="#wie-viele-personen-nahmen-an-allen-fünf-wellen-teil-und-wie-viele-jahre-nahmen-personen-durchschnittlich-teil"><span class="header-section-number">3.6</span> Wie viele Personen nahmen an allen fünf Wellen teil? Und wie viele Jahre nahmen Personen durchschnittlich teil?</a></li>
+  </ul></li>
+  <li><a href="#regressionen" id="toc-regressionen" class="nav-link" data-scroll-target="#regressionen"><span class="header-section-number">4</span> Regressionen</a>
+  <ul class="collapse">
+  <li><a href="#schätze-ein-pols-modell" id="toc-schätze-ein-pols-modell" class="nav-link" data-scroll-target="#schätze-ein-pols-modell"><span class="header-section-number">4.1</span> Schätze ein POLS Modell</a></li>
+  <li><a href="#schätze-ein-be-modell" id="toc-schätze-ein-be-modell" class="nav-link" data-scroll-target="#schätze-ein-be-modell"><span class="header-section-number">4.2</span> Schätze ein BE Modell</a></li>
+  <li><a href="#schätze-ein-fe-modell" id="toc-schätze-ein-fe-modell" class="nav-link" data-scroll-target="#schätze-ein-fe-modell"><span class="header-section-number">4.3</span> Schätze ein FE Modell</a></li>
+  <li><a href="#schätze-ein-re-modell" id="toc-schätze-ein-re-modell" class="nav-link" data-scroll-target="#schätze-ein-re-modell"><span class="header-section-number">4.4</span> Schätze ein RE Modell</a></li>
+  <li><a href="#vergleich" id="toc-vergleich" class="nav-link" data-scroll-target="#vergleich"><span class="header-section-number">4.5</span> Vergleich</a></li>
+  <li><a href="#hausman-test" id="toc-hausman-test" class="nav-link" data-scroll-target="#hausman-test"><span class="header-section-number">4.6</span> Hausman Test</a></li>
+  <li><a href="#kausalanalyse" id="toc-kausalanalyse" class="nav-link" data-scroll-target="#kausalanalyse"><span class="header-section-number">4.7</span> Kausalanalyse</a></li>
+  </ul></li>
+  <li><a href="#render" id="toc-render" class="nav-link" data-scroll-target="#render"><span class="header-section-number">5</span> Render</a></li>
+  <li><a href="#weiterführende-literatur" id="toc-weiterführende-literatur" class="nav-link" data-scroll-target="#weiterführende-literatur"><span class="header-section-number">6</span> Weiterführende Literatur</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="2_uebungsblatt.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../schedule.html">Zeitplan und Dateien</a></li><li class="breadcrumb-item"><a href="../uebungen/2_uebungsblatt.html">2 - Übungsblatt (Paneldaten)</a></li></ol></nav>
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">2. Übungsblatt (Paneldaten)</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Daria Tisch </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="organisation" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Organisation</h1>
+<section id="arbeitsverzeichnis-festsetzen" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="arbeitsverzeichnis-festsetzen"><span class="header-section-number">1.1</span> Arbeitsverzeichnis festsetzen</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># set working directory</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">setwd</span>(<span class="st">"D:/Seafile/main/teaching/2024_wuppertal/studis/uebungen"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="packages-installieren-und-laden" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="packages-installieren-und-laden"><span class="header-section-number">1.2</span> Packages installieren und laden</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co"># Packages</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>pkgs <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb2-3"><a href="#cb2-3"></a>  <span class="st">"tidyverse"</span>,</span>
+<span id="cb2-4"><a href="#cb2-4"></a>  <span class="st">"sjlabelled"</span>, <span class="co"># for variable labels</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a>  <span class="st">"plm"</span>, <span class="co"># Panelregressionen</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a>  <span class="st">"sjPlot"</span> <span class="co"># um Regressionstabellen schön darzustellen</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a>) </span>
+<span id="cb2-8"><a href="#cb2-8"></a></span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="do">## Install uninstalled packages</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a><span class="fu">lapply</span>(pkgs[<span class="sc">!</span>(pkgs <span class="sc">%in%</span> <span class="fu">installed.packages</span>())], install.packages)</span>
+<span id="cb2-11"><a href="#cb2-11"></a></span>
+<span id="cb2-12"><a href="#cb2-12"></a><span class="do">## Load all packages to library</span></span>
+<span id="cb2-13"><a href="#cb2-13"></a><span class="fu">lapply</span>(pkgs, library, <span class="at">character.only =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="daten-einlesen" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="daten-einlesen"><span class="header-section-number">1.3</span> Daten einlesen</h2>
+<p>Wir arbeiten wieder mit dem Übungsdatensatz des SOEP (DOI:10.5684/soep.practice.v36). Es werden zwei Datensätze eingelesen. Der erste Datensatz enthalt die tatsächlichen Umfragedaten, der zweite Datensatz enthält die Variablenlabels.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># read data</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>df <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">"../daten/soep_uebung.csv"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3"></a>df_labels <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">"../daten/soep_labels.csv"</span>)</span>
+<span id="cb3-4"><a href="#cb3-4"></a></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="co"># Add variable labels</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(df_labels)) {</span>
+<span id="cb3-7"><a href="#cb3-7"></a>  variable_name <span class="ot">&lt;-</span> df_labels<span class="sc">$</span>variable[i]</span>
+<span id="cb3-8"><a href="#cb3-8"></a>  variable_label <span class="ot">&lt;-</span> df_labels<span class="sc">$</span>variable_label[i]</span>
+<span id="cb3-9"><a href="#cb3-9"></a>  </span>
+<span id="cb3-10"><a href="#cb3-10"></a>  <span class="co"># Apply the label to the corresponding column in df</span></span>
+<span id="cb3-11"><a href="#cb3-11"></a>  df[[variable_name]] <span class="ot">&lt;-</span> <span class="fu">set_label</span>(df[[variable_name]], variable_label)</span>
+<span id="cb3-12"><a href="#cb3-12"></a>}</span>
+<span id="cb3-13"><a href="#cb3-13"></a><span class="co"># show variable labels</span></span>
+<span id="cb3-14"><a href="#cb3-14"></a><span class="fu">get_label</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                   id                                 syear 
+"Personennummer (zufällig generiert)"                       "Erhebungsjahr" 
+                                  sex                                 alter 
+                         "Geschlecht"          "Alter der Befragungsperson" 
+                             anz_pers                              anz_kind 
+        "Anzahl Personen im Haushalt"           "Anzahl Kinder im Haushalt" 
+                              bildung                                erwerb 
+           "Anzahl an Bildungsjahren"                       "Erwerbsstatus" 
+                              branche                            gesund_org 
+            "Branche aktueller Beruf"                    "subj. Gesundheit" 
+                          lebensz_org                           einkommenj1 
+           "Ggw. Lebenszufriedenheit"     "Bruttoeinkommen/Jahr Hauptberuf" 
+                          einkommenj2                           einkommenm1 
+    "Bruttoeinkommen/Jahr Nebenberuf"    "Bruttoeinkommen/Monat Hauptberuf" 
+                          einkommenm2 
+   "Bruttoeinkommen/Monat Nebenberuf" </code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="datenaufbereitung" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Datenaufbereitung</h1>
+<p>In dieser Übung möchten wir herausfinden, welche Faktoren mit Lebenszufriedenheit (lebensz_org) zusammenhängen. Denkbar wären zum Beispiel: Geschlecht (sex), Alter(alter), Anzahl an Kindern im Haushalt (anz_kind), Bildung (bildung) und Einkommen (einkommenj1).</p>
+<p>Um die Analysen durchzuführen, müssen wir die Variablen erst einmal aufbereiten. Überprüfe bei jeder Variable,</p>
+<ul>
+<li>ob fehlende Werte als solche markiert sind</li>
+<li>um welchen Typ es sich bei den Variablen hanelt und ob etwa eine Umwandlung erforderlich ist.</li>
+</ul>
+<section id="lebenszufriedenheit" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="lebenszufriedenheit"><span class="header-section-number">2.1</span> Lebenszufriedenheit</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">table</span>(df<span class="sc">$</span>lebensz_org, <span class="at">useNA =</span> <span class="st">"always"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+                             [0] ganz und gar unzufrieden 
+                         611                           62 
+ [10] ganz und gar zufrieden                            1 
+                        1350                           83 
+                           2                            3 
+                         202                          418 
+                           4                            5 
+                         574                         1837 
+                           6                            7 
+                        1868                         4645 
+                           8                            9 
+                        7963                         3909 
+                        &lt;NA&gt; 
+                           0 </code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>df <span class="ot">=</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>  <span class="fu">mutate</span>(<span class="at">lz =</span> <span class="fu">as.numeric</span>(<span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">[([0-9]+)</span><span class="sc">\\</span><span class="st">].*"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">1"</span>, df<span class="sc">$</span>lebensz_org)))</span>
+<span id="cb7-3"><a href="#cb7-3"></a></span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="fu">table</span>(df<span class="sc">$</span>lz, <span class="at">useNA =</span> <span class="st">"always"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+   0    1    2    3    4    5    6    7    8    9   10 &lt;NA&gt; 
+  62   83  202  418  574 1837 1868 4645 7963 3909 1350  611 </code></pre>
+</div>
+</div>
+</section>
+<section id="geschlecht" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="geschlecht"><span class="header-section-number">2.2</span> Geschlecht</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">table</span>(df<span class="sc">$</span>sex, <span class="at">useNA =</span> <span class="st">"always"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+[0] männlich [1] weiblich         &lt;NA&gt; 
+       10762        12760            0 </code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>df <span class="ot">=</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a>  <span class="fu">mutate</span>(<span class="at">female =</span> <span class="fu">as.numeric</span>(<span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">[([0-9]+)</span><span class="sc">\\</span><span class="st">].*"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">1"</span>, df<span class="sc">$</span>sex)))</span>
+<span id="cb11-3"><a href="#cb11-3"></a></span>
+<span id="cb11-4"><a href="#cb11-4"></a><span class="fu">table</span>(df<span class="sc">$</span>female, <span class="at">useNA =</span> <span class="st">"always"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    0     1  &lt;NA&gt; 
+10762 12760     0 </code></pre>
+</div>
+</div>
+</section>
+<section id="alter" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="alter"><span class="header-section-number">2.3</span> Alter</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">table</span>(df<span class="sc">$</span>alter, <span class="at">useNA =</span> <span class="st">"always"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  17   18   19   20   21   22   23   24   25   26   27   28   29   30   31   32 
+ 472  470  437  392  347  290  281  263  244  254  283  282  293  304  337  341 
+  33   34   35   36   37   38   39   40   41   42   43   44   45   46   47   48 
+ 331  368  387  387  379  397  413  430  447  450  454  434  450  466  466  473 
+  49   50   51   52   53   54   55   56   57   58   59   60   61   62   63   64 
+ 500  517  526  518  479  447  412  381  381  359  339  336  326  296  298  312 
+  65   66   67   68   69   70   71   72   73   74   75   76   77   78   79   80 
+ 325  314  309  294  272  239  242  244  246  256  276  271  270  247  223  192 
+  81   82   83   84   85   86   87   88   89   90   91   92   93   94   95   96 
+ 156  124  105   82   74   64   47   46   36   28   19   18   13   11    8    5 
+  97   98   99  100  101  102 &lt;NA&gt; 
+   5    4    3    3    1    1    0 </code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">class</span>(df<span class="sc">$</span>alter)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "integer"</code></pre>
+</div>
+</div>
+</section>
+<section id="anzahl-an-kindern-im-haushalt" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="anzahl-an-kindern-im-haushalt"><span class="header-section-number">2.4</span> Anzahl an Kindern im Haushalt</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">table</span>(df<span class="sc">$</span>anz_kind, <span class="at">useNA =</span> <span class="st">"always"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    0     1     2     3     4     5     6     7     8     9    10  &lt;NA&gt; 
+14108  3874  3557  1360   367   103    52    15     7     1     1    77 </code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">class</span>(df<span class="sc">$</span>anz_kind)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "integer"</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(df<span class="sc">$</span>anz_kind))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 77</code></pre>
+</div>
+</div>
+</section>
+<section id="bildung" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="bildung"><span class="header-section-number">2.5</span> Bildung</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">table</span>(df<span class="sc">$</span>bildung, <span class="at">useNA =</span> <span class="st">"always"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+   7  8.5    9   10 10.5   11 11.5   12   13 13.5   14 14.5   15   16   17   18 
+ 325   52 2296  839 4044  812 3285 2829 1331  334  556  526 1015  759  113 2795 
+&lt;NA&gt; 
+1611 </code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">class</span>(df<span class="sc">$</span>bildung)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "numeric"</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(df<span class="sc">$</span>bildung))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1611</code></pre>
+</div>
+</div>
+</section>
+<section id="einkommen" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="einkommen"><span class="header-section-number">2.6</span> Einkommen</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="fu">summary</span>(df<span class="sc">$</span>einkommenj1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+      0       0    5786   16776   28525  269425 </code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="fu">class</span>(df<span class="sc">$</span>einkommenj1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "numeric"</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(df<span class="sc">$</span>einkommenj1))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0</code></pre>
+</div>
+</div>
+</section>
+<section id="analysesample-bilden" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="analysesample-bilden"><span class="header-section-number">2.7</span> Analysesample bilden</h2>
+<ol type="a">
+<li>Selektiere nur die Variablen, die wir brauchen</li>
+</ol>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a>df <span class="ot">=</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb35-2"><a href="#cb35-2"></a>  <span class="fu">select</span>(id,syear, lz,female, alter, anz_kind, bildung, einkommenj1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<ol start="2" type="a">
+<li>Nun bilden wir das Analysesample. Wir wenden “listwise deletion”.</li>
+</ol>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a>df <span class="ot">&lt;-</span> df[<span class="fu">complete.cases</span>(df[, <span class="fu">c</span>(<span class="st">"lz"</span>,<span class="st">"female"</span>, <span class="st">"alter"</span>, <span class="st">"anz_kind"</span>, <span class="st">"bildung"</span>, <span class="st">"einkommenj1"</span>)]), ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<ol start="3" type="a">
+<li>Wie viele Beobachtungen gehen uns verloren?</li>
+</ol>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="co"># Initialize a data frame to store the results</span></span>
+<span id="cb37-2"><a href="#cb37-2"></a>results <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb37-3"><a href="#cb37-3"></a>  <span class="at">Variable =</span> <span class="fu">character</span>(),</span>
+<span id="cb37-4"><a href="#cb37-4"></a>  <span class="at">Cases_Remaining =</span> <span class="fu">integer</span>(),</span>
+<span id="cb37-5"><a href="#cb37-5"></a>  <span class="at">Cases_Lost =</span> <span class="fu">integer</span>(),</span>
+<span id="cb37-6"><a href="#cb37-6"></a>  <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span></span>
+<span id="cb37-7"><a href="#cb37-7"></a>)</span>
+<span id="cb37-8"><a href="#cb37-8"></a></span>
+<span id="cb37-9"><a href="#cb37-9"></a><span class="co"># Total number of rows initially</span></span>
+<span id="cb37-10"><a href="#cb37-10"></a>initial_rows <span class="ot">&lt;-</span> <span class="fu">nrow</span>(df)</span>
+<span id="cb37-11"><a href="#cb37-11"></a></span>
+<span id="cb37-12"><a href="#cb37-12"></a><span class="co"># Iterate over each variable</span></span>
+<span id="cb37-13"><a href="#cb37-13"></a><span class="cf">for</span> (var <span class="cf">in</span> <span class="fu">names</span>(df)) {</span>
+<span id="cb37-14"><a href="#cb37-14"></a>  <span class="co"># Perform listwise deletion based on the current variable</span></span>
+<span id="cb37-15"><a href="#cb37-15"></a>  remaining_rows <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">complete.cases</span>(df[, var, <span class="at">drop =</span> <span class="cn">FALSE</span>]))</span>
+<span id="cb37-16"><a href="#cb37-16"></a>  </span>
+<span id="cb37-17"><a href="#cb37-17"></a>  <span class="co"># Calculate cases lost</span></span>
+<span id="cb37-18"><a href="#cb37-18"></a>  cases_lost <span class="ot">&lt;-</span> initial_rows <span class="sc">-</span> remaining_rows</span>
+<span id="cb37-19"><a href="#cb37-19"></a>  </span>
+<span id="cb37-20"><a href="#cb37-20"></a>  <span class="co"># Append to the results data frame</span></span>
+<span id="cb37-21"><a href="#cb37-21"></a>  results <span class="ot">&lt;-</span> <span class="fu">rbind</span>(</span>
+<span id="cb37-22"><a href="#cb37-22"></a>    results,</span>
+<span id="cb37-23"><a href="#cb37-23"></a>    <span class="fu">data.frame</span>(</span>
+<span id="cb37-24"><a href="#cb37-24"></a>      <span class="at">Variable =</span> var,</span>
+<span id="cb37-25"><a href="#cb37-25"></a>      <span class="at">Cases_Remaining =</span> remaining_rows,</span>
+<span id="cb37-26"><a href="#cb37-26"></a>      <span class="at">Cases_Lost =</span> cases_lost</span>
+<span id="cb37-27"><a href="#cb37-27"></a>    )</span>
+<span id="cb37-28"><a href="#cb37-28"></a>  )</span>
+<span id="cb37-29"><a href="#cb37-29"></a>}</span>
+<span id="cb37-30"><a href="#cb37-30"></a></span>
+<span id="cb37-31"><a href="#cb37-31"></a>results</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["Variable"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Cases_Remaining"],"name":[2],"type":["int"],"align":["right"]},{"label":["Cases_Lost"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"id","2":"21642","3":"0"},{"1":"syear","2":"21642","3":"0"},{"1":"lz","2":"21642","3":"0"},{"1":"female","2":"21642","3":"0"},{"1":"alter","2":"21642","3":"0"},{"1":"anz_kind","2":"21642","3":"0"},{"1":"bildung","2":"21642","3":"0"},{"1":"einkommenj1","2":"21642","3":"0"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="datenexploration" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Datenexploration</h1>
+<section id="wieviele-personenjahre-sind-im-datensatz" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="wieviele-personenjahre-sind-im-datensatz"><span class="header-section-number">3.1</span> Wieviele Personenjahre sind im Datensatz?</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="fu">nrow</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 21642</code></pre>
+</div>
+</div>
+</section>
+<section id="wie-viele-personen-sind-im-datensatz" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="wie-viele-personen-sind-im-datensatz"><span class="header-section-number">3.2</span> Wie viele Personen sind im Datensatz?</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(df<span class="sc">$</span>id))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5788</code></pre>
+</div>
+</div>
+</section>
+<section id="wieviele-personen-nehmen-pro-jahr-teil" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="wieviele-personen-nehmen-pro-jahr-teil"><span class="header-section-number">3.3</span> Wieviele Personen nehmen pro Jahr teil?</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a><span class="fu">table</span>(df<span class="sc">$</span>syear) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+2015 2016 2017 2018 2019 
+5122 4572 4341 3992 3615 </code></pre>
+</div>
+</div>
+<p>Wir haben also ein sogenanntes “unbalanced panel”.</p>
+</section>
+<section id="was-ist-das-durchschnittsalter-im-jahr-2015" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="was-ist-das-durchschnittsalter-im-jahr-2015"><span class="header-section-number">3.4</span> Was ist das Durchschnittsalter im Jahr 2015</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a><span class="co"># Berechnung des Durchschnittsalters für das Jahr 2015</span></span>
+<span id="cb44-2"><a href="#cb44-2"></a><span class="fu">mean</span>(df<span class="sc">$</span>alter[df<span class="sc">$</span>syear <span class="sc">==</span> <span class="dv">2015</span>], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 48.99863</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a><span class="co"># Alternative mit dplyr</span></span>
+<span id="cb46-2"><a href="#cb46-2"></a>durchschnittsalter <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb46-3"><a href="#cb46-3"></a>  <span class="fu">filter</span>(syear <span class="sc">==</span> <span class="dv">2015</span>) <span class="sc">%&gt;%</span>       <span class="co"># Filtert die Daten für das Jahr 2015</span></span>
+<span id="cb46-4"><a href="#cb46-4"></a>  <span class="fu">summarise</span>(<span class="at">mean_alter =</span> <span class="fu">mean</span>(alter, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span>  <span class="co"># Berechnet den Durchschnitt</span></span>
+<span id="cb46-5"><a href="#cb46-5"></a>  <span class="fu">pull</span>(mean_alter)               <span class="co"># Extrahiert den berechneten Wert</span></span>
+<span id="cb46-6"><a href="#cb46-6"></a></span>
+<span id="cb46-7"><a href="#cb46-7"></a><span class="fu">cat</span>(<span class="st">"Das Durchschnittsalter im Jahr 2015 beträgt:"</span>, <span class="fu">round</span>(durchschnittsalter,<span class="dv">2</span>), <span class="st">"Jahre."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Das Durchschnittsalter im Jahr 2015 beträgt: 49 Jahre.</code></pre>
+</div>
+</div>
+</section>
+<section id="welche-variablen-sind-zeitkonstant-und-welche-zeitveränderlich" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="welche-variablen-sind-zeitkonstant-und-welche-zeitveränderlich"><span class="header-section-number">3.5</span> Welche Variablen sind zeitkonstant und welche zeitveränderlich?</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a><span class="co"># Analyse: Zeitkonstante und zeitveränderliche Variablen</span></span>
+<span id="cb48-2"><a href="#cb48-2"></a></span>
+<span id="cb48-3"><a href="#cb48-3"></a>variablen_analyse <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb48-4"><a href="#cb48-4"></a>  <span class="fu">mutate</span>(<span class="at">id2 =</span> id) <span class="sc">%&gt;%</span></span>
+<span id="cb48-5"><a href="#cb48-5"></a>  <span class="fu">group_by</span>(id) <span class="sc">%&gt;%</span>                        <span class="co"># Gruppiert die Daten nach ID</span></span>
+<span id="cb48-6"><a href="#cb48-6"></a>  <span class="fu">summarise_all</span>(<span class="sc">~</span> <span class="fu">n_distinct</span>(.)) <span class="sc">%&gt;%</span>      <span class="co"># Zählt die Anzahl der einzigartigen Werte je ID</span></span>
+<span id="cb48-7"><a href="#cb48-7"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), max))    <span class="co"># Nimmt das Maximum der einzigartigen Werte je Variable</span></span>
+<span id="cb48-8"><a href="#cb48-8"></a></span>
+<span id="cb48-9"><a href="#cb48-9"></a></span>
+<span id="cb48-10"><a href="#cb48-10"></a><span class="co"># Ergebnis interpretieren</span></span>
+<span id="cb48-11"><a href="#cb48-11"></a>zeitkonstant <span class="ot">&lt;-</span> <span class="fu">names</span>(variablen_analyse)[variablen_analyse <span class="sc">==</span> <span class="dv">1</span>]  <span class="co"># Variablen mit nur einem Wert je ID</span></span>
+<span id="cb48-12"><a href="#cb48-12"></a>zeitveraenderlich <span class="ot">&lt;-</span> <span class="fu">names</span>(variablen_analyse)[variablen_analyse <span class="sc">&gt;</span> <span class="dv">1</span>]  <span class="co"># Variablen mit mehreren Werten je ID</span></span>
+<span id="cb48-13"><a href="#cb48-13"></a></span>
+<span id="cb48-14"><a href="#cb48-14"></a><span class="co"># Ausgabe</span></span>
+<span id="cb48-15"><a href="#cb48-15"></a><span class="fu">cat</span>(<span class="st">"Zeitkonstante Variablen:</span><span class="sc">\n</span><span class="st">"</span>,zeitkonstant )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Zeitkonstante Variablen:
+ female id2</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Zeitveränderliche Variablen:</span><span class="sc">\n</span><span class="st">"</span>, zeitveraenderlich)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Zeitveränderliche Variablen:
+ id syear lz alter anz_kind bildung einkommenj1</code></pre>
+</div>
+</div>
+</section>
+<section id="wie-viele-personen-nahmen-an-allen-fünf-wellen-teil-und-wie-viele-jahre-nahmen-personen-durchschnittlich-teil" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="wie-viele-personen-nahmen-an-allen-fünf-wellen-teil-und-wie-viele-jahre-nahmen-personen-durchschnittlich-teil"><span class="header-section-number">3.6</span> Wie viele Personen nahmen an allen fünf Wellen teil? Und wie viele Jahre nahmen Personen durchschnittlich teil?</h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a><span class="co"># Anteil der Personen, die an allen fünf Wellen teilgenommen haben</span></span>
+<span id="cb52-2"><a href="#cb52-2"></a>data_summary <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb52-3"><a href="#cb52-3"></a>  <span class="fu">group_by</span>(id) <span class="sc">%&gt;%</span></span>
+<span id="cb52-4"><a href="#cb52-4"></a>  <span class="fu">summarize</span>(<span class="at">years_observed =</span> <span class="fu">n_distinct</span>(syear))</span>
+<span id="cb52-5"><a href="#cb52-5"></a><span class="fu">table</span>(data_summary<span class="sc">$</span>years_observed)  <span class="co"># Verteilung der Beobachtungsjahre</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+   1    2    3    4    5 
+ 840  649  593  805 2901 </code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a><span class="co"># Durchschnittliche Beobachtungsjahre pro Person</span></span>
+<span id="cb54-2"><a href="#cb54-2"></a><span class="fu">mean</span>(data_summary<span class="sc">$</span>years_observed)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3.739115</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="regressionen" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Regressionen</h1>
+<section id="schätze-ein-pols-modell" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="schätze-ein-pols-modell"><span class="header-section-number">4.1</span> Schätze ein POLS Modell</h2>
+<p>… und interepretiere die Koeffizienten.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a>m_pol <span class="ot">&lt;-</span> <span class="fu">plm</span>(lz <span class="sc">~</span> female <span class="sc">+</span> alter <span class="sc">+</span> anz_kind <span class="sc">+</span> bildung <span class="sc">+</span> einkommenj1, <span class="at">data =</span> df,</span>
+<span id="cb56-2"><a href="#cb56-2"></a>           <span class="at">index =</span> <span class="fu">c</span>(<span class="st">"id"</span>, <span class="st">"syear"</span>),</span>
+<span id="cb56-3"><a href="#cb56-3"></a>           <span class="at">effect =</span> <span class="st">"individual"</span>, <span class="at">model =</span> <span class="st">"pooling"</span>)</span>
+<span id="cb56-4"><a href="#cb56-4"></a><span class="fu">tab_model</span>(m_pol,</span>
+<span id="cb56-5"><a href="#cb56-5"></a>          <span class="at">dv.labels =</span> <span class="fu">paste</span>(<span class="st">"POLS Model"</span>, <span class="at">sep =</span> <span class="st">""</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: normal; font-weight: bold; padding: 0.2cm;">&nbsp;</td>
+<td colspan="3" data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: normal; font-weight: bold; padding: 0.2cm;">POLS Model</td>
+</tr>
+<tr class="even">
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">Predictors</td>
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">Estimates</td>
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">CI</td>
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">p</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">(Intercept)</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">6.71</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">6.58&nbsp;–&nbsp;6.84</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>&lt;0.001</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">female</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.00</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">-0.04&nbsp;–&nbsp;0.05</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.871</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">alter</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">-0.00</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">-0.00&nbsp;–&nbsp;-0.00</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>&lt;0.001</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">anz kind</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.05</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.03&nbsp;–&nbsp;0.07</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>&lt;0.001</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">bildung</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.06</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.05&nbsp;–&nbsp;0.06</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>&lt;0.001</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">einkommenj1</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.00</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.00&nbsp;–&nbsp;0.00</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>&lt;0.001</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm; border-top: 1px solid;">Observations</td>
+<td colspan="3" style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm; border-top: 1px solid;">21642</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm;">R<sup>2</sup> / R<sup>2</sup> adjusted</td>
+<td colspan="3" style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm;">0.022 / 0.022</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+</section>
+<section id="schätze-ein-be-modell" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="schätze-ein-be-modell"><span class="header-section-number">4.2</span> Schätze ein BE Modell</h2>
+<p>… und interepretiere die Koeffizienten.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a>m_be <span class="ot">&lt;-</span> <span class="fu">plm</span>(lz <span class="sc">~</span> female <span class="sc">+</span> alter <span class="sc">+</span> anz_kind <span class="sc">+</span> bildung <span class="sc">+</span> einkommenj1, <span class="at">data =</span> df,</span>
+<span id="cb57-2"><a href="#cb57-2"></a>           <span class="at">index =</span> <span class="fu">c</span>(<span class="st">"id"</span>, <span class="st">"syear"</span>),</span>
+<span id="cb57-3"><a href="#cb57-3"></a>           <span class="at">effect =</span> <span class="st">"individual"</span>, <span class="at">model =</span> <span class="st">"between"</span>)</span>
+<span id="cb57-4"><a href="#cb57-4"></a><span class="fu">tab_model</span>(m_be,</span>
+<span id="cb57-5"><a href="#cb57-5"></a>          <span class="at">dv.labels =</span> <span class="fu">paste</span>(<span class="st">"BE Model"</span>, <span class="at">sep =</span> <span class="st">""</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: normal; font-weight: bold; padding: 0.2cm;">&nbsp;</td>
+<td colspan="3" data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: normal; font-weight: bold; padding: 0.2cm;">BE Model</td>
+</tr>
+<tr class="even">
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">Predictors</td>
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">Estimates</td>
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">CI</td>
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">p</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">(Intercept)</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">6.72</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">6.51&nbsp;–&nbsp;6.93</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>&lt;0.001</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">female</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.06</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">-0.01&nbsp;–&nbsp;0.14</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.114</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">alter</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">-0.00</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">-0.01&nbsp;–&nbsp;-0.00</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>&lt;0.001</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">anz kind</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.05</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.02&nbsp;–&nbsp;0.09</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>0.005</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">bildung</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.06</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.04&nbsp;–&nbsp;0.07</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>&lt;0.001</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">einkommenj1</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.00</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.00&nbsp;–&nbsp;0.00</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>&lt;0.001</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm; border-top: 1px solid;">Observations</td>
+<td colspan="3" style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm; border-top: 1px solid;">5788</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm;">R<sup>2</sup> / R<sup>2</sup> adjusted</td>
+<td colspan="3" style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm;">0.035 / 0.034</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+</section>
+<section id="schätze-ein-fe-modell" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="schätze-ein-fe-modell"><span class="header-section-number">4.3</span> Schätze ein FE Modell</h2>
+<p>… und interepretiere die Koeffizienten.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a>m_fe <span class="ot">&lt;-</span> <span class="fu">plm</span>(lz <span class="sc">~</span> female <span class="sc">+</span> alter <span class="sc">+</span> anz_kind <span class="sc">+</span> bildung <span class="sc">+</span> einkommenj1 , <span class="at">data =</span> df,</span>
+<span id="cb58-2"><a href="#cb58-2"></a>           <span class="at">index =</span> <span class="fu">c</span>(<span class="st">"id"</span>, <span class="st">"syear"</span>),</span>
+<span id="cb58-3"><a href="#cb58-3"></a>           <span class="at">effect =</span> <span class="st">"individual"</span>, <span class="at">model =</span> <span class="st">"within"</span>)</span>
+<span id="cb58-4"><a href="#cb58-4"></a><span class="co"># Retrieve the number of groups</span></span>
+<span id="cb58-5"><a href="#cb58-5"></a>num_groups <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">unique</span>(<span class="fu">index</span>(m_fe)[, <span class="st">"id"</span>]))</span>
+<span id="cb58-6"><a href="#cb58-6"></a><span class="fu">tab_model</span>(m_fe,</span>
+<span id="cb58-7"><a href="#cb58-7"></a>          <span class="at">dv.labels =</span> <span class="fu">paste</span>(<span class="st">"FE Model ("</span>, num_groups, <span class="st">" Groups)"</span>, <span class="at">sep =</span> <span class="st">""</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: normal; font-weight: bold; padding: 0.2cm;">&nbsp;</td>
+<td colspan="3" data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: normal; font-weight: bold; padding: 0.2cm;">FE Model (5788 Groups)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">Predictors</td>
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">Estimates</td>
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">CI</td>
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">p</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">alter</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.01</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">-0.01&nbsp;–&nbsp;0.02</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.273</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">anz kind</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.02</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">-0.04&nbsp;–&nbsp;0.07</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.560</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">bildung</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.03</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">-0.03&nbsp;–&nbsp;0.09</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.312</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">einkommenj1</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.00</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">-0.00&nbsp;–&nbsp;0.00</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.574</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm; border-top: 1px solid;">Observations</td>
+<td colspan="3" style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm; border-top: 1px solid;">21642</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm;">R<sup>2</sup> / R<sup>2</sup> adjusted</td>
+<td colspan="3" style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm;">0.000 / -0.365</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+</section>
+<section id="schätze-ein-re-modell" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="schätze-ein-re-modell"><span class="header-section-number">4.4</span> Schätze ein RE Modell</h2>
+<p>… und interepretiere die Koeffizienten.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a>m_re <span class="ot">&lt;-</span> <span class="fu">plm</span>(lz <span class="sc">~</span> female <span class="sc">+</span> alter <span class="sc">+</span> anz_kind <span class="sc">+</span> bildung <span class="sc">+</span> einkommenj1, <span class="at">data =</span> df,</span>
+<span id="cb59-2"><a href="#cb59-2"></a>           <span class="at">index =</span> <span class="fu">c</span>(<span class="st">"id"</span>, <span class="st">"syear"</span>),</span>
+<span id="cb59-3"><a href="#cb59-3"></a>           <span class="at">effect =</span> <span class="st">"individual"</span>, <span class="at">model =</span> <span class="st">"random"</span>)</span>
+<span id="cb59-4"><a href="#cb59-4"></a><span class="co"># Retrieve the number of groups</span></span>
+<span id="cb59-5"><a href="#cb59-5"></a>num_groups <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">unique</span>(<span class="fu">index</span>(m_re)[, <span class="st">"id"</span>]))</span>
+<span id="cb59-6"><a href="#cb59-6"></a><span class="fu">tab_model</span>(m_re,</span>
+<span id="cb59-7"><a href="#cb59-7"></a>          <span class="at">dv.labels =</span> <span class="fu">paste</span>(<span class="st">"RE Model ("</span>, num_groups, <span class="st">" Groups)"</span>, <span class="at">sep =</span> <span class="st">""</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: normal; font-weight: bold; padding: 0.2cm;">&nbsp;</td>
+<td colspan="3" data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: normal; font-weight: bold; padding: 0.2cm;">RE Model (5788 Groups)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">Predictors</td>
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">Estimates</td>
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">CI</td>
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">p</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">(Intercept)</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">6.74</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">6.54&nbsp;–&nbsp;6.94</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>&lt;0.001</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">female</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.02</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">-0.05&nbsp;–&nbsp;0.10</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.540</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">alter</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">-0.00</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">-0.01&nbsp;–&nbsp;-0.00</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>&lt;0.001</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">anz kind</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.04</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.01&nbsp;–&nbsp;0.08</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>0.004</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">bildung</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.06</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.05&nbsp;–&nbsp;0.07</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>&lt;0.001</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">einkommenj1</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.00</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.00&nbsp;–&nbsp;0.00</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>&lt;0.001</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm; border-top: 1px solid;">Observations</td>
+<td colspan="3" style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm; border-top: 1px solid;">21642</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm;">R<sup>2</sup> / R<sup>2</sup> adjusted</td>
+<td colspan="3" style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm;">0.164 / 0.164</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+</section>
+<section id="vergleich" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="vergleich"><span class="header-section-number">4.5</span> Vergleich</h2>
+<p>Vergleiche die vier Modelle.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1"></a><span class="fu">tab_model</span>(m_pol, m_be, m_fe , m_re, <span class="at">show.ci =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb60-2"><a href="#cb60-2"></a>          <span class="at">dv.labels =</span> <span class="fu">c</span>(<span class="st">"POLS"</span>, <span class="st">"BE"</span>, <span class="st">"FE"</span>, <span class="st">"RE"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: normal; font-weight: bold; padding: 0.2cm;">&nbsp;</td>
+<td colspan="2" data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: normal; font-weight: bold; padding: 0.2cm;">POLS</td>
+<td colspan="2" data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: normal; font-weight: bold; padding: 0.2cm;">BE</td>
+<td colspan="2" data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: normal; font-weight: bold; padding: 0.2cm;">FE</td>
+<td colspan="2" data-quarto-table-cell-role="th" style="text-align: center; border-top: double; font-style: normal; font-weight: bold; padding: 0.2cm;">RE</td>
+</tr>
+<tr class="even">
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">Predictors</td>
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">Estimates</td>
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">p</td>
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">Estimates</td>
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">p</td>
+<td style="text-align: center; border-bottom: 1px solid; font-style: italic; font-weight: normal;">Estimates</td>
+<td style="text-align: center;">p</td>
+<td style="text-align: center;">Estimates</td>
+<td style="text-align: center;">p</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">(Intercept)</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">6.71</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>&lt;0.001</strong></td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">6.72</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>&lt;0.001</strong></td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">6.74</td>
+<td style="text-align: center;"><strong>&lt;0.001</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">female</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.00</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.871</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.06</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.114</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">0.02</td>
+<td style="text-align: center;">0.540</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">alter</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">-0.00</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>&lt;0.001</strong></td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">-0.00</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>&lt;0.001</strong></td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.01</td>
+<td style="text-align: center;">0.273</td>
+<td style="text-align: center;">-0.00</td>
+<td style="text-align: center;"><strong>&lt;0.001</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">anz kind</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.05</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>&lt;0.001</strong></td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.05</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>0.005</strong></td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.02</td>
+<td style="text-align: center;">0.560</td>
+<td style="text-align: center;">0.04</td>
+<td style="text-align: center;"><strong>0.004</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">bildung</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.06</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>&lt;0.001</strong></td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.06</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>&lt;0.001</strong></td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.03</td>
+<td style="text-align: center;">0.312</td>
+<td style="text-align: center;">0.06</td>
+<td style="text-align: center;"><strong>&lt;0.001</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">einkommenj1</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.00</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>&lt;0.001</strong></td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.00</td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;"><strong>&lt;0.001</strong></td>
+<td style="text-align: left; padding: 0.2cm; vertical-align: top;">0.00</td>
+<td style="text-align: center;">0.574</td>
+<td style="text-align: center;">0.00</td>
+<td style="text-align: center;"><strong>&lt;0.001</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm; border-top: 1px solid;">Observations</td>
+<td colspan="2" style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm; border-top: 1px solid;">21642</td>
+<td colspan="2" style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm; border-top: 1px solid;">5788</td>
+<td colspan="2" style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm; border-top: 1px solid;">21642</td>
+<td colspan="2" style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm; border-top: 1px solid;">21642</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm;">R<sup>2</sup> / R<sup>2</sup> adjusted</td>
+<td colspan="2" style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm;">0.022 / 0.022</td>
+<td colspan="2" style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm;">0.035 / 0.034</td>
+<td colspan="2" style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm;">0.000 / -0.365</td>
+<td colspan="2" style="text-align: left; padding: 0.2cm; vertical-align: top; padding-top: 0.1cm; padding-bottom: 0.1cm;">0.164 / 0.164</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+<ol type="a">
+<li><p>Warum wird im FE kein Koeffizient für <em>female</em> geschätzt?</p></li>
+<li><p>Warum ist die Anzahl an Beobachtungen im BE Modell kleiner als die Anzahl an Beobachtungen in den anderen Modellen?</p></li>
+</ol>
+</section>
+<section id="hausman-test" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="hausman-test"><span class="header-section-number">4.6</span> Hausman Test</h2>
+<p>Sollen wir das RE oder das FE Modell nutzen? Führe einen Hausman Test durch. Wie entscheidest Du Dich?</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1"></a><span class="fu">phtest</span>(m_fe, m_re)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Hausman Test
+
+data:  lz ~ female + alter + anz_kind + bildung + einkommenj1
+chisq = 19.898, df = 4, p-value = 0.000523
+alternative hypothesis: one model is inconsistent</code></pre>
+</div>
+</div>
+</section>
+<section id="kausalanalyse" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="kausalanalyse"><span class="header-section-number">4.7</span> Kausalanalyse</h2>
+<p>Wir sind am kausalen Effekt von Einkommen auf Lebenszufriedenheit interessiert. Auf welche Variablen sollten wir kontrollieren und auf welche nicht? Nenne Beispiele für mögliche confounder, collider und Variablen, die zu overcontrol führen. Begründe die Auswahl der Variablen jeweils in einem Satz. Es können durchaus Variablen genannt werden, die <strong>nicht</strong> im Datensatz enthalten sind.</p>
+</section>
+</section>
+<section id="render" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Render</h1>
+<p>Wandle dieses Dokument in ein PDF und ein HTML Dokument um.</p>
+</section>
+<section id="weiterführende-literatur" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Weiterführende Literatur</h1>
+<ul>
+<li><a href="https://r4ds.had.co.nz/">R for Data Science</a></li>
+<li>https://ruettenauer.github.io/Panel-Data-Analysis/</li>
+</ul>
+
+
+<!-- -->
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/dariatisch\.github\.io\/wup2024\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../slides/2_seminar.html" class="pagination-link" aria-label="2 - Seminar  (Paneldaten)">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">2 - Seminar (Paneldaten)</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb63" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb63-1"><a href="#cb63-1"></a><span class="co">---</span></span>
+<span id="cb63-2"><a href="#cb63-2"></a><span class="an">title:</span><span class="co"> "2. Übungsblatt (Paneldaten)"</span></span>
+<span id="cb63-3"><a href="#cb63-3"></a><span class="an">author:</span><span class="co"> "Daria Tisch"</span></span>
+<span id="cb63-4"><a href="#cb63-4"></a><span class="an">format:</span><span class="co"> </span></span>
+<span id="cb63-5"><a href="#cb63-5"></a><span class="co">  html:</span></span>
+<span id="cb63-6"><a href="#cb63-6"></a><span class="co">    code-fold: true</span></span>
+<span id="cb63-7"><a href="#cb63-7"></a><span class="co">    code-tools: true</span></span>
+<span id="cb63-8"><a href="#cb63-8"></a><span class="co">    code-link: true</span></span>
+<span id="cb63-9"><a href="#cb63-9"></a><span class="co">    df-print: paged</span></span>
+<span id="cb63-10"><a href="#cb63-10"></a><span class="co">    code-line-numbers: true</span></span>
+<span id="cb63-11"><a href="#cb63-11"></a><span class="co">  pdf: default</span></span>
+<span id="cb63-12"><a href="#cb63-12"></a><span class="an">editor:</span><span class="co"> visual</span></span>
+<span id="cb63-13"><a href="#cb63-13"></a><span class="an">number-sections:</span><span class="co"> true</span></span>
+<span id="cb63-14"><a href="#cb63-14"></a><span class="co">---</span></span>
+<span id="cb63-15"><a href="#cb63-15"></a></span>
+<span id="cb63-16"><a href="#cb63-16"></a><span class="fu"># Organisation</span></span>
+<span id="cb63-17"><a href="#cb63-17"></a></span>
+<span id="cb63-18"><a href="#cb63-18"></a><span class="fu">## Arbeitsverzeichnis festsetzen</span></span>
+<span id="cb63-19"><a href="#cb63-19"></a></span>
+<span id="cb63-22"><a href="#cb63-22"></a><span class="in">```{r}</span></span>
+<span id="cb63-23"><a href="#cb63-23"></a><span class="co"># set working directory</span></span>
+<span id="cb63-24"><a href="#cb63-24"></a><span class="fu">setwd</span>(<span class="st">"D:/Seafile/main/teaching/2024_wuppertal/studis/uebungen"</span>)</span>
+<span id="cb63-25"><a href="#cb63-25"></a><span class="in">```</span></span>
+<span id="cb63-26"><a href="#cb63-26"></a></span>
+<span id="cb63-27"><a href="#cb63-27"></a><span class="fu">## Packages installieren und laden</span></span>
+<span id="cb63-28"><a href="#cb63-28"></a></span>
+<span id="cb63-31"><a href="#cb63-31"></a><span class="in">```{r}</span></span>
+<span id="cb63-32"><a href="#cb63-32"></a><span class="co">#| echo: true</span></span>
+<span id="cb63-33"><a href="#cb63-33"></a><span class="co">#| results: "hide"</span></span>
+<span id="cb63-34"><a href="#cb63-34"></a><span class="co">#| warning: false</span></span>
+<span id="cb63-35"><a href="#cb63-35"></a><span class="co"># Packages</span></span>
+<span id="cb63-36"><a href="#cb63-36"></a>pkgs <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb63-37"><a href="#cb63-37"></a>  <span class="st">"tidyverse"</span>,</span>
+<span id="cb63-38"><a href="#cb63-38"></a>  <span class="st">"sjlabelled"</span>, <span class="co"># for variable labels</span></span>
+<span id="cb63-39"><a href="#cb63-39"></a>  <span class="st">"plm"</span>, <span class="co"># Panelregressionen</span></span>
+<span id="cb63-40"><a href="#cb63-40"></a>  <span class="st">"sjPlot"</span> <span class="co"># um Regressionstabellen schön darzustellen</span></span>
+<span id="cb63-41"><a href="#cb63-41"></a>) </span>
+<span id="cb63-42"><a href="#cb63-42"></a></span>
+<span id="cb63-43"><a href="#cb63-43"></a><span class="do">## Install uninstalled packages</span></span>
+<span id="cb63-44"><a href="#cb63-44"></a><span class="fu">lapply</span>(pkgs[<span class="sc">!</span>(pkgs <span class="sc">%in%</span> <span class="fu">installed.packages</span>())], install.packages)</span>
+<span id="cb63-45"><a href="#cb63-45"></a></span>
+<span id="cb63-46"><a href="#cb63-46"></a><span class="do">## Load all packages to library</span></span>
+<span id="cb63-47"><a href="#cb63-47"></a><span class="fu">lapply</span>(pkgs, library, <span class="at">character.only =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb63-48"><a href="#cb63-48"></a></span>
+<span id="cb63-49"><a href="#cb63-49"></a><span class="in">```</span></span>
+<span id="cb63-50"><a href="#cb63-50"></a></span>
+<span id="cb63-51"><a href="#cb63-51"></a><span class="fu">## Daten einlesen</span></span>
+<span id="cb63-52"><a href="#cb63-52"></a></span>
+<span id="cb63-53"><a href="#cb63-53"></a>Wir arbeiten wieder mit dem Übungsdatensatz des SOEP (DOI:10.5684/soep.practice.v36). Es werden zwei Datensätze eingelesen. Der erste Datensatz enthalt die tatsächlichen Umfragedaten, der zweite Datensatz enthält die Variablenlabels.</span>
+<span id="cb63-54"><a href="#cb63-54"></a></span>
+<span id="cb63-57"><a href="#cb63-57"></a><span class="in">```{r}</span></span>
+<span id="cb63-58"><a href="#cb63-58"></a><span class="co"># read data</span></span>
+<span id="cb63-59"><a href="#cb63-59"></a>df <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">"../daten/soep_uebung.csv"</span>)</span>
+<span id="cb63-60"><a href="#cb63-60"></a>df_labels <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">"../daten/soep_labels.csv"</span>)</span>
+<span id="cb63-61"><a href="#cb63-61"></a></span>
+<span id="cb63-62"><a href="#cb63-62"></a><span class="co"># Add variable labels</span></span>
+<span id="cb63-63"><a href="#cb63-63"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(df_labels)) {</span>
+<span id="cb63-64"><a href="#cb63-64"></a>  variable_name <span class="ot">&lt;-</span> df_labels<span class="sc">$</span>variable[i]</span>
+<span id="cb63-65"><a href="#cb63-65"></a>  variable_label <span class="ot">&lt;-</span> df_labels<span class="sc">$</span>variable_label[i]</span>
+<span id="cb63-66"><a href="#cb63-66"></a>  </span>
+<span id="cb63-67"><a href="#cb63-67"></a>  <span class="co"># Apply the label to the corresponding column in df</span></span>
+<span id="cb63-68"><a href="#cb63-68"></a>  df[[variable_name]] <span class="ot">&lt;-</span> <span class="fu">set_label</span>(df[[variable_name]], variable_label)</span>
+<span id="cb63-69"><a href="#cb63-69"></a>}</span>
+<span id="cb63-70"><a href="#cb63-70"></a><span class="co"># show variable labels</span></span>
+<span id="cb63-71"><a href="#cb63-71"></a><span class="fu">get_label</span>(df)</span>
+<span id="cb63-72"><a href="#cb63-72"></a><span class="in">```</span></span>
+<span id="cb63-73"><a href="#cb63-73"></a></span>
+<span id="cb63-74"><a href="#cb63-74"></a><span class="fu"># Datenaufbereitung</span></span>
+<span id="cb63-75"><a href="#cb63-75"></a></span>
+<span id="cb63-76"><a href="#cb63-76"></a>In dieser Übung möchten wir herausfinden, welche Faktoren mit Lebenszufriedenheit (lebensz_org) zusammenhängen. Denkbar wären zum Beispiel: Geschlecht (sex), Alter(alter), Anzahl an Kindern im Haushalt (anz_kind), Bildung (bildung) und Einkommen (einkommenj1).</span>
+<span id="cb63-77"><a href="#cb63-77"></a></span>
+<span id="cb63-78"><a href="#cb63-78"></a>Um die Analysen durchzuführen, müssen wir die Variablen erst einmal aufbereiten. Überprüfe bei jeder Variable,</span>
+<span id="cb63-79"><a href="#cb63-79"></a></span>
+<span id="cb63-80"><a href="#cb63-80"></a><span class="ss">-   </span>ob fehlende Werte als solche markiert sind</span>
+<span id="cb63-81"><a href="#cb63-81"></a><span class="ss">-   </span>um welchen Typ es sich bei den Variablen hanelt und ob etwa eine Umwandlung erforderlich ist.</span>
+<span id="cb63-82"><a href="#cb63-82"></a></span>
+<span id="cb63-83"><a href="#cb63-83"></a><span class="fu">## Lebenszufriedenheit</span></span>
+<span id="cb63-84"><a href="#cb63-84"></a></span>
+<span id="cb63-87"><a href="#cb63-87"></a><span class="in">```{r}</span></span>
+<span id="cb63-88"><a href="#cb63-88"></a><span class="fu">table</span>(df<span class="sc">$</span>lebensz_org, <span class="at">useNA =</span> <span class="st">"always"</span>)</span>
+<span id="cb63-89"><a href="#cb63-89"></a></span>
+<span id="cb63-90"><a href="#cb63-90"></a>df <span class="ot">=</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb63-91"><a href="#cb63-91"></a>  <span class="fu">mutate</span>(<span class="at">lz =</span> <span class="fu">as.numeric</span>(<span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">[([0-9]+)</span><span class="sc">\\</span><span class="st">].*"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">1"</span>, df<span class="sc">$</span>lebensz_org)))</span>
+<span id="cb63-92"><a href="#cb63-92"></a></span>
+<span id="cb63-93"><a href="#cb63-93"></a><span class="fu">table</span>(df<span class="sc">$</span>lz, <span class="at">useNA =</span> <span class="st">"always"</span>)</span>
+<span id="cb63-94"><a href="#cb63-94"></a><span class="in">```</span></span>
+<span id="cb63-95"><a href="#cb63-95"></a></span>
+<span id="cb63-96"><a href="#cb63-96"></a><span class="fu">## Geschlecht</span></span>
+<span id="cb63-97"><a href="#cb63-97"></a></span>
+<span id="cb63-100"><a href="#cb63-100"></a><span class="in">```{r}</span></span>
+<span id="cb63-101"><a href="#cb63-101"></a><span class="fu">table</span>(df<span class="sc">$</span>sex, <span class="at">useNA =</span> <span class="st">"always"</span>)</span>
+<span id="cb63-102"><a href="#cb63-102"></a></span>
+<span id="cb63-103"><a href="#cb63-103"></a>df <span class="ot">=</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb63-104"><a href="#cb63-104"></a>  <span class="fu">mutate</span>(<span class="at">female =</span> <span class="fu">as.numeric</span>(<span class="fu">sub</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">[([0-9]+)</span><span class="sc">\\</span><span class="st">].*"</span>, <span class="st">"</span><span class="sc">\\</span><span class="st">1"</span>, df<span class="sc">$</span>sex)))</span>
+<span id="cb63-105"><a href="#cb63-105"></a></span>
+<span id="cb63-106"><a href="#cb63-106"></a><span class="fu">table</span>(df<span class="sc">$</span>female, <span class="at">useNA =</span> <span class="st">"always"</span>)</span>
+<span id="cb63-107"><a href="#cb63-107"></a><span class="in">```</span></span>
+<span id="cb63-108"><a href="#cb63-108"></a></span>
+<span id="cb63-109"><a href="#cb63-109"></a><span class="fu">## Alter</span></span>
+<span id="cb63-110"><a href="#cb63-110"></a></span>
+<span id="cb63-113"><a href="#cb63-113"></a><span class="in">```{r}</span></span>
+<span id="cb63-114"><a href="#cb63-114"></a><span class="fu">table</span>(df<span class="sc">$</span>alter, <span class="at">useNA =</span> <span class="st">"always"</span>)</span>
+<span id="cb63-115"><a href="#cb63-115"></a><span class="fu">class</span>(df<span class="sc">$</span>alter)</span>
+<span id="cb63-116"><a href="#cb63-116"></a><span class="in">```</span></span>
+<span id="cb63-117"><a href="#cb63-117"></a></span>
+<span id="cb63-118"><a href="#cb63-118"></a><span class="fu">## Anzahl an Kindern im Haushalt</span></span>
+<span id="cb63-119"><a href="#cb63-119"></a></span>
+<span id="cb63-122"><a href="#cb63-122"></a><span class="in">```{r}</span></span>
+<span id="cb63-123"><a href="#cb63-123"></a><span class="fu">table</span>(df<span class="sc">$</span>anz_kind, <span class="at">useNA =</span> <span class="st">"always"</span>)</span>
+<span id="cb63-124"><a href="#cb63-124"></a><span class="fu">class</span>(df<span class="sc">$</span>anz_kind)</span>
+<span id="cb63-125"><a href="#cb63-125"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(df<span class="sc">$</span>anz_kind))</span>
+<span id="cb63-126"><a href="#cb63-126"></a><span class="in">```</span></span>
+<span id="cb63-127"><a href="#cb63-127"></a></span>
+<span id="cb63-128"><a href="#cb63-128"></a><span class="fu">## Bildung</span></span>
+<span id="cb63-129"><a href="#cb63-129"></a></span>
+<span id="cb63-132"><a href="#cb63-132"></a><span class="in">```{r}</span></span>
+<span id="cb63-133"><a href="#cb63-133"></a><span class="fu">table</span>(df<span class="sc">$</span>bildung, <span class="at">useNA =</span> <span class="st">"always"</span>)</span>
+<span id="cb63-134"><a href="#cb63-134"></a><span class="fu">class</span>(df<span class="sc">$</span>bildung)</span>
+<span id="cb63-135"><a href="#cb63-135"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(df<span class="sc">$</span>bildung))</span>
+<span id="cb63-136"><a href="#cb63-136"></a><span class="in">```</span></span>
+<span id="cb63-137"><a href="#cb63-137"></a></span>
+<span id="cb63-138"><a href="#cb63-138"></a><span class="fu">## Einkommen</span></span>
+<span id="cb63-139"><a href="#cb63-139"></a></span>
+<span id="cb63-142"><a href="#cb63-142"></a><span class="in">```{r}</span></span>
+<span id="cb63-143"><a href="#cb63-143"></a><span class="fu">summary</span>(df<span class="sc">$</span>einkommenj1)</span>
+<span id="cb63-144"><a href="#cb63-144"></a><span class="fu">class</span>(df<span class="sc">$</span>einkommenj1)</span>
+<span id="cb63-145"><a href="#cb63-145"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(df<span class="sc">$</span>einkommenj1))</span>
+<span id="cb63-146"><a href="#cb63-146"></a><span class="in">```</span></span>
+<span id="cb63-147"><a href="#cb63-147"></a></span>
+<span id="cb63-148"><a href="#cb63-148"></a><span class="fu">## Analysesample bilden</span></span>
+<span id="cb63-149"><a href="#cb63-149"></a></span>
+<span id="cb63-150"><a href="#cb63-150"></a>(a) Selektiere nur die Variablen, die wir brauchen</span>
+<span id="cb63-151"><a href="#cb63-151"></a></span>
+<span id="cb63-154"><a href="#cb63-154"></a><span class="in">```{r}</span></span>
+<span id="cb63-155"><a href="#cb63-155"></a>df <span class="ot">=</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb63-156"><a href="#cb63-156"></a>  <span class="fu">select</span>(id,syear, lz,female, alter, anz_kind, bildung, einkommenj1)</span>
+<span id="cb63-157"><a href="#cb63-157"></a><span class="in">```</span></span>
+<span id="cb63-158"><a href="#cb63-158"></a></span>
+<span id="cb63-159"><a href="#cb63-159"></a>(b) Nun bilden wir das Analysesample. Wir wenden "listwise deletion".</span>
+<span id="cb63-160"><a href="#cb63-160"></a></span>
+<span id="cb63-163"><a href="#cb63-163"></a><span class="in">```{r}</span></span>
+<span id="cb63-164"><a href="#cb63-164"></a>df <span class="ot">&lt;-</span> df[<span class="fu">complete.cases</span>(df[, <span class="fu">c</span>(<span class="st">"lz"</span>,<span class="st">"female"</span>, <span class="st">"alter"</span>, <span class="st">"anz_kind"</span>, <span class="st">"bildung"</span>, <span class="st">"einkommenj1"</span>)]), ]</span>
+<span id="cb63-165"><a href="#cb63-165"></a><span class="in">```</span></span>
+<span id="cb63-166"><a href="#cb63-166"></a></span>
+<span id="cb63-167"><a href="#cb63-167"></a>(c) Wie viele Beobachtungen gehen uns verloren?</span>
+<span id="cb63-168"><a href="#cb63-168"></a></span>
+<span id="cb63-171"><a href="#cb63-171"></a><span class="in">```{r}</span></span>
+<span id="cb63-172"><a href="#cb63-172"></a><span class="co"># Initialize a data frame to store the results</span></span>
+<span id="cb63-173"><a href="#cb63-173"></a>results <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb63-174"><a href="#cb63-174"></a>  <span class="at">Variable =</span> <span class="fu">character</span>(),</span>
+<span id="cb63-175"><a href="#cb63-175"></a>  <span class="at">Cases_Remaining =</span> <span class="fu">integer</span>(),</span>
+<span id="cb63-176"><a href="#cb63-176"></a>  <span class="at">Cases_Lost =</span> <span class="fu">integer</span>(),</span>
+<span id="cb63-177"><a href="#cb63-177"></a>  <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span></span>
+<span id="cb63-178"><a href="#cb63-178"></a>)</span>
+<span id="cb63-179"><a href="#cb63-179"></a></span>
+<span id="cb63-180"><a href="#cb63-180"></a><span class="co"># Total number of rows initially</span></span>
+<span id="cb63-181"><a href="#cb63-181"></a>initial_rows <span class="ot">&lt;-</span> <span class="fu">nrow</span>(df)</span>
+<span id="cb63-182"><a href="#cb63-182"></a></span>
+<span id="cb63-183"><a href="#cb63-183"></a><span class="co"># Iterate over each variable</span></span>
+<span id="cb63-184"><a href="#cb63-184"></a><span class="cf">for</span> (var <span class="cf">in</span> <span class="fu">names</span>(df)) {</span>
+<span id="cb63-185"><a href="#cb63-185"></a>  <span class="co"># Perform listwise deletion based on the current variable</span></span>
+<span id="cb63-186"><a href="#cb63-186"></a>  remaining_rows <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">complete.cases</span>(df[, var, <span class="at">drop =</span> <span class="cn">FALSE</span>]))</span>
+<span id="cb63-187"><a href="#cb63-187"></a>  </span>
+<span id="cb63-188"><a href="#cb63-188"></a>  <span class="co"># Calculate cases lost</span></span>
+<span id="cb63-189"><a href="#cb63-189"></a>  cases_lost <span class="ot">&lt;-</span> initial_rows <span class="sc">-</span> remaining_rows</span>
+<span id="cb63-190"><a href="#cb63-190"></a>  </span>
+<span id="cb63-191"><a href="#cb63-191"></a>  <span class="co"># Append to the results data frame</span></span>
+<span id="cb63-192"><a href="#cb63-192"></a>  results <span class="ot">&lt;-</span> <span class="fu">rbind</span>(</span>
+<span id="cb63-193"><a href="#cb63-193"></a>    results,</span>
+<span id="cb63-194"><a href="#cb63-194"></a>    <span class="fu">data.frame</span>(</span>
+<span id="cb63-195"><a href="#cb63-195"></a>      <span class="at">Variable =</span> var,</span>
+<span id="cb63-196"><a href="#cb63-196"></a>      <span class="at">Cases_Remaining =</span> remaining_rows,</span>
+<span id="cb63-197"><a href="#cb63-197"></a>      <span class="at">Cases_Lost =</span> cases_lost</span>
+<span id="cb63-198"><a href="#cb63-198"></a>    )</span>
+<span id="cb63-199"><a href="#cb63-199"></a>  )</span>
+<span id="cb63-200"><a href="#cb63-200"></a>}</span>
+<span id="cb63-201"><a href="#cb63-201"></a></span>
+<span id="cb63-202"><a href="#cb63-202"></a>results</span>
+<span id="cb63-203"><a href="#cb63-203"></a><span class="in">```</span></span>
+<span id="cb63-204"><a href="#cb63-204"></a></span>
+<span id="cb63-205"><a href="#cb63-205"></a><span class="fu"># Datenexploration</span></span>
+<span id="cb63-206"><a href="#cb63-206"></a></span>
+<span id="cb63-207"><a href="#cb63-207"></a><span class="fu">## Wieviele Personenjahre sind im Datensatz?</span></span>
+<span id="cb63-208"><a href="#cb63-208"></a></span>
+<span id="cb63-211"><a href="#cb63-211"></a><span class="in">```{r}</span></span>
+<span id="cb63-212"><a href="#cb63-212"></a><span class="fu">nrow</span>(df)</span>
+<span id="cb63-213"><a href="#cb63-213"></a><span class="in">```</span></span>
+<span id="cb63-214"><a href="#cb63-214"></a></span>
+<span id="cb63-215"><a href="#cb63-215"></a><span class="fu">## Wie viele Personen sind im Datensatz?</span></span>
+<span id="cb63-216"><a href="#cb63-216"></a></span>
+<span id="cb63-219"><a href="#cb63-219"></a><span class="in">```{r}</span></span>
+<span id="cb63-220"><a href="#cb63-220"></a><span class="fu">length</span>(<span class="fu">unique</span>(df<span class="sc">$</span>id))</span>
+<span id="cb63-221"><a href="#cb63-221"></a></span>
+<span id="cb63-222"><a href="#cb63-222"></a><span class="in">```</span></span>
+<span id="cb63-223"><a href="#cb63-223"></a></span>
+<span id="cb63-224"><a href="#cb63-224"></a><span class="fu">## Wieviele Personen nehmen pro Jahr teil?</span></span>
+<span id="cb63-225"><a href="#cb63-225"></a></span>
+<span id="cb63-228"><a href="#cb63-228"></a><span class="in">```{r}</span></span>
+<span id="cb63-229"><a href="#cb63-229"></a><span class="fu">table</span>(df<span class="sc">$</span>syear) </span>
+<span id="cb63-230"><a href="#cb63-230"></a><span class="in">```</span></span>
+<span id="cb63-231"><a href="#cb63-231"></a></span>
+<span id="cb63-232"><a href="#cb63-232"></a>Wir haben also ein sogenanntes "unbalanced panel".</span>
+<span id="cb63-233"><a href="#cb63-233"></a></span>
+<span id="cb63-234"><a href="#cb63-234"></a><span class="fu">## Was ist das Durchschnittsalter im Jahr 2015</span></span>
+<span id="cb63-235"><a href="#cb63-235"></a></span>
+<span id="cb63-238"><a href="#cb63-238"></a><span class="in">```{r}</span></span>
+<span id="cb63-239"><a href="#cb63-239"></a><span class="co"># Berechnung des Durchschnittsalters für das Jahr 2015</span></span>
+<span id="cb63-240"><a href="#cb63-240"></a><span class="fu">mean</span>(df<span class="sc">$</span>alter[df<span class="sc">$</span>syear <span class="sc">==</span> <span class="dv">2015</span>], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb63-241"><a href="#cb63-241"></a></span>
+<span id="cb63-242"><a href="#cb63-242"></a><span class="co"># Alternative mit dplyr</span></span>
+<span id="cb63-243"><a href="#cb63-243"></a>durchschnittsalter <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb63-244"><a href="#cb63-244"></a>  <span class="fu">filter</span>(syear <span class="sc">==</span> <span class="dv">2015</span>) <span class="sc">%&gt;%</span>       <span class="co"># Filtert die Daten für das Jahr 2015</span></span>
+<span id="cb63-245"><a href="#cb63-245"></a>  <span class="fu">summarise</span>(<span class="at">mean_alter =</span> <span class="fu">mean</span>(alter, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span>  <span class="co"># Berechnet den Durchschnitt</span></span>
+<span id="cb63-246"><a href="#cb63-246"></a>  <span class="fu">pull</span>(mean_alter)               <span class="co"># Extrahiert den berechneten Wert</span></span>
+<span id="cb63-247"><a href="#cb63-247"></a></span>
+<span id="cb63-248"><a href="#cb63-248"></a><span class="fu">cat</span>(<span class="st">"Das Durchschnittsalter im Jahr 2015 beträgt:"</span>, <span class="fu">round</span>(durchschnittsalter,<span class="dv">2</span>), <span class="st">"Jahre."</span>)</span>
+<span id="cb63-249"><a href="#cb63-249"></a><span class="in">```</span></span>
+<span id="cb63-250"><a href="#cb63-250"></a></span>
+<span id="cb63-251"><a href="#cb63-251"></a><span class="fu">## Welche Variablen sind zeitkonstant und welche zeitveränderlich?</span></span>
+<span id="cb63-252"><a href="#cb63-252"></a></span>
+<span id="cb63-255"><a href="#cb63-255"></a><span class="in">```{r}</span></span>
+<span id="cb63-256"><a href="#cb63-256"></a><span class="co"># Analyse: Zeitkonstante und zeitveränderliche Variablen</span></span>
+<span id="cb63-257"><a href="#cb63-257"></a></span>
+<span id="cb63-258"><a href="#cb63-258"></a>variablen_analyse <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb63-259"><a href="#cb63-259"></a>  <span class="fu">mutate</span>(<span class="at">id2 =</span> id) <span class="sc">%&gt;%</span></span>
+<span id="cb63-260"><a href="#cb63-260"></a>  <span class="fu">group_by</span>(id) <span class="sc">%&gt;%</span>                        <span class="co"># Gruppiert die Daten nach ID</span></span>
+<span id="cb63-261"><a href="#cb63-261"></a>  <span class="fu">summarise_all</span>(<span class="sc">~</span> <span class="fu">n_distinct</span>(.)) <span class="sc">%&gt;%</span>      <span class="co"># Zählt die Anzahl der einzigartigen Werte je ID</span></span>
+<span id="cb63-262"><a href="#cb63-262"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), max))    <span class="co"># Nimmt das Maximum der einzigartigen Werte je Variable</span></span>
+<span id="cb63-263"><a href="#cb63-263"></a></span>
+<span id="cb63-264"><a href="#cb63-264"></a></span>
+<span id="cb63-265"><a href="#cb63-265"></a><span class="co"># Ergebnis interpretieren</span></span>
+<span id="cb63-266"><a href="#cb63-266"></a>zeitkonstant <span class="ot">&lt;-</span> <span class="fu">names</span>(variablen_analyse)[variablen_analyse <span class="sc">==</span> <span class="dv">1</span>]  <span class="co"># Variablen mit nur einem Wert je ID</span></span>
+<span id="cb63-267"><a href="#cb63-267"></a>zeitveraenderlich <span class="ot">&lt;-</span> <span class="fu">names</span>(variablen_analyse)[variablen_analyse <span class="sc">&gt;</span> <span class="dv">1</span>]  <span class="co"># Variablen mit mehreren Werten je ID</span></span>
+<span id="cb63-268"><a href="#cb63-268"></a></span>
+<span id="cb63-269"><a href="#cb63-269"></a><span class="co"># Ausgabe</span></span>
+<span id="cb63-270"><a href="#cb63-270"></a><span class="fu">cat</span>(<span class="st">"Zeitkonstante Variablen:</span><span class="sc">\n</span><span class="st">"</span>,zeitkonstant )</span>
+<span id="cb63-271"><a href="#cb63-271"></a></span>
+<span id="cb63-272"><a href="#cb63-272"></a></span>
+<span id="cb63-273"><a href="#cb63-273"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Zeitveränderliche Variablen:</span><span class="sc">\n</span><span class="st">"</span>, zeitveraenderlich)</span>
+<span id="cb63-274"><a href="#cb63-274"></a></span>
+<span id="cb63-275"><a href="#cb63-275"></a><span class="in">```</span></span>
+<span id="cb63-276"><a href="#cb63-276"></a></span>
+<span id="cb63-277"><a href="#cb63-277"></a><span class="fu">## Wie viele Personen nahmen an allen fünf Wellen teil? Und wie viele Jahre nahmen Personen durchschnittlich teil?</span></span>
+<span id="cb63-280"><a href="#cb63-280"></a><span class="in">```{r}</span></span>
+<span id="cb63-281"><a href="#cb63-281"></a><span class="co"># Anteil der Personen, die an allen fünf Wellen teilgenommen haben</span></span>
+<span id="cb63-282"><a href="#cb63-282"></a>data_summary <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb63-283"><a href="#cb63-283"></a>  <span class="fu">group_by</span>(id) <span class="sc">%&gt;%</span></span>
+<span id="cb63-284"><a href="#cb63-284"></a>  <span class="fu">summarize</span>(<span class="at">years_observed =</span> <span class="fu">n_distinct</span>(syear))</span>
+<span id="cb63-285"><a href="#cb63-285"></a><span class="fu">table</span>(data_summary<span class="sc">$</span>years_observed)  <span class="co"># Verteilung der Beobachtungsjahre</span></span>
+<span id="cb63-286"><a href="#cb63-286"></a></span>
+<span id="cb63-287"><a href="#cb63-287"></a><span class="co"># Durchschnittliche Beobachtungsjahre pro Person</span></span>
+<span id="cb63-288"><a href="#cb63-288"></a><span class="fu">mean</span>(data_summary<span class="sc">$</span>years_observed)</span>
+<span id="cb63-289"><a href="#cb63-289"></a><span class="in">```</span></span>
+<span id="cb63-290"><a href="#cb63-290"></a></span>
+<span id="cb63-291"><a href="#cb63-291"></a></span>
+<span id="cb63-292"><a href="#cb63-292"></a><span class="fu"># Regressionen</span></span>
+<span id="cb63-293"><a href="#cb63-293"></a></span>
+<span id="cb63-294"><a href="#cb63-294"></a><span class="fu">## Schätze ein POLS Modell</span></span>
+<span id="cb63-295"><a href="#cb63-295"></a></span>
+<span id="cb63-296"><a href="#cb63-296"></a>... und interepretiere die Koeffizienten.</span>
+<span id="cb63-299"><a href="#cb63-299"></a><span class="in">```{r}</span></span>
+<span id="cb63-300"><a href="#cb63-300"></a>m_pol <span class="ot">&lt;-</span> <span class="fu">plm</span>(lz <span class="sc">~</span> female <span class="sc">+</span> alter <span class="sc">+</span> anz_kind <span class="sc">+</span> bildung <span class="sc">+</span> einkommenj1, <span class="at">data =</span> df,</span>
+<span id="cb63-301"><a href="#cb63-301"></a>           <span class="at">index =</span> <span class="fu">c</span>(<span class="st">"id"</span>, <span class="st">"syear"</span>),</span>
+<span id="cb63-302"><a href="#cb63-302"></a>           <span class="at">effect =</span> <span class="st">"individual"</span>, <span class="at">model =</span> <span class="st">"pooling"</span>)</span>
+<span id="cb63-303"><a href="#cb63-303"></a><span class="fu">tab_model</span>(m_pol,</span>
+<span id="cb63-304"><a href="#cb63-304"></a>          <span class="at">dv.labels =</span> <span class="fu">paste</span>(<span class="st">"POLS Model"</span>, <span class="at">sep =</span> <span class="st">""</span>))</span>
+<span id="cb63-305"><a href="#cb63-305"></a><span class="in">```</span></span>
+<span id="cb63-306"><a href="#cb63-306"></a></span>
+<span id="cb63-307"><a href="#cb63-307"></a><span class="fu">## Schätze ein BE Modell</span></span>
+<span id="cb63-308"><a href="#cb63-308"></a></span>
+<span id="cb63-309"><a href="#cb63-309"></a>... und interepretiere die Koeffizienten.</span>
+<span id="cb63-312"><a href="#cb63-312"></a><span class="in">```{r}</span></span>
+<span id="cb63-313"><a href="#cb63-313"></a>m_be <span class="ot">&lt;-</span> <span class="fu">plm</span>(lz <span class="sc">~</span> female <span class="sc">+</span> alter <span class="sc">+</span> anz_kind <span class="sc">+</span> bildung <span class="sc">+</span> einkommenj1, <span class="at">data =</span> df,</span>
+<span id="cb63-314"><a href="#cb63-314"></a>           <span class="at">index =</span> <span class="fu">c</span>(<span class="st">"id"</span>, <span class="st">"syear"</span>),</span>
+<span id="cb63-315"><a href="#cb63-315"></a>           <span class="at">effect =</span> <span class="st">"individual"</span>, <span class="at">model =</span> <span class="st">"between"</span>)</span>
+<span id="cb63-316"><a href="#cb63-316"></a><span class="fu">tab_model</span>(m_be,</span>
+<span id="cb63-317"><a href="#cb63-317"></a>          <span class="at">dv.labels =</span> <span class="fu">paste</span>(<span class="st">"BE Model"</span>, <span class="at">sep =</span> <span class="st">""</span>))</span>
+<span id="cb63-318"><a href="#cb63-318"></a><span class="in">```</span></span>
+<span id="cb63-319"><a href="#cb63-319"></a><span class="fu">## Schätze ein FE Modell</span></span>
+<span id="cb63-320"><a href="#cb63-320"></a></span>
+<span id="cb63-321"><a href="#cb63-321"></a>... und interepretiere die Koeffizienten.</span>
+<span id="cb63-324"><a href="#cb63-324"></a><span class="in">```{r}</span></span>
+<span id="cb63-325"><a href="#cb63-325"></a>m_fe <span class="ot">&lt;-</span> <span class="fu">plm</span>(lz <span class="sc">~</span> female <span class="sc">+</span> alter <span class="sc">+</span> anz_kind <span class="sc">+</span> bildung <span class="sc">+</span> einkommenj1 , <span class="at">data =</span> df,</span>
+<span id="cb63-326"><a href="#cb63-326"></a>           <span class="at">index =</span> <span class="fu">c</span>(<span class="st">"id"</span>, <span class="st">"syear"</span>),</span>
+<span id="cb63-327"><a href="#cb63-327"></a>           <span class="at">effect =</span> <span class="st">"individual"</span>, <span class="at">model =</span> <span class="st">"within"</span>)</span>
+<span id="cb63-328"><a href="#cb63-328"></a><span class="co"># Retrieve the number of groups</span></span>
+<span id="cb63-329"><a href="#cb63-329"></a>num_groups <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">unique</span>(<span class="fu">index</span>(m_fe)[, <span class="st">"id"</span>]))</span>
+<span id="cb63-330"><a href="#cb63-330"></a><span class="fu">tab_model</span>(m_fe,</span>
+<span id="cb63-331"><a href="#cb63-331"></a>          <span class="at">dv.labels =</span> <span class="fu">paste</span>(<span class="st">"FE Model ("</span>, num_groups, <span class="st">" Groups)"</span>, <span class="at">sep =</span> <span class="st">""</span>))</span>
+<span id="cb63-332"><a href="#cb63-332"></a><span class="in">```</span></span>
+<span id="cb63-333"><a href="#cb63-333"></a><span class="fu">## Schätze ein RE Modell</span></span>
+<span id="cb63-334"><a href="#cb63-334"></a></span>
+<span id="cb63-335"><a href="#cb63-335"></a>... und interepretiere die Koeffizienten.</span>
+<span id="cb63-338"><a href="#cb63-338"></a><span class="in">```{r}</span></span>
+<span id="cb63-339"><a href="#cb63-339"></a>m_re <span class="ot">&lt;-</span> <span class="fu">plm</span>(lz <span class="sc">~</span> female <span class="sc">+</span> alter <span class="sc">+</span> anz_kind <span class="sc">+</span> bildung <span class="sc">+</span> einkommenj1, <span class="at">data =</span> df,</span>
+<span id="cb63-340"><a href="#cb63-340"></a>           <span class="at">index =</span> <span class="fu">c</span>(<span class="st">"id"</span>, <span class="st">"syear"</span>),</span>
+<span id="cb63-341"><a href="#cb63-341"></a>           <span class="at">effect =</span> <span class="st">"individual"</span>, <span class="at">model =</span> <span class="st">"random"</span>)</span>
+<span id="cb63-342"><a href="#cb63-342"></a><span class="co"># Retrieve the number of groups</span></span>
+<span id="cb63-343"><a href="#cb63-343"></a>num_groups <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">unique</span>(<span class="fu">index</span>(m_re)[, <span class="st">"id"</span>]))</span>
+<span id="cb63-344"><a href="#cb63-344"></a><span class="fu">tab_model</span>(m_re,</span>
+<span id="cb63-345"><a href="#cb63-345"></a>          <span class="at">dv.labels =</span> <span class="fu">paste</span>(<span class="st">"RE Model ("</span>, num_groups, <span class="st">" Groups)"</span>, <span class="at">sep =</span> <span class="st">""</span>))</span>
+<span id="cb63-346"><a href="#cb63-346"></a><span class="in">```</span></span>
+<span id="cb63-347"><a href="#cb63-347"></a></span>
+<span id="cb63-348"><a href="#cb63-348"></a><span class="fu">## Vergleich</span></span>
+<span id="cb63-349"><a href="#cb63-349"></a>Vergleiche die vier Modelle. </span>
+<span id="cb63-350"><a href="#cb63-350"></a></span>
+<span id="cb63-353"><a href="#cb63-353"></a><span class="in">```{r}</span></span>
+<span id="cb63-354"><a href="#cb63-354"></a><span class="fu">tab_model</span>(m_pol, m_be, m_fe , m_re, <span class="at">show.ci =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb63-355"><a href="#cb63-355"></a>          <span class="at">dv.labels =</span> <span class="fu">c</span>(<span class="st">"POLS"</span>, <span class="st">"BE"</span>, <span class="st">"FE"</span>, <span class="st">"RE"</span>))</span>
+<span id="cb63-356"><a href="#cb63-356"></a><span class="in">```</span></span>
+<span id="cb63-357"><a href="#cb63-357"></a></span>
+<span id="cb63-358"><a href="#cb63-358"></a></span>
+<span id="cb63-359"><a href="#cb63-359"></a>a) Warum wird im FE kein Koeffizient für *female* geschätzt?</span>
+<span id="cb63-360"><a href="#cb63-360"></a></span>
+<span id="cb63-361"><a href="#cb63-361"></a>b) Warum ist die Anzahl an Beobachtungen im BE Modell kleiner als die Anzahl an Beobachtungen in den anderen Modellen?</span>
+<span id="cb63-362"><a href="#cb63-362"></a></span>
+<span id="cb63-363"><a href="#cb63-363"></a></span>
+<span id="cb63-364"><a href="#cb63-364"></a><span class="fu">## Hausman Test</span></span>
+<span id="cb63-365"><a href="#cb63-365"></a></span>
+<span id="cb63-366"><a href="#cb63-366"></a>Sollen wir das RE oder das FE Modell nutzen? Führe einen Hausman Test durch. Wie entscheidest Du Dich?</span>
+<span id="cb63-369"><a href="#cb63-369"></a><span class="in">```{r}</span></span>
+<span id="cb63-370"><a href="#cb63-370"></a><span class="fu">phtest</span>(m_fe, m_re)</span>
+<span id="cb63-371"><a href="#cb63-371"></a><span class="in">```</span></span>
+<span id="cb63-372"><a href="#cb63-372"></a></span>
+<span id="cb63-373"><a href="#cb63-373"></a></span>
+<span id="cb63-374"><a href="#cb63-374"></a><span class="fu">## Kausalanalyse</span></span>
+<span id="cb63-375"><a href="#cb63-375"></a></span>
+<span id="cb63-376"><a href="#cb63-376"></a>Wir sind am kausalen Effekt von Einkommen auf Lebenszufriedenheit interessiert. Auf welche Variablen sollten wir kontrollieren und auf welche nicht? </span>
+<span id="cb63-377"><a href="#cb63-377"></a>Nenne Beispiele für mögliche confounder, collider und Variablen, die zu overcontrol führen. Begründe die Auswahl der Variablen jeweils in einem Satz.</span>
+<span id="cb63-378"><a href="#cb63-378"></a>Es können durchaus Variablen genannt werden, die **nicht** im Datensatz enthalten sind.</span>
+<span id="cb63-379"><a href="#cb63-379"></a></span>
+<span id="cb63-380"><a href="#cb63-380"></a><span class="fu"># Render</span></span>
+<span id="cb63-381"><a href="#cb63-381"></a></span>
+<span id="cb63-382"><a href="#cb63-382"></a>Wandle dieses Dokument in ein PDF und ein HTML Dokument um.</span>
+<span id="cb63-383"><a href="#cb63-383"></a></span>
+<span id="cb63-384"><a href="#cb63-384"></a><span class="fu"># Weiterführende Literatur</span></span>
+<span id="cb63-385"><a href="#cb63-385"></a></span>
+<span id="cb63-386"><a href="#cb63-386"></a><span class="ss">-   </span><span class="co">[</span><span class="ot">R for Data Science</span><span class="co">](https://r4ds.had.co.nz/)</span></span>
+<span id="cb63-387"><a href="#cb63-387"></a><span class="ss">-   </span>https://ruettenauer.github.io/Panel-Data-Analysis/</span>
+</code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© Copyright 2024, Daria Tisch</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>This page is built with 💙 and <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
