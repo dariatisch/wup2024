@@ -309,9 +309,19 @@ tab_model(m_pol, m_be, m_fe , m_re, show.ci = FALSE,
           dv.labels = c("POLS", "BE", "FE", "RE"))
 ```
 
+
 a) Warum wird im FE kein Koeffizient für *female* geschätzt?
 
 b) Warum ist die Anzahl an Beobachtungen im BE Modell kleiner als die Anzahl an Beobachtungen in den anderen Modellen?
+
+
+## Hausman Test
+
+Sollen wir das RE oder das FE Modell nutzen? Führe einen Hausman Test durch. Wie entscheidest Du Dich?
+```{r}
+phtest(m_fe, m_re)
+```
+
 
 ## Kausalanalyse
 
