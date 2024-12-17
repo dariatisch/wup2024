@@ -10,7 +10,7 @@ website:
   title: "Fortgeschrittene quantitative Methoden"
 
   page-footer:
-    right: "This page is built with ❤️ and [Quarto](https://quarto.org/)."
+    right: "This page is built with 💙 and [Quarto](https://quarto.org/)."
     left: "&copy; Copyright 2024, Daria Tisch"
     background: "#20a1a1"
 
@@ -33,12 +33,14 @@ website:
         contents:
           - href: schedule.qmd
             text: Übersicht
-          - href: slides/1_uebung.qmd
-            text: "1 - Übung"
           - href: slides/1_seminar.qmd
             text: "1 - Seminar"
+          - href: slides/1_uebung.qmd
+            text: "1 - Übung"
           - href: uebungen/1_uebungsblatt.qmd
-            text: "1 - Übungsblatt"   	
+            text: "1 - Übungsblatt"  
+          - href: slides/2_seminar.qmd
+            text: "2 - Seminar (Paneldaten)" 	
 
 format:
   html:
