@@ -40,7 +40,7 @@ website:
           - href: uebungen/1_uebungsblatt.qmd
             text: "1 - Übungsblatt"  
           - href: slides/2_seminar.qmd
-            text: "2 - Seminar (Paneldaten)" 	
+            text: "2 - Seminar  (Paneldaten)" 	
 
 format:
   html:
