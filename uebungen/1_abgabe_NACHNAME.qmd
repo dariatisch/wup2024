@@ -19,7 +19,7 @@ number-sections: true
 
 ```{r}
 # set working directory
-setwd("D:/Seafile/main/teaching/2024_wuppertal/studis/abgaben")
+
 ```
 
 ## Packages installieren und laden
@@ -50,17 +50,17 @@ Wir arbeiten wieder mit dem Übungsdatensatz des SOEP (DOI:10.5684/soep.practice
 
 ```{r}
 # read data
-df = read.csv("../daten/soep_uebung.csv")
-df_labels = read.csv("../daten/soep_labels.csv")
-
-# Add variable labels
-for (i in 1:nrow(df_labels)) {
-  variable_name <- df_labels$variable[i]
-  variable_label <- df_labels$variable_label[i]
-  
-  # Apply the label to the corresponding column in df
-  df[[variable_name]] <- set_label(df[[variable_name]], variable_label)
-}
+# df = read.csv("../daten/soep_uebung.csv")
+# df_labels = read.csv("../daten/soep_labels.csv")
+# 
+# # Add variable labels
+# for (i in 1:nrow(df_labels)) {
+#   variable_name <- df_labels$variable[i]
+#   variable_label <- df_labels$variable_label[i]
+#   
+#   # Apply the label to the corresponding column in df
+#   df[[variable_name]] <- set_label(df[[variable_name]], variable_label)
+# }
 
 ```
 
