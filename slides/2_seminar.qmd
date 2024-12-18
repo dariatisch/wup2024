@@ -747,6 +747,7 @@ $$ $\hat{V}(.)$: geschätzte Varianz-Kovarianzmatrix der Schätzer
 ## Hausman Test, Anwendung
 
 ```{r}
+#| echo: true
 phtest(m_fe2, m_re)
 ```
 
