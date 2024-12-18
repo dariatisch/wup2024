@@ -1407,7 +1407,7 @@
     "href": "slides/2_seminar.html#hausman-test-anwendung",
     "title": "2. Seminar: Paneldaten",
     "section": "Hausman Test, Anwendung",
-    "text": "Hausman Test, Anwendung\n\n\n\n    Hausman Test\n\ndata:  lz ~ alter\nchisq = 1.2944, df = 1, p-value = 0.2552\nalternative hypothesis: one model is inconsistent\n\n\n\nHausmantest = nicht signifikant Nullhypothese wird nicht abgelehnt RE Schätzer ist nicht verzerrt durch unbeobachtete Heterogenität",
+    "text": "Hausman Test, Anwendung\n\nphtest(m_fe2, m_re)\n\n\n    Hausman Test\n\ndata:  lz ~ alter\nchisq = 1.2944, df = 1, p-value = 0.2552\nalternative hypothesis: one model is inconsistent\n\n\n\nHausmantest = nicht signifikant Nullhypothese wird nicht abgelehnt RE Schätzer ist nicht verzerrt durch unbeobachtete Heterogenität",
     "crumbs": [
       "Zeitplan und Dateien",
       "2 - Seminar  (Paneldaten)"
