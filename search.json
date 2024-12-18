@@ -264,378 +264,450 @@
     ]
   },
   {
-    "objectID": "slides/2_seminar.html#heutige-sitzung",
-    "href": "slides/2_seminar.html#heutige-sitzung",
-    "title": "2. Seminar: Paneldaten",
-    "section": "Heutige Sitzung",
-    "text": "Heutige Sitzung\n\nErhebungsdesigns: Querschnitt-, Trend- und Paneldaten\nFehlerquellen: Datenerhebung vs. Datenauswertung\nKausalanalyse mit Paneldaten\nRegressionsmodelle mit Paneldaten\n\nPflichtlektüre:\n\nElwert, F. and Winship, C. (2014). ‘Endogenous Selection Bias: The Problem of Conditioning on a Collider Variable’. Annual Review of Sociology 40: 31–53.\nBrüderl, J. (2010). Kausalanalyse mit Paneldaten. In Handbuch der sozialwissenschaftlichen Datenanalyse (pp. 963-994). VS Verlag für Sozialwissenschaften.",
+    "objectID": "uebungen/1_abgabe_NACHNAME.html",
+    "href": "uebungen/1_abgabe_NACHNAME.html",
+    "title": "1. Abgabe (Paneldaten)",
+    "section": "",
+    "text": "Code\n# set working directory\n\n\n\n\n\n\n\nCode\n# Packages\npkgs &lt;- c(\n  \"tidyverse\",\n  \"sjlabelled\", # for variable labels\n  \"plm\", # Panelregressionen\n  \"sjPlot\" # um Regressionstabellen schön darzustellen\n) \n\n## Install uninstalled packages\nlapply(pkgs[!(pkgs %in% installed.packages())], install.packages)\n\n## Load all packages to library\nlapply(pkgs, library, character.only = TRUE)\n\n\n\n\n\nWir arbeiten wieder mit dem Übungsdatensatz des SOEP (DOI:10.5684/soep.practice.v36). Es werden zwei Datensätze eingelesen. Der erste Datensatz enthalt die tatsächlichen Umfragedaten, der zweite Datensatz enthält die Variablenlabels.\n\n\nCode\n# read data\n# df = read.csv(\"../daten/soep_uebung.csv\")\n# df_labels = read.csv(\"../daten/soep_labels.csv\")\n# \n# # Add variable labels\n# for (i in 1:nrow(df_labels)) {\n#   variable_name &lt;- df_labels$variable[i]\n#   variable_label &lt;- df_labels$variable_label[i]\n#   \n#   # Apply the label to the corresponding column in df\n#   df[[variable_name]] &lt;- set_label(df[[variable_name]], variable_label)\n# }"
+  },
+  {
+    "objectID": "uebungen/1_abgabe_NACHNAME.html#arbeitsverzeichnis-festsetzen",
+    "href": "uebungen/1_abgabe_NACHNAME.html#arbeitsverzeichnis-festsetzen",
+    "title": "1. Abgabe (Paneldaten)",
+    "section": "",
+    "text": "Code\n# set working directory"
+  },
+  {
+    "objectID": "uebungen/1_abgabe_NACHNAME.html#packages-installieren-und-laden",
+    "href": "uebungen/1_abgabe_NACHNAME.html#packages-installieren-und-laden",
+    "title": "1. Abgabe (Paneldaten)",
+    "section": "",
+    "text": "Code\n# Packages\npkgs &lt;- c(\n  \"tidyverse\",\n  \"sjlabelled\", # for variable labels\n  \"plm\", # Panelregressionen\n  \"sjPlot\" # um Regressionstabellen schön darzustellen\n) \n\n## Install uninstalled packages\nlapply(pkgs[!(pkgs %in% installed.packages())], install.packages)\n\n## Load all packages to library\nlapply(pkgs, library, character.only = TRUE)"
+  },
+  {
+    "objectID": "uebungen/1_abgabe_NACHNAME.html#daten-einlesen",
+    "href": "uebungen/1_abgabe_NACHNAME.html#daten-einlesen",
+    "title": "1. Abgabe (Paneldaten)",
+    "section": "",
+    "text": "Wir arbeiten wieder mit dem Übungsdatensatz des SOEP (DOI:10.5684/soep.practice.v36). Es werden zwei Datensätze eingelesen. Der erste Datensatz enthalt die tatsächlichen Umfragedaten, der zweite Datensatz enthält die Variablenlabels.\n\n\nCode\n# read data\n# df = read.csv(\"../daten/soep_uebung.csv\")\n# df_labels = read.csv(\"../daten/soep_labels.csv\")\n# \n# # Add variable labels\n# for (i in 1:nrow(df_labels)) {\n#   variable_name &lt;- df_labels$variable[i]\n#   variable_label &lt;- df_labels$variable_label[i]\n#   \n#   # Apply the label to the corresponding column in df\n#   df[[variable_name]] &lt;- set_label(df[[variable_name]], variable_label)\n# }"
+  },
+  {
+    "objectID": "uebungen/1_abgabe_NACHNAME.html#kausalmodell-2-punkte",
+    "href": "uebungen/1_abgabe_NACHNAME.html#kausalmodell-2-punkte",
+    "title": "1. Abgabe (Paneldaten)",
+    "section": "2.1 Kausalmodell [2 Punkte]",
+    "text": "2.1 Kausalmodell [2 Punkte]\nÜberlegen Sie sich ein Kausalmodell. Das heißt, überlegen Sie sich eine Variable, die einen kausalen Effekt auf den subjektiven Gesundheitszustand haben könnte und begründen Sie Ihre Wahl.\nAntwort:"
+  },
+  {
+    "objectID": "uebungen/1_abgabe_NACHNAME.html#auswahl-des-regressionsmodels-4-punkte",
+    "href": "uebungen/1_abgabe_NACHNAME.html#auswahl-des-regressionsmodels-4-punkte",
+    "title": "1. Abgabe (Paneldaten)",
+    "section": "2.2 Auswahl des Regressionsmodels [4 Punkte]",
+    "text": "2.2 Auswahl des Regressionsmodels [4 Punkte]\nUm den kausalen Effekt zu identifizieren, möchten Sie eine Regressionsanalyse durchführen und überlegen, ob Sie ein POLS, ein BE, ein RE oder ein FE Modell nutzen sollten. Beschreiben Sie Ihren Gedankenvorgang.\nAntwort:"
+  },
+  {
+    "objectID": "uebungen/1_abgabe_NACHNAME.html#kausalmodell-3-punkte",
+    "href": "uebungen/1_abgabe_NACHNAME.html#kausalmodell-3-punkte",
+    "title": "1. Abgabe (Paneldaten)",
+    "section": "2.3 Kausalmodell [3 Punkte]",
+    "text": "2.3 Kausalmodell [3 Punkte]\nBitte nennen Sie jeweils ein Beispiel für eine/n\n\nconfounder\ncollider\nVariable, die zu einem overcontrol bias führen könnte\n\nund erklären Sie kurz, warum es sich um eine/n solche/n handelt.\nAntwort:"
+  },
+  {
+    "objectID": "uebungen/1_abgabe_NACHNAME.html#gesundheitszustand-1-punkt",
+    "href": "uebungen/1_abgabe_NACHNAME.html#gesundheitszustand-1-punkt",
+    "title": "1. Abgabe (Paneldaten)",
+    "section": "3.1 Gesundheitszustand [1 Punkt]",
+    "text": "3.1 Gesundheitszustand [1 Punkt]"
+  },
+  {
+    "objectID": "uebungen/1_abgabe_NACHNAME.html#geschlecht-1-punkt",
+    "href": "uebungen/1_abgabe_NACHNAME.html#geschlecht-1-punkt",
+    "title": "1. Abgabe (Paneldaten)",
+    "section": "3.2 Geschlecht [1 Punkt]",
+    "text": "3.2 Geschlecht [1 Punkt]"
+  },
+  {
+    "objectID": "uebungen/1_abgabe_NACHNAME.html#einkommen-hauptberuf-1-punkt",
+    "href": "uebungen/1_abgabe_NACHNAME.html#einkommen-hauptberuf-1-punkt",
+    "title": "1. Abgabe (Paneldaten)",
+    "section": "3.3 Einkommen (Hauptberuf) [1 Punkt]",
+    "text": "3.3 Einkommen (Hauptberuf) [1 Punkt]\nErstellen Sie eine neue Variable ek, die den log. Wert des Bruttoeinkommen/Jahr des Hauptberufs enthält. Nehmen Sie dazu die Variable einkommenj1 (Bruttoeinkommen/Jahr Hauptberuf). Logarithmieren Sie diese. Da einige Beobachtungen 0 Euro Einkommen haben, addieren Sie zu jedem Wert 1 Euro vor der Log-Transformation."
+  },
+  {
+    "objectID": "uebungen/1_abgabe_NACHNAME.html#analysesample-bilden-3-punkte",
+    "href": "uebungen/1_abgabe_NACHNAME.html#analysesample-bilden-3-punkte",
+    "title": "1. Abgabe (Paneldaten)",
+    "section": "3.4 Analysesample bilden [3 Punkte]",
+    "text": "3.4 Analysesample bilden [3 Punkte]\n\nSelektieren Sie nur die Variablen, die wir brauchen. Also die drei Variablen sowie die ID Variable (id) und die Zeit Variable (syear)\n\n\nWir wenden “listwise deletion” an. Wie viele Beobachtungen gehen uns verloren?\n\nAntwort:"
+  },
+  {
+    "objectID": "uebungen/1_abgabe_NACHNAME.html#wieviele-personenjahre-sind-im-datensatz-1-punkt",
+    "href": "uebungen/1_abgabe_NACHNAME.html#wieviele-personenjahre-sind-im-datensatz-1-punkt",
+    "title": "1. Abgabe (Paneldaten)",
+    "section": "4.1 Wieviele Personenjahre sind im Datensatz? [1 Punkt]",
+    "text": "4.1 Wieviele Personenjahre sind im Datensatz? [1 Punkt]\nAntwort:"
+  },
+  {
+    "objectID": "uebungen/1_abgabe_NACHNAME.html#wie-viele-personen-sind-im-datensatz-1-punkt",
+    "href": "uebungen/1_abgabe_NACHNAME.html#wie-viele-personen-sind-im-datensatz-1-punkt",
+    "title": "1. Abgabe (Paneldaten)",
+    "section": "4.2 Wie viele Personen sind im Datensatz? [1 Punkt]",
+    "text": "4.2 Wie viele Personen sind im Datensatz? [1 Punkt]\nAntwort:"
+  },
+  {
+    "objectID": "uebungen/1_abgabe_NACHNAME.html#wieviele-personen-nehmen-pro-jahr-teil-2-punkte",
+    "href": "uebungen/1_abgabe_NACHNAME.html#wieviele-personen-nehmen-pro-jahr-teil-2-punkte",
+    "title": "1. Abgabe (Paneldaten)",
+    "section": "4.3 Wieviele Personen nehmen pro Jahr teil? [2 Punkte]",
+    "text": "4.3 Wieviele Personen nehmen pro Jahr teil? [2 Punkte]\nIst das Panel balanced?\nAntwort:"
+  },
+  {
+    "objectID": "uebungen/1_abgabe_NACHNAME.html#welche-variablen-sind-zeitkonstant-und-welche-zeitveränderlich-3-punkte",
+    "href": "uebungen/1_abgabe_NACHNAME.html#welche-variablen-sind-zeitkonstant-und-welche-zeitveränderlich-3-punkte",
+    "title": "1. Abgabe (Paneldaten)",
+    "section": "4.4 Welche Variablen sind zeitkonstant und welche zeitveränderlich? [3 Punkte]",
+    "text": "4.4 Welche Variablen sind zeitkonstant und welche zeitveränderlich? [3 Punkte]\nAntwort:"
+  },
+  {
+    "objectID": "uebungen/1_abgabe_NACHNAME.html#teilnahme-2-punkte",
+    "href": "uebungen/1_abgabe_NACHNAME.html#teilnahme-2-punkte",
+    "title": "1. Abgabe (Paneldaten)",
+    "section": "4.5 Teilnahme [2 Punkte]",
+    "text": "4.5 Teilnahme [2 Punkte]\nWie viele Personen nahmen an allen fünf Wellen teil? Und wie viele Jahre nahmen Personen durchschnittlich teil?\nAntwort:"
+  },
+  {
+    "objectID": "uebungen/1_abgabe_NACHNAME.html#schätzen-sie-ein-pols-modell-3-punkte",
+    "href": "uebungen/1_abgabe_NACHNAME.html#schätzen-sie-ein-pols-modell-3-punkte",
+    "title": "1. Abgabe (Paneldaten)",
+    "section": "5.1 Schätzen Sie ein POLS Modell [3 Punkte]",
+    "text": "5.1 Schätzen Sie ein POLS Modell [3 Punkte]\n… und interepretieren Sie die Koeffizienten.\nAntwort:"
+  },
+  {
+    "objectID": "uebungen/1_abgabe_NACHNAME.html#schätzen-sie-ein-be-modell-3-punkte",
+    "href": "uebungen/1_abgabe_NACHNAME.html#schätzen-sie-ein-be-modell-3-punkte",
+    "title": "1. Abgabe (Paneldaten)",
+    "section": "5.2 Schätzen Sie ein BE Modell [3 Punkte]",
+    "text": "5.2 Schätzen Sie ein BE Modell [3 Punkte]\n… und interepretieren Sie die Koeffizienten.\nAntwort:"
+  },
+  {
+    "objectID": "uebungen/1_abgabe_NACHNAME.html#schätzen-sie-ein-fe-modell-3-punkte",
+    "href": "uebungen/1_abgabe_NACHNAME.html#schätzen-sie-ein-fe-modell-3-punkte",
+    "title": "1. Abgabe (Paneldaten)",
+    "section": "5.3 Schätzen Sie ein FE Modell [3 Punkte]",
+    "text": "5.3 Schätzen Sie ein FE Modell [3 Punkte]\n… und interepretieren Sie die Koeffizienten.\nAntwort:"
+  },
+  {
+    "objectID": "uebungen/1_abgabe_NACHNAME.html#schätzen-sie-ein-re-modell-3-punkte",
+    "href": "uebungen/1_abgabe_NACHNAME.html#schätzen-sie-ein-re-modell-3-punkte",
+    "title": "1. Abgabe (Paneldaten)",
+    "section": "5.4 Schätzen Sie ein RE Modell [3 Punkte]",
+    "text": "5.4 Schätzen Sie ein RE Modell [3 Punkte]\n… und interepretieren Sie die Koeffizienten.\nAntwort:"
+  },
+  {
+    "objectID": "uebungen/1_abgabe_NACHNAME.html#vergleich-5-punkte",
+    "href": "uebungen/1_abgabe_NACHNAME.html#vergleich-5-punkte",
+    "title": "1. Abgabe (Paneldaten)",
+    "section": "5.5 Vergleich [5 Punkte]",
+    "text": "5.5 Vergleich [5 Punkte]\nVergleichen Sie die vier Modelle. Lassen Sie sich 3 Nachkommestellen bei den Werten der Koeffizienten ausgeben. Erstellen Sie eine tabellarische Übersicht über alle Modelle.\n\nWarum wird im FE Modell kein Koeffizient für female geschätzt?\nAntwort:\nWarum ist die Anzahl an Beobachtungen im BE Modell kleiner als die Anzahl an Beobachtungen in den anderen Modellen?\nAntwort:\nInterpretieren sie vergleichend die Koeffizienten des log. Einkommens.\nAntwort:"
+  },
+  {
+    "objectID": "uebungen/1_abgabe_NACHNAME.html#hausman-test-2-punkte",
+    "href": "uebungen/1_abgabe_NACHNAME.html#hausman-test-2-punkte",
+    "title": "1. Abgabe (Paneldaten)",
+    "section": "5.6 Hausman Test [2 Punkte]",
+    "text": "5.6 Hausman Test [2 Punkte]\nSollen wir das RE oder das FE Modell nutzen? Führen Sie einen Hausman Test durch. Wie entscheiden Sie sich und warum?\nAntwort:"
+  },
+  {
+    "objectID": "slides/1_uebung.html#was-ist-forschungsdatenmanagement",
+    "href": "slides/1_uebung.html#was-ist-forschungsdatenmanagement",
+    "title": "1. Übung",
+    "section": "Was ist Forschungsdatenmanagement?",
+    "text": "Was ist Forschungsdatenmanagement?\n\n“Gesundheitsvorsorge” für Ihre Daten\nSchützt die Daten vor Schaden\nMacht Daten funktional, nutzbar und auffindbar\nAlle Strategien, Prozesse und Maßnahmen zum Sammeln, Organisieren, Strukturieren, Speichern, Analysieren, Veröffentlichen, Weitergeben und Archivieren von Informationen, die im Rahmen eines Forschungsprojekts verwendet oder erzeugt werden\nBehandelt auch rechtliche und ethische Fragen (z. B. Einwilligungserklärungen, Eigentum, Lizenzierung)",
     "crumbs": [
       "Zeitplan und Dateien",
-      "2 - Seminar  (Paneldaten)"
+      "1 - Übung"
     ]
   },
   {
-    "objectID": "slides/2_seminar.html#erhebungsdesigns-vergleichen",
-    "href": "slides/2_seminar.html#erhebungsdesigns-vergleichen",
-    "title": "2. Seminar: Paneldaten",
-    "section": "Erhebungsdesigns vergleichen",
-    "text": "Erhebungsdesigns vergleichen\n\nQuerschnittdesign: Daten zu einem Zeitpunkt von verschiedenen Personen\nTrenddesign: Daten zu mehreren Zeitpunkten, aber unterschiedliche Personen\nPaneldesign: Daten zu mehreren Zeitpunkten von denselben Personen",
+    "objectID": "slides/1_uebung.html#übersicht-forschungsdatenmanagement",
+    "href": "slides/1_uebung.html#übersicht-forschungsdatenmanagement",
+    "title": "1. Übung",
+    "section": "Übersicht: Forschungsdatenmanagement",
+    "text": "Übersicht: Forschungsdatenmanagement",
     "crumbs": [
       "Zeitplan und Dateien",
-      "2 - Seminar  (Paneldaten)"
+      "1 - Übung"
     ]
   },
   {
-    "objectID": "slides/2_seminar.html#querschnitt--trend--und-paneldaten",
-    "href": "slides/2_seminar.html#querschnitt--trend--und-paneldaten",
-    "title": "2. Seminar: Paneldaten",
-    "section": "Querschnitt-, Trend- und Paneldaten",
-    "text": "Querschnitt-, Trend- und Paneldaten\nWelche Fragestellungen bieten sich bei welchem Studiendesign an?",
+    "objectID": "slides/1_uebung.html#warum-forschungsdatenmanagement",
+    "href": "slides/1_uebung.html#warum-forschungsdatenmanagement",
+    "title": "1. Übung",
+    "section": "Warum Forschungsdatenmanagement?",
+    "text": "Warum Forschungsdatenmanagement?\n\nVerbessert Arbeitsabläufe\nMinimiert das Risiko von Datenverlusten\nErfüllung der Anforderungen von Finanzierungs- und Aufsichtsbehörden\nAnerkennung für die Weitergabe eigener Daten\nGute wissenschaftliche Praxis\nErhält Datenqualität\nSpart Ressourcen und nutzt die öffentlichen Mittel optimal\n\n\nPreserves the integrity of research Transparent research Reproducible research",
     "crumbs": [
       "Zeitplan und Dateien",
-      "2 - Seminar  (Paneldaten)"
+      "1 - Übung"
     ]
   },
   {
-    "objectID": "slides/2_seminar.html#paneldaten",
-    "href": "slides/2_seminar.html#paneldaten",
-    "title": "2. Seminar: Paneldaten",
-    "section": "Paneldaten",
-    "text": "Paneldaten\n\nPaneldaten: wiederholte Messung derselben Variablen an denselben Untersuchungseinheiten (Brüderl 2010)\nWenn N = 1: Zeitreihendaten\nVorteile gegenüber Querschnittsdaten\n\nintraindividuelle Veränderungen\nzeitliche Abfolge von Veränderungen\nProblem der unbeobachteter Heterogenität abmildern",
+    "objectID": "slides/1_uebung.html#konkrete-anwendung",
+    "href": "slides/1_uebung.html#konkrete-anwendung",
+    "title": "1. Übung",
+    "section": "Konkrete Anwendung",
+    "text": "Konkrete Anwendung\n\nAlle Übungsaufgaben werden mit Skripten gelöst → Reproduzierbarkeit\nGute Praktiken der Dateiverwaltung & -bennenung\nGute Dokumentation des Codes",
     "crumbs": [
       "Zeitplan und Dateien",
-      "2 - Seminar  (Paneldaten)"
+      "1 - Übung"
     ]
   },
   {
-    "objectID": "slides/2_seminar.html#wichtige-panelstudien",
-    "href": "slides/2_seminar.html#wichtige-panelstudien",
-    "title": "2. Seminar: Paneldaten",
-    "section": "Wichtige Panelstudien",
-    "text": "Wichtige Panelstudien\n\nPanel Study of Income Dynamics (PSID)\nSOEP\nUnderstanding Society (UKHLS)\nFamilienpanel (pairfam)\nFreDa\nNationales Bildungspanel (NEPS)\nSurvey of Health, Ageing and Retirement in Europe (SHARE)\nArbeitsmarkt und soziale Sicherung (PASS)\nTwinLife\nChildren of Immigrants (CILS4EU)\nGESIS Panel (auch offline)\nSoSci Panel\nÜbersicht: Forschungsdaten in Deutschland",
+    "objectID": "slides/1_uebung.html#wie-wir-arbeiten",
+    "href": "slides/1_uebung.html#wie-wir-arbeiten",
+    "title": "1. Übung",
+    "section": "Wie wir arbeiten",
+    "text": "Wie wir arbeiten\n\nInteraktive Folien zum gemeinsamen Lernen\nQuarto Dokumente als Übungsaufgaben\nQuarto Dokumente als Abgaben (09. Jan und 30. Jan!)",
     "crumbs": [
       "Zeitplan und Dateien",
-      "2 - Seminar  (Paneldaten)"
+      "1 - Übung"
     ]
   },
   {
-    "objectID": "slides/2_seminar.html#potentielle-panelprobleme",
-    "href": "slides/2_seminar.html#potentielle-panelprobleme",
-    "title": "2. Seminar: Paneldaten",
-    "section": "Potentielle Panelprobleme",
-    "text": "Potentielle Panelprobleme\nKonstanz der Messinstrumente: Semantische Gehalt von Begriffen kann sich über die Jahre ändern (Frageformulierungen)\nAusfallrate / Panelmortalität: Befragte nehmen nicht mehr an der Umfrage teil\n\nUrsachen: Fehlende Motivation, Umzug, Tod/Krankheit\nProblem: systematischer Ausfall\nLösungsansatz: Höherer Stichprobenumfang, intensive Panelpflege; Anreize (Incentivierung)\n\nPaneleffekte (reaktive Messungen):\n\nInterviewereffekte (Interviewer und Befragte lernen sich über die Wellen kennen)\nVerhalten des Interviewers weicht von Erstbefragung ab (kennt den Ablauf)\nBelastungs- und Gewöhnungseffekte",
+    "objectID": "slides/1_uebung.html#ordnerstruktur",
+    "href": "slides/1_uebung.html#ordnerstruktur",
+    "title": "1. Übung",
+    "section": "Ordnerstruktur",
+    "text": "Ordnerstruktur\nBitte folgende Ordnerstruktur anlegen:\n\n\nDatensätze entweder auf der Website oder in Moodle\nÜbungsblätter auf der Website\nAbgaben auf der Website, aber Einreichen über Moodle\n\n→ Herunterladen und im richtigen Ordner abspeichern",
     "crumbs": [
       "Zeitplan und Dateien",
-      "2 - Seminar  (Paneldaten)"
+      "1 - Übung"
     ]
   },
   {
-    "objectID": "slides/2_seminar.html#gütekriterien-für-messinstrumente",
-    "href": "slides/2_seminar.html#gütekriterien-für-messinstrumente",
-    "title": "2. Seminar: Paneldaten",
-    "section": "Gütekriterien für Messinstrumente:",
-    "text": "Gütekriterien für Messinstrumente:\n\nValidität (Gültigkeit): Messen wir eigentlich das richtige?\nReliabilität (Zuverlässigkeit): Wiederholte Messungen müssen zum gleichen Ergebnis führen\n\nVoraussetzung für Validität (aber nicht umgekehrt)\n\nObjektivität: Unabhängigkeit der Ergebnisse von der jeweiligen Person, die das Messinstrument anwendet",
+    "objectID": "slides/1_uebung.html#abgaben",
+    "href": "slides/1_uebung.html#abgaben",
+    "title": "1. Übung",
+    "section": "Abgaben",
+    "text": "Abgaben\n\nQuarto Dokument sowie PDF oder HTML Dokument\nGut kommentiert\nRechtzeitig über Moodle!",
     "crumbs": [
       "Zeitplan und Dateien",
-      "2 - Seminar  (Paneldaten)"
+      "1 - Übung"
     ]
   },
   {
-    "objectID": "slides/2_seminar.html#validität",
-    "href": "slides/2_seminar.html#validität",
-    "title": "2. Seminar: Paneldaten",
-    "section": "Validität",
-    "text": "Validität\nExterne Validität\n\nAuf Grundgesamtheit übertragbar?\nValidität des Messinstruments wird vorausgesetzt\n\nInterne Validität\n\nEindeutigkeit der Ergebnisinterpretation\n„Je besser ein Design dazu geeignet ist, die aufgestellten Hypothesen zu prüfen und Alternativerklärungen auszuschließen, umso höher ist die interne Validität“\nKausalanalytischer Anspruch von Experimenten (können Störfaktoren eliminieren)",
+    "objectID": "slides/1_uebung.html#was-ist-quarto",
+    "href": "slides/1_uebung.html#was-ist-quarto",
+    "title": "1. Übung",
+    "section": "Was ist Quarto?",
+    "text": "Was ist Quarto?\n\nist ein neues, quelloffenes, wissenschaftliches und technisches Publikationssystem\nDas Ziel von Quarto ist es, den Prozess der Erstellung und Zusammenarbeit an wissenschaftlichen und technischen Dokumenten deutlich zu verbessern",
     "crumbs": [
       "Zeitplan und Dateien",
-      "2 - Seminar  (Paneldaten)"
+      "1 - Übung"
     ]
   },
   {
-    "objectID": "slides/2_seminar.html#kontrafaktischer-kausalitätsbegriff",
-    "href": "slides/2_seminar.html#kontrafaktischer-kausalitätsbegriff",
-    "title": "2. Seminar: Paneldaten",
-    "section": "Kontrafaktischer Kausalitätsbegriff",
-    "text": "Kontrafaktischer Kausalitätsbegriff\n\nX ➯ Y\n\n\\[\n\\Delta_i = Y(X=1, t_0) - Y(X=0, t_0)\n\\] Vergleich eines faktischen und eines kontrafaktischen Outcomes.",
+    "objectID": "slides/1_uebung.html#warum-quarto",
+    "href": "slides/1_uebung.html#warum-quarto",
+    "title": "1. Übung",
+    "section": "Warum Quarto?",
+    "text": "Warum Quarto?\n\n\nCode und Ergbenisdokument in einem Zuge erstellen\nKein lästiges hin und herkopieren\nKonsistente Implementierung attraktiver und praktischer Funktionen für alle Ausgaben: Tabsets, Code-Folding, Syntax-Highlighting, etc.\nZugänglichere Standardeinstellungen\nVisual editor\nLeitplanken, besonders hilfreich für neue Lernende: YAML-Vervollständigung, informative Syntaxfehler, etc.",
     "crumbs": [
       "Zeitplan und Dateien",
-      "2 - Seminar  (Paneldaten)"
+      "1 - Übung"
     ]
   },
   {
-    "objectID": "slides/2_seminar.html#between-schätzer",
-    "href": "slides/2_seminar.html#between-schätzer",
-    "title": "2. Seminar: Paneldaten",
-    "section": "Between-Schätzer",
-    "text": "Between-Schätzer\n\nX ➯ Y\n\nBetween-Schätzer:\n\\[\n\\Delta_i^B = Y_i(X=1, t_0) - Y_j(X=0, t_0)\n\\]\nZentrale Annahme: \\(Person_i\\) und \\(Person_j\\) unterscheiden sich nur in X\n⇨ keine unbeobachtete Heterogenität (unbeobachtete personen- oder zeitspezifische Einflussfaktoren)",
+    "objectID": "slides/1_uebung.html#warum-r",
+    "href": "slides/1_uebung.html#warum-r",
+    "title": "1. Übung",
+    "section": "Warum R?",
+    "text": "Warum R?\n\nmehr statistische Modellierungsmöglichkeiten als Stata\nkostenlos und open source\nviel Unterstützungsmaterial online",
     "crumbs": [
       "Zeitplan und Dateien",
-      "2 - Seminar  (Paneldaten)"
+      "1 - Übung"
     ]
   },
   {
-    "objectID": "slides/2_seminar.html#within-schätzer",
-    "href": "slides/2_seminar.html#within-schätzer",
-    "title": "2. Seminar: Paneldaten",
-    "section": "Within-Schätzer",
-    "text": "Within-Schätzer\n\nX ➯ Y\n\nWithin-Schätzer:\n\\[\n\\Delta_i^W = Y_i(X=1, t_1) - Y_i(X=0, t_0)\n\\] Zentrale Annahme: \\(Person_i\\) unterscheidet sich über die Zeit nur in X (keine zeitveränderliche unbeobachtete Heterogenität)",
+    "objectID": "slides/1_uebung.html#hallo-welt",
+    "href": "slides/1_uebung.html#hallo-welt",
+    "title": "1. Übung",
+    "section": "“Hallo Welt!”",
+    "text": "“Hallo Welt!”",
     "crumbs": [
       "Zeitplan und Dateien",
-      "2 - Seminar  (Paneldaten)"
+      "1 - Übung"
     ]
   },
   {
-    "objectID": "slides/2_seminar.html#regressionsmodelle-pols",
-    "href": "slides/2_seminar.html#regressionsmodelle-pols",
-    "title": "2. Seminar: Paneldaten",
-    "section": "Regressionsmodelle: POLS",
-    "text": "Regressionsmodelle: POLS\nPOLS (pooled OLS): Wir behandeln die Daten, als wären es eine Reihe von Querschnittsdaten (Personen- und Zeitdimension wird ignoriert)\nAnnahme: unabhängige Beobachtungen\n\\[\ny_{it} = \\alpha + \\beta_{POLS} x_{it} + \\upsilon_{it},\n\\]\ni: individual\nt: time point",
+    "objectID": "slides/1_uebung.html#hallo-pinguine",
+    "href": "slides/1_uebung.html#hallo-pinguine",
+    "title": "1. Übung",
+    "section": "Hallo Pinguine!",
+    "text": "Hallo Pinguine!\n\nArtwork by @allison_horst",
     "crumbs": [
       "Zeitplan und Dateien",
-      "2 - Seminar  (Paneldaten)"
+      "1 - Übung"
     ]
   },
   {
-    "objectID": "slides/2_seminar.html#pols",
-    "href": "slides/2_seminar.html#pols",
-    "title": "2. Seminar: Paneldaten",
-    "section": "POLS",
-    "text": "POLS\n\\[\ny_{it} = \\alpha + \\beta_{POLS} x_{it} + \\upsilon_{it},\n\\]\n\nOutputCode\n\n\n\n\n\n\n\n \nlz\n\n\nPredictors\nEstimates\nCI\np\n\n\n(Intercept)\n5.40\n3.83 – 6.96\n&lt;0.001\n\n\nalter\n0.04\n0.01 – 0.07\n0.007\n\n\nObservations\n34\n\n\nR2 / R2 adjusted\n0.207 / 0.182\n\n\n\n\n\n\n\n\n\n\nm_pols &lt;- lm(lz ~ alter, data = df)\ntab_model(m_pols)\n\n\n\n\n \nlz\n\n\nPredictors\nEstimates\nCI\np\n\n\n(Intercept)\n5.40\n3.83 – 6.96\n&lt;0.001\n\n\nalter\n0.04\n0.01 – 0.07\n0.007\n\n\nObservations\n34\n\n\nR2 / R2 adjusted\n0.207 / 0.182",
+    "objectID": "slides/1_uebung.html#pinguine-datensatz-inspizieren",
+    "href": "slides/1_uebung.html#pinguine-datensatz-inspizieren",
+    "title": "1. Übung",
+    "section": "Pinguine Datensatz inspizieren",
+    "text": "Pinguine Datensatz inspizieren",
     "crumbs": [
       "Zeitplan und Dateien",
-      "2 - Seminar  (Paneldaten)"
+      "1 - Übung"
     ]
   },
   {
-    "objectID": "slides/2_seminar.html#pols-graphisch",
-    "href": "slides/2_seminar.html#pols-graphisch",
-    "title": "2. Seminar: Paneldaten",
-    "section": "POLS, graphisch",
-    "text": "POLS, graphisch\n\nOutputCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n# The palette with black:\ncbp2 &lt;- c(\"#000000\", \n          \"#E69F00\", \n          \"#56B4E9\", \n          \"#009E73\",\n          \"#F0E442\", \n          \"#0072B2\", \n          \"#D55E00\", \n          \"#CC79A7\")\n\n# Save the residual values\ndf$predicted &lt;- predict(m_pols)\ndf$residuals &lt;- residuals(m_pols)\n\np_pols &lt;- ggplot(df, aes(alter, lz)) +\n  geom_point( aes(x = alter, y = lz, shape = id_name, colour = id_name, fill = id_name), \n              size = 2, stroke = 1) +\n  geom_smooth(method = 'lm', formula = y ~ x, se = FALSE,\n              color  = \"cyan\") +\n  geom_segment(aes(xend = alter, yend = predicted), \n               alpha = .3, color = \"deeppink\") +\n  annotate(\"text\", x = 30, y = 9.9, \n           label = paste0(\"beta[POLS] ==\", round(m_pols$coefficients[2], 3)), \n           parse = TRUE) +\n  scale_colour_manual(values = cbp2[-c(1)]) +\n  scale_fill_manual(values = cbp2[-c(1)]) +\n  scale_shape_manual(values = c(15:18, 25, 20, 21)) +\n  ggtitle(\"POLS\") +\n  theme_classic() +\n  theme(legend.key = element_blank(), \n        legend.title = element_blank(),\n        text = element_text(size = 10),\n        legend.position = c(1,0), \n        legend.justification = c(\"right\", \"bottom\"),\n        legend.background = element_blank(),\n        legend.box.background = element_rect(colour = \"black\")) \np_pols\n\n\n\n\n\n\n\n\n\n\n\nInterpretation: Je höher das Alter einer Person, desto höher ihre Lebenszufriedenheit.",
+    "objectID": "slides/1_uebung.html#pinguine-datensatz-inspizieren-1",
+    "href": "slides/1_uebung.html#pinguine-datensatz-inspizieren-1",
+    "title": "1. Übung",
+    "section": "Pinguine Datensatz inspizieren",
+    "text": "Pinguine Datensatz inspizieren\n\nArtwork by @allison_horst",
     "crumbs": [
       "Zeitplan und Dateien",
-      "2 - Seminar  (Paneldaten)"
+      "1 - Übung"
     ]
   },
   {
-    "objectID": "slides/2_seminar.html#regressionsmodelle-be",
-    "href": "slides/2_seminar.html#regressionsmodelle-be",
-    "title": "2. Seminar: Paneldaten",
-    "section": "Regressionsmodelle: BE",
-    "text": "Regressionsmodelle: BE\nBE (Between Estimator): vergleicht verschiedene Personen und ignoriert die innerpersonelle Varianz. Modell verwendet nur die personenspezifischen Mittelwerte.\n\\[\n\\bar{y_{i}} = \\alpha + \\beta_{BE} \\bar{x_{i}} + \\bar{\\upsilon_{i}},\n\\]\n\nOutputCode (by hand)Code with package plm\n\n\n\n\n\n\n\n \nm lz\n\n\nPredictors\nEstimates\nCI\np\n\n\n(Intercept)\n5.49\n1.79 – 9.19\n0.013\n\n\nm alter\n0.04\n-0.03 – 0.10\n0.208\n\n\nObservations\n7\n\n\nR2 / R2 adjusted\n0.295 / 0.154\n\n\n\n\n\n\n\n\n\n\ndf$m_lz &lt;- ave(df$lz, df$id, FUN = mean)\ndf$m_alter &lt;- ave(df$alter, df$id, FUN = mean)\n\nm_be &lt;- lm(m_lz ~ m_alter, data = df %&gt;% filter(count_within_group ==1))\ntab_model(m_be)\n\n\n\n\n \nm lz\n\n\nPredictors\nEstimates\nCI\np\n\n\n(Intercept)\n5.49\n1.79 – 9.19\n0.013\n\n\nm alter\n0.04\n-0.03 – 0.10\n0.208\n\n\nObservations\n7\n\n\nR2 / R2 adjusted\n0.295 / 0.154\n\n\n\n\n\n\n\n\n\n\nlibrary(plm)\nm_be2 &lt;- plm(lz ~ alter, data = df,\n           index = c(\"id\", \"syear\"),\n           effect = \"individual\", model = \"between\")\ntab_model(m_be2)\n\n\n\n\n \nlz\n\n\nPredictors\nEstimates\nCI\np\n\n\n(Intercept)\n5.49\n1.79 – 9.19\n0.013\n\n\nalter\n0.04\n-0.03 – 0.10\n0.208\n\n\nObservations\n7\n\n\nR2 / R2 adjusted\n0.295 / 0.154",
+    "objectID": "slides/1_uebung.html#pinguine-übung",
+    "href": "slides/1_uebung.html#pinguine-übung",
+    "title": "1. Übung",
+    "section": "Pinguine Übung",
+    "text": "Pinguine Übung\n\nWie viele Pinguine sind im Datensatz?\nWie viele Spezien?\n\n\n\n\n\n\n\n\n\n\nTipp: Suche die Variable, die die Spezie der Pinguine enthält\n\n\n\n\n\n\n\n\n\nSolution\n\n\nLösung:\n# Anzahl Pinguine im Datensatz\ncount(df)\n\n# Anzahl Pinguine pro Spezie\ndf %&gt;% \n  count(species)",
     "crumbs": [
       "Zeitplan und Dateien",
-      "2 - Seminar  (Paneldaten)"
+      "1 - Übung"
     ]
   },
   {
-    "objectID": "slides/2_seminar.html#be-graphisch",
-    "href": "slides/2_seminar.html#be-graphisch",
-    "title": "2. Seminar: Paneldaten",
-    "section": "BE, graphisch",
-    "text": "BE, graphisch\n\nOutputCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ndf2 &lt;- df\ndf2$lz &lt;- df2$m_lz\ndf2$alter &lt;- df2$m_alter\ndf2 &lt;- df2[which(df2$syear == 2019), ]\n\n# Save the residual values\nm_be &lt;- lm(m_lz ~ m_alter, data = df2)\ndf2$predicted &lt;- predict(m_be)\ndf2$residuals &lt;- residuals(m_be)\n\np_be &lt;- ggplot(df, aes(alter, lz)) +\n  geom_point(aes(x = alter, y = lz, shape = id_name), \n              size = 2, stroke = 1, colour = alpha(\"black\", .3), fill = alpha(\"black\", .3)) +\n  geom_point(aes(x = m_alter, y = m_lz, shape = id_name, colour = id_name,\n                 fill = id_name), \n             size = 2, stroke = 1) +\n  geom_smooth(data = df2, \n              method = 'lm', formula = y ~ x, se = FALSE,\n              color  = \"cyan\") +\n  geom_segment(data = df2, aes(xend = alter, yend = predicted), \n               alpha = .3, color = \"deeppink\") +\n  annotate(\"text\", x = 30, y = 9.9,\n           label = paste0(\"beta[Between] ==\", round(m_be$coefficients[2], 3)), \n           parse = TRUE) +\n  scale_colour_manual(values = cbp2[-c(1)]) + \n  scale_fill_manual(values = cbp2[-c(1)]) + \n  scale_shape_manual(values = c(15:18, 25, 20, 21)) +\n  ggtitle(\"BE\") +\n  theme_classic() +\n  theme(legend.key = element_blank(), \n        legend.title = element_blank(),\n        text = element_text(size = 14),\n        legend.position = c(1,0), \n        legend.justification = c(\"right\", \"bottom\"),\n        legend.background = element_blank(),\n        legend.box.background = element_rect(colour = \"black\"))\n\np_be",
+    "objectID": "slides/1_uebung.html#datenvisualisierung",
+    "href": "slides/1_uebung.html#datenvisualisierung",
+    "title": "1. Übung",
+    "section": "Datenvisualisierung",
+    "text": "Datenvisualisierung\n\nOutputCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n#install.packages(\"palmerpenguins\")\nlibrary(palmerpenguins)\ndf = penguins\n# Scatterplot: penguin bill length versus bill depth\nggplot(data = df, aes(x = bill_length_mm, y = bill_depth_mm)) +\n  geom_point(aes(color = species, \n                 shape = species),\n             size = 2)  +\n  scale_color_manual(values = c(\"darkorange\",\"darkorchid\",\"cyan4\"))",
     "crumbs": [
       "Zeitplan und Dateien",
-      "2 - Seminar  (Paneldaten)"
+      "1 - Übung"
     ]
   },
   {
-    "objectID": "slides/2_seminar.html#regressionsmodelle-within-schätzer",
-    "href": "slides/2_seminar.html#regressionsmodelle-within-schätzer",
-    "title": "2. Seminar: Paneldaten",
-    "section": "Regressionsmodelle: Within Schätzer",
-    "text": "Regressionsmodelle: Within Schätzer\n\\[\ny_{it} - \\bar{y}_{i}= \\alpha_i-\\alpha_i + \\beta_1(x_{it}- \\bar{x}_i) +  \\beta_2(z_{i}- \\bar{z}_i) + \\epsilon_{it}-\\bar{\\epsilon}_{i} + u_{i}-\\bar{u}_{i},\n\\]\n\\[\ny_{it} - \\bar{y}_{i}=  \\beta_1(x_{it}- \\bar{x}_i) +   \\epsilon_{it}-\\bar{\\epsilon}_{i},\n\\]",
+    "objectID": "slides/1_uebung.html#yaml",
+    "href": "slides/1_uebung.html#yaml",
+    "title": "1. Übung",
+    "section": "YAML",
+    "text": "YAML\nDokument metadata\n\n\ntitle: \"Hello, Penguins!\"\nformat: html\neditor: visual",
     "crumbs": [
       "Zeitplan und Dateien",
-      "2 - Seminar  (Paneldaten)"
+      "1 - Übung"
     ]
   },
   {
-    "objectID": "slides/2_seminar.html#regressionsmodelle-within-schätzer-1",
-    "href": "slides/2_seminar.html#regressionsmodelle-within-schätzer-1",
-    "title": "2. Seminar: Paneldaten",
-    "section": "Regressionsmodelle: Within Schätzer",
-    "text": "Regressionsmodelle: Within Schätzer\n\\[\ny_{it} - \\bar{y}_{i}= \\alpha_i-\\alpha_i + \\beta_1(x_{it}- \\bar{x}_i) +  \\beta_2(z_{i}- \\bar{z}_i) + \\epsilon_{it}-\\bar{\\epsilon}_{i} + u_{i}-\\bar{u}_{i},\n\\]\n\\[\ny_{it} - \\bar{y}_{i}=  \\beta_1(x_{it}- \\bar{x}_i) +   \\epsilon_{it}-\\bar{\\epsilon}_{i},\n\\]\n\\[\ny_{it} = \\alpha_i + \\beta_{WI} x_{it} + \\epsilon_{it},\n\\]\nWithin-Schätzer: vergleicht nur verschiedene Zeitpunkte innerhalb derselben Person\nVorgehen: Für jede Person wird ein Dummy hinzugefügt\n→ Kontrolle auf zeitkonstante unbeobachtete Heterogenität",
+    "objectID": "slides/1_uebung.html#yaml-ausführlicher",
+    "href": "slides/1_uebung.html#yaml-ausführlicher",
+    "title": "1. Übung",
+    "section": "YAML ausführlicher",
+    "text": "YAML ausführlicher\nDokument metadata\n\n\nformat:\n  live-revealjs:\n    theme: default\n    slideNumber: true\ntitle: \"1. Übung\"\nsubtitle: \"Fortgeschrittene quantitative Methoden &lt;br&gt; Wintersemester 2024-2025\"\nauthor: \"Daria Tisch\"\neditor: visual",
     "crumbs": [
       "Zeitplan und Dateien",
-      "2 - Seminar  (Paneldaten)"
+      "1 - Übung"
     ]
   },
   {
-    "objectID": "slides/2_seminar.html#within-schätzer-anwendung",
-    "href": "slides/2_seminar.html#within-schätzer-anwendung",
-    "title": "2. Seminar: Paneldaten",
-    "section": "Within Schätzer, Anwendung",
-    "text": "Within Schätzer, Anwendung\n\nOutputCode with package plm\n\n\n\n\n\n\n\n \nlz\n\n\nPredictors\nEstimates\nCI\np\n\n\n(Intercept)\n-2.42\n-15.90 – 11.07\n0.716\n\n\nalter\n0.17\n-0.06 – 0.40\n0.146\n\n\nid name [17]\n1.72\n-0.68 – 4.12\n0.152\n\n\nid name [28]\n-2.14\n-5.81 – 1.54\n0.243\n\n\nid name [29]\n1.52\n-0.88 – 3.92\n0.204\n\n\nid name [38]\n-1.49\n-2.99 – 0.00\n0.050\n\n\nid name [4]\n4.72\n-3.48 – 12.93\n0.248\n\n\nid name [8]\n1.35\n-0.30 – 3.01\n0.105\n\n\nObservations\n34\n\n\nR2 / R2 adjusted\n0.632 / 0.532\n\n\n\n\n\n\n\nInterpretation: Zunehmendes Alter einer Person geht mit einer zunehmenden Zufriedenheit derselben Person einher. ## Code (by hand)\n\nm_fe &lt;- lm(lz ~ alter + id_name, data = df)\ntab_model(m_fe)\n\n\n\n\n \nlz\n\n\nPredictors\nEstimates\nCI\np\n\n\n(Intercept)\n-2.42\n-15.90 – 11.07\n0.716\n\n\nalter\n0.17\n-0.06 – 0.40\n0.146\n\n\nid name [17]\n1.72\n-0.68 – 4.12\n0.152\n\n\nid name [28]\n-2.14\n-5.81 – 1.54\n0.243\n\n\nid name [29]\n1.52\n-0.88 – 3.92\n0.204\n\n\nid name [38]\n-1.49\n-2.99 – 0.00\n0.050\n\n\nid name [4]\n4.72\n-3.48 – 12.93\n0.248\n\n\nid name [8]\n1.35\n-0.30 – 3.01\n0.105\n\n\nObservations\n34\n\n\nR2 / R2 adjusted\n0.632 / 0.532\n\n\n\n\n\n\n\n\n\n\nm_fe2 &lt;- plm(lz ~ alter, data = df,\n           index = c(\"id\", \"syear\"),\n           effect = \"individual\", model = \"within\")\ntab_model(m_fe2)\n\n\n\n\n \nlz\n\n\nPredictors\nEstimates\nCI\np\n\n\nalter\n0.17\n-0.06 – 0.40\n0.146\n\n\nObservations\n34\n\n\nR2 / R2 adjusted\n0.080 / -0.168",
+    "objectID": "slides/1_uebung.html#text",
+    "href": "slides/1_uebung.html#text",
+    "title": "1. Übung",
+    "section": "Text",
+    "text": "Text\nMarkdown kann mit jedem Editor bearbeitet werden, auch mit den Quelltext- oder visuellen Editoren von RStudio.",
     "crumbs": [
       "Zeitplan und Dateien",
-      "2 - Seminar  (Paneldaten)"
+      "1 - Übung"
     ]
   },
   {
-    "objectID": "slides/2_seminar.html#within-graphisch",
-    "href": "slides/2_seminar.html#within-graphisch",
-    "title": "2. Seminar: Paneldaten",
-    "section": "Within, graphisch",
-    "text": "Within, graphisch\n\nOutputCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n# Lineares regressionsmodell für jede Person i\n# und Residuen speichern\nfor(i in unique(df$id)){\n  oo &lt;- which(df$id == i)\n  lmt &lt;- lm(lz ~ alter, data = df[oo, ])\n  df$predicted[oo] &lt;- predict(lmt)\n  df$residuals[oo] &lt;- residuals(lmt)\n}\n\n\ng_wi &lt;- ggplot(df, aes(alter, lz)) +\n  geom_point( aes(x = alter, y = lz, shape = id_name, colour = id_name, fill  = id_name), \n              size = 2, stroke = 1) +\n  geom_smooth(method = 'lm', formula = y ~ x, se = FALSE, show.legend = FALSE,\n              mapping = aes(group = id_name),\n              color  = \"blue\", linetype = \"dotted\") +\n  geom_segment(data = df, aes(xend = alter, yend = predicted), \n               alpha = .3, color = \"deeppink\") +\n  annotate(\"text\", x = 30, y = 9.9, \n           label = paste0(\"beta[Within] ==\", round(m_fe$coefficients[2], 3)), \n           parse = TRUE) +\n  scale_fill_manual(values = cbp2[-c(1)]) +\n  scale_colour_manual(values = cbp2[-c(1)]) + \n  scale_shape_manual(values = c(15:18, 25, 20, 21)) +\n  ggtitle(\"WI (Fixed Effects)\") +\n  theme_classic() +\n  theme(legend.key = element_blank(), \n        legend.title = element_blank(),\n        text = element_text(size = 14),\n        legend.position = c(1,0), \n        legend.justification = c(\"right\", \"bottom\"),\n        legend.background = element_blank(),\n        legend.box.background = element_rect(colour = \"black\"))\n\ng_wi",
+    "objectID": "slides/1_uebung.html#code-1",
+    "href": "slides/1_uebung.html#code-1",
+    "title": "1. Übung",
+    "section": "Code",
+    "text": "Code\nCode kann auch mit den Quelltext- oder visuellen Editoren von RStudio bearbeitet werden",
     "crumbs": [
       "Zeitplan und Dateien",
-      "2 - Seminar  (Paneldaten)"
+      "1 - Übung"
     ]
   },
   {
-    "objectID": "slides/2_seminar.html#regressionsmodelle-re",
-    "href": "slides/2_seminar.html#regressionsmodelle-re",
-    "title": "2. Seminar: Paneldaten",
-    "section": "Regressionsmodelle: RE",
-    "text": "Regressionsmodelle: RE\nRandom effects Schätzer:\n\nwird häugig in Mehrebenenanalysen genutzt\nVorteile gegenüber FE:\n\neffizienter (kleinere Standardfehler)\nEffekte von zeitkonstanten Variablen können geschätzt werden\n\nAber: Annahme, dass es keine (zeitkonstante und zeitveränderliche) unbeobachtete Heterogenität gibt",
+    "objectID": "slides/1_uebung.html#quarto-output-dokumente",
+    "href": "slides/1_uebung.html#quarto-output-dokumente",
+    "title": "1. Übung",
+    "section": "Quarto Output Dokumente",
+    "text": "Quarto Output Dokumente\n\nFolien / Präsentation (HTML, PDF, PowerPoint)\nManuskripte (Word Dokument, PDF, HTML)\nWebsites (HTML)",
     "crumbs": [
       "Zeitplan und Dateien",
-      "2 - Seminar  (Paneldaten)"
+      "1 - Übung"
     ]
   },
   {
-    "objectID": "slides/2_seminar.html#regressionsmodelle-re-1",
-    "href": "slides/2_seminar.html#regressionsmodelle-re-1",
-    "title": "2. Seminar: Paneldaten",
-    "section": "Regressionsmodelle: RE",
-    "text": "Regressionsmodelle: RE\nRE als quasi-demeaned Schätzer (gewichteter Durchschnitt des Between- und Within-Schätzers) \\[\ny_{it} - \\lambda\\bar{y}_{i}=  (1-\\lambda)\\alpha_i+\\beta_1(x_{it}- \\lambda\\bar{x}_i) +   \\epsilon_{it}-\\lambda\\bar{\\epsilon}_{i},\n\\] mit \\[\n\\hat{\\lambda} = 1 - \\sqrt{\\frac{\\sigma^2_\\epsilon}{\\sigma^2_\\epsilon + T\\sigma^2_\\alpha}}\n\\]\n\\(\\lambda = 0\\): POLS\n\\(\\lambda = 1\\): FE\n\\(\\sigma^2\\) = Varianz\n\\(T\\) = Anzahl an Zeitpunkten",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "2 - Seminar  (Paneldaten)"
-    ]
-  },
-  {
-    "objectID": "slides/2_seminar.html#re-schätzer-anwendung",
-    "href": "slides/2_seminar.html#re-schätzer-anwendung",
-    "title": "2. Seminar: Paneldaten",
-    "section": "RE Schätzer, Anwendung",
-    "text": "RE Schätzer, Anwendung\n\nOutputCode\n\n\n\n\n\n\n\n \nlz\n\n\nPredictors\nEstimates\nCI\np\n\n\n(Intercept)\n5.14\n2.31 – 7.97\n0.001\n\n\nalter\n0.04\n-0.01 – 0.09\n0.087\n\n\nObservations\n34\n\n\nR2 / R2 adjusted\n0.070 / 0.041\n\n\n\n\n\n\n\n\n\n\nm_re &lt;- plm(lz ~ alter, data = df,\n           index = c(\"id\", \"syear\"),\n           effect = \"individual\", model = \"random\")\ntab_model(m_re)\n\n\n\n\n \nlz\n\n\nPredictors\nEstimates\nCI\np\n\n\n(Intercept)\n5.14\n2.31 – 7.97\n0.001\n\n\nalter\n0.04\n-0.01 – 0.09\n0.087\n\n\nObservations\n34\n\n\nR2 / R2 adjusted\n0.070 / 0.041",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "2 - Seminar  (Paneldaten)"
-    ]
-  },
-  {
-    "objectID": "slides/2_seminar.html#hausman-test",
-    "href": "slides/2_seminar.html#hausman-test",
-    "title": "2. Seminar: Paneldaten",
-    "section": "Hausman Test",
-    "text": "Hausman Test\nTestet ein „immer“ konsistentes Modell (FE-Modell) gegen ein „manchmal“ konsistentes aber dann effizientes Modell (RE-Modell) (Brüderl, S. 976)\nIdee: Man berechnet die standardisierte Differenz der Parameterschätzer. Ist die groß, so weicht das RE-Modell stark vom FE-Modell ab und es sollte das FE-Modell verwendet werden.\n\\[\nH = (\\hat{\\beta}_{RE} -\\hat{\\beta}_{FE})'[\\hat{V}(\\hat{\\beta}_{RE}) -\\hat{V}(\\hat{\\beta}_{FE})]^{-1}\\hat{\\beta}_{RE} -\\hat{\\beta}_{FE}),\n\\] \\(\\hat{V}(.)\\): geschätzte Varianz-Kovarianzmatrix der Schätzer",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "2 - Seminar  (Paneldaten)"
-    ]
-  },
-  {
-    "objectID": "slides/2_seminar.html#hausman-test-anwendung",
-    "href": "slides/2_seminar.html#hausman-test-anwendung",
-    "title": "2. Seminar: Paneldaten",
-    "section": "Hausman Test, Anwendung",
-    "text": "Hausman Test, Anwendung\n\n\n\n    Hausman Test\n\ndata:  lz ~ alter\nchisq = 1.2944, df = 1, p-value = 0.2552\nalternative hypothesis: one model is inconsistent\n\n\n\nHausmantest = nicht signifikant Nullhypothese wird nicht abgelehnt RE Schätzer ist nicht verzerrt durch unbeobachtete Heterogenität",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "2 - Seminar  (Paneldaten)"
-    ]
-  },
-  {
-    "objectID": "slides/2_seminar.html#vergleich-re-versus-fe",
-    "href": "slides/2_seminar.html#vergleich-re-versus-fe",
-    "title": "2. Seminar: Paneldaten",
-    "section": "Vergleich RE versus FE",
-    "text": "Vergleich RE versus FE\n\n\n\n\n\n\n\n\n\nRE Modell\nFE Modell\n\n\n\n\nUnbeobachtete Heterogenität\nVerzerrt, wenn personenspezifische unbeobachtete Heterogenität vorliegt (Selbstselektion)\nNicht verzerrt durch personenspezifische unbeobachteter Heterogenität (within-Vergleich)\n\n\nZeitkonstante Variablen\nKönnen mitgeschätzt werden (sind aber verzerrt, wenn unbeobachtete Heterogenität vorliegt)\nKönnen nicht mitgeschätzt werden, werden aber implizit mitkontrolliert = konsistent\n\n\nStandardfehler\nTendenziell kleiner (da mehr Variation in den Daten genutzt wird)\nTendenziell größer (da nur within-Varianz genutzt wird)\n\n\nZeitveränderliche Variablen\n\nOhne Veränderung (before-after comparison) kann keine within-Varianz geschätzt werden",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "2 - Seminar  (Paneldaten)"
-    ]
-  },
-  {
-    "objectID": "slides/2_seminar.html#vergleich",
-    "href": "slides/2_seminar.html#vergleich",
-    "title": "2. Seminar: Paneldaten",
-    "section": "Vergleich",
-    "text": "Vergleich\n\n\n\n\n\n \nPOLS\nBE\nFE\nRE\n\n\nPredictors\nEstimates\np\nEstimates\np\nEstimates\np\nEstimates\np\n\n\n(Intercept)\n5.395\n&lt;0.001\n5.490\n0.013\n\n\n5.144\n0.001\n\n\nalter\n0.040\n0.007\n0.037\n0.208\n0.169\n0.146\n0.044\n0.087\n\n\nObservations\n34\n7\n34\n34\n\n\nR2 / R2 adjusted\n0.207 / 0.182\n0.295 / 0.154\n0.080 / -0.168\n0.070 / 0.041",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "2 - Seminar  (Paneldaten)"
-    ]
-  },
-  {
-    "objectID": "slides/2_seminar.html#drittvariablenkontrolle",
-    "href": "slides/2_seminar.html#drittvariablenkontrolle",
-    "title": "2. Seminar: Paneldaten",
-    "section": "Drittvariablenkontrolle",
-    "text": "Drittvariablenkontrolle\nIdee von Regressionsverfahren: Kontrolle von Drittvariablenkontrolle, um unbeobachtete Heterogenität zu verringern.\nAber: gezielte Auswahl von Variablen notwendig!",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "2 - Seminar  (Paneldaten)"
-    ]
-  },
-  {
-    "objectID": "slides/2_seminar.html#dags",
-    "href": "slides/2_seminar.html#dags",
-    "title": "2. Seminar: Paneldaten",
-    "section": "DAGs",
-    "text": "DAGs\nDirect acyclic graph (DAG): eine grafische Darstellung der kausalen Annahmen in dem Datengenerierungsprozess\n\nElwert & Winship (2014)",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "2 - Seminar  (Paneldaten)"
-    ]
-  },
-  {
-    "objectID": "slides/2_seminar.html#probleme-bei-der-drittvariablenkontrolle",
-    "href": "slides/2_seminar.html#probleme-bei-der-drittvariablenkontrolle",
-    "title": "2. Seminar: Paneldaten",
-    "section": "3 Probleme bei der Drittvariablenkontrolle",
-    "text": "3 Probleme bei der Drittvariablenkontrolle\n\nOvercontrol bias\nConfounding bias\nEndogenous selection bias",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "2 - Seminar  (Paneldaten)"
-    ]
-  },
-  {
-    "objectID": "slides/2_seminar.html#overcontrol-bias",
-    "href": "slides/2_seminar.html#overcontrol-bias",
-    "title": "2. Seminar: Paneldaten",
-    "section": "Overcontrol bias",
-    "text": "Overcontrol bias\n\nElwert & Winship (2014)",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "2 - Seminar  (Paneldaten)"
-    ]
-  },
-  {
-    "objectID": "slides/2_seminar.html#confounding",
-    "href": "slides/2_seminar.html#confounding",
-    "title": "2. Seminar: Paneldaten",
-    "section": "Confounding",
-    "text": "Confounding\n\nElwert & Winship (2014)",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "2 - Seminar  (Paneldaten)"
-    ]
-  },
-  {
-    "objectID": "slides/2_seminar.html#endogenous-selection-bias",
-    "href": "slides/2_seminar.html#endogenous-selection-bias",
-    "title": "2. Seminar: Paneldaten",
-    "section": "Endogenous selection bias",
-    "text": "Endogenous selection bias\n\nElwert & Winship (2014)\nFrage: Führt Talent zu hübschen Aussehen? (Kausal: nein!) A: Talent B: Beauty C: Hollywood success\n\nbeauty and talent are unassociated\nbeauty führt zu Erfolg\ntalent führt zu Erfolg\n\nKontrolle auf Erfolg (zb looking at the relationship between beauty and talent only among successful Hollywood actors): conditioning on the collider (Erfolg) has created a spurious association between beauty and talent among the successful. This spurious association is endogenous selection bias.",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "2 - Seminar  (Paneldaten)"
-    ]
-  },
-  {
-    "objectID": "slides/2_seminar.html#ende",
-    "href": "slides/2_seminar.html#ende",
-    "title": "2. Seminar: Paneldaten",
+    "objectID": "slides/1_uebung.html#ende",
+    "href": "slides/1_uebung.html#ende",
+    "title": "1. Übung",
     "section": "Ende",
-    "text": "Ende\n\nDieser Foliensatz profitierte in großen Teilen von ehemaligen Veranstaltungen von Isabel Habicht sowie von\nhttps://ruettenauer.github.io/Panel-Data-Analysis/\nWeitere Literatur:\n\nJosef Brüderl and Volker Ludwig: Folien",
+    "text": "Ende\n\nDieser Foliensatz profitierte in großen Teilen von ehemaligen Veranstaltungen von Isabel Habicht sowie von Mine Çetinkaya-Rundel Materialien:\n\nhttps://mine-cetinkaya-rundel.github.io/teach-with-quarto/talks/1-welcome/",
     "crumbs": [
       "Zeitplan und Dateien",
-      "2 - Seminar  (Paneldaten)"
+      "1 - Übung"
     ]
+  },
+  {
+    "objectID": "schedule.html",
+    "href": "schedule.html",
+    "title": "Übersicht",
+    "section": "",
+    "text": "Morgens\nNachmittags\n\n\n\n\n12.12.2024\nÜbersicht quantitative Methoden 🖥\nArbeitsablauf etablieren, Einführung in Quarto und R 🖥 📋 📝 📚 📚\n\n\n19.12.2024\nPaneldaten Seminar 🖥\nPaneldaten Übung 📋 📝\n\n\n09.01.2025\nEreignisdaten Seminar\nEreignisdaten Übung\n\n\n23.01.2025\nFaktorielle Umfrageexperimente Seminar\nFaktorielle Umfrageexperimente Übung\n\n\n\nLegende:\n📚 - Daten\n🖥 - Foliensatz\n📋 - Übungsblatt, Lösungen\n📝 - Übungsblatt zum Download",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "Übersicht"
+    ]
+  },
+  {
+    "objectID": "schedule.html#zeitplan",
+    "href": "schedule.html#zeitplan",
+    "title": "Übersicht",
+    "section": "",
+    "text": "Morgens\nNachmittags\n\n\n\n\n12.12.2024\nÜbersicht quantitative Methoden 🖥\nArbeitsablauf etablieren, Einführung in Quarto und R 🖥 📋 📝 📚 📚\n\n\n19.12.2024\nPaneldaten Seminar 🖥\nPaneldaten Übung 📋 📝\n\n\n09.01.2025\nEreignisdaten Seminar\nEreignisdaten Übung\n\n\n23.01.2025\nFaktorielle Umfrageexperimente Seminar\nFaktorielle Umfrageexperimente Übung\n\n\n\nLegende:\n📚 - Daten\n🖥 - Foliensatz\n📋 - Übungsblatt, Lösungen\n📝 - Übungsblatt zum Download",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "Übersicht"
+    ]
+  },
+  {
+    "objectID": "schedule.html#abgaben",
+    "href": "schedule.html#abgaben",
+    "title": "Übersicht",
+    "section": "Abgaben",
+    "text": "Abgaben\nAbgabe 1 (Paneldaten): ✍️ ✍️",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "Übersicht"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Fortgeschrittene quantitative Methoden",
+    "section": "",
+    "text": "Dies ist die Kurswebsite zum quantitativen Teil des Kurses Fortgeschrittene Methoden und Übung im Masterstudium Soziologie an der Universität Wuppertal (Wintersemester 24-25).\nDozentin: Daria Tisch, Sprechstunde nach Vereinbarung per Zoom.\nAbgaben:\n\n09.01.2025: Analyse von Paneldaten\n30.01.2025: Replikation einer Ereignisdatenanalyse\n\nWeitere Informationen in Moodle.",
+    "crumbs": [
+      "Kursinformationen"
+    ]
+  },
+  {
+    "objectID": "materials.html",
+    "href": "materials.html",
+    "title": "Course Materials",
+    "section": "",
+    "text": "Datasets\nSlide Session Test\nPresentation Session Test"
   },
   {
     "objectID": "slides/1_seminar.html#wie-arbeiten-wir-in-diesem-kurs",
@@ -1067,273 +1139,377 @@
     ]
   },
   {
-    "objectID": "materials.html",
-    "href": "materials.html",
-    "title": "Course Materials",
-    "section": "",
-    "text": "Datasets\nSlide Session Test\nPresentation Session Test"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Fortgeschrittene quantitative Methoden",
-    "section": "",
-    "text": "Dies ist die Kurswebsite zum quantitativen Teil des Kurses Fortgeschrittene Methoden und Übung im Masterstudium Soziologie an der Universität Wuppertal (Wintersemester 24-25).\nDozentin: Daria Tisch, Sprechstunde nach Vereinbarung per Zoom.\nAbgaben:\n\n09.01.2025: Analyse von Paneldaten\n30.01.2025: Replikation einer Ereignisdatenanalyse\n\nWeitere Informationen in Moodle.",
-    "crumbs": [
-      "Kursinformationen"
-    ]
-  },
-  {
-    "objectID": "schedule.html",
-    "href": "schedule.html",
-    "title": "Übersicht",
-    "section": "",
-    "text": "Zeitplan:\n\n\n\n\nMorgens\nNachmittags\n\n\n\n\n12.12.2024\nÜbersicht quantitative Methoden 🖥\nArbeitsablauf etablieren, Einführung in Quarto und R 🖥 📋 📝 📚 📚\n\n\n19.12.2024\nPaneldaten Seminar 🖥\nPaneldaten Übung 📋 📝\n\n\n09.01.2025\nEreignisdaten Seminar\nEreignisdaten Übung\n\n\n23.01.2025\nFaktorielle Umfrageexperimente Seminar\nFaktorielle Umfrageexperimente Übung\n\n\n\nLegende:\n📚 - Daten\n🖥 - Foliensatz\n📋 - Übungsblatt, Lösungen\n📝 - Übungsblatt zum Download",
+    "objectID": "slides/2_seminar.html#heutige-sitzung",
+    "href": "slides/2_seminar.html#heutige-sitzung",
+    "title": "2. Seminar: Paneldaten",
+    "section": "Heutige Sitzung",
+    "text": "Heutige Sitzung\n\nErhebungsdesigns: Querschnitt-, Trend- und Paneldaten\nFehlerquellen: Datenerhebung vs. Datenauswertung\nKausalanalyse mit Paneldaten\nRegressionsmodelle mit Paneldaten\n\nPflichtlektüre:\n\nElwert, F. and Winship, C. (2014). ‘Endogenous Selection Bias: The Problem of Conditioning on a Collider Variable’. Annual Review of Sociology 40: 31–53.\nBrüderl, J. (2010). Kausalanalyse mit Paneldaten. In Handbuch der sozialwissenschaftlichen Datenanalyse (pp. 963-994). VS Verlag für Sozialwissenschaften.",
     "crumbs": [
       "Zeitplan und Dateien",
-      "Übersicht"
+      "2 - Seminar  (Paneldaten)"
     ]
   },
   {
-    "objectID": "slides/1_uebung.html#was-ist-forschungsdatenmanagement",
-    "href": "slides/1_uebung.html#was-ist-forschungsdatenmanagement",
-    "title": "1. Übung",
-    "section": "Was ist Forschungsdatenmanagement?",
-    "text": "Was ist Forschungsdatenmanagement?\n\n“Gesundheitsvorsorge” für Ihre Daten\nSchützt die Daten vor Schaden\nMacht Daten funktional, nutzbar und auffindbar\nAlle Strategien, Prozesse und Maßnahmen zum Sammeln, Organisieren, Strukturieren, Speichern, Analysieren, Veröffentlichen, Weitergeben und Archivieren von Informationen, die im Rahmen eines Forschungsprojekts verwendet oder erzeugt werden\nBehandelt auch rechtliche und ethische Fragen (z. B. Einwilligungserklärungen, Eigentum, Lizenzierung)",
+    "objectID": "slides/2_seminar.html#erhebungsdesigns-vergleichen",
+    "href": "slides/2_seminar.html#erhebungsdesigns-vergleichen",
+    "title": "2. Seminar: Paneldaten",
+    "section": "Erhebungsdesigns vergleichen",
+    "text": "Erhebungsdesigns vergleichen\n\nQuerschnittdesign: Daten zu einem Zeitpunkt von verschiedenen Personen\nTrenddesign: Daten zu mehreren Zeitpunkten, aber unterschiedliche Personen\nPaneldesign: Daten zu mehreren Zeitpunkten von denselben Personen",
     "crumbs": [
       "Zeitplan und Dateien",
-      "1 - Übung"
+      "2 - Seminar  (Paneldaten)"
     ]
   },
   {
-    "objectID": "slides/1_uebung.html#übersicht-forschungsdatenmanagement",
-    "href": "slides/1_uebung.html#übersicht-forschungsdatenmanagement",
-    "title": "1. Übung",
-    "section": "Übersicht: Forschungsdatenmanagement",
-    "text": "Übersicht: Forschungsdatenmanagement",
+    "objectID": "slides/2_seminar.html#querschnitt--trend--und-paneldaten",
+    "href": "slides/2_seminar.html#querschnitt--trend--und-paneldaten",
+    "title": "2. Seminar: Paneldaten",
+    "section": "Querschnitt-, Trend- und Paneldaten",
+    "text": "Querschnitt-, Trend- und Paneldaten\nWelche Fragestellungen bieten sich bei welchem Studiendesign an?",
     "crumbs": [
       "Zeitplan und Dateien",
-      "1 - Übung"
+      "2 - Seminar  (Paneldaten)"
     ]
   },
   {
-    "objectID": "slides/1_uebung.html#warum-forschungsdatenmanagement",
-    "href": "slides/1_uebung.html#warum-forschungsdatenmanagement",
-    "title": "1. Übung",
-    "section": "Warum Forschungsdatenmanagement?",
-    "text": "Warum Forschungsdatenmanagement?\n\nVerbessert Arbeitsabläufe\nMinimiert das Risiko von Datenverlusten\nErfüllung der Anforderungen von Finanzierungs- und Aufsichtsbehörden\nAnerkennung für die Weitergabe eigener Daten\nGute wissenschaftliche Praxis\nErhält Datenqualität\nSpart Ressourcen und nutzt die öffentlichen Mittel optimal\n\n\nPreserves the integrity of research Transparent research Reproducible research",
+    "objectID": "slides/2_seminar.html#paneldaten",
+    "href": "slides/2_seminar.html#paneldaten",
+    "title": "2. Seminar: Paneldaten",
+    "section": "Paneldaten",
+    "text": "Paneldaten\n\nPaneldaten: wiederholte Messung derselben Variablen an denselben Untersuchungseinheiten (Brüderl 2010)\nWenn N = 1: Zeitreihendaten\nVorteile gegenüber Querschnittsdaten\n\nintraindividuelle Veränderungen\nzeitliche Abfolge von Veränderungen\nProblem der unbeobachteter Heterogenität abmildern",
     "crumbs": [
       "Zeitplan und Dateien",
-      "1 - Übung"
+      "2 - Seminar  (Paneldaten)"
     ]
   },
   {
-    "objectID": "slides/1_uebung.html#konkrete-anwendung",
-    "href": "slides/1_uebung.html#konkrete-anwendung",
-    "title": "1. Übung",
-    "section": "Konkrete Anwendung",
-    "text": "Konkrete Anwendung\n\nAlle Übungsaufgaben werden mit Skripten gelöst → Reproduzierbarkeit\nGute Praktiken der Dateiverwaltung & -bennenung\nGute Dokumentation des Codes",
+    "objectID": "slides/2_seminar.html#wichtige-panelstudien",
+    "href": "slides/2_seminar.html#wichtige-panelstudien",
+    "title": "2. Seminar: Paneldaten",
+    "section": "Wichtige Panelstudien",
+    "text": "Wichtige Panelstudien\n\nPanel Study of Income Dynamics (PSID)\nSOEP\nUnderstanding Society (UKHLS)\nFamilienpanel (pairfam)\nFreDa\nNationales Bildungspanel (NEPS)\nSurvey of Health, Ageing and Retirement in Europe (SHARE)\nArbeitsmarkt und soziale Sicherung (PASS)\nTwinLife\nChildren of Immigrants (CILS4EU)\nGESIS Panel (auch offline)\nSoSci Panel\nÜbersicht: Forschungsdaten in Deutschland",
     "crumbs": [
       "Zeitplan und Dateien",
-      "1 - Übung"
+      "2 - Seminar  (Paneldaten)"
     ]
   },
   {
-    "objectID": "slides/1_uebung.html#wie-wir-arbeiten",
-    "href": "slides/1_uebung.html#wie-wir-arbeiten",
-    "title": "1. Übung",
-    "section": "Wie wir arbeiten",
-    "text": "Wie wir arbeiten\n\nInteraktive Folien zum gemeinsamen Lernen\nQuarto Dokumente als Übungsaufgaben\nQuarto Dokumente als Abgaben (09. Jan und 30. Jan!)",
+    "objectID": "slides/2_seminar.html#potentielle-panelprobleme",
+    "href": "slides/2_seminar.html#potentielle-panelprobleme",
+    "title": "2. Seminar: Paneldaten",
+    "section": "Potentielle Panelprobleme",
+    "text": "Potentielle Panelprobleme\nKonstanz der Messinstrumente: Semantische Gehalt von Begriffen kann sich über die Jahre ändern (Frageformulierungen)\nAusfallrate / Panelmortalität: Befragte nehmen nicht mehr an der Umfrage teil\n\nUrsachen: Fehlende Motivation, Umzug, Tod/Krankheit\nProblem: systematischer Ausfall\nLösungsansatz: Höherer Stichprobenumfang, intensive Panelpflege; Anreize (Incentivierung)\n\nPaneleffekte (reaktive Messungen):\n\nInterviewereffekte (Interviewer und Befragte lernen sich über die Wellen kennen)\nVerhalten des Interviewers weicht von Erstbefragung ab (kennt den Ablauf)\nBelastungs- und Gewöhnungseffekte",
     "crumbs": [
       "Zeitplan und Dateien",
-      "1 - Übung"
+      "2 - Seminar  (Paneldaten)"
     ]
   },
   {
-    "objectID": "slides/1_uebung.html#ordnerstruktur",
-    "href": "slides/1_uebung.html#ordnerstruktur",
-    "title": "1. Übung",
-    "section": "Ordnerstruktur",
-    "text": "Ordnerstruktur\nBitte folgende Ordnerstruktur anlegen:\n\n\nDatensätze entweder auf der Website oder in Moodle\nÜbungsblätter auf der Website\nAbgaben auf der Website, aber Einreichen über Moodle\n\n→ Herunterladen und im richtigen Ordner abspeichern",
+    "objectID": "slides/2_seminar.html#gütekriterien-für-messinstrumente",
+    "href": "slides/2_seminar.html#gütekriterien-für-messinstrumente",
+    "title": "2. Seminar: Paneldaten",
+    "section": "Gütekriterien für Messinstrumente:",
+    "text": "Gütekriterien für Messinstrumente:\n\nValidität (Gültigkeit): Messen wir eigentlich das richtige?\nReliabilität (Zuverlässigkeit): Wiederholte Messungen müssen zum gleichen Ergebnis führen\n\nVoraussetzung für Validität (aber nicht umgekehrt)\n\nObjektivität: Unabhängigkeit der Ergebnisse von der jeweiligen Person, die das Messinstrument anwendet",
     "crumbs": [
       "Zeitplan und Dateien",
-      "1 - Übung"
+      "2 - Seminar  (Paneldaten)"
     ]
   },
   {
-    "objectID": "slides/1_uebung.html#abgaben",
-    "href": "slides/1_uebung.html#abgaben",
-    "title": "1. Übung",
-    "section": "Abgaben",
-    "text": "Abgaben\n\nQuarto Dokument sowie PDF oder HTML Dokument\nGut kommentiert\nRechtzeitig über Moodle!",
+    "objectID": "slides/2_seminar.html#validität",
+    "href": "slides/2_seminar.html#validität",
+    "title": "2. Seminar: Paneldaten",
+    "section": "Validität",
+    "text": "Validität\nExterne Validität\n\nAuf Grundgesamtheit übertragbar?\nValidität des Messinstruments wird vorausgesetzt\n\nInterne Validität\n\nEindeutigkeit der Ergebnisinterpretation\n„Je besser ein Design dazu geeignet ist, die aufgestellten Hypothesen zu prüfen und Alternativerklärungen auszuschließen, umso höher ist die interne Validität“\nKausalanalytischer Anspruch von Experimenten (können Störfaktoren eliminieren)",
     "crumbs": [
       "Zeitplan und Dateien",
-      "1 - Übung"
+      "2 - Seminar  (Paneldaten)"
     ]
   },
   {
-    "objectID": "slides/1_uebung.html#was-ist-quarto",
-    "href": "slides/1_uebung.html#was-ist-quarto",
-    "title": "1. Übung",
-    "section": "Was ist Quarto?",
-    "text": "Was ist Quarto?\n\nist ein neues, quelloffenes, wissenschaftliches und technisches Publikationssystem\nDas Ziel von Quarto ist es, den Prozess der Erstellung und Zusammenarbeit an wissenschaftlichen und technischen Dokumenten deutlich zu verbessern",
+    "objectID": "slides/2_seminar.html#kontrafaktischer-kausalitätsbegriff",
+    "href": "slides/2_seminar.html#kontrafaktischer-kausalitätsbegriff",
+    "title": "2. Seminar: Paneldaten",
+    "section": "Kontrafaktischer Kausalitätsbegriff",
+    "text": "Kontrafaktischer Kausalitätsbegriff\n\nX ➯ Y\n\n\\[\n\\Delta_i = Y(X=1, t_0) - Y(X=0, t_0)\n\\] Vergleich eines faktischen und eines kontrafaktischen Outcomes.",
     "crumbs": [
       "Zeitplan und Dateien",
-      "1 - Übung"
+      "2 - Seminar  (Paneldaten)"
     ]
   },
   {
-    "objectID": "slides/1_uebung.html#warum-quarto",
-    "href": "slides/1_uebung.html#warum-quarto",
-    "title": "1. Übung",
-    "section": "Warum Quarto?",
-    "text": "Warum Quarto?\n\n\nCode und Ergbenisdokument in einem Zuge erstellen\nKein lästiges hin und herkopieren\nKonsistente Implementierung attraktiver und praktischer Funktionen für alle Ausgaben: Tabsets, Code-Folding, Syntax-Highlighting, etc.\nZugänglichere Standardeinstellungen\nVisual editor\nLeitplanken, besonders hilfreich für neue Lernende: YAML-Vervollständigung, informative Syntaxfehler, etc.",
+    "objectID": "slides/2_seminar.html#between-schätzer",
+    "href": "slides/2_seminar.html#between-schätzer",
+    "title": "2. Seminar: Paneldaten",
+    "section": "Between-Schätzer",
+    "text": "Between-Schätzer\n\nX ➯ Y\n\nBetween-Schätzer:\n\\[\n\\Delta_i^B = Y_i(X=1, t_0) - Y_j(X=0, t_0)\n\\]\nZentrale Annahme: \\(Person_i\\) und \\(Person_j\\) unterscheiden sich nur in X\n⇨ keine unbeobachtete Heterogenität (unbeobachtete personen- oder zeitspezifische Einflussfaktoren)",
     "crumbs": [
       "Zeitplan und Dateien",
-      "1 - Übung"
+      "2 - Seminar  (Paneldaten)"
     ]
   },
   {
-    "objectID": "slides/1_uebung.html#warum-r",
-    "href": "slides/1_uebung.html#warum-r",
-    "title": "1. Übung",
-    "section": "Warum R?",
-    "text": "Warum R?\n\nmehr statistische Modellierungsmöglichkeiten als Stata\nkostenlos und open source\nviel Unterstützungsmaterial online",
+    "objectID": "slides/2_seminar.html#within-schätzer",
+    "href": "slides/2_seminar.html#within-schätzer",
+    "title": "2. Seminar: Paneldaten",
+    "section": "Within-Schätzer",
+    "text": "Within-Schätzer\n\nX ➯ Y\n\nWithin-Schätzer:\n\\[\n\\Delta_i^W = Y_i(X=1, t_1) - Y_i(X=0, t_0)\n\\] Zentrale Annahme: \\(Person_i\\) unterscheidet sich über die Zeit nur in X (keine zeitveränderliche unbeobachtete Heterogenität)",
     "crumbs": [
       "Zeitplan und Dateien",
-      "1 - Übung"
+      "2 - Seminar  (Paneldaten)"
     ]
   },
   {
-    "objectID": "slides/1_uebung.html#hallo-welt",
-    "href": "slides/1_uebung.html#hallo-welt",
-    "title": "1. Übung",
-    "section": "“Hallo Welt!”",
-    "text": "“Hallo Welt!”",
+    "objectID": "slides/2_seminar.html#regressionsmodelle-pols",
+    "href": "slides/2_seminar.html#regressionsmodelle-pols",
+    "title": "2. Seminar: Paneldaten",
+    "section": "Regressionsmodelle: POLS",
+    "text": "Regressionsmodelle: POLS\nPOLS (pooled OLS): Wir behandeln die Daten, als wären es eine Reihe von Querschnittsdaten (Personen- und Zeitdimension wird ignoriert)\nAnnahme: unabhängige Beobachtungen\n\\[\ny_{it} = \\alpha + \\beta_{POLS} x_{it} + \\upsilon_{it},\n\\]\ni: individual\nt: time point",
     "crumbs": [
       "Zeitplan und Dateien",
-      "1 - Übung"
+      "2 - Seminar  (Paneldaten)"
     ]
   },
   {
-    "objectID": "slides/1_uebung.html#hallo-pinguine",
-    "href": "slides/1_uebung.html#hallo-pinguine",
-    "title": "1. Übung",
-    "section": "Hallo Pinguine!",
-    "text": "Hallo Pinguine!\n\nArtwork by @allison_horst",
+    "objectID": "slides/2_seminar.html#pols",
+    "href": "slides/2_seminar.html#pols",
+    "title": "2. Seminar: Paneldaten",
+    "section": "POLS",
+    "text": "POLS\n\\[\ny_{it} = \\alpha + \\beta_{POLS} x_{it} + \\upsilon_{it},\n\\]\n\nOutputCode\n\n\n\n\n\n\n\n \nlz\n\n\nPredictors\nEstimates\nCI\np\n\n\n(Intercept)\n5.40\n3.83 – 6.96\n&lt;0.001\n\n\nalter\n0.04\n0.01 – 0.07\n0.007\n\n\nObservations\n34\n\n\nR2 / R2 adjusted\n0.207 / 0.182\n\n\n\n\n\n\n\n\n\n\nm_pols &lt;- lm(lz ~ alter, data = df)\ntab_model(m_pols)\n\n\n\n\n \nlz\n\n\nPredictors\nEstimates\nCI\np\n\n\n(Intercept)\n5.40\n3.83 – 6.96\n&lt;0.001\n\n\nalter\n0.04\n0.01 – 0.07\n0.007\n\n\nObservations\n34\n\n\nR2 / R2 adjusted\n0.207 / 0.182",
     "crumbs": [
       "Zeitplan und Dateien",
-      "1 - Übung"
+      "2 - Seminar  (Paneldaten)"
     ]
   },
   {
-    "objectID": "slides/1_uebung.html#pinguine-datensatz-inspizieren",
-    "href": "slides/1_uebung.html#pinguine-datensatz-inspizieren",
-    "title": "1. Übung",
-    "section": "Pinguine Datensatz inspizieren",
-    "text": "Pinguine Datensatz inspizieren",
+    "objectID": "slides/2_seminar.html#pols-graphisch",
+    "href": "slides/2_seminar.html#pols-graphisch",
+    "title": "2. Seminar: Paneldaten",
+    "section": "POLS, graphisch",
+    "text": "POLS, graphisch\n\nOutputCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n# The palette with black:\ncbp2 &lt;- c(\"#000000\", \n          \"#E69F00\", \n          \"#56B4E9\", \n          \"#009E73\",\n          \"#F0E442\", \n          \"#0072B2\", \n          \"#D55E00\", \n          \"#CC79A7\")\n\n# Save the residual values\ndf$predicted &lt;- predict(m_pols)\ndf$residuals &lt;- residuals(m_pols)\n\np_pols &lt;- ggplot(df, aes(alter, lz)) +\n  geom_point( aes(x = alter, y = lz, shape = id_name, colour = id_name, fill = id_name), \n              size = 2, stroke = 1) +\n  geom_smooth(method = 'lm', formula = y ~ x, se = FALSE,\n              color  = \"cyan\") +\n  geom_segment(aes(xend = alter, yend = predicted), \n               alpha = .3, color = \"deeppink\") +\n  annotate(\"text\", x = 30, y = 9.9, \n           label = paste0(\"beta[POLS] ==\", round(m_pols$coefficients[2], 3)), \n           parse = TRUE) +\n  scale_colour_manual(values = cbp2[-c(1)]) +\n  scale_fill_manual(values = cbp2[-c(1)]) +\n  scale_shape_manual(values = c(15:18, 25, 20, 21)) +\n  ggtitle(\"POLS\") +\n  theme_classic() +\n  theme(legend.key = element_blank(), \n        legend.title = element_blank(),\n        text = element_text(size = 10),\n        legend.position = c(1,0), \n        legend.justification = c(\"right\", \"bottom\"),\n        legend.background = element_blank(),\n        legend.box.background = element_rect(colour = \"black\")) \np_pols\n\n\n\n\n\n\n\n\n\n\n\nInterpretation: Je höher das Alter einer Person, desto höher ihre Lebenszufriedenheit.",
     "crumbs": [
       "Zeitplan und Dateien",
-      "1 - Übung"
+      "2 - Seminar  (Paneldaten)"
     ]
   },
   {
-    "objectID": "slides/1_uebung.html#pinguine-datensatz-inspizieren-1",
-    "href": "slides/1_uebung.html#pinguine-datensatz-inspizieren-1",
-    "title": "1. Übung",
-    "section": "Pinguine Datensatz inspizieren",
-    "text": "Pinguine Datensatz inspizieren\n\nArtwork by @allison_horst",
+    "objectID": "slides/2_seminar.html#regressionsmodelle-be",
+    "href": "slides/2_seminar.html#regressionsmodelle-be",
+    "title": "2. Seminar: Paneldaten",
+    "section": "Regressionsmodelle: BE",
+    "text": "Regressionsmodelle: BE\nBE (Between Estimator): vergleicht verschiedene Personen und ignoriert die innerpersonelle Varianz. Modell verwendet nur die personenspezifischen Mittelwerte.\n\\[\n\\bar{y_{i}} = \\alpha + \\beta_{BE} \\bar{x_{i}} + \\bar{\\upsilon_{i}},\n\\]\n\nOutputCode (by hand)Code with package plm\n\n\n\n\n\n\n\n \nm lz\n\n\nPredictors\nEstimates\nCI\np\n\n\n(Intercept)\n5.49\n1.79 – 9.19\n0.013\n\n\nm alter\n0.04\n-0.03 – 0.10\n0.208\n\n\nObservations\n7\n\n\nR2 / R2 adjusted\n0.295 / 0.154\n\n\n\n\n\n\n\n\n\n\ndf$m_lz &lt;- ave(df$lz, df$id, FUN = mean)\ndf$m_alter &lt;- ave(df$alter, df$id, FUN = mean)\n\nm_be &lt;- lm(m_lz ~ m_alter, data = df %&gt;% filter(count_within_group ==1))\ntab_model(m_be)\n\n\n\n\n \nm lz\n\n\nPredictors\nEstimates\nCI\np\n\n\n(Intercept)\n5.49\n1.79 – 9.19\n0.013\n\n\nm alter\n0.04\n-0.03 – 0.10\n0.208\n\n\nObservations\n7\n\n\nR2 / R2 adjusted\n0.295 / 0.154\n\n\n\n\n\n\n\n\n\n\nlibrary(plm)\nm_be2 &lt;- plm(lz ~ alter, data = df,\n           index = c(\"id\", \"syear\"),\n           effect = \"individual\", model = \"between\")\ntab_model(m_be2)\n\n\n\n\n \nlz\n\n\nPredictors\nEstimates\nCI\np\n\n\n(Intercept)\n5.49\n1.79 – 9.19\n0.013\n\n\nalter\n0.04\n-0.03 – 0.10\n0.208\n\n\nObservations\n7\n\n\nR2 / R2 adjusted\n0.295 / 0.154",
     "crumbs": [
       "Zeitplan und Dateien",
-      "1 - Übung"
+      "2 - Seminar  (Paneldaten)"
     ]
   },
   {
-    "objectID": "slides/1_uebung.html#pinguine-übung",
-    "href": "slides/1_uebung.html#pinguine-übung",
-    "title": "1. Übung",
-    "section": "Pinguine Übung",
-    "text": "Pinguine Übung\n\nWie viele Pinguine sind im Datensatz?\nWie viele Spezien?\n\n\n\n\n\n\n\n\n\n\nTipp: Suche die Variable, die die Spezie der Pinguine enthält\n\n\n\n\n\n\n\n\n\nSolution\n\n\nLösung:\n# Anzahl Pinguine im Datensatz\ncount(df)\n\n# Anzahl Pinguine pro Spezie\ndf %&gt;% \n  count(species)",
+    "objectID": "slides/2_seminar.html#be-graphisch",
+    "href": "slides/2_seminar.html#be-graphisch",
+    "title": "2. Seminar: Paneldaten",
+    "section": "BE, graphisch",
+    "text": "BE, graphisch\n\nOutputCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ndf2 &lt;- df\ndf2$lz &lt;- df2$m_lz\ndf2$alter &lt;- df2$m_alter\ndf2 &lt;- df2[which(df2$syear == 2019), ]\n\n# Save the residual values\nm_be &lt;- lm(m_lz ~ m_alter, data = df2)\ndf2$predicted &lt;- predict(m_be)\ndf2$residuals &lt;- residuals(m_be)\n\np_be &lt;- ggplot(df, aes(alter, lz)) +\n  geom_point(aes(x = alter, y = lz, shape = id_name), \n              size = 2, stroke = 1, colour = alpha(\"black\", .3), fill = alpha(\"black\", .3)) +\n  geom_point(aes(x = m_alter, y = m_lz, shape = id_name, colour = id_name,\n                 fill = id_name), \n             size = 2, stroke = 1) +\n  geom_smooth(data = df2, \n              method = 'lm', formula = y ~ x, se = FALSE,\n              color  = \"cyan\") +\n  geom_segment(data = df2, aes(xend = alter, yend = predicted), \n               alpha = .3, color = \"deeppink\") +\n  annotate(\"text\", x = 30, y = 9.9,\n           label = paste0(\"beta[Between] ==\", round(m_be$coefficients[2], 3)), \n           parse = TRUE) +\n  scale_colour_manual(values = cbp2[-c(1)]) + \n  scale_fill_manual(values = cbp2[-c(1)]) + \n  scale_shape_manual(values = c(15:18, 25, 20, 21)) +\n  ggtitle(\"BE\") +\n  theme_classic() +\n  theme(legend.key = element_blank(), \n        legend.title = element_blank(),\n        text = element_text(size = 14),\n        legend.position = c(1,0), \n        legend.justification = c(\"right\", \"bottom\"),\n        legend.background = element_blank(),\n        legend.box.background = element_rect(colour = \"black\"))\n\np_be",
     "crumbs": [
       "Zeitplan und Dateien",
-      "1 - Übung"
+      "2 - Seminar  (Paneldaten)"
     ]
   },
   {
-    "objectID": "slides/1_uebung.html#datenvisualisierung",
-    "href": "slides/1_uebung.html#datenvisualisierung",
-    "title": "1. Übung",
-    "section": "Datenvisualisierung",
-    "text": "Datenvisualisierung\n\nOutputCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n#install.packages(\"palmerpenguins\")\nlibrary(palmerpenguins)\ndf = penguins\n# Scatterplot: penguin bill length versus bill depth\nggplot(data = df, aes(x = bill_length_mm, y = bill_depth_mm)) +\n  geom_point(aes(color = species, \n                 shape = species),\n             size = 2)  +\n  scale_color_manual(values = c(\"darkorange\",\"darkorchid\",\"cyan4\"))",
+    "objectID": "slides/2_seminar.html#regressionsmodelle-within-schätzer",
+    "href": "slides/2_seminar.html#regressionsmodelle-within-schätzer",
+    "title": "2. Seminar: Paneldaten",
+    "section": "Regressionsmodelle: Within Schätzer",
+    "text": "Regressionsmodelle: Within Schätzer\n\\[\ny_{it} - \\bar{y}_{i}= \\alpha_i-\\alpha_i + \\beta_1(x_{it}- \\bar{x}_i) +  \\beta_2(z_{i}- \\bar{z}_i) + \\epsilon_{it}-\\bar{\\epsilon}_{i} + u_{i}-\\bar{u}_{i},\n\\]\n\\[\ny_{it} - \\bar{y}_{i}=  \\beta_1(x_{it}- \\bar{x}_i) +   \\epsilon_{it}-\\bar{\\epsilon}_{i},\n\\]",
     "crumbs": [
       "Zeitplan und Dateien",
-      "1 - Übung"
+      "2 - Seminar  (Paneldaten)"
     ]
   },
   {
-    "objectID": "slides/1_uebung.html#yaml",
-    "href": "slides/1_uebung.html#yaml",
-    "title": "1. Übung",
-    "section": "YAML",
-    "text": "YAML\nDokument metadata\n\n\ntitle: \"Hello, Penguins!\"\nformat: html\neditor: visual",
+    "objectID": "slides/2_seminar.html#regressionsmodelle-within-schätzer-1",
+    "href": "slides/2_seminar.html#regressionsmodelle-within-schätzer-1",
+    "title": "2. Seminar: Paneldaten",
+    "section": "Regressionsmodelle: Within Schätzer",
+    "text": "Regressionsmodelle: Within Schätzer\n\\[\ny_{it} - \\bar{y}_{i}= \\alpha_i-\\alpha_i + \\beta_1(x_{it}- \\bar{x}_i) +  \\beta_2(z_{i}- \\bar{z}_i) + \\epsilon_{it}-\\bar{\\epsilon}_{i} + u_{i}-\\bar{u}_{i},\n\\]\n\\[\ny_{it} - \\bar{y}_{i}=  \\beta_1(x_{it}- \\bar{x}_i) +   \\epsilon_{it}-\\bar{\\epsilon}_{i},\n\\]\n\\[\ny_{it} = \\alpha_i + \\beta_{WI} x_{it} + \\epsilon_{it},\n\\]\nWithin-Schätzer: vergleicht nur verschiedene Zeitpunkte innerhalb derselben Person\nVorgehen: Für jede Person wird ein Dummy hinzugefügt\n→ Kontrolle auf zeitkonstante unbeobachtete Heterogenität",
     "crumbs": [
       "Zeitplan und Dateien",
-      "1 - Übung"
+      "2 - Seminar  (Paneldaten)"
     ]
   },
   {
-    "objectID": "slides/1_uebung.html#yaml-ausführlicher",
-    "href": "slides/1_uebung.html#yaml-ausführlicher",
-    "title": "1. Übung",
-    "section": "YAML ausführlicher",
-    "text": "YAML ausführlicher\nDokument metadata\n\n\nformat:\n  live-revealjs:\n    theme: default\n    slideNumber: true\ntitle: \"1. Übung\"\nsubtitle: \"Fortgeschrittene quantitative Methoden &lt;br&gt; Wintersemester 2024-2025\"\nauthor: \"Daria Tisch\"\neditor: visual",
+    "objectID": "slides/2_seminar.html#within-schätzer-anwendung",
+    "href": "slides/2_seminar.html#within-schätzer-anwendung",
+    "title": "2. Seminar: Paneldaten",
+    "section": "Within Schätzer, Anwendung",
+    "text": "Within Schätzer, Anwendung\n\nOutputCode with package plm\n\n\n\n\n\n\n\n \nlz\n\n\nPredictors\nEstimates\nCI\np\n\n\n(Intercept)\n-2.42\n-15.90 – 11.07\n0.716\n\n\nalter\n0.17\n-0.06 – 0.40\n0.146\n\n\nid name [17]\n1.72\n-0.68 – 4.12\n0.152\n\n\nid name [28]\n-2.14\n-5.81 – 1.54\n0.243\n\n\nid name [29]\n1.52\n-0.88 – 3.92\n0.204\n\n\nid name [38]\n-1.49\n-2.99 – 0.00\n0.050\n\n\nid name [4]\n4.72\n-3.48 – 12.93\n0.248\n\n\nid name [8]\n1.35\n-0.30 – 3.01\n0.105\n\n\nObservations\n34\n\n\nR2 / R2 adjusted\n0.632 / 0.532\n\n\n\n\n\n\n\nInterpretation: Zunehmendes Alter einer Person geht mit einer zunehmenden Zufriedenheit derselben Person einher. ## Code (by hand)\n\nm_fe &lt;- lm(lz ~ alter + id_name, data = df)\ntab_model(m_fe)\n\n\n\n\n \nlz\n\n\nPredictors\nEstimates\nCI\np\n\n\n(Intercept)\n-2.42\n-15.90 – 11.07\n0.716\n\n\nalter\n0.17\n-0.06 – 0.40\n0.146\n\n\nid name [17]\n1.72\n-0.68 – 4.12\n0.152\n\n\nid name [28]\n-2.14\n-5.81 – 1.54\n0.243\n\n\nid name [29]\n1.52\n-0.88 – 3.92\n0.204\n\n\nid name [38]\n-1.49\n-2.99 – 0.00\n0.050\n\n\nid name [4]\n4.72\n-3.48 – 12.93\n0.248\n\n\nid name [8]\n1.35\n-0.30 – 3.01\n0.105\n\n\nObservations\n34\n\n\nR2 / R2 adjusted\n0.632 / 0.532\n\n\n\n\n\n\n\n\n\n\nm_fe2 &lt;- plm(lz ~ alter, data = df,\n           index = c(\"id\", \"syear\"),\n           effect = \"individual\", model = \"within\")\ntab_model(m_fe2)\n\n\n\n\n \nlz\n\n\nPredictors\nEstimates\nCI\np\n\n\nalter\n0.17\n-0.06 – 0.40\n0.146\n\n\nObservations\n34\n\n\nR2 / R2 adjusted\n0.080 / -0.168",
     "crumbs": [
       "Zeitplan und Dateien",
-      "1 - Übung"
+      "2 - Seminar  (Paneldaten)"
     ]
   },
   {
-    "objectID": "slides/1_uebung.html#text",
-    "href": "slides/1_uebung.html#text",
-    "title": "1. Übung",
-    "section": "Text",
-    "text": "Text\nMarkdown kann mit jedem Editor bearbeitet werden, auch mit den Quelltext- oder visuellen Editoren von RStudio.",
+    "objectID": "slides/2_seminar.html#within-graphisch",
+    "href": "slides/2_seminar.html#within-graphisch",
+    "title": "2. Seminar: Paneldaten",
+    "section": "Within, graphisch",
+    "text": "Within, graphisch\n\nOutputCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n# Lineares regressionsmodell für jede Person i\n# und Residuen speichern\nfor(i in unique(df$id)){\n  oo &lt;- which(df$id == i)\n  lmt &lt;- lm(lz ~ alter, data = df[oo, ])\n  df$predicted[oo] &lt;- predict(lmt)\n  df$residuals[oo] &lt;- residuals(lmt)\n}\n\n\ng_wi &lt;- ggplot(df, aes(alter, lz)) +\n  geom_point( aes(x = alter, y = lz, shape = id_name, colour = id_name, fill  = id_name), \n              size = 2, stroke = 1) +\n  geom_smooth(method = 'lm', formula = y ~ x, se = FALSE, show.legend = FALSE,\n              mapping = aes(group = id_name),\n              color  = \"blue\", linetype = \"dotted\") +\n  geom_segment(data = df, aes(xend = alter, yend = predicted), \n               alpha = .3, color = \"deeppink\") +\n  annotate(\"text\", x = 30, y = 9.9, \n           label = paste0(\"beta[Within] ==\", round(m_fe$coefficients[2], 3)), \n           parse = TRUE) +\n  scale_fill_manual(values = cbp2[-c(1)]) +\n  scale_colour_manual(values = cbp2[-c(1)]) + \n  scale_shape_manual(values = c(15:18, 25, 20, 21)) +\n  ggtitle(\"WI (Fixed Effects)\") +\n  theme_classic() +\n  theme(legend.key = element_blank(), \n        legend.title = element_blank(),\n        text = element_text(size = 14),\n        legend.position = c(1,0), \n        legend.justification = c(\"right\", \"bottom\"),\n        legend.background = element_blank(),\n        legend.box.background = element_rect(colour = \"black\"))\n\ng_wi",
     "crumbs": [
       "Zeitplan und Dateien",
-      "1 - Übung"
+      "2 - Seminar  (Paneldaten)"
     ]
   },
   {
-    "objectID": "slides/1_uebung.html#code-1",
-    "href": "slides/1_uebung.html#code-1",
-    "title": "1. Übung",
-    "section": "Code",
-    "text": "Code\nCode kann auch mit den Quelltext- oder visuellen Editoren von RStudio bearbeitet werden",
+    "objectID": "slides/2_seminar.html#regressionsmodelle-re",
+    "href": "slides/2_seminar.html#regressionsmodelle-re",
+    "title": "2. Seminar: Paneldaten",
+    "section": "Regressionsmodelle: RE",
+    "text": "Regressionsmodelle: RE\nRandom effects Schätzer:\n\nwird häugig in Mehrebenenanalysen genutzt\nVorteile gegenüber FE:\n\neffizienter (kleinere Standardfehler)\nEffekte von zeitkonstanten Variablen können geschätzt werden\n\nAber: Annahme, dass es keine (zeitkonstante und zeitveränderliche) unbeobachtete Heterogenität gibt",
     "crumbs": [
       "Zeitplan und Dateien",
-      "1 - Übung"
+      "2 - Seminar  (Paneldaten)"
     ]
   },
   {
-    "objectID": "slides/1_uebung.html#quarto-output-dokumente",
-    "href": "slides/1_uebung.html#quarto-output-dokumente",
-    "title": "1. Übung",
-    "section": "Quarto Output Dokumente",
-    "text": "Quarto Output Dokumente\n\nFolien / Präsentation (HTML, PDF, PowerPoint)\nManuskripte (Word Dokument, PDF, HTML)\nWebsites (HTML)",
+    "objectID": "slides/2_seminar.html#regressionsmodelle-re-1",
+    "href": "slides/2_seminar.html#regressionsmodelle-re-1",
+    "title": "2. Seminar: Paneldaten",
+    "section": "Regressionsmodelle: RE",
+    "text": "Regressionsmodelle: RE\nRE als quasi-demeaned Schätzer (gewichteter Durchschnitt des Between- und Within-Schätzers) \\[\ny_{it} - \\lambda\\bar{y}_{i}=  (1-\\lambda)\\alpha_i+\\beta_1(x_{it}- \\lambda\\bar{x}_i) +   \\epsilon_{it}-\\lambda\\bar{\\epsilon}_{i},\n\\] mit \\[\n\\hat{\\lambda} = 1 - \\sqrt{\\frac{\\sigma^2_\\epsilon}{\\sigma^2_\\epsilon + T\\sigma^2_\\alpha}}\n\\]\n\\(\\lambda = 0\\): POLS\n\\(\\lambda = 1\\): FE\n\\(\\sigma^2\\) = Varianz\n\\(T\\) = Anzahl an Zeitpunkten",
     "crumbs": [
       "Zeitplan und Dateien",
-      "1 - Übung"
+      "2 - Seminar  (Paneldaten)"
     ]
   },
   {
-    "objectID": "slides/1_uebung.html#ende",
-    "href": "slides/1_uebung.html#ende",
-    "title": "1. Übung",
+    "objectID": "slides/2_seminar.html#re-schätzer-anwendung",
+    "href": "slides/2_seminar.html#re-schätzer-anwendung",
+    "title": "2. Seminar: Paneldaten",
+    "section": "RE Schätzer, Anwendung",
+    "text": "RE Schätzer, Anwendung\n\nOutputCode\n\n\n\n\n\n\n\n \nlz\n\n\nPredictors\nEstimates\nCI\np\n\n\n(Intercept)\n5.14\n2.31 – 7.97\n0.001\n\n\nalter\n0.04\n-0.01 – 0.09\n0.087\n\n\nObservations\n34\n\n\nR2 / R2 adjusted\n0.070 / 0.041\n\n\n\n\n\n\n\n\n\n\nm_re &lt;- plm(lz ~ alter, data = df,\n           index = c(\"id\", \"syear\"),\n           effect = \"individual\", model = \"random\")\ntab_model(m_re)\n\n\n\n\n \nlz\n\n\nPredictors\nEstimates\nCI\np\n\n\n(Intercept)\n5.14\n2.31 – 7.97\n0.001\n\n\nalter\n0.04\n-0.01 – 0.09\n0.087\n\n\nObservations\n34\n\n\nR2 / R2 adjusted\n0.070 / 0.041",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "2 - Seminar  (Paneldaten)"
+    ]
+  },
+  {
+    "objectID": "slides/2_seminar.html#hausman-test",
+    "href": "slides/2_seminar.html#hausman-test",
+    "title": "2. Seminar: Paneldaten",
+    "section": "Hausman Test",
+    "text": "Hausman Test\nTestet ein „immer“ konsistentes Modell (FE-Modell) gegen ein „manchmal“ konsistentes aber dann effizientes Modell (RE-Modell) (Brüderl, S. 976)\nIdee: Man berechnet die standardisierte Differenz der Parameterschätzer. Ist die groß, so weicht das RE-Modell stark vom FE-Modell ab und es sollte das FE-Modell verwendet werden.\n\\[\nH = (\\hat{\\beta}_{RE} -\\hat{\\beta}_{FE})'[\\hat{V}(\\hat{\\beta}_{RE}) -\\hat{V}(\\hat{\\beta}_{FE})]^{-1}\\hat{\\beta}_{RE} -\\hat{\\beta}_{FE}),\n\\] \\(\\hat{V}(.)\\): geschätzte Varianz-Kovarianzmatrix der Schätzer",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "2 - Seminar  (Paneldaten)"
+    ]
+  },
+  {
+    "objectID": "slides/2_seminar.html#hausman-test-anwendung",
+    "href": "slides/2_seminar.html#hausman-test-anwendung",
+    "title": "2. Seminar: Paneldaten",
+    "section": "Hausman Test, Anwendung",
+    "text": "Hausman Test, Anwendung\n\n\n\n    Hausman Test\n\ndata:  lz ~ alter\nchisq = 1.2944, df = 1, p-value = 0.2552\nalternative hypothesis: one model is inconsistent\n\n\n\nHausmantest = nicht signifikant Nullhypothese wird nicht abgelehnt RE Schätzer ist nicht verzerrt durch unbeobachtete Heterogenität",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "2 - Seminar  (Paneldaten)"
+    ]
+  },
+  {
+    "objectID": "slides/2_seminar.html#vergleich-re-versus-fe",
+    "href": "slides/2_seminar.html#vergleich-re-versus-fe",
+    "title": "2. Seminar: Paneldaten",
+    "section": "Vergleich RE versus FE",
+    "text": "Vergleich RE versus FE\n\n\n\n\n\n\n\n\n\nRE Modell\nFE Modell\n\n\n\n\nUnbeobachtete Heterogenität\nVerzerrt, wenn personenspezifische unbeobachtete Heterogenität vorliegt (Selbstselektion)\nNicht verzerrt durch personenspezifische unbeobachteter Heterogenität (within-Vergleich)\n\n\nZeitkonstante Variablen\nKönnen mitgeschätzt werden (sind aber verzerrt, wenn unbeobachtete Heterogenität vorliegt)\nKönnen nicht mitgeschätzt werden, werden aber implizit mitkontrolliert = konsistent\n\n\nStandardfehler\nTendenziell kleiner (da mehr Variation in den Daten genutzt wird)\nTendenziell größer (da nur within-Varianz genutzt wird)\n\n\nZeitveränderliche Variablen\n\nOhne Veränderung (before-after comparison) kann keine within-Varianz geschätzt werden",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "2 - Seminar  (Paneldaten)"
+    ]
+  },
+  {
+    "objectID": "slides/2_seminar.html#vergleich",
+    "href": "slides/2_seminar.html#vergleich",
+    "title": "2. Seminar: Paneldaten",
+    "section": "Vergleich",
+    "text": "Vergleich\n\n\n\n\n\n \nPOLS\nBE\nFE\nRE\n\n\nPredictors\nEstimates\np\nEstimates\np\nEstimates\np\nEstimates\np\n\n\n(Intercept)\n5.395\n&lt;0.001\n5.490\n0.013\n\n\n5.144\n0.001\n\n\nalter\n0.040\n0.007\n0.037\n0.208\n0.169\n0.146\n0.044\n0.087\n\n\nObservations\n34\n7\n34\n34\n\n\nR2 / R2 adjusted\n0.207 / 0.182\n0.295 / 0.154\n0.080 / -0.168\n0.070 / 0.041",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "2 - Seminar  (Paneldaten)"
+    ]
+  },
+  {
+    "objectID": "slides/2_seminar.html#drittvariablenkontrolle",
+    "href": "slides/2_seminar.html#drittvariablenkontrolle",
+    "title": "2. Seminar: Paneldaten",
+    "section": "Drittvariablenkontrolle",
+    "text": "Drittvariablenkontrolle\nIdee von Regressionsverfahren: Kontrolle von Drittvariablenkontrolle, um unbeobachtete Heterogenität zu verringern.\nAber: gezielte Auswahl von Variablen notwendig!",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "2 - Seminar  (Paneldaten)"
+    ]
+  },
+  {
+    "objectID": "slides/2_seminar.html#dags",
+    "href": "slides/2_seminar.html#dags",
+    "title": "2. Seminar: Paneldaten",
+    "section": "DAGs",
+    "text": "DAGs\nDirect acyclic graph (DAG): eine grafische Darstellung der kausalen Annahmen in dem Datengenerierungsprozess\n\nElwert & Winship (2014)",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "2 - Seminar  (Paneldaten)"
+    ]
+  },
+  {
+    "objectID": "slides/2_seminar.html#probleme-bei-der-drittvariablenkontrolle",
+    "href": "slides/2_seminar.html#probleme-bei-der-drittvariablenkontrolle",
+    "title": "2. Seminar: Paneldaten",
+    "section": "3 Probleme bei der Drittvariablenkontrolle",
+    "text": "3 Probleme bei der Drittvariablenkontrolle\n\nOvercontrol bias\nConfounding bias\nEndogenous selection bias",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "2 - Seminar  (Paneldaten)"
+    ]
+  },
+  {
+    "objectID": "slides/2_seminar.html#overcontrol-bias",
+    "href": "slides/2_seminar.html#overcontrol-bias",
+    "title": "2. Seminar: Paneldaten",
+    "section": "Overcontrol bias",
+    "text": "Overcontrol bias\n\nElwert & Winship (2014)",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "2 - Seminar  (Paneldaten)"
+    ]
+  },
+  {
+    "objectID": "slides/2_seminar.html#confounding",
+    "href": "slides/2_seminar.html#confounding",
+    "title": "2. Seminar: Paneldaten",
+    "section": "Confounding",
+    "text": "Confounding\n\nElwert & Winship (2014)",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "2 - Seminar  (Paneldaten)"
+    ]
+  },
+  {
+    "objectID": "slides/2_seminar.html#endogenous-selection-bias",
+    "href": "slides/2_seminar.html#endogenous-selection-bias",
+    "title": "2. Seminar: Paneldaten",
+    "section": "Endogenous selection bias",
+    "text": "Endogenous selection bias\n\nElwert & Winship (2014)\nFrage: Führt Talent zu hübschen Aussehen? (Kausal: nein!) A: Talent B: Beauty C: Hollywood success\n\nbeauty and talent are unassociated\nbeauty führt zu Erfolg\ntalent führt zu Erfolg\n\nKontrolle auf Erfolg (zb looking at the relationship between beauty and talent only among successful Hollywood actors): conditioning on the collider (Erfolg) has created a spurious association between beauty and talent among the successful. This spurious association is endogenous selection bias.",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "2 - Seminar  (Paneldaten)"
+    ]
+  },
+  {
+    "objectID": "slides/2_seminar.html#ende",
+    "href": "slides/2_seminar.html#ende",
+    "title": "2. Seminar: Paneldaten",
     "section": "Ende",
-    "text": "Ende\n\nDieser Foliensatz profitierte in großen Teilen von ehemaligen Veranstaltungen von Isabel Habicht sowie von Mine Çetinkaya-Rundel Materialien:\n\nhttps://mine-cetinkaya-rundel.github.io/teach-with-quarto/talks/1-welcome/",
+    "text": "Ende\n\nDieser Foliensatz profitierte in großen Teilen von ehemaligen Veranstaltungen von Isabel Habicht sowie von\nhttps://ruettenauer.github.io/Panel-Data-Analysis/\nWeitere Literatur:\n\nJosef Brüderl and Volker Ludwig: Folien",
     "crumbs": [
       "Zeitplan und Dateien",
-      "1 - Übung"
+      "2 - Seminar  (Paneldaten)"
     ]
   },
   {
