@@ -20,6 +20,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tinytex: true
+          rmarkdown: true
 
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2
