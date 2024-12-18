@@ -10,20 +10,19 @@ format:
 title: "2. Seminar: Paneldaten"
 subtitle: "Fortgeschrittene quantitative Methoden <br> Wintersemester 2024-2025"
 author: "Daria Tisch"
-webr:
-  cell-options:
-    autorun: true
-    fig-width: 11
-    fig-height: 5
-  webr:
-  packages:
-    - dplyr
-    - ggplot2
+# webr:
+#   cell-options:
+#     autorun: true
+#     fig-width: 11
+#     fig-height: 5
+  # webr:
+  # packages:
+  #   - dplyr
+  #   - ggplot2
 editor: visual
 ---
 
-{{< include ../_extensions/r-wasm/live/_knitr.qmd >}}
-
+<!-- {{< include ../_extensions/r-wasm/live/_knitr.qmd >}} -->
 # Erhebung und Auswertung von Paneldaten
 
 ## Heutige Sitzung {.smaller}

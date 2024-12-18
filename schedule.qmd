@@ -2,7 +2,7 @@
 title: "Übersicht"
 ---
 
-Zeitplan:
+## Zeitplan:
 
 |     |                Morgens         |          Nachmittags                     |
 |:---:|:-----------------------------------:|:--------------------------------------:|
@@ -24,4 +24,9 @@ Legende:
 📝 - Übungsblatt zum Download
 
 
- <!-- [ 📝](/abgaben/1_abgabe.html "1. Abgabe")  -->
+## Abgaben
+
+Abgabe 1 (Paneldaten):
+[✍️](/uebungen/1_abgabe_NACHNAME.html "1. Abgabe") 
+[✍️](downloads/1_abgabe_NACHNAME.qmd "1. Abgabe zum Download")      
+
