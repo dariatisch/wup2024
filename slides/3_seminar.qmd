@@ -45,7 +45,7 @@ Pflichtlektüre:
 ## Reaktive versus nicht-reaktive Daten {.smaller}
 
 | Reaktive Messung | Nicht-reaktive Messung |
-|----|----|
+|--------------------------|----------------------------------------------|
 | Umfragedaten | Amtliche Statistik / Registerdaten |
 | Laborexperimente | Verhaltensspuren / digital trace data: z.B. Social Media, Smartphone, Wearables |
 |  | Journalistische Datensätze: z. B. Reichenlisten, WikiLeaks |
@@ -513,6 +513,29 @@ tab_model(model1,
           string.pred = " ")
 ```
 :::
+
+
+## Proportionalitätsannahme {.smaller .scrollable}
+
+Nun testen wir die Proportionalitätsannahme.
+
+Nullhypothese: Hazard-Raten proportional, also kein Zusammenhang mit der Zeit
+
+```{r}
+#| echo: true
+
+model1 = coxph(Surv(time, dead) ~ karnofsky_hoch, data = df)
+
+# Überprüfung der Proportionalitätsannahme
+test_proportionality <- cox.zph(model1)
+
+# Ergebnisse anzeigen
+print(test_proportionality)
+
+# Grafische Darstellung
+plot(test_proportionality)
+```
+
 
 ## Ende
 
