@@ -264,158 +264,456 @@
     ]
   },
   {
-    "objectID": "uebungen/1_abgabe_NACHNAME.html",
-    "href": "uebungen/1_abgabe_NACHNAME.html",
-    "title": "1. Abgabe (Paneldaten)",
+    "objectID": "uebungen/1_uebungsblatt.html",
+    "href": "uebungen/1_uebungsblatt.html",
+    "title": "1. Übungsblatt",
     "section": "",
-    "text": "Code\n# set working directory\n\n\n\n\n\n\n\nCode\n# Packages\npkgs &lt;- c(\n  \"tidyverse\",\n  \"sjlabelled\", # for variable labels\n  \"plm\", # Panelregressionen\n  \"sjPlot\" # um Regressionstabellen schön darzustellen\n) \n\n## Install uninstalled packages\nlapply(pkgs[!(pkgs %in% installed.packages())], install.packages)\n\n## Load all packages to library\nlapply(pkgs, library, character.only = TRUE)\n\n\n\n\n\nWir arbeiten wieder mit dem Übungsdatensatz des SOEP (DOI:10.5684/soep.practice.v36). Es werden zwei Datensätze eingelesen. Der erste Datensatz enthalt die tatsächlichen Umfragedaten, der zweite Datensatz enthält die Variablenlabels.\n\n\nCode\n# read data\n# df = read.csv(\"../daten/soep_uebung.csv\")\n# df_labels = read.csv(\"../daten/soep_labels.csv\")\n# \n# # Add variable labels\n# for (i in 1:nrow(df_labels)) {\n#   variable_name &lt;- df_labels$variable[i]\n#   variable_label &lt;- df_labels$variable_label[i]\n#   \n#   # Apply the label to the corresponding column in df\n#   df[[variable_name]] &lt;- set_label(df[[variable_name]], variable_label)\n# }"
+    "text": "Quarto ermöglicht es, Inhalte und ausführbaren Code zu einem fertigen Dokument zu verweben. Mehr über Quarto unter https://quarto.org.\n\n\n\nWenn Du auf die Schaltfläche Render klickst, wird ein Dokument erstellt, das sowohl den Inhalt als auch die Ausgabe des eingebetteten Codes enthält. Code kann wie folgt einbettet werden:\n\n\nCode\n# This is the first code chunk\n1 + 1\n\n\n[1] 2\n\n\nEs können Optionen zu ausführbarem Code wie folgt hinzugefügt werden\n\n\n[1] 4\n\n\necho: false deaktiviert das Drucken des Codes (nur die Ausgabe wird angezeigt).\n\n\n\nAls ersten Schritt sollte immer das Arbeitsverzeichnis festgelegt weren. Ändere dies bitte zu Deinem.\n\n\nCode\n# set working directory\nsetwd(\"D:/Seafile/main/teaching/2024_wuppertal/wup2024/uebungen\")\n\n\n\n\n\nR als Füller\nBevor Du (die meisten) Dinge in R tun kannst, musst Du zunächst Pakete (packages) installieren und laden, die eine Bibliothek (library) mit praktischen Funktionen enthalten. Stell Dir vor, R ist ein Füller. Die Pakete sind die Tinte. Du brauchst zunächst die Tinte (Paket installieren) und dann musst Du die Tinte in den Stift geben (Paket laden), bevor Du mit dem Schreiben beginnen kannst (einen Befehl ausführen). Base R mag Dir die Standardtinte liefern, aber andere Pakete können wertvollere und interessantere Farben liefern.\nWir nutzen in dieser Übung zwei Pakete:\n\ntidyverse: Hilfreich, um Datensatz augzubereiten. Eine gute Einführung in das Paket ist hier oder hier zu finden.\nggplot2: (im Paket tidyverse enthalten). Hilfreich, um schöne Graphen zu erstellen. Eine gute Einführung ist hier oder hier zu finden.\n\n\n\nCode\n# Packages\npkgs &lt;- c(\n  \"tidyverse\"\n)\n\n## Install uninstalled packages\nlapply(pkgs[!(pkgs %in% installed.packages())], install.packages)\n\n## Load all packages to library\nlapply(pkgs, library, character.only = TRUE)\n\n\n\n\n\nWir arbeiten mit dem Übungsdatensatz des SOEP (DOI:10.5684/soep.practice.v36). Es werden zwei Datensätze eingelesen. Der erste Datensatz enthalt die tatsächlichen Umfragedaten, der zweite Datensatz enthält die Variablenlabels.\n\n\nCode\n# read data\ndf = read.csv(\"../daten/soep_uebung.csv\")\ndf_labels = read.csv(\"../daten/soep_labels.csv\")\n\n\n\n\n\n\n\nCode\n# Wie viele Zeilen hat der Datensatz?\nnrow(df)\n\n\n[1] 23522\n\n\nDer Datensatz enthält 23522 Beobachtungen.\n\n\n\nSchauen wir uns die ersten Zeilen des Datensatzes an, um einen ersten Überblick über den Datensatz zu gewinnen.\n\n\nCode\nhead(df)\n\n\n\n  \n\n\n\n\n\n\n\n\nCode\n# Namen der Variablen\nnames(df)\n\n\n [1] \"id\"          \"syear\"       \"sex\"         \"alter\"       \"anz_pers\"   \n [6] \"anz_kind\"    \"bildung\"     \"erwerb\"      \"branche\"     \"gesund_org\" \n[11] \"lebensz_org\" \"einkommenj1\" \"einkommenj2\" \"einkommenm1\" \"einkommenm2\"\n\n\nCode\n#Namen, Datentyp und erste Einträge der Variablen\nglimpse(df)\n\n\nRows: 23,522\nColumns: 15\n$ id          &lt;int&gt; 194, 194, 194, 194, 194, 19052, 27495, 27495, 27495, 22539…\n$ syear       &lt;int&gt; 2015, 2016, 2017, 2018, 2019, 2015, 2016, 2018, 2019, 2015…\n$ sex         &lt;chr&gt; \"[1] weiblich\", \"[1] weiblich\", \"[1] weiblich\", \"[1] weibl…\n$ alter       &lt;int&gt; 59, 60, 61, 62, 63, 74, 35, 37, 38, 85, 73, 74, 43, 44, 45…\n$ anz_pers    &lt;int&gt; 2, 2, 2, 2, 2, 2, 3, 3, 3, 2, 1, 1, 4, 4, 4, 4, 4, 2, 2, 2…\n$ anz_kind    &lt;int&gt; 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 2, 2, 2, 2, 2, 0, 0, 0…\n$ bildung     &lt;dbl&gt; 10.5, 10.5, 10.5, 10.5, 10.5, 10.0, 15.0, 15.0, 15.0, 18.0…\n$ erwerb      &lt;chr&gt; \"[2] Teilzeitbeschäftigung\", \"[2] Teilzeitbeschäftigung\", …\n$ branche     &lt;chr&gt; \"[84] Oeffentliche Verwaltung, Verteidigung; Sozialversich…\n$ gesund_org  &lt;chr&gt; \"[4] Weniger gut\", \"[3] Zufriedenstellend\", \"[3] Zufrieden…\n$ lebensz_org &lt;chr&gt; \"6\", \"5\", \"7\", \"5\", \"6\", \"8\", \"8\", \"8\", \"8\", \"8\", \"5\", \"8\"…\n$ einkommenj1 &lt;dbl&gt; 28678.94, 19962.29, 22227.68, 22100.38, 23157.92, 0.00, 14…\n$ einkommenj2 &lt;dbl&gt; 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.…\n$ einkommenm1 &lt;dbl&gt; 1659.1285, 1809.3364, 1849.0375, 1616.5137, 1901.0012, 0.0…\n$ einkommenm2 &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
   },
   {
-    "objectID": "uebungen/1_abgabe_NACHNAME.html#arbeitsverzeichnis-festsetzen",
-    "href": "uebungen/1_abgabe_NACHNAME.html#arbeitsverzeichnis-festsetzen",
-    "title": "1. Abgabe (Paneldaten)",
+    "objectID": "uebungen/1_uebungsblatt.html#quarto",
+    "href": "uebungen/1_uebungsblatt.html#quarto",
+    "title": "1. Übungsblatt",
     "section": "",
-    "text": "Code\n# set working directory"
+    "text": "Quarto ermöglicht es, Inhalte und ausführbaren Code zu einem fertigen Dokument zu verweben. Mehr über Quarto unter https://quarto.org.",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
   },
   {
-    "objectID": "uebungen/1_abgabe_NACHNAME.html#packages-installieren-und-laden",
-    "href": "uebungen/1_abgabe_NACHNAME.html#packages-installieren-und-laden",
-    "title": "1. Abgabe (Paneldaten)",
+    "objectID": "uebungen/1_uebungsblatt.html#code-ausführen",
+    "href": "uebungen/1_uebungsblatt.html#code-ausführen",
+    "title": "1. Übungsblatt",
     "section": "",
-    "text": "Code\n# Packages\npkgs &lt;- c(\n  \"tidyverse\",\n  \"sjlabelled\", # for variable labels\n  \"plm\", # Panelregressionen\n  \"sjPlot\" # um Regressionstabellen schön darzustellen\n) \n\n## Install uninstalled packages\nlapply(pkgs[!(pkgs %in% installed.packages())], install.packages)\n\n## Load all packages to library\nlapply(pkgs, library, character.only = TRUE)"
+    "text": "Wenn Du auf die Schaltfläche Render klickst, wird ein Dokument erstellt, das sowohl den Inhalt als auch die Ausgabe des eingebetteten Codes enthält. Code kann wie folgt einbettet werden:\n\n\nCode\n# This is the first code chunk\n1 + 1\n\n\n[1] 2\n\n\nEs können Optionen zu ausführbarem Code wie folgt hinzugefügt werden\n\n\n[1] 4\n\n\necho: false deaktiviert das Drucken des Codes (nur die Ausgabe wird angezeigt).",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
   },
   {
-    "objectID": "uebungen/1_abgabe_NACHNAME.html#daten-einlesen",
-    "href": "uebungen/1_abgabe_NACHNAME.html#daten-einlesen",
-    "title": "1. Abgabe (Paneldaten)",
+    "objectID": "uebungen/1_uebungsblatt.html#arbeitsverzeichnis-festsetzen",
+    "href": "uebungen/1_uebungsblatt.html#arbeitsverzeichnis-festsetzen",
+    "title": "1. Übungsblatt",
     "section": "",
-    "text": "Wir arbeiten wieder mit dem Übungsdatensatz des SOEP (DOI:10.5684/soep.practice.v36). Es werden zwei Datensätze eingelesen. Der erste Datensatz enthalt die tatsächlichen Umfragedaten, der zweite Datensatz enthält die Variablenlabels.\n\n\nCode\n# read data\n# df = read.csv(\"../daten/soep_uebung.csv\")\n# df_labels = read.csv(\"../daten/soep_labels.csv\")\n# \n# # Add variable labels\n# for (i in 1:nrow(df_labels)) {\n#   variable_name &lt;- df_labels$variable[i]\n#   variable_label &lt;- df_labels$variable_label[i]\n#   \n#   # Apply the label to the corresponding column in df\n#   df[[variable_name]] &lt;- set_label(df[[variable_name]], variable_label)\n# }"
+    "text": "Als ersten Schritt sollte immer das Arbeitsverzeichnis festgelegt weren. Ändere dies bitte zu Deinem.\n\n\nCode\n# set working directory\nsetwd(\"D:/Seafile/main/teaching/2024_wuppertal/wup2024/uebungen\")",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
   },
   {
-    "objectID": "uebungen/1_abgabe_NACHNAME.html#kausalmodell-2-punkte",
-    "href": "uebungen/1_abgabe_NACHNAME.html#kausalmodell-2-punkte",
-    "title": "1. Abgabe (Paneldaten)",
-    "section": "2.1 Kausalmodell [2 Punkte]",
-    "text": "2.1 Kausalmodell [2 Punkte]\nÜberlegen Sie sich ein Kausalmodell. Das heißt, überlegen Sie sich eine Variable, die einen kausalen Effekt auf den subjektiven Gesundheitszustand haben könnte und begründen Sie Ihre Wahl.\nAntwort:"
+    "objectID": "uebungen/1_uebungsblatt.html#packages-installieren-und-laden",
+    "href": "uebungen/1_uebungsblatt.html#packages-installieren-und-laden",
+    "title": "1. Übungsblatt",
+    "section": "",
+    "text": "R als Füller\nBevor Du (die meisten) Dinge in R tun kannst, musst Du zunächst Pakete (packages) installieren und laden, die eine Bibliothek (library) mit praktischen Funktionen enthalten. Stell Dir vor, R ist ein Füller. Die Pakete sind die Tinte. Du brauchst zunächst die Tinte (Paket installieren) und dann musst Du die Tinte in den Stift geben (Paket laden), bevor Du mit dem Schreiben beginnen kannst (einen Befehl ausführen). Base R mag Dir die Standardtinte liefern, aber andere Pakete können wertvollere und interessantere Farben liefern.\nWir nutzen in dieser Übung zwei Pakete:\n\ntidyverse: Hilfreich, um Datensatz augzubereiten. Eine gute Einführung in das Paket ist hier oder hier zu finden.\nggplot2: (im Paket tidyverse enthalten). Hilfreich, um schöne Graphen zu erstellen. Eine gute Einführung ist hier oder hier zu finden.\n\n\n\nCode\n# Packages\npkgs &lt;- c(\n  \"tidyverse\"\n)\n\n## Install uninstalled packages\nlapply(pkgs[!(pkgs %in% installed.packages())], install.packages)\n\n## Load all packages to library\nlapply(pkgs, library, character.only = TRUE)",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
   },
   {
-    "objectID": "uebungen/1_abgabe_NACHNAME.html#auswahl-des-regressionsmodels-4-punkte",
-    "href": "uebungen/1_abgabe_NACHNAME.html#auswahl-des-regressionsmodels-4-punkte",
-    "title": "1. Abgabe (Paneldaten)",
-    "section": "2.2 Auswahl des Regressionsmodels [4 Punkte]",
-    "text": "2.2 Auswahl des Regressionsmodels [4 Punkte]\nUm den kausalen Effekt zu identifizieren, möchten Sie eine Regressionsanalyse durchführen und überlegen, ob Sie ein POLS, ein BE, ein RE oder ein FE Modell nutzen sollten. Beschreiben Sie Ihren Gedankenvorgang.\nAntwort:"
+    "objectID": "uebungen/1_uebungsblatt.html#daten-einlesen",
+    "href": "uebungen/1_uebungsblatt.html#daten-einlesen",
+    "title": "1. Übungsblatt",
+    "section": "",
+    "text": "Wir arbeiten mit dem Übungsdatensatz des SOEP (DOI:10.5684/soep.practice.v36). Es werden zwei Datensätze eingelesen. Der erste Datensatz enthalt die tatsächlichen Umfragedaten, der zweite Datensatz enthält die Variablenlabels.\n\n\nCode\n# read data\ndf = read.csv(\"../daten/soep_uebung.csv\")\ndf_labels = read.csv(\"../daten/soep_labels.csv\")",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
   },
   {
-    "objectID": "uebungen/1_abgabe_NACHNAME.html#kausalmodell-3-punkte",
-    "href": "uebungen/1_abgabe_NACHNAME.html#kausalmodell-3-punkte",
-    "title": "1. Abgabe (Paneldaten)",
-    "section": "2.3 Kausalmodell [3 Punkte]",
-    "text": "2.3 Kausalmodell [3 Punkte]\nBitte nennen Sie jeweils ein Beispiel für eine/n\n\nconfounder\ncollider\nVariable, die zu einem overcontrol bias führen könnte\n\nund erklären Sie kurz, warum es sich um eine/n solche/n handelt.\nAntwort:"
+    "objectID": "uebungen/1_uebungsblatt.html#datenexploration",
+    "href": "uebungen/1_uebungsblatt.html#datenexploration",
+    "title": "1. Übungsblatt",
+    "section": "",
+    "text": "Code\n# Wie viele Zeilen hat der Datensatz?\nnrow(df)\n\n\n[1] 23522\n\n\nDer Datensatz enthält 23522 Beobachtungen.",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
   },
   {
-    "objectID": "uebungen/1_abgabe_NACHNAME.html#gesundheitszustand-1-punkt",
-    "href": "uebungen/1_abgabe_NACHNAME.html#gesundheitszustand-1-punkt",
-    "title": "1. Abgabe (Paneldaten)",
-    "section": "3.1 Gesundheitszustand [1 Punkt]",
-    "text": "3.1 Gesundheitszustand [1 Punkt]"
+    "objectID": "uebungen/1_uebungsblatt.html#datenexploration-1",
+    "href": "uebungen/1_uebungsblatt.html#datenexploration-1",
+    "title": "1. Übungsblatt",
+    "section": "",
+    "text": "Schauen wir uns die ersten Zeilen des Datensatzes an, um einen ersten Überblick über den Datensatz zu gewinnen.\n\n\nCode\nhead(df)",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
   },
   {
-    "objectID": "uebungen/1_abgabe_NACHNAME.html#geschlecht-1-punkt",
-    "href": "uebungen/1_abgabe_NACHNAME.html#geschlecht-1-punkt",
-    "title": "1. Abgabe (Paneldaten)",
-    "section": "3.2 Geschlecht [1 Punkt]",
-    "text": "3.2 Geschlecht [1 Punkt]"
+    "objectID": "uebungen/1_uebungsblatt.html#welche-variablen-sind-im-datensatz-enthalten",
+    "href": "uebungen/1_uebungsblatt.html#welche-variablen-sind-im-datensatz-enthalten",
+    "title": "1. Übungsblatt",
+    "section": "",
+    "text": "Code\n# Namen der Variablen\nnames(df)\n\n\n [1] \"id\"          \"syear\"       \"sex\"         \"alter\"       \"anz_pers\"   \n [6] \"anz_kind\"    \"bildung\"     \"erwerb\"      \"branche\"     \"gesund_org\" \n[11] \"lebensz_org\" \"einkommenj1\" \"einkommenj2\" \"einkommenm1\" \"einkommenm2\"\n\n\nCode\n#Namen, Datentyp und erste Einträge der Variablen\nglimpse(df)\n\n\nRows: 23,522\nColumns: 15\n$ id          &lt;int&gt; 194, 194, 194, 194, 194, 19052, 27495, 27495, 27495, 22539…\n$ syear       &lt;int&gt; 2015, 2016, 2017, 2018, 2019, 2015, 2016, 2018, 2019, 2015…\n$ sex         &lt;chr&gt; \"[1] weiblich\", \"[1] weiblich\", \"[1] weiblich\", \"[1] weibl…\n$ alter       &lt;int&gt; 59, 60, 61, 62, 63, 74, 35, 37, 38, 85, 73, 74, 43, 44, 45…\n$ anz_pers    &lt;int&gt; 2, 2, 2, 2, 2, 2, 3, 3, 3, 2, 1, 1, 4, 4, 4, 4, 4, 2, 2, 2…\n$ anz_kind    &lt;int&gt; 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 2, 2, 2, 2, 2, 0, 0, 0…\n$ bildung     &lt;dbl&gt; 10.5, 10.5, 10.5, 10.5, 10.5, 10.0, 15.0, 15.0, 15.0, 18.0…\n$ erwerb      &lt;chr&gt; \"[2] Teilzeitbeschäftigung\", \"[2] Teilzeitbeschäftigung\", …\n$ branche     &lt;chr&gt; \"[84] Oeffentliche Verwaltung, Verteidigung; Sozialversich…\n$ gesund_org  &lt;chr&gt; \"[4] Weniger gut\", \"[3] Zufriedenstellend\", \"[3] Zufrieden…\n$ lebensz_org &lt;chr&gt; \"6\", \"5\", \"7\", \"5\", \"6\", \"8\", \"8\", \"8\", \"8\", \"8\", \"5\", \"8\"…\n$ einkommenj1 &lt;dbl&gt; 28678.94, 19962.29, 22227.68, 22100.38, 23157.92, 0.00, 14…\n$ einkommenj2 &lt;dbl&gt; 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.…\n$ einkommenm1 &lt;dbl&gt; 1659.1285, 1809.3364, 1849.0375, 1616.5137, 1901.0012, 0.0…\n$ einkommenm2 &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
   },
   {
-    "objectID": "uebungen/1_abgabe_NACHNAME.html#einkommen-hauptberuf-1-punkt",
-    "href": "uebungen/1_abgabe_NACHNAME.html#einkommen-hauptberuf-1-punkt",
-    "title": "1. Abgabe (Paneldaten)",
-    "section": "3.3 Einkommen (Hauptberuf) [1 Punkt]",
-    "text": "3.3 Einkommen (Hauptberuf) [1 Punkt]\nErstellen Sie eine neue Variable ek, die den log. Wert des Bruttoeinkommen/Jahr des Hauptberufs enthält. Nehmen Sie dazu die Variable einkommenj1 (Bruttoeinkommen/Jahr Hauptberuf). Logarithmieren Sie diese. Da einige Beobachtungen 0 Euro Einkommen haben, addieren Sie zu jedem Wert 1 Euro vor der Log-Transformation."
+    "objectID": "uebungen/1_uebungsblatt.html#frauen-im-datensatz",
+    "href": "uebungen/1_uebungsblatt.html#frauen-im-datensatz",
+    "title": "1. Übungsblatt",
+    "section": "2.1 Frauen im Datensatz",
+    "text": "2.1 Frauen im Datensatz\nWie viele Beobachtungen im Datensatz sind Frauen?\n\n\nCode\ntable(df$sex)\n\n\n\n[0] männlich [1] weiblich \n       10762        12760",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
   },
   {
-    "objectID": "uebungen/1_abgabe_NACHNAME.html#analysesample-bilden-3-punkte",
-    "href": "uebungen/1_abgabe_NACHNAME.html#analysesample-bilden-3-punkte",
-    "title": "1. Abgabe (Paneldaten)",
-    "section": "3.4 Analysesample bilden [3 Punkte]",
-    "text": "3.4 Analysesample bilden [3 Punkte]\n\nSelektieren Sie nur die Variablen, die wir brauchen. Also die drei Variablen sowie die ID Variable (id) und die Zeit Variable (syear)\n\n\nWir wenden “listwise deletion” an. Wie viele Beobachtungen gehen uns verloren?\n\nAntwort:"
+    "objectID": "uebungen/1_uebungsblatt.html#balkendiagramm-mit-ggplot",
+    "href": "uebungen/1_uebungsblatt.html#balkendiagramm-mit-ggplot",
+    "title": "1. Übungsblatt",
+    "section": "2.2 Balkendiagramm mit ggplot()",
+    "text": "2.2 Balkendiagramm mit ggplot()\nErstelle ein Balkendiagramm, das die Verteilung des Alters darstellt.\n\n\nCode\nggplot(df, aes(x = alter)) +\n  geom_bar(fill = \"skyblue\", color = \"black\") +\n  labs(\n    title = \"Verteilung des Alters\",\n    x = \"Alter\",\n    y = \"Häufigkeit\"\n  ) +\n  theme_minimal()",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
   },
   {
-    "objectID": "uebungen/1_abgabe_NACHNAME.html#wieviele-personenjahre-sind-im-datensatz-1-punkt",
-    "href": "uebungen/1_abgabe_NACHNAME.html#wieviele-personenjahre-sind-im-datensatz-1-punkt",
-    "title": "1. Abgabe (Paneldaten)",
-    "section": "4.1 Wieviele Personenjahre sind im Datensatz? [1 Punkt]",
-    "text": "4.1 Wieviele Personenjahre sind im Datensatz? [1 Punkt]\nAntwort:"
+    "objectID": "uebungen/1_uebungsblatt.html#summary-statistics",
+    "href": "uebungen/1_uebungsblatt.html#summary-statistics",
+    "title": "1. Übungsblatt",
+    "section": "2.3 Summary Statistics",
+    "text": "2.3 Summary Statistics\nWir alt ist die jüngste und wie alt die älteste Person?\n\n\nCode\nsummary(df$alter)\n\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n  17.00   34.00   48.00   48.28   62.00  102.00",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
   },
   {
-    "objectID": "uebungen/1_abgabe_NACHNAME.html#wie-viele-personen-sind-im-datensatz-1-punkt",
-    "href": "uebungen/1_abgabe_NACHNAME.html#wie-viele-personen-sind-im-datensatz-1-punkt",
-    "title": "1. Abgabe (Paneldaten)",
-    "section": "4.2 Wie viele Personen sind im Datensatz? [1 Punkt]",
-    "text": "4.2 Wie viele Personen sind im Datensatz? [1 Punkt]\nAntwort:"
+    "objectID": "uebungen/1_uebungsblatt.html#variablentypen",
+    "href": "uebungen/1_uebungsblatt.html#variablentypen",
+    "title": "1. Übungsblatt",
+    "section": "2.4 Variablentypen",
+    "text": "2.4 Variablentypen\nWelcher Variablentyp ist Geschlecht (sex)? Welcher Alter? Welcher Bildung?\n\n\nCode\nglimpse(df)\n\n\nRows: 23,522\nColumns: 15\n$ id          &lt;int&gt; 194, 194, 194, 194, 194, 19052, 27495, 27495, 27495, 22539…\n$ syear       &lt;int&gt; 2015, 2016, 2017, 2018, 2019, 2015, 2016, 2018, 2019, 2015…\n$ sex         &lt;chr&gt; \"[1] weiblich\", \"[1] weiblich\", \"[1] weiblich\", \"[1] weibl…\n$ alter       &lt;int&gt; 59, 60, 61, 62, 63, 74, 35, 37, 38, 85, 73, 74, 43, 44, 45…\n$ anz_pers    &lt;int&gt; 2, 2, 2, 2, 2, 2, 3, 3, 3, 2, 1, 1, 4, 4, 4, 4, 4, 2, 2, 2…\n$ anz_kind    &lt;int&gt; 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 2, 2, 2, 2, 2, 0, 0, 0…\n$ bildung     &lt;dbl&gt; 10.5, 10.5, 10.5, 10.5, 10.5, 10.0, 15.0, 15.0, 15.0, 18.0…\n$ erwerb      &lt;chr&gt; \"[2] Teilzeitbeschäftigung\", \"[2] Teilzeitbeschäftigung\", …\n$ branche     &lt;chr&gt; \"[84] Oeffentliche Verwaltung, Verteidigung; Sozialversich…\n$ gesund_org  &lt;chr&gt; \"[4] Weniger gut\", \"[3] Zufriedenstellend\", \"[3] Zufrieden…\n$ lebensz_org &lt;chr&gt; \"6\", \"5\", \"7\", \"5\", \"6\", \"8\", \"8\", \"8\", \"8\", \"8\", \"5\", \"8\"…\n$ einkommenj1 &lt;dbl&gt; 28678.94, 19962.29, 22227.68, 22100.38, 23157.92, 0.00, 14…\n$ einkommenj2 &lt;dbl&gt; 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.…\n$ einkommenm1 &lt;dbl&gt; 1659.1285, 1809.3364, 1849.0375, 1616.5137, 1901.0012, 0.0…\n$ einkommenm2 &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
   },
   {
-    "objectID": "uebungen/1_abgabe_NACHNAME.html#wieviele-personen-nehmen-pro-jahr-teil-2-punkte",
-    "href": "uebungen/1_abgabe_NACHNAME.html#wieviele-personen-nehmen-pro-jahr-teil-2-punkte",
-    "title": "1. Abgabe (Paneldaten)",
-    "section": "4.3 Wieviele Personen nehmen pro Jahr teil? [2 Punkte]",
-    "text": "4.3 Wieviele Personen nehmen pro Jahr teil? [2 Punkte]\nIst das Panel balanced?\nAntwort:"
+    "objectID": "uebungen/1_uebungsblatt.html#kreuz-tabellen",
+    "href": "uebungen/1_uebungsblatt.html#kreuz-tabellen",
+    "title": "1. Übungsblatt",
+    "section": "2.5 (Kreuz-)tabellen",
+    "text": "2.5 (Kreuz-)tabellen\nWie viele Beobachtungen gibt es pro Jahr? Und getrennt nach Geschlecht?\n\n\nCode\ntable(df$syear)\n\n\n\n2015 2016 2017 2018 2019 \n5527 4987 4720 4351 3937 \n\n\nCode\ntable(df$syear, df$sex)\n\n\n      \n       [0] männlich [1] weiblich\n  2015         2533         2994\n  2016         2291         2696\n  2017         2167         2553\n  2018         1992         2359\n  2019         1779         2158",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
   },
   {
-    "objectID": "uebungen/1_abgabe_NACHNAME.html#welche-variablen-sind-zeitkonstant-und-welche-zeitveränderlich-3-punkte",
-    "href": "uebungen/1_abgabe_NACHNAME.html#welche-variablen-sind-zeitkonstant-und-welche-zeitveränderlich-3-punkte",
-    "title": "1. Abgabe (Paneldaten)",
-    "section": "4.4 Welche Variablen sind zeitkonstant und welche zeitveränderlich? [3 Punkte]",
-    "text": "4.4 Welche Variablen sind zeitkonstant und welche zeitveränderlich? [3 Punkte]\nAntwort:"
+    "objectID": "uebungen/1_uebungsblatt.html#datensatz-exploration",
+    "href": "uebungen/1_uebungsblatt.html#datensatz-exploration",
+    "title": "1. Übungsblatt",
+    "section": "2.6 Datensatz Exploration",
+    "text": "2.6 Datensatz Exploration\nWas beinhaltet die Variable “einkommenj1” und “einkommenj2”?\n\n\nCode\ndf_labels",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
   },
   {
-    "objectID": "uebungen/1_abgabe_NACHNAME.html#teilnahme-2-punkte",
-    "href": "uebungen/1_abgabe_NACHNAME.html#teilnahme-2-punkte",
-    "title": "1. Abgabe (Paneldaten)",
-    "section": "4.5 Teilnahme [2 Punkte]",
-    "text": "4.5 Teilnahme [2 Punkte]\nWie viele Personen nahmen an allen fünf Wellen teil? Und wie viele Jahre nahmen Personen durchschnittlich teil?\nAntwort:"
+    "objectID": "uebungen/1_uebungsblatt.html#vektor",
+    "href": "uebungen/1_uebungsblatt.html#vektor",
+    "title": "1. Übungsblatt",
+    "section": "2.7 Vektor",
+    "text": "2.7 Vektor\nErstelle einen Vektor, der die Ausprägungen der Variable “gesund_org” enthält. Und schaue Dir diesen Vektor an.\n\n\nCode\n# Eindeutige Ausprägungen der Variable 'gesund_org'\nvektor_gesund_org &lt;- unique(df$gesund_org)\n\n# Ausgabe der eindeutigen Ausprägungen\nprint(vektor_gesund_org)\n\n\n[1] \"[4] Weniger gut\"       \"[3] Zufriedenstellend\" \"[5] Schlecht\"         \n[4] \"[2] Gut\"               \"\"                      \"[1] Sehr gut\"",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
   },
   {
-    "objectID": "uebungen/1_abgabe_NACHNAME.html#schätzen-sie-ein-pols-modell-3-punkte",
-    "href": "uebungen/1_abgabe_NACHNAME.html#schätzen-sie-ein-pols-modell-3-punkte",
-    "title": "1. Abgabe (Paneldaten)",
-    "section": "5.1 Schätzen Sie ein POLS Modell [3 Punkte]",
-    "text": "5.1 Schätzen Sie ein POLS Modell [3 Punkte]\n… und interepretieren Sie die Koeffizienten.\nAntwort:"
+    "objectID": "uebungen/1_uebungsblatt.html#data-wrlangling",
+    "href": "uebungen/1_uebungsblatt.html#data-wrlangling",
+    "title": "1. Übungsblatt",
+    "section": "2.8 Data wrlangling",
+    "text": "2.8 Data wrlangling\nWir möchten den subjektiven Gesundheitsstatus als numerische Variable nutzen. Wir müssen daher die Variable gesund_org in eine numerische Variable umwandeln. Achte auf fehlende Werte.\n\n\nCode\ntable(df$gesund_org, useNA = \"always\")\n\n\n\n                               [1] Sehr gut               [2] Gut \n                  102                  2535                  9488 \n[3] Zufriedenstellend       [4] Weniger gut          [5] Schlecht \n                 7576                  3089                   732 \n                 &lt;NA&gt; \n                    0 \n\n\nCode\n# Ersetze leere Zeichenketten \"\" durch NA in der Spalte 'gesund_org'\ndf$gesund_org[df$gesund_org == \"\"] &lt;- NA\n\n# Extrahiere die numerischen Werte aus der Spalte 'gesund_org'\ndf$gesund_org_numeric &lt;- as.numeric(sub(\"\\\\[([0-9]+)\\\\].*\", \"\\\\1\", df$gesund_org))\n\n# Überprüfe die Änderungen\ntable(df$gesund_org_numeric, useNA = \"always\")\n\n\n\n   1    2    3    4    5 &lt;NA&gt; \n2535 9488 7576 3089  732  102 \n\n\nCode\ntable(df$gesund_org, useNA = \"always\")\n\n\n\n         [1] Sehr gut               [2] Gut [3] Zufriedenstellend \n                 2535                  9488                  7576 \n      [4] Weniger gut          [5] Schlecht                  &lt;NA&gt; \n                 3089                   732                   102",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
   },
   {
-    "objectID": "uebungen/1_abgabe_NACHNAME.html#schätzen-sie-ein-be-modell-3-punkte",
-    "href": "uebungen/1_abgabe_NACHNAME.html#schätzen-sie-ein-be-modell-3-punkte",
-    "title": "1. Abgabe (Paneldaten)",
-    "section": "5.2 Schätzen Sie ein BE Modell [3 Punkte]",
-    "text": "5.2 Schätzen Sie ein BE Modell [3 Punkte]\n… und interepretieren Sie die Koeffizienten.\nAntwort:"
+    "objectID": "uebungen/1_uebungsblatt.html#balkendiagramm",
+    "href": "uebungen/1_uebungsblatt.html#balkendiagramm",
+    "title": "1. Übungsblatt",
+    "section": "2.9 Balkendiagramm",
+    "text": "2.9 Balkendiagramm\nStelle die Verteilung des subjetiven Gesundheitsstatus graphisch dar\n\n\nCode\n# Barplot erstellen\nggplot(df, aes(x = factor(gesund_org_numeric))) +\n  geom_bar(fill = \"skyblue\", color = \"black\") +\n  labs(\n    title = \"Univariate Verteilung des subjektiven Gesundheitsstatus\",\n    x = \"Subjektiver Gesundheitsstatus (1 = Sehr gut, 5 = Schlecht)\",\n    y = \"Häufigkeit\"\n  ) +\n  theme_minimal()",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
   },
   {
-    "objectID": "uebungen/1_abgabe_NACHNAME.html#schätzen-sie-ein-fe-modell-3-punkte",
-    "href": "uebungen/1_abgabe_NACHNAME.html#schätzen-sie-ein-fe-modell-3-punkte",
-    "title": "1. Abgabe (Paneldaten)",
-    "section": "5.3 Schätzen Sie ein FE Modell [3 Punkte]",
-    "text": "5.3 Schätzen Sie ein FE Modell [3 Punkte]\n… und interepretieren Sie die Koeffizienten.\nAntwort:"
+    "objectID": "uebungen/1_uebungsblatt.html#fehlende-werte",
+    "href": "uebungen/1_uebungsblatt.html#fehlende-werte",
+    "title": "1. Übungsblatt",
+    "section": "2.10 Fehlende Werte",
+    "text": "2.10 Fehlende Werte\nGibt es fehlende Werte auf der Variable monatliches Einkommen (einkommenm1) und auf der Variable Alter?\n\n\nCode\ntable(df$alter, useNA = \"always\")\n\n\n\n  17   18   19   20   21   22   23   24   25   26   27   28   29   30   31   32 \n 472  470  437  392  347  290  281  263  244  254  283  282  293  304  337  341 \n  33   34   35   36   37   38   39   40   41   42   43   44   45   46   47   48 \n 331  368  387  387  379  397  413  430  447  450  454  434  450  466  466  473 \n  49   50   51   52   53   54   55   56   57   58   59   60   61   62   63   64 \n 500  517  526  518  479  447  412  381  381  359  339  336  326  296  298  312 \n  65   66   67   68   69   70   71   72   73   74   75   76   77   78   79   80 \n 325  314  309  294  272  239  242  244  246  256  276  271  270  247  223  192 \n  81   82   83   84   85   86   87   88   89   90   91   92   93   94   95   96 \n 156  124  105   82   74   64   47   46   36   28   19   18   13   11    8    5 \n  97   98   99  100  101  102 &lt;NA&gt; \n   5    4    3    3    1    1    0 \n\n\nCode\nsummary(df$einkommenm1)\n\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n    0.0     0.0   852.9  1645.6  2687.4 35260.9",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
   },
   {
-    "objectID": "uebungen/1_abgabe_NACHNAME.html#schätzen-sie-ein-re-modell-3-punkte",
-    "href": "uebungen/1_abgabe_NACHNAME.html#schätzen-sie-ein-re-modell-3-punkte",
-    "title": "1. Abgabe (Paneldaten)",
-    "section": "5.4 Schätzen Sie ein RE Modell [3 Punkte]",
-    "text": "5.4 Schätzen Sie ein RE Modell [3 Punkte]\n… und interepretieren Sie die Koeffizienten.\nAntwort:"
+    "objectID": "uebungen/1_uebungsblatt.html#zusammenhangsanalyse",
+    "href": "uebungen/1_uebungsblatt.html#zusammenhangsanalyse",
+    "title": "1. Übungsblatt",
+    "section": "2.11 Zusammenhangsanalyse",
+    "text": "2.11 Zusammenhangsanalyse\nSchaue Dir den Zusammenhang von subjektiven Gesundheitsstatus und Alter graphisch mit Hilfe eines Scatterplots an. Beschränke die Daten auf das Jahr 2019 und auf Personen, die jünger als 65 Jahre alt sind.\n\n\nCode\n# Scatterplot mit ggplot2 erstellen\nggplot(df %&gt;% filter(syear==\"2019\", alter &lt; 65), aes(x = alter , y = einkommenm1)) +\n  geom_point(color = \"blue\", alpha = 0.6) +  # Punkte hinzufügen\n  geom_smooth(method = \"lm\", color = \"red\", se = TRUE) +  # Lineare Trendlinie mit Konfidenzintervall\n  labs(\n    title = \"Zusammenhang zwischen Einkommen und Alter\",\n    x = \"Alter\",\n    y = \"Einkommen\"\n  ) +\n  theme_minimal()  # Minimalistisches Theme\n\n\n`geom_smooth()` using formula = 'y ~ x'",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
   },
   {
-    "objectID": "uebungen/1_abgabe_NACHNAME.html#vergleich-5-punkte",
-    "href": "uebungen/1_abgabe_NACHNAME.html#vergleich-5-punkte",
-    "title": "1. Abgabe (Paneldaten)",
-    "section": "5.5 Vergleich [5 Punkte]",
-    "text": "5.5 Vergleich [5 Punkte]\nVergleichen Sie die vier Modelle. Lassen Sie sich 3 Nachkommestellen bei den Werten der Koeffizienten ausgeben. Erstellen Sie eine tabellarische Übersicht über alle Modelle.\n\nWarum wird im FE Modell kein Koeffizient für female geschätzt?\nAntwort:\nWarum ist die Anzahl an Beobachtungen im BE Modell kleiner als die Anzahl an Beobachtungen in den anderen Modellen?\nAntwort:\nInterpretieren sie vergleichend die Koeffizienten des log. Einkommens.\nAntwort:"
+    "objectID": "uebungen/1_uebungsblatt.html#zusammenhangsanalyse-mit-log.-daten",
+    "href": "uebungen/1_uebungsblatt.html#zusammenhangsanalyse-mit-log.-daten",
+    "title": "1. Übungsblatt",
+    "section": "2.12 Zusammenhangsanalyse mit log. Daten",
+    "text": "2.12 Zusammenhangsanalyse mit log. Daten\nUnd nun mit logarithmiertem Einkommen. Was fällt auf?\n\n\nCode\n# Scatterplot mit ggplot2 erstellen\nggplot(df %&gt;% filter(syear==\"2019\", alter &lt; 65), aes(x = alter , y = log(einkommenm1))) +\n  geom_point(color = \"blue\", alpha = 0.6) +  # Punkte hinzufügen\n  geom_smooth(method = \"lm\", color = \"red\", se = TRUE) +  # Lineare Trendlinie mit Konfidenzintervall\n  labs(\n    title = \"Zusammenhang zwischen Einkommen und Alter\",\n    x = \"Alter\",\n    y = \"Einkommen, log.\"\n  ) +\n  theme_minimal()  # Minimalistisches Theme\n\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\nWarning: Removed 660 rows containing non-finite outside the scale range\n(`stat_smooth()`).",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
   },
   {
-    "objectID": "uebungen/1_abgabe_NACHNAME.html#hausman-test-2-punkte",
-    "href": "uebungen/1_abgabe_NACHNAME.html#hausman-test-2-punkte",
-    "title": "1. Abgabe (Paneldaten)",
-    "section": "5.6 Hausman Test [2 Punkte]",
-    "text": "5.6 Hausman Test [2 Punkte]\nSollen wir das RE oder das FE Modell nutzen? Führen Sie einen Hausman Test durch. Wie entscheiden Sie sich und warum?\nAntwort:"
+    "objectID": "uebungen/1_uebungsblatt.html#render",
+    "href": "uebungen/1_uebungsblatt.html#render",
+    "title": "1. Übungsblatt",
+    "section": "2.13 Render",
+    "text": "2.13 Render\nWandle dieses Dokument in ein PDF und ein HTML Dokument um. Wo wird es gespeichert?",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "1 - Übungsblatt"
+    ]
+  },
+  {
+    "objectID": "slides/3_seminar.html#heutige-sitzung",
+    "href": "slides/3_seminar.html#heutige-sitzung",
+    "title": "3. Seminar: Ereignisdaten",
+    "section": "Heutige Sitzung",
+    "text": "Heutige Sitzung\n\nDatenerhebung in den Sozialwissenschaften\nProbleme und Vorteile nicht-reaktiver Daten\nEreignisdaten\nEreignisdatenanalyse\n\nPflichtlektüre:\n\nWatteler, O. (2022). Daten in den Sozialwissenschaften. In Forschungsstrategien in den Sozialwissenschaften (pp. 225-256). Springer VS, Wiesbaden.\nBlossfeld, H. P. (2010). Survival- und Ereignisanalyse. In Handbuch der sozialwissenschaftlichen Datenanalyse (pp. 995-1016). VS Verlag für Sozialwissenschaften."
+  },
+  {
+    "objectID": "slides/3_seminar.html#reaktive-versus-nicht-reaktive-daten",
+    "href": "slides/3_seminar.html#reaktive-versus-nicht-reaktive-daten",
+    "title": "3. Seminar: Ereignisdaten",
+    "section": "Reaktive versus nicht-reaktive Daten",
+    "text": "Reaktive versus nicht-reaktive Daten\n\n\n\n\n\n\n\nReaktive Messung\nNicht-reaktive Messung\n\n\n\n\nUmfragedaten\nAmtliche Statistik / Registerdaten\n\n\nLaborexperimente\nVerhaltensspuren / digital trace data: z.B. Social Media, Smartphone, Wearables\n\n\n\nJournalistische Datensätze: z. B. Reichenlisten, WikiLeaks\n\n\n\nReaktive Daten: Einfluss des Messvorgangs auf die Reaktionen (=Daten) von Untersuchungspersonen, für wissenschaftliche Zwecke erhoben\nNicht-reaktive Daten: nicht mit dem Ziel der Verwendung für sozialwissenschaftliche Forschung generiert, sondern als Folge alltäglichen Verhaltens von Menschen\n\nUmfragen Face-to-face interview; Computer-assisted (CAPI/CAMI); Telephone interview (CATI); Self-administered questionnaire: Paper; Self-administered questionnaire: Web-based (CAWI); Web-based interview; Face-to-face interview: Paper-and-pencil (PAPI)"
+  },
+  {
+    "objectID": "slides/3_seminar.html#probleme-nicht-reaktiver-daten",
+    "href": "slides/3_seminar.html#probleme-nicht-reaktiver-daten",
+    "title": "3. Seminar: Ereignisdaten",
+    "section": "Probleme nicht-reaktiver Daten",
+    "text": "Probleme nicht-reaktiver Daten\n\n\nGeneralisierbarkeit: Stichprobenprobleme / selektive Auswahl: Social Media Nutzer Over/Undercoverage (doppelte Accounts)\nArchivierung/Verfügbarkeit des Materials: (plötzliche) Einschränkungen bei Facebook, Twitter API etc.\nZugang zum Material: Private Organisationen, Akteneinsicht, Zugang zu historischen Archiven\nDatenschutz: Anonymisierungsproblematik, Einverständnis\nValidität: Objektive Realität = subjektive Realität? („produzierte“ Daten; Facebook-“Freunde“) Artefakte (Ironie; Nutzer≠Menschen)\nKeine einheitliche Definition: unkontrollierbare Datenherkunft"
+  },
+  {
+    "objectID": "slides/3_seminar.html#vorteile-prozess-produzierter-daten-gegenüber-reaktiver-daten",
+    "href": "slides/3_seminar.html#vorteile-prozess-produzierter-daten-gegenüber-reaktiver-daten",
+    "title": "3. Seminar: Ereignisdaten",
+    "section": "Vorteile prozess-produzierter Daten (gegenüber reaktiver Daten)",
+    "text": "Vorteile prozess-produzierter Daten (gegenüber reaktiver Daten)\n\n\nZielpersonen können per Interviews nicht erreicht werden (oder eine sehr niedrige response rate wird erwartet)\nDas soziale Phänomen liegt in der Vergangenheit (Erinnerungseffekte)\nEs wird ein falsches/verzerrtes Antwortverhalten erwartet: Sensible/heikle Fragen; soziale Erwünschtheit"
+  },
+  {
+    "objectID": "slides/3_seminar.html#ereignisdaten-2",
+    "href": "slides/3_seminar.html#ereignisdaten-2",
+    "title": "3. Seminar: Ereignisdaten",
+    "section": "Ereignisdaten",
+    "text": "Ereignisdaten\n\ndokumentieren spezifische, zeitlich und/oder räumlich begrenzte Ereignisse\nUntersuchung von Zustandswechseln\nZustände sind abzählbar\nEreignisse können zu beliebigen Zeiten stattfinden"
+  },
+  {
+    "objectID": "slides/3_seminar.html#beispiel-biographie-der-partnerschaft",
+    "href": "slides/3_seminar.html#beispiel-biographie-der-partnerschaft",
+    "title": "3. Seminar: Ereignisdaten",
+    "section": "Beispiel: Biographie der Partnerschaft",
+    "text": "Beispiel: Biographie der Partnerschaft\n\nBiographie der Partnerschaft"
+  },
+  {
+    "objectID": "slides/3_seminar.html#beispiel-arbeitslosigkeit",
+    "href": "slides/3_seminar.html#beispiel-arbeitslosigkeit",
+    "title": "3. Seminar: Ereignisdaten",
+    "section": "Beispiel: Arbeitslosigkeit",
+    "text": "Beispiel: Arbeitslosigkeit\n\nArbeitslosigkeit"
+  },
+  {
+    "objectID": "slides/3_seminar.html#beispiel-sterblichkeit-einer-geburtskohorte",
+    "href": "slides/3_seminar.html#beispiel-sterblichkeit-einer-geburtskohorte",
+    "title": "3. Seminar: Ereignisdaten",
+    "section": "Beispiel: Sterblichkeit einer Geburtskohorte",
+    "text": "Beispiel: Sterblichkeit einer Geburtskohorte\n\nSterblichkeit einer Geburtskohorte"
+  },
+  {
+    "objectID": "slides/3_seminar.html#beispiele-überleben-von-start-up-firmen",
+    "href": "slides/3_seminar.html#beispiele-überleben-von-start-up-firmen",
+    "title": "3. Seminar: Ereignisdaten",
+    "section": "Beispiele: Überleben von start-up Firmen",
+    "text": "Beispiele: Überleben von start-up Firmen\n\nÜberleben von neu gegründeten Unternehmen"
+  },
+  {
+    "objectID": "slides/3_seminar.html#ziele-der-ereignisdatenanalyse",
+    "href": "slides/3_seminar.html#ziele-der-ereignisdatenanalyse",
+    "title": "3. Seminar: Ereignisdaten",
+    "section": "Ziele der Ereignisdatenanalyse",
+    "text": "Ziele der Ereignisdatenanalyse\n\nAnalyse der Dauer bis zu bestimmten Ereignissen (Beschreibung)\nWelche Faktoren beeinflussen die Zeit bis zum Eintreten eines bestimmten Ereignisses? (Erklärung)"
+  },
+  {
+    "objectID": "slides/3_seminar.html#anwendungsgebiete-der-ereignisdatenanalyse",
+    "href": "slides/3_seminar.html#anwendungsgebiete-der-ereignisdatenanalyse",
+    "title": "3. Seminar: Ereignisdaten",
+    "section": "Anwendungsgebiete der Ereignisdatenanalyse",
+    "text": "Anwendungsgebiete der Ereignisdatenanalyse\n\nLebensverlaufsforschung\nFamiliensoziologie: Entstehung von Partnerschaften, Heirat\nArbeitsmarktsoziologie: Erwerbsverläufe, Eintritt in die Rente\nMigrationssoziologie: Wohnortswechsel\n\nFragestellungen:\n\nWelche Faktoren beeinflussen die Dauer der Arbeitslosigkeit bis zum Beginn einer neuen Erwerbstätigkeit?\nWelche Faktoren beeinflussen die Dauer bis zu einem Umzug an einen anderen Ort?"
+  },
+  {
+    "objectID": "slides/3_seminar.html#grundbegriffe",
+    "href": "slides/3_seminar.html#grundbegriffe",
+    "title": "3. Seminar: Ereignisdaten",
+    "section": "Grundbegriffe",
+    "text": "Grundbegriffe\nEreignis:\n\nZustandswechsel von einem diskreten Zustand in einen anderen\nEinfache Zuordnung: Berufseintritt, Verrentung, Erstberufung (Professur)\nMehrfache Zuordnung: Kündigungen, Hochzeiten, Berufungen (Professur)\n\nEpisode:\n\nZeitintervall zwischen zwei Zuständen\nrechts-zensiert: Episoden zum Beobachtungsende noch nicht abgeschlossen\nlinks-zensiert: Informationen nur nach einem bestimmten Ereignis bekannt"
+  },
+  {
+    "objectID": "slides/3_seminar.html#grundbegriffe-1",
+    "href": "slides/3_seminar.html#grundbegriffe-1",
+    "title": "3. Seminar: Ereignisdaten",
+    "section": "Grundbegriffe",
+    "text": "Grundbegriffe\n\nAus: Windzio, M. (2013). Regressionsmodelle für Zustände und Ereignisse: Eine Einführung. Springer-Verlag, S. 88."
+  },
+  {
+    "objectID": "slides/3_seminar.html#grundbegriffe-2",
+    "href": "slides/3_seminar.html#grundbegriffe-2",
+    "title": "3. Seminar: Ereignisdaten",
+    "section": "Grundbegriffe",
+    "text": "Grundbegriffe"
+  },
+  {
+    "objectID": "slides/3_seminar.html#grundbegriffe-3",
+    "href": "slides/3_seminar.html#grundbegriffe-3",
+    "title": "3. Seminar: Ereignisdaten",
+    "section": "Grundbegriffe",
+    "text": "Grundbegriffe\nProzesszeit/Verweildauer:\n\nDauer der Episode (bis zum Eintreten des Ereignisses oder bis zur Zensierung)\nNullpunkt wird definiert (z.B. Geburt, Jahr, Erste Arbeitslosigkeit)\n\nRisikomenge:\n\nAnzahl der Untersuchungseinheiten, die dem Zustandswechsel ausgesetzt sind"
+  },
+  {
+    "objectID": "slides/3_seminar.html#analyseverfahren",
+    "href": "slides/3_seminar.html#analyseverfahren",
+    "title": "3. Seminar: Ereignisdaten",
+    "section": "Analyseverfahren",
+    "text": "Analyseverfahren\n\nNicht-parametrische Verfahren (deskriptive Verfahren)\n\nKeine Annahmen über Verteilung, nur über Wirkungsweisen von Variablen\nBeispiel: Kaplan-Meier, Sterbetafelmethode\n\nParametrische Regressionsmodelle\n\nVerlauf der Hazardrate (baseline hazard) wird spezifiziert\nKovariateneinflüsse werden spezifiziert\nBeispiel: Exponentialmodell, Weibull-Modell, Gompertz-Modell\n\nSemi-parametrische Regressionsmodelle\n\nVerlauf der Hazardrate bleibt unspezifiziert\nKovariateneinflüsse werden spezifiziert\nBeispiel: Cox-Regressionen"
+  },
+  {
+    "objectID": "slides/3_seminar.html#analyseverfahren-1",
+    "href": "slides/3_seminar.html#analyseverfahren-1",
+    "title": "3. Seminar: Ereignisdaten",
+    "section": "Analyseverfahren",
+    "text": "Analyseverfahren\nAnalyse erfolgt idR in 2 Schritten:\n\nDeskriptive Verfahren\nMultivariates Regressionsmodell"
+  },
+  {
+    "objectID": "slides/3_seminar.html#package-survival",
+    "href": "slides/3_seminar.html#package-survival",
+    "title": "3. Seminar: Ereignisdaten",
+    "section": "Package “survival”",
+    "text": "Package “survival”\nWir nutzen das R-Paket {survival} für unsere Ereignisdatenanalyse."
+  },
+  {
+    "objectID": "slides/3_seminar.html#lungenkrebsdaten",
+    "href": "slides/3_seminar.html#lungenkrebsdaten",
+    "title": "3. Seminar: Ereignisdaten",
+    "section": "Lungenkrebsdaten",
+    "text": "Lungenkrebsdaten\nWir möchten das Überleben von PatientInnen mit fortgeschrittenem Lungenkrebs aus der “North Central Cancer Treatment Group” untersuchen. Schauen wir uns an, welche Variablen im Datensatz vorhanden sind:"
+  },
+  {
+    "objectID": "slides/3_seminar.html#datenaufbereitung",
+    "href": "slides/3_seminar.html#datenaufbereitung",
+    "title": "3. Seminar: Ereignisdaten",
+    "section": "Datenaufbereitung",
+    "text": "Datenaufbereitung\nWir brauchen für unsere Analyse 3 Variablen:\n\ndead (0: lebend, 1: tot)\nKarnofsky-Index (0: &lt;=80 [niedrig], 1: &gt;80 [hoch])\ntime (Tage)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSolution\n\n\nLösung:\nnames(df)\ndf &lt;- df %&gt;% \n  mutate(\n    dead = recode(status, `1` = 0, `2` = 1),\n    karnofsky_hoch = ifelse(ph.karno &gt;80, 1, 0)\n  )"
+  },
+  {
+    "objectID": "slides/3_seminar.html#erstellen-von-survival-objects",
+    "href": "slides/3_seminar.html#erstellen-von-survival-objects",
+    "title": "3. Seminar: Ereignisdaten",
+    "section": "Erstellen von “survival objects”",
+    "text": "Erstellen von “survival objects”\nDie Surv() Funktion aus dem the {survival} Paket erstellt ein “survival object”. Schauen wir und die ersten 10 Beobachtungen an:\n\nOutputCode\n\n\n\nlibrary(survival)\nlibrary(dplyr)\n\ndf = lung\ndf &lt;- df %&gt;% \n  mutate(\n    dead = recode(status, `1` = 0, `2` = 1),\n    karnofsky_hoch = ifelse(ph.karno &gt;80, 1, 0)\n  )\nSurv(df$time, df$dead)[1:10]\n\n [1]  306   455  1010+  210   883  1022+  310   361   218   166 \n\n\n\n\n\nlibrary(survival)\nlibrary(dplyr)\nlibrary(ggsurvfit)\n\nLoading required package: ggplot2\n\ndf = lung\ndf &lt;- df %&gt;% \n  mutate(\n    dead = recode(status, `1` = 0, `2` = 1),\n    karnofsky_hoch = ifelse(ph.karno &gt;80, 1, 0)\n  )\nSurv(df$time, df$dead)[1:10]\n\n [1]  306   455  1010+  210   883  1022+  310   361   218   166"
+  },
+  {
+    "objectID": "slides/3_seminar.html#erstellen-von-kaplan-meier-kurven",
+    "href": "slides/3_seminar.html#erstellen-von-kaplan-meier-kurven",
+    "title": "3. Seminar: Ereignisdaten",
+    "section": "Erstellen von Kaplan-Meier Kurven",
+    "text": "Erstellen von Kaplan-Meier Kurven\nKaplan-Meier-Methode gängigste Methode zur Visualisierung von Überlebenswahrscheinlichkeiten\n\nOutputCode\n\n\n\nsurvfit2(Surv(time, dead) ~ 1, data = df) %&gt;% \n  ggsurvfit() +\n  labs(\n    x = \"Days\",\n    y = \"Overall survival probability\"\n  )+ \n  add_confidence_interval() +\n  add_risktable()\n\n\n\n\n\n\n\n\n\n\n\nsurvfit2(Surv(time, dead) ~ 1, data = df) %&gt;% \n  ggsurvfit() +\n  labs(\n    x = \"Days\",\n    y = \"Overall survival probability\"\n  )+ \n  add_confidence_interval() +\n  add_risktable()"
+  },
+  {
+    "objectID": "slides/3_seminar.html#erstellen-von-kaplan-meier-kurven-1",
+    "href": "slides/3_seminar.html#erstellen-von-kaplan-meier-kurven-1",
+    "title": "3. Seminar: Ereignisdaten",
+    "section": "Erstellen von Kaplan-Meier Kurven",
+    "text": "Erstellen von Kaplan-Meier Kurven\nProbiert selbst:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSolution\n\n\nLösung:\nlibrary(survival)\nlibrary(dplyr)\nlibrary(ggsurvfit)\n\nsurvfit2(Surv(time, dead) ~ 1, data = df) %&gt;% \n  ggsurvfit() +\n  labs(\n    x = \"Days\",\n    y = \"Overall survival probability\"\n  )+ \n  add_confidence_interval() +\n  add_risktable()"
+  },
+  {
+    "objectID": "slides/3_seminar.html#erstellen-von-kaplan-meier-kurven-nach-karnofsky-index",
+    "href": "slides/3_seminar.html#erstellen-von-kaplan-meier-kurven-nach-karnofsky-index",
+    "title": "3. Seminar: Ereignisdaten",
+    "section": "Erstellen von Kaplan-Meier Kurven nach Karnofsky-Index",
+    "text": "Erstellen von Kaplan-Meier Kurven nach Karnofsky-Index\nUnterscheiden sich PatientInnen mit niedrigem oder hohem Karnofsky-Index?\n\nOutputCode\n\n\n\nsurvfit2(Surv(time, dead) ~ karnofsky_hoch, data = df) %&gt;% \n  ggsurvfit() +\n  labs(\n    x = \"Tage\",\n    y = \"Überlebenswahrscheinlichkeit\",\n    color = \"Karnofsky-Index\"\n  )+ \n  add_confidence_interval() +\n  add_risktable() + \n scale_color_manual(values = c('darkblue', 'pink'),  labels = c(\"&lt;=80\", \"&gt;80\") ) +\n  scale_fill_manual(values = c('darkblue', 'pink'),  labels = c(\"&lt;=80\", \"&gt;80\") ) +\n  theme_minimal() + guides(fill = \"none\")\n\n\n\n\n\n\n\n\n\n\n\nsurvfit2(Surv(time, dead) ~ karnofsky_hoch, data = df) %&gt;% \n  ggsurvfit() +\n  labs(\n    x = \"Tage\",\n    y = \"Überlebenswahrscheinlichkeit\",\n    color = \"Karnofsky-Index\"\n  )+ \n  add_confidence_interval() +\n  add_risktable() + \n scale_color_manual(values = c('darkblue', 'pink'),  labels = c(\"&lt;=80\", \"&gt;80\") ) +\n  scale_fill_manual(values = c('darkblue', 'pink'),  labels = c(\"&lt;=80\", \"&gt;80\") ) +\n  theme_minimal() + guides(fill = \"none\")"
+  },
+  {
+    "objectID": "slides/3_seminar.html#cox-proportional-hazards-model",
+    "href": "slides/3_seminar.html#cox-proportional-hazards-model",
+    "title": "3. Seminar: Ereignisdaten",
+    "section": "Cox Proportional Hazards Model",
+    "text": "Cox Proportional Hazards Model\n\\(h(t) = h_0(t)*exp(X\\beta)\\)\n\nAbhängige Variable: \\(h(t)\\)\n\nHazardrate (hazard)\n„momentane Neigung einer Untersuchungseinheit, im nächsten Augenblick ein Ereignis zu erleben“\n\nBasline-Hazard \\(h_0(t)\\)\n\nnicht-parametrisch geschätzt (keine Verteilungsannahme)\nKonstante steckt in der Baseline Hazardrate\n\nRegressionskoeffizient \\(\\beta\\):\n\n\\(X\\) können proportionale Änderungen der Hazardrate bewirken\nVeränderung der log. Hazardrate, wenn sich unabhängige Variable um eine Einheit erhöht\nBerechnung der Hazard-Ratio: \\(HR = exp(\\beta)\\)\nHR &lt; 1: verringertes Sterberisiko\nHR &gt; 1: erhöhtes Sterberisiko"
+  },
+  {
+    "objectID": "slides/3_seminar.html#cox-proportional-hazards-model-1",
+    "href": "slides/3_seminar.html#cox-proportional-hazards-model-1",
+    "title": "3. Seminar: Ereignisdaten",
+    "section": "Cox Proportional Hazards Model",
+    "text": "Cox Proportional Hazards Model\n\\(h(t) = h_0(t)*exp(X\\beta)\\)\n\nPartial-Likelihood-Methode\n\nGenauer Zeitpunkt des Ereignisses irrelevant, sondern Reihenfolgen\nKeine Verteilungsannahme über die Hazardrate\n\nBedindung: Proportionalitätsannahme muss erfüllt sein (da proportionalle Änderungen der Hazardrate geschätzt werden)\n\n\nProportionalitätsannahme: Hazard Ratio (das Verhältnis der Hazard Rates zwischen zwei Gruppen) bleibt im Laufe der Zeit konstant"
+  },
+  {
+    "objectID": "slides/3_seminar.html#cox-proportional-hazards-model-2",
+    "href": "slides/3_seminar.html#cox-proportional-hazards-model-2",
+    "title": "3. Seminar: Ereignisdaten",
+    "section": "Cox Proportional Hazards Model",
+    "text": "Cox Proportional Hazards Model\n\nOutputCode\n\n\n\nlibrary(sjPlot)\nmodel1 = coxph(Surv(time, dead) ~ karnofsky_hoch, data = df)\nsummary(model1)\n\nCall:\ncoxph(formula = Surv(time, dead) ~ karnofsky_hoch, data = df)\n\n  n= 227, number of events= 164 \n   (1 observation deleted due to missingness)\n\n                  coef exp(coef) se(coef)     z Pr(&gt;|z|)   \nkarnofsky_hoch -0.4436    0.6417   0.1596 -2.78  0.00544 **\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n               exp(coef) exp(-coef) lower .95 upper .95\nkarnofsky_hoch    0.6417      1.558    0.4694    0.8774\n\nConcordance= 0.569  (se = 0.022 )\nLikelihood ratio test= 7.88  on 1 df,   p=0.005\nWald test            = 7.73  on 1 df,   p=0.005\nScore (logrank) test = 7.85  on 1 df,   p=0.005\n\n\n\n\n\nlibrary(sjPlot)\nmodel1 = coxph(Surv(time, dead) ~ karnofsky_hoch, data = df)\nsummary(model1)\n\nCall:\ncoxph(formula = Surv(time, dead) ~ karnofsky_hoch, data = df)\n\n  n= 227, number of events= 164 \n   (1 observation deleted due to missingness)\n\n                  coef exp(coef) se(coef)     z Pr(&gt;|z|)   \nkarnofsky_hoch -0.4436    0.6417   0.1596 -2.78  0.00544 **\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n               exp(coef) exp(-coef) lower .95 upper .95\nkarnofsky_hoch    0.6417      1.558    0.4694    0.8774\n\nConcordance= 0.569  (se = 0.022 )\nLikelihood ratio test= 7.88  on 1 df,   p=0.005\nWald test            = 7.73  on 1 df,   p=0.005\nScore (logrank) test = 7.85  on 1 df,   p=0.005"
+  },
+  {
+    "objectID": "slides/3_seminar.html#cox-proportional-hazards-model-interpretation",
+    "href": "slides/3_seminar.html#cox-proportional-hazards-model-interpretation",
+    "title": "3. Seminar: Ereignisdaten",
+    "section": "Cox Proportional Hazards Model, Interpretation",
+    "text": "Cox Proportional Hazards Model, Interpretation\n\nInterpretationCode\n\n\nDas Risiko zu sterben (in jedem kurzen Zeitraum) ist höher bei Personen mit einem Karnofsky-Index kleiner-gleich 80 im Vergleich zu Personen mit einem Karnofsky-Index über 80.\nHazard-Ratio: Personen mit einem Karnofsky-Index über 80 haben ein 36% geringeres Risiko zu sterben (in jedem kurzen Zeitraum) als Personen mit einem Karnofsky-Index unter/gleich 80. Oder: Personen mit einem Karnofsky-Index über 80 haben ein 0.64 mal so hohes Risiko zu sterben (in jedem kurzen Zeitraum) wie Personen mit einem Karnofsky-Index unter/gleich 80.\n\nHR &lt; 1: verringertes Sterberisiko\nHR &gt; 1: erhöhtes Sterberisiko\n\n\n\n\nlibrary(sjPlot)\nmodel1 = coxph(Surv(time, dead) ~ karnofsky_hoch, data = df)\ntab_model(model1,\n          show.ci = FALSE, p.style = \"stars\",\n          string.se = \"se\", string.est = \"HR\",\n          string.pred = \" \")\n\n\n\n\n \nSurv(time,dead)\n\n\n\nHR\n\n\nkarnofsky hoch\n0.64 **\n\n\nObservations\n227\n\n\nR2 Nagelkerke\n0.034\n\n\n* p&lt;0.05   ** p&lt;0.01   *** p&lt;0.001"
+  },
+  {
+    "objectID": "slides/3_seminar.html#proportionalitätsannahme",
+    "href": "slides/3_seminar.html#proportionalitätsannahme",
+    "title": "3. Seminar: Ereignisdaten",
+    "section": "Proportionalitätsannahme",
+    "text": "Proportionalitätsannahme\nNun testen wir die Proportionalitätsannahme.\nNullhypothese: Hazard-Raten proportional, also kein Zusammenhang mit der Zeit\n\nmodel1 = coxph(Surv(time, dead) ~ karnofsky_hoch, data = df)\n\n# Überprüfung der Proportionalitätsannahme\ntest_proportionality &lt;- cox.zph(model1)\n\n# Ergebnisse anzeigen\nprint(test_proportionality)\n\n               chisq df    p\nkarnofsky_hoch  1.59  1 0.21\nGLOBAL          1.59  1 0.21\n\n# Grafische Darstellung\nplot(test_proportionality)"
+  },
+  {
+    "objectID": "slides/3_seminar.html#ende",
+    "href": "slides/3_seminar.html#ende",
+    "title": "3. Seminar: Ereignisdaten",
+    "section": "Ende",
+    "text": "Ende\n\nDieser Foliensatz profitierte in großen Teilen von ehemaligen Veranstaltungen von Isabel Habicht sowie von Hans-Jürgen Andreß\nWeitere Literatur:\n\nhttps://ehar.se/r/ehar2/\nhttps://www.emilyzabor.com/tutorials/survival_analysis_in_r_tutorial.html#Comparing_survival_times_between_groups"
   },
   {
     "objectID": "slides/1_uebung.html#was-ist-forschungsdatenmanagement",
@@ -686,7 +984,7 @@
     "href": "schedule.html#abgaben",
     "title": "Übersicht",
     "section": "Abgaben",
-    "text": "Abgaben\nAbgabe 1 (Paneldaten): ✍️ ✍️",
+    "text": "Abgaben\nAbgabe 1 (Paneldaten): ✍️ ✍️\nAbgabe 2 (Ereignisdaten): ✍️ ✍️\n📚",
     "crumbs": [
       "Zeitplan und Dateien",
       "Übersicht"
@@ -912,7 +1210,7 @@
     "href": "slides/1_seminar.html#computational-setup",
     "title": "1. Seminar",
     "section": "Computational setup",
-    "text": "Computational setup\n\n## Packages\npkgs &lt;- c(\n  \"stevedata\",\n  \"tidyverse\",\n  \"broom.helpers\",\n  \"ggplot2\"\n)\n\n## Install uninstalled packages\nlapply(pkgs[!(pkgs %in% installed.packages())], install.packages)\n\nlist()\n\n## Load all packages to library\nlapply(pkgs, library, character.only = TRUE)\n\n[[1]]\n[1] \"stevedata\" \"stats\"     \"graphics\"  \"grDevices\" \"utils\"     \"datasets\" \n[7] \"methods\"   \"base\"     \n\n[[2]]\n [1] \"lubridate\" \"forcats\"   \"stringr\"   \"dplyr\"     \"purrr\"     \"readr\"    \n [7] \"tidyr\"     \"tibble\"    \"ggplot2\"   \"tidyverse\" \"stevedata\" \"stats\"    \n[13] \"graphics\"  \"grDevices\" \"utils\"     \"datasets\"  \"methods\"   \"base\"     \n\n[[3]]\n [1] \"broom.helpers\" \"lubridate\"     \"forcats\"       \"stringr\"      \n [5] \"dplyr\"         \"purrr\"         \"readr\"         \"tidyr\"        \n [9] \"tibble\"        \"ggplot2\"       \"tidyverse\"     \"stevedata\"    \n[13] \"stats\"         \"graphics\"      \"grDevices\"     \"utils\"        \n[17] \"datasets\"      \"methods\"       \"base\"         \n\n[[4]]\n [1] \"broom.helpers\" \"lubridate\"     \"forcats\"       \"stringr\"      \n [5] \"dplyr\"         \"purrr\"         \"readr\"         \"tidyr\"        \n [9] \"tibble\"        \"ggplot2\"       \"tidyverse\"     \"stevedata\"    \n[13] \"stats\"         \"graphics\"      \"grDevices\"     \"utils\"        \n[17] \"datasets\"      \"methods\"       \"base\"         \n\n# set default theme and larger font size for ggplot2\nggplot2::theme_set(ggplot2::theme_minimal(base_size = 16))\n\n# set default figure parameters for knitr\nknitr::opts_chunk$set(\n  fig.width = 8,\n  fig.asp = 0.618,\n  fig.retina = 3,\n  dpi = 300,\n  out.width = \"80%\"\n)",
+    "text": "Computational setup\n\n## Packages\npkgs &lt;- c(\n  \"stevedata\",\n  \"tidyverse\",\n  \"broom.helpers\",\n  \"ggplot2\"\n)\n\n## Install uninstalled packages\nlapply(pkgs[!(pkgs %in% installed.packages())], install.packages)\n\nlist()\n\n## Load all packages to library\nlapply(pkgs, library, character.only = TRUE)\n\nWarning: package 'tidyverse' was built under R version 4.2.3\n\n\nWarning: package 'ggplot2' was built under R version 4.2.3\n\n\nWarning: package 'tibble' was built under R version 4.2.3\n\n\nWarning: package 'tidyr' was built under R version 4.2.3\n\n\nWarning: package 'readr' was built under R version 4.2.3\n\n\nWarning: package 'purrr' was built under R version 4.2.3\n\n\nWarning: package 'dplyr' was built under R version 4.2.3\n\n\nWarning: package 'stringr' was built under R version 4.2.3\n\n\nWarning: package 'forcats' was built under R version 4.2.3\n\n\nWarning: package 'lubridate' was built under R version 4.2.3\n\n\n[[1]]\n[1] \"stevedata\" \"stats\"     \"graphics\"  \"grDevices\" \"utils\"     \"datasets\" \n[7] \"methods\"   \"base\"     \n\n[[2]]\n [1] \"lubridate\" \"forcats\"   \"stringr\"   \"dplyr\"     \"purrr\"     \"readr\"    \n [7] \"tidyr\"     \"tibble\"    \"ggplot2\"   \"tidyverse\" \"stevedata\" \"stats\"    \n[13] \"graphics\"  \"grDevices\" \"utils\"     \"datasets\"  \"methods\"   \"base\"     \n\n[[3]]\n [1] \"broom.helpers\" \"lubridate\"     \"forcats\"       \"stringr\"      \n [5] \"dplyr\"         \"purrr\"         \"readr\"         \"tidyr\"        \n [9] \"tibble\"        \"ggplot2\"       \"tidyverse\"     \"stevedata\"    \n[13] \"stats\"         \"graphics\"      \"grDevices\"     \"utils\"        \n[17] \"datasets\"      \"methods\"       \"base\"         \n\n[[4]]\n [1] \"broom.helpers\" \"lubridate\"     \"forcats\"       \"stringr\"      \n [5] \"dplyr\"         \"purrr\"         \"readr\"         \"tidyr\"        \n [9] \"tibble\"        \"ggplot2\"       \"tidyverse\"     \"stevedata\"    \n[13] \"stats\"         \"graphics\"      \"grDevices\"     \"utils\"        \n[17] \"datasets\"      \"methods\"       \"base\"         \n\n# set default theme and larger font size for ggplot2\nggplot2::theme_set(ggplot2::theme_minimal(base_size = 16))\n\n# set default figure parameters for knitr\nknitr::opts_chunk$set(\n  fig.width = 8,\n  fig.asp = 0.618,\n  fig.retina = 3,\n  dpi = 300,\n  out.width = \"80%\"\n)",
     "crumbs": [
       "Zeitplan und Dateien",
       "1 - Seminar"
@@ -945,7 +1243,7 @@
     "href": "slides/1_seminar.html#datenvisualisierung",
     "title": "1. Seminar",
     "section": "Datenvisualisierung",
-    "text": "Datenvisualisierung",
+    "text": "Datenvisualisierung\n\nggplot(df, \n       aes(x = age, y = log(realrinc))) +\n  geom_point(alpha = 0.5) + \n  labs(\n    x = \"Age\" , \n    y = \"Log(income)\"\n  )",
     "crumbs": [
       "Zeitplan und Dateien",
       "1 - Seminar"
@@ -956,7 +1254,7 @@
     "href": "slides/1_seminar.html#fit-a-line",
     "title": "1. Seminar",
     "section": "Fit a line",
-    "text": "Fit a line\n… um die Beziehung zwischen Alter und Einkommen zu beschreiben",
+    "text": "Fit a line\n… um die Beziehung zwischen Alter und Einkommen zu beschreiben\n\np &lt;- ggplot(data = df, \n            mapping = aes(x = age, y = log(realrinc))) +\n  geom_point(alpha = 0.5) + \n  geom_smooth(method = \"lm\", color = \"purple\", se = FALSE) +\n  labs(\n    x = \"Age\" , \n    y = \"Log(income)\"\n  )\n\np\n\n`geom_smooth()` using formula = 'y ~ x'",
     "crumbs": [
       "Zeitplan und Dateien",
       "1 - Seminar"
@@ -967,7 +1265,7 @@
     "href": "slides/1_seminar.html#terminologie",
     "title": "1. Seminar",
     "section": "Terminologie",
-    "text": "Terminologie\n\nX → Y\n\n\n\n\nOutcome, Y: Variable, die das Merkmal von Interesse beinhaltet\nPredictor, X: Variable, die uns hilft, die Varianz des Outcomes zu verstehen",
+    "text": "Terminologie\n\nX → Y\n\n\n\n\nOutcome, Y: Variable, die das Merkmal von Interesse beinhaltet\nPredictor, X: Variable, die uns hilft, die Varianz des Outcomes zu verstehen\n\n\n\np\n\n`geom_smooth()` using formula = 'y ~ x'",
     "crumbs": [
       "Zeitplan und Dateien",
       "1 - Seminar"
@@ -989,7 +1287,7 @@
     "href": "slides/1_seminar.html#regressionsmodel-2",
     "title": "1. Seminar",
     "section": "Regressionsmodel",
-    "text": "Regressionsmodel\n\n\n\\[\n  \\begin{aligned} Y &= \\color{purple}{\\textbf{Model}} + \\text{Error} \\\\[8pt]\n&= \\color{purple}{\\mathbf{f(X)}} + \\epsilon \\\\[8pt]\n&= \\color{purple}{\\boldsymbol{\\mu_{Y|X}}} + \\epsilon\n\\end{aligned}\n\\]",
+    "text": "Regressionsmodel\n\n\n\\[\n  \\begin{aligned} Y &= \\color{purple}{\\textbf{Model}} + \\text{Error} \\\\[8pt]\n&= \\color{purple}{\\mathbf{f(X)}} + \\epsilon \\\\[8pt]\n&= \\color{purple}{\\boldsymbol{\\mu_{Y|X}}} + \\epsilon\n\\end{aligned}\n\\]\n\n\nm &lt;- lm(log(realrinc) ~ age, data = df)\ndf$predicted &lt;- predict(m)\n\nggplot(data = df, \n       mapping = aes(x = age, y = log(realrinc))) +\n  geom_point(alpha = 0.5) + \n  geom_smooth(method = \"lm\", color = \"purple\", se = FALSE) +\n  labs(x = \"X\", y = \"Y\") +\n  theme_minimal() +\n  theme(\n    axis.text = element_blank(),\n    axis.ticks.x = element_blank(), \n    axis.ticks.y = element_blank()\n  )\n\n`geom_smooth()` using formula = 'y ~ x'",
     "crumbs": [
       "Zeitplan und Dateien",
       "1 - Seminar"
@@ -1000,7 +1298,7 @@
     "href": "slides/1_seminar.html#regressionsmodel-residuen",
     "title": "1. Seminar",
     "section": "Regressionsmodel + Residuen",
-    "text": "Regressionsmodel + Residuen\n\n\n\\[\\begin{aligned} Y &= \\color{purple}{\\textbf{Model}} + \\color{blue}{\\textbf{Error}} \\\\[8pt]\n&= \\color{purple}{\\mathbf{f(X)}} + \\color{blue}{\\boldsymbol{\\epsilon}} \\\\[8pt]\n&= \\color{purple}{\\boldsymbol{\\mu_{Y|X}}} + \\color{blue}{\\boldsymbol{\\epsilon}} \\\\[8pt]\n\\end{aligned}\\]",
+    "text": "Regressionsmodel + Residuen\n\n\n\\[\\begin{aligned} Y &= \\color{purple}{\\textbf{Model}} + \\color{blue}{\\textbf{Error}} \\\\[8pt]\n&= \\color{purple}{\\mathbf{f(X)}} + \\color{blue}{\\boldsymbol{\\epsilon}} \\\\[8pt]\n&= \\color{purple}{\\boldsymbol{\\mu_{Y|X}}} + \\color{blue}{\\boldsymbol{\\epsilon}} \\\\[8pt]\n\\end{aligned}\\]\n\n\n\n`geom_smooth()` using formula = 'y ~ x'",
     "crumbs": [
       "Zeitplan und Dateien",
       "1 - Seminar"
@@ -1033,7 +1331,7 @@
     "href": "slides/1_seminar.html#residuen",
     "title": "1. Seminar",
     "section": "Residuen",
-    "text": "Residuen\n\nPlotCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nggplot(data = df, mapping = aes(x = age, y = log(realrinc))) +\n  geom_point(alpha = 0.5) +\n  geom_smooth(method = \"lm\", color = \"purple\", se = FALSE) +\n  geom_segment(aes(x = age, xend = age, y = log(realrinc), yend = predict(m)), color = \"steel blue\") +\n  labs(x = \"Alter\", y = \"Einkommen\") +\n  theme(legend.position = \"none\")\n\n\n\n\n\n\n\n\n\n\n\n\\[\\text{Residuen} = \\text{Beobachted} - \\text{Vorhergesagt} = y - \\hat{y}\\]\n\nSummer der Residuen = 0",
+    "text": "Residuen\n\nPlotCode\n\n\n\nggplot(data = df, mapping = aes(x = age, y = log(realrinc))) +\n  geom_point(alpha = 0.5) +\n  geom_smooth(method = \"lm\", color = \"purple\", se = FALSE) +\n  geom_segment(aes(x = age, xend = age, y = log(realrinc), yend = predict(m)), color = \"steel blue\") +\n  labs(x = \"Alter\", y = \"Einkommen\") +\n  theme(legend.position = \"none\")\n\n\n\n\n\n\n\n\n\n\n\nggplot(data = df, mapping = aes(x = age, y = log(realrinc))) +\n  geom_point(alpha = 0.5) +\n  geom_smooth(method = \"lm\", color = \"purple\", se = FALSE) +\n  geom_segment(aes(x = age, xend = age, y = log(realrinc), yend = predict(m)), color = \"steel blue\") +\n  labs(x = \"Alter\", y = \"Einkommen\") +\n  theme(legend.position = \"none\")\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\n\n\n\n\n\n\n\n\\[\\text{Residuen} = \\text{Beobachted} - \\text{Vorhergesagt} = y - \\hat{y}\\]\n\nSummer der Residuen = 0",
     "crumbs": [
       "Zeitplan und Dateien",
       "1 - Seminar"
@@ -1055,7 +1353,7 @@
     "href": "slides/1_seminar.html#interpretation-1",
     "title": "1. Seminar",
     "section": "Interpretation",
-    "text": "Interpretation\n\nOutputCode\n\n\n\n\n\nCall:\nlm(formula = log(realrinc) ~ age, data = df)\n\nCoefficients:\n(Intercept)          age  \n    8.91235      0.01444  \n\n\n\n\n\nm_income &lt;- lm(log(realrinc) ~ age, data = df)\nm_income  \n\n\nCall:\nlm(formula = log(realrinc) ~ age, data = df)\n\nCoefficients:\n(Intercept)          age  \n    8.91235      0.01444  \n\n\n\n\n\n\\[\\widehat{\\text{log(Einkommen)}} = 8.91 + 0.01 \\times \\text{Alter}\\]\n\n\nSlope: Für jedes zusätzliche Jahr im Alter erwarten wir eine Vergrößerung des logarithmierten Wertes des Einkommens um 0.01 oder: Für jedes zusätzliche Jahr im Alter erwarten wir einen Einkommensanstieg von etwa 1.005% (\\((e^{0.01} - 1) \\times 100\\))",
+    "text": "Interpretation\n\nOutputCode\n\n\n\nm_income &lt;- lm(log(realrinc) ~ age, data = df)\nm_income   \n\n\nCall:\nlm(formula = log(realrinc) ~ age, data = df)\n\nCoefficients:\n(Intercept)          age  \n    8.91235      0.01444  \n\n\n\n\n\nm_income &lt;- lm(log(realrinc) ~ age, data = df)\nm_income  \n\n\nCall:\nlm(formula = log(realrinc) ~ age, data = df)\n\nCoefficients:\n(Intercept)          age  \n    8.91235      0.01444  \n\n\n\n\n\n\\[\\widehat{\\text{log(Einkommen)}} = 8.91 + 0.01 \\times \\text{Alter}\\]\n\n\nSlope: Für jedes zusätzliche Jahr im Alter erwarten wir eine Vergrößerung des logarithmierten Wertes des Einkommens um 0.01 oder: Für jedes zusätzliche Jahr im Alter erwarten wir einen Einkommensanstieg von etwa 1.005% (\\((e^{0.01} - 1) \\times 100\\))",
     "crumbs": [
       "Zeitplan und Dateien",
       "1 - Seminar"
@@ -1066,7 +1364,7 @@
     "href": "slides/1_seminar.html#interpretation-2",
     "title": "1. Seminar",
     "section": "Interpretation",
-    "text": "Interpretation\n\n\n\nCall:\nlm(formula = log(realrinc) ~ age, data = df)\n\nCoefficients:\n(Intercept)          age  \n    8.91235      0.01444  \n\n\n\\[\\widehat{\\text{log(Einkommen)}} = 8.91 + 0.01 \\times \\text{Alter}\\]\n\n\nIntercept: Eine Person mit 0 Jahren hat ein durchschnittliches log. Einkommen von 8.91. Sinnvoll?",
+    "text": "Interpretation\n\nm_income &lt;- lm(log(realrinc) ~ age, data = df)\nm_income    \n\n\nCall:\nlm(formula = log(realrinc) ~ age, data = df)\n\nCoefficients:\n(Intercept)          age  \n    8.91235      0.01444  \n\n\n\\[\\widehat{\\text{log(Einkommen)}} = 8.91 + 0.01 \\times \\text{Alter}\\]\n\n\nIntercept: Eine Person mit 0 Jahren hat ein durchschnittliches log. Einkommen von 8.91. Sinnvoll?",
     "crumbs": [
       "Zeitplan und Dateien",
       "1 - Seminar"
@@ -1513,245 +1811,234 @@
     ]
   },
   {
-    "objectID": "uebungen/1_uebungsblatt.html",
-    "href": "uebungen/1_uebungsblatt.html",
-    "title": "1. Übungsblatt",
+    "objectID": "uebungen/1_abgabe_NACHNAME.html",
+    "href": "uebungen/1_abgabe_NACHNAME.html",
+    "title": "1. Abgabe (Paneldaten)",
     "section": "",
-    "text": "Quarto ermöglicht es, Inhalte und ausführbaren Code zu einem fertigen Dokument zu verweben. Mehr über Quarto unter https://quarto.org.\n\n\n\nWenn Du auf die Schaltfläche Render klickst, wird ein Dokument erstellt, das sowohl den Inhalt als auch die Ausgabe des eingebetteten Codes enthält. Code kann wie folgt einbettet werden:\n\n\nCode\n# This is the first code chunk\n1 + 1\n\n\n[1] 2\n\n\nEs können Optionen zu ausführbarem Code wie folgt hinzugefügt werden\n\n\n[1] 4\n\n\necho: false deaktiviert das Drucken des Codes (nur die Ausgabe wird angezeigt).\n\n\n\nAls ersten Schritt sollte immer das Arbeitsverzeichnis festgelegt weren. Ändere dies bitte zu Deinem.\n\n\nCode\n# set working directory\nsetwd(\"D:/Seafile/main/teaching/2024_wuppertal/wup2024/uebungen\")\n\n\n\n\n\nR als Füller\nBevor Du (die meisten) Dinge in R tun kannst, musst Du zunächst Pakete (packages) installieren und laden, die eine Bibliothek (library) mit praktischen Funktionen enthalten. Stell Dir vor, R ist ein Füller. Die Pakete sind die Tinte. Du brauchst zunächst die Tinte (Paket installieren) und dann musst Du die Tinte in den Stift geben (Paket laden), bevor Du mit dem Schreiben beginnen kannst (einen Befehl ausführen). Base R mag Dir die Standardtinte liefern, aber andere Pakete können wertvollere und interessantere Farben liefern.\nWir nutzen in dieser Übung zwei Pakete:\n\ntidyverse: Hilfreich, um Datensatz augzubereiten. Eine gute Einführung in das Paket ist hier oder hier zu finden.\nggplot2: (im Paket tidyverse enthalten). Hilfreich, um schöne Graphen zu erstellen. Eine gute Einführung ist hier oder hier zu finden.\n\n\n\nCode\n# Packages\npkgs &lt;- c(\n  \"tidyverse\"\n)\n\n## Install uninstalled packages\nlapply(pkgs[!(pkgs %in% installed.packages())], install.packages)\n\n## Load all packages to library\nlapply(pkgs, library, character.only = TRUE)\n\n\n\n\n\nWir arbeiten mit dem Übungsdatensatz des SOEP (DOI:10.5684/soep.practice.v36). Es werden zwei Datensätze eingelesen. Der erste Datensatz enthalt die tatsächlichen Umfragedaten, der zweite Datensatz enthält die Variablenlabels.\n\n\nCode\n# read data\ndf = read.csv(\"../daten/soep_uebung.csv\")\ndf_labels = read.csv(\"../daten/soep_labels.csv\")\n\n\n\n\n\n\n\nCode\n# Wie viele Zeilen hat der Datensatz?\nnrow(df)\n\n\n[1] 23522\n\n\nDer Datensatz enthält 23522 Beobachtungen.\n\n\n\nSchauen wir uns die ersten Zeilen des Datensatzes an, um einen ersten Überblick über den Datensatz zu gewinnen.\n\n\nCode\nhead(df)\n\n\n\n  \n\n\n\n\n\n\n\n\nCode\n# Namen der Variablen\nnames(df)\n\n\n [1] \"id\"          \"syear\"       \"sex\"         \"alter\"       \"anz_pers\"   \n [6] \"anz_kind\"    \"bildung\"     \"erwerb\"      \"branche\"     \"gesund_org\" \n[11] \"lebensz_org\" \"einkommenj1\" \"einkommenj2\" \"einkommenm1\" \"einkommenm2\"\n\n\nCode\n#Namen, Datentyp und erste Einträge der Variablen\nglimpse(df)\n\n\nRows: 23,522\nColumns: 15\n$ id          &lt;int&gt; 194, 194, 194, 194, 194, 19052, 27495, 27495, 27495, 22539…\n$ syear       &lt;int&gt; 2015, 2016, 2017, 2018, 2019, 2015, 2016, 2018, 2019, 2015…\n$ sex         &lt;chr&gt; \"[1] weiblich\", \"[1] weiblich\", \"[1] weiblich\", \"[1] weibl…\n$ alter       &lt;int&gt; 59, 60, 61, 62, 63, 74, 35, 37, 38, 85, 73, 74, 43, 44, 45…\n$ anz_pers    &lt;int&gt; 2, 2, 2, 2, 2, 2, 3, 3, 3, 2, 1, 1, 4, 4, 4, 4, 4, 2, 2, 2…\n$ anz_kind    &lt;int&gt; 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 2, 2, 2, 2, 2, 0, 0, 0…\n$ bildung     &lt;dbl&gt; 10.5, 10.5, 10.5, 10.5, 10.5, 10.0, 15.0, 15.0, 15.0, 18.0…\n$ erwerb      &lt;chr&gt; \"[2] Teilzeitbeschäftigung\", \"[2] Teilzeitbeschäftigung\", …\n$ branche     &lt;chr&gt; \"[84] Oeffentliche Verwaltung, Verteidigung; Sozialversich…\n$ gesund_org  &lt;chr&gt; \"[4] Weniger gut\", \"[3] Zufriedenstellend\", \"[3] Zufrieden…\n$ lebensz_org &lt;chr&gt; \"6\", \"5\", \"7\", \"5\", \"6\", \"8\", \"8\", \"8\", \"8\", \"8\", \"5\", \"8\"…\n$ einkommenj1 &lt;dbl&gt; 28678.94, 19962.29, 22227.68, 22100.38, 23157.92, 0.00, 14…\n$ einkommenj2 &lt;dbl&gt; 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.…\n$ einkommenm1 &lt;dbl&gt; 1659.1285, 1809.3364, 1849.0375, 1616.5137, 1901.0012, 0.0…\n$ einkommenm2 &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übungsblatt"
-    ]
+    "text": "Code\n# set working directory\n\n\n\n\n\n\n\nCode\n# Packages\npkgs &lt;- c(\n  \"tidyverse\",\n  \"sjlabelled\", # for variable labels\n  \"plm\", # Panelregressionen\n  \"sjPlot\" # um Regressionstabellen schön darzustellen\n) \n\n## Install uninstalled packages\nlapply(pkgs[!(pkgs %in% installed.packages())], install.packages)\n\n## Load all packages to library\nlapply(pkgs, library, character.only = TRUE)\n\n\n\n\n\nWir arbeiten wieder mit dem Übungsdatensatz des SOEP (DOI:10.5684/soep.practice.v36). Es werden zwei Datensätze eingelesen. Der erste Datensatz enthalt die tatsächlichen Umfragedaten, der zweite Datensatz enthält die Variablenlabels.\n\n\nCode\n# read data\n# df = read.csv(\"../daten/soep_uebung.csv\")\n# df_labels = read.csv(\"../daten/soep_labels.csv\")\n# \n# # Add variable labels\n# for (i in 1:nrow(df_labels)) {\n#   variable_name &lt;- df_labels$variable[i]\n#   variable_label &lt;- df_labels$variable_label[i]\n#   \n#   # Apply the label to the corresponding column in df\n#   df[[variable_name]] &lt;- set_label(df[[variable_name]], variable_label)\n# }"
   },
   {
-    "objectID": "uebungen/1_uebungsblatt.html#quarto",
-    "href": "uebungen/1_uebungsblatt.html#quarto",
-    "title": "1. Übungsblatt",
+    "objectID": "uebungen/1_abgabe_NACHNAME.html#arbeitsverzeichnis-festsetzen",
+    "href": "uebungen/1_abgabe_NACHNAME.html#arbeitsverzeichnis-festsetzen",
+    "title": "1. Abgabe (Paneldaten)",
     "section": "",
-    "text": "Quarto ermöglicht es, Inhalte und ausführbaren Code zu einem fertigen Dokument zu verweben. Mehr über Quarto unter https://quarto.org.",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übungsblatt"
-    ]
+    "text": "Code\n# set working directory"
   },
   {
-    "objectID": "uebungen/1_uebungsblatt.html#code-ausführen",
-    "href": "uebungen/1_uebungsblatt.html#code-ausführen",
-    "title": "1. Übungsblatt",
+    "objectID": "uebungen/1_abgabe_NACHNAME.html#packages-installieren-und-laden",
+    "href": "uebungen/1_abgabe_NACHNAME.html#packages-installieren-und-laden",
+    "title": "1. Abgabe (Paneldaten)",
     "section": "",
-    "text": "Wenn Du auf die Schaltfläche Render klickst, wird ein Dokument erstellt, das sowohl den Inhalt als auch die Ausgabe des eingebetteten Codes enthält. Code kann wie folgt einbettet werden:\n\n\nCode\n# This is the first code chunk\n1 + 1\n\n\n[1] 2\n\n\nEs können Optionen zu ausführbarem Code wie folgt hinzugefügt werden\n\n\n[1] 4\n\n\necho: false deaktiviert das Drucken des Codes (nur die Ausgabe wird angezeigt).",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übungsblatt"
-    ]
+    "text": "Code\n# Packages\npkgs &lt;- c(\n  \"tidyverse\",\n  \"sjlabelled\", # for variable labels\n  \"plm\", # Panelregressionen\n  \"sjPlot\" # um Regressionstabellen schön darzustellen\n) \n\n## Install uninstalled packages\nlapply(pkgs[!(pkgs %in% installed.packages())], install.packages)\n\n## Load all packages to library\nlapply(pkgs, library, character.only = TRUE)"
   },
   {
-    "objectID": "uebungen/1_uebungsblatt.html#arbeitsverzeichnis-festsetzen",
-    "href": "uebungen/1_uebungsblatt.html#arbeitsverzeichnis-festsetzen",
-    "title": "1. Übungsblatt",
+    "objectID": "uebungen/1_abgabe_NACHNAME.html#daten-einlesen",
+    "href": "uebungen/1_abgabe_NACHNAME.html#daten-einlesen",
+    "title": "1. Abgabe (Paneldaten)",
     "section": "",
-    "text": "Als ersten Schritt sollte immer das Arbeitsverzeichnis festgelegt weren. Ändere dies bitte zu Deinem.\n\n\nCode\n# set working directory\nsetwd(\"D:/Seafile/main/teaching/2024_wuppertal/wup2024/uebungen\")",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übungsblatt"
-    ]
+    "text": "Wir arbeiten wieder mit dem Übungsdatensatz des SOEP (DOI:10.5684/soep.practice.v36). Es werden zwei Datensätze eingelesen. Der erste Datensatz enthalt die tatsächlichen Umfragedaten, der zweite Datensatz enthält die Variablenlabels.\n\n\nCode\n# read data\n# df = read.csv(\"../daten/soep_uebung.csv\")\n# df_labels = read.csv(\"../daten/soep_labels.csv\")\n# \n# # Add variable labels\n# for (i in 1:nrow(df_labels)) {\n#   variable_name &lt;- df_labels$variable[i]\n#   variable_label &lt;- df_labels$variable_label[i]\n#   \n#   # Apply the label to the corresponding column in df\n#   df[[variable_name]] &lt;- set_label(df[[variable_name]], variable_label)\n# }"
   },
   {
-    "objectID": "uebungen/1_uebungsblatt.html#packages-installieren-und-laden",
-    "href": "uebungen/1_uebungsblatt.html#packages-installieren-und-laden",
-    "title": "1. Übungsblatt",
+    "objectID": "uebungen/1_abgabe_NACHNAME.html#kausalmodell-2-punkte",
+    "href": "uebungen/1_abgabe_NACHNAME.html#kausalmodell-2-punkte",
+    "title": "1. Abgabe (Paneldaten)",
+    "section": "2.1 Kausalmodell [2 Punkte]",
+    "text": "2.1 Kausalmodell [2 Punkte]\nÜberlegen Sie sich ein Kausalmodell. Das heißt, überlegen Sie sich eine Variable, die einen kausalen Effekt auf den subjektiven Gesundheitszustand haben könnte und begründen Sie Ihre Wahl.\nAntwort:"
+  },
+  {
+    "objectID": "uebungen/1_abgabe_NACHNAME.html#auswahl-des-regressionsmodels-4-punkte",
+    "href": "uebungen/1_abgabe_NACHNAME.html#auswahl-des-regressionsmodels-4-punkte",
+    "title": "1. Abgabe (Paneldaten)",
+    "section": "2.2 Auswahl des Regressionsmodels [4 Punkte]",
+    "text": "2.2 Auswahl des Regressionsmodels [4 Punkte]\nUm den kausalen Effekt zu identifizieren, möchten Sie eine Regressionsanalyse durchführen und überlegen, ob Sie ein POLS, ein BE, ein RE oder ein FE Modell nutzen sollten. Beschreiben Sie Ihren Gedankenvorgang.\nAntwort:"
+  },
+  {
+    "objectID": "uebungen/1_abgabe_NACHNAME.html#kausalmodell-3-punkte",
+    "href": "uebungen/1_abgabe_NACHNAME.html#kausalmodell-3-punkte",
+    "title": "1. Abgabe (Paneldaten)",
+    "section": "2.3 Kausalmodell [3 Punkte]",
+    "text": "2.3 Kausalmodell [3 Punkte]\nBitte nennen Sie jeweils ein Beispiel für eine/n\n\nconfounder\ncollider\nVariable, die zu einem overcontrol bias führen könnte\n\nund erklären Sie kurz, warum es sich um eine/n solche/n handelt.\nAntwort:"
+  },
+  {
+    "objectID": "uebungen/1_abgabe_NACHNAME.html#gesundheitszustand-1-punkt",
+    "href": "uebungen/1_abgabe_NACHNAME.html#gesundheitszustand-1-punkt",
+    "title": "1. Abgabe (Paneldaten)",
+    "section": "3.1 Gesundheitszustand [1 Punkt]",
+    "text": "3.1 Gesundheitszustand [1 Punkt]"
+  },
+  {
+    "objectID": "uebungen/1_abgabe_NACHNAME.html#geschlecht-1-punkt",
+    "href": "uebungen/1_abgabe_NACHNAME.html#geschlecht-1-punkt",
+    "title": "1. Abgabe (Paneldaten)",
+    "section": "3.2 Geschlecht [1 Punkt]",
+    "text": "3.2 Geschlecht [1 Punkt]"
+  },
+  {
+    "objectID": "uebungen/1_abgabe_NACHNAME.html#einkommen-hauptberuf-1-punkt",
+    "href": "uebungen/1_abgabe_NACHNAME.html#einkommen-hauptberuf-1-punkt",
+    "title": "1. Abgabe (Paneldaten)",
+    "section": "3.3 Einkommen (Hauptberuf) [1 Punkt]",
+    "text": "3.3 Einkommen (Hauptberuf) [1 Punkt]\nErstellen Sie eine neue Variable ek, die den log. Wert des Bruttoeinkommen/Jahr des Hauptberufs enthält. Nehmen Sie dazu die Variable einkommenj1 (Bruttoeinkommen/Jahr Hauptberuf). Logarithmieren Sie diese. Da einige Beobachtungen 0 Euro Einkommen haben, addieren Sie zu jedem Wert 1 Euro vor der Log-Transformation."
+  },
+  {
+    "objectID": "uebungen/1_abgabe_NACHNAME.html#analysesample-bilden-3-punkte",
+    "href": "uebungen/1_abgabe_NACHNAME.html#analysesample-bilden-3-punkte",
+    "title": "1. Abgabe (Paneldaten)",
+    "section": "3.4 Analysesample bilden [3 Punkte]",
+    "text": "3.4 Analysesample bilden [3 Punkte]\n\nSelektieren Sie nur die Variablen, die wir brauchen. Also die drei Variablen sowie die ID Variable (id) und die Zeit Variable (syear)\n\n\nWir wenden “listwise deletion” an. Wie viele Beobachtungen gehen uns verloren?\n\nAntwort:"
+  },
+  {
+    "objectID": "uebungen/1_abgabe_NACHNAME.html#wieviele-personenjahre-sind-im-datensatz-1-punkt",
+    "href": "uebungen/1_abgabe_NACHNAME.html#wieviele-personenjahre-sind-im-datensatz-1-punkt",
+    "title": "1. Abgabe (Paneldaten)",
+    "section": "4.1 Wieviele Personenjahre sind im Datensatz? [1 Punkt]",
+    "text": "4.1 Wieviele Personenjahre sind im Datensatz? [1 Punkt]\nAntwort:"
+  },
+  {
+    "objectID": "uebungen/1_abgabe_NACHNAME.html#wie-viele-personen-sind-im-datensatz-1-punkt",
+    "href": "uebungen/1_abgabe_NACHNAME.html#wie-viele-personen-sind-im-datensatz-1-punkt",
+    "title": "1. Abgabe (Paneldaten)",
+    "section": "4.2 Wie viele Personen sind im Datensatz? [1 Punkt]",
+    "text": "4.2 Wie viele Personen sind im Datensatz? [1 Punkt]\nAntwort:"
+  },
+  {
+    "objectID": "uebungen/1_abgabe_NACHNAME.html#wieviele-personen-nehmen-pro-jahr-teil-2-punkte",
+    "href": "uebungen/1_abgabe_NACHNAME.html#wieviele-personen-nehmen-pro-jahr-teil-2-punkte",
+    "title": "1. Abgabe (Paneldaten)",
+    "section": "4.3 Wieviele Personen nehmen pro Jahr teil? [2 Punkte]",
+    "text": "4.3 Wieviele Personen nehmen pro Jahr teil? [2 Punkte]\nIst das Panel balanced?\nAntwort:"
+  },
+  {
+    "objectID": "uebungen/1_abgabe_NACHNAME.html#welche-variablen-sind-zeitkonstant-und-welche-zeitveränderlich-3-punkte",
+    "href": "uebungen/1_abgabe_NACHNAME.html#welche-variablen-sind-zeitkonstant-und-welche-zeitveränderlich-3-punkte",
+    "title": "1. Abgabe (Paneldaten)",
+    "section": "4.4 Welche Variablen sind zeitkonstant und welche zeitveränderlich? [3 Punkte]",
+    "text": "4.4 Welche Variablen sind zeitkonstant und welche zeitveränderlich? [3 Punkte]\nAntwort:"
+  },
+  {
+    "objectID": "uebungen/1_abgabe_NACHNAME.html#teilnahme-2-punkte",
+    "href": "uebungen/1_abgabe_NACHNAME.html#teilnahme-2-punkte",
+    "title": "1. Abgabe (Paneldaten)",
+    "section": "4.5 Teilnahme [2 Punkte]",
+    "text": "4.5 Teilnahme [2 Punkte]\nWie viele Personen nahmen an allen fünf Wellen teil? Und wie viele Jahre nahmen Personen durchschnittlich teil?\nAntwort:"
+  },
+  {
+    "objectID": "uebungen/1_abgabe_NACHNAME.html#schätzen-sie-ein-pols-modell-3-punkte",
+    "href": "uebungen/1_abgabe_NACHNAME.html#schätzen-sie-ein-pols-modell-3-punkte",
+    "title": "1. Abgabe (Paneldaten)",
+    "section": "5.1 Schätzen Sie ein POLS Modell [3 Punkte]",
+    "text": "5.1 Schätzen Sie ein POLS Modell [3 Punkte]\n… und interepretieren Sie die Koeffizienten.\nAntwort:"
+  },
+  {
+    "objectID": "uebungen/1_abgabe_NACHNAME.html#schätzen-sie-ein-be-modell-3-punkte",
+    "href": "uebungen/1_abgabe_NACHNAME.html#schätzen-sie-ein-be-modell-3-punkte",
+    "title": "1. Abgabe (Paneldaten)",
+    "section": "5.2 Schätzen Sie ein BE Modell [3 Punkte]",
+    "text": "5.2 Schätzen Sie ein BE Modell [3 Punkte]\n… und interepretieren Sie die Koeffizienten.\nAntwort:"
+  },
+  {
+    "objectID": "uebungen/1_abgabe_NACHNAME.html#schätzen-sie-ein-fe-modell-3-punkte",
+    "href": "uebungen/1_abgabe_NACHNAME.html#schätzen-sie-ein-fe-modell-3-punkte",
+    "title": "1. Abgabe (Paneldaten)",
+    "section": "5.3 Schätzen Sie ein FE Modell [3 Punkte]",
+    "text": "5.3 Schätzen Sie ein FE Modell [3 Punkte]\n… und interepretieren Sie die Koeffizienten.\nAntwort:"
+  },
+  {
+    "objectID": "uebungen/1_abgabe_NACHNAME.html#schätzen-sie-ein-re-modell-3-punkte",
+    "href": "uebungen/1_abgabe_NACHNAME.html#schätzen-sie-ein-re-modell-3-punkte",
+    "title": "1. Abgabe (Paneldaten)",
+    "section": "5.4 Schätzen Sie ein RE Modell [3 Punkte]",
+    "text": "5.4 Schätzen Sie ein RE Modell [3 Punkte]\n… und interepretieren Sie die Koeffizienten.\nAntwort:"
+  },
+  {
+    "objectID": "uebungen/1_abgabe_NACHNAME.html#vergleich-5-punkte",
+    "href": "uebungen/1_abgabe_NACHNAME.html#vergleich-5-punkte",
+    "title": "1. Abgabe (Paneldaten)",
+    "section": "5.5 Vergleich [5 Punkte]",
+    "text": "5.5 Vergleich [5 Punkte]\nVergleichen Sie die vier Modelle. Lassen Sie sich 3 Nachkommestellen bei den Werten der Koeffizienten ausgeben. Erstellen Sie eine tabellarische Übersicht über alle Modelle.\n\nWarum wird im FE Modell kein Koeffizient für female geschätzt?\nAntwort:\nWarum ist die Anzahl an Beobachtungen im BE Modell kleiner als die Anzahl an Beobachtungen in den anderen Modellen?\nAntwort:\nInterpretieren sie vergleichend die Koeffizienten des log. Einkommens.\nAntwort:"
+  },
+  {
+    "objectID": "uebungen/1_abgabe_NACHNAME.html#hausman-test-2-punkte",
+    "href": "uebungen/1_abgabe_NACHNAME.html#hausman-test-2-punkte",
+    "title": "1. Abgabe (Paneldaten)",
+    "section": "5.6 Hausman Test [2 Punkte]",
+    "text": "5.6 Hausman Test [2 Punkte]\nSollen wir das RE oder das FE Modell nutzen? Führen Sie einen Hausman Test durch. Wie entscheiden Sie sich und warum?\nAntwort:"
+  },
+  {
+    "objectID": "uebungen/2_abgabe_NACHNAME.html",
+    "href": "uebungen/2_abgabe_NACHNAME.html",
+    "title": "2. Abgabe (Ereignisdatenanalyse)",
     "section": "",
-    "text": "R als Füller\nBevor Du (die meisten) Dinge in R tun kannst, musst Du zunächst Pakete (packages) installieren und laden, die eine Bibliothek (library) mit praktischen Funktionen enthalten. Stell Dir vor, R ist ein Füller. Die Pakete sind die Tinte. Du brauchst zunächst die Tinte (Paket installieren) und dann musst Du die Tinte in den Stift geben (Paket laden), bevor Du mit dem Schreiben beginnen kannst (einen Befehl ausführen). Base R mag Dir die Standardtinte liefern, aber andere Pakete können wertvollere und interessantere Farben liefern.\nWir nutzen in dieser Übung zwei Pakete:\n\ntidyverse: Hilfreich, um Datensatz augzubereiten. Eine gute Einführung in das Paket ist hier oder hier zu finden.\nggplot2: (im Paket tidyverse enthalten). Hilfreich, um schöne Graphen zu erstellen. Eine gute Einführung ist hier oder hier zu finden.\n\n\n\nCode\n# Packages\npkgs &lt;- c(\n  \"tidyverse\"\n)\n\n## Install uninstalled packages\nlapply(pkgs[!(pkgs %in% installed.packages())], install.packages)\n\n## Load all packages to library\nlapply(pkgs, library, character.only = TRUE)",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übungsblatt"
-    ]
+    "text": "Code\n# set working directory\nsetwd(\"D:/Seafile/main/teaching/2024_wuppertal/studis/abgaben\")\n\n\n\n\n\n\n\nCode\n# Packages\npkgs &lt;- c(\n  \"tidyverse\",\n  \"survminer\", \n  \"ggsurvfit\", \n  \"survival\",\n  \"grid\",\n  \"gridExtra\",\n  \"sjPlot\",\n  \"broom\",\n  \"dotwhisker\"\n) \n\n## Install uninstalled packages\nlapply(pkgs[!(pkgs %in% installed.packages())], install.packages)\n\n## Load all packages to library\nlapply(pkgs, library, character.only = TRUE)\n\n\n\n\n\nIn dieser Abgabe replizieren Sie Ergebnisse der Ereignisdatenanalyse in einem veröffentlichten Artikel:\nIschinsky, E., & Tisch, D. (2022). Women in the Global Super Rich. An Analysis of the Forbes World’s Billionaires List, 2010–2023. Australian Feminist Studies, 37(114), 458–474. https://doi.org/10.1080/08164649.2023.2243649\nDen Datensatz können sie hier herunterladen: https://osf.io/yekqx/ oder auch auf der Kurswebsite.\nLesen Sie den Datensatz ein und speichern Sie ihn als df."
   },
   {
-    "objectID": "uebungen/1_uebungsblatt.html#daten-einlesen",
-    "href": "uebungen/1_uebungsblatt.html#daten-einlesen",
-    "title": "1. Übungsblatt",
+    "objectID": "uebungen/2_abgabe_NACHNAME.html#arbeitsverzeichnis-festsetzen",
+    "href": "uebungen/2_abgabe_NACHNAME.html#arbeitsverzeichnis-festsetzen",
+    "title": "2. Abgabe (Ereignisdatenanalyse)",
     "section": "",
-    "text": "Wir arbeiten mit dem Übungsdatensatz des SOEP (DOI:10.5684/soep.practice.v36). Es werden zwei Datensätze eingelesen. Der erste Datensatz enthalt die tatsächlichen Umfragedaten, der zweite Datensatz enthält die Variablenlabels.\n\n\nCode\n# read data\ndf = read.csv(\"../daten/soep_uebung.csv\")\ndf_labels = read.csv(\"../daten/soep_labels.csv\")",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übungsblatt"
-    ]
+    "text": "Code\n# set working directory\nsetwd(\"D:/Seafile/main/teaching/2024_wuppertal/studis/abgaben\")"
   },
   {
-    "objectID": "uebungen/1_uebungsblatt.html#datenexploration",
-    "href": "uebungen/1_uebungsblatt.html#datenexploration",
-    "title": "1. Übungsblatt",
+    "objectID": "uebungen/2_abgabe_NACHNAME.html#packages-installieren-und-laden",
+    "href": "uebungen/2_abgabe_NACHNAME.html#packages-installieren-und-laden",
+    "title": "2. Abgabe (Ereignisdatenanalyse)",
     "section": "",
-    "text": "Code\n# Wie viele Zeilen hat der Datensatz?\nnrow(df)\n\n\n[1] 23522\n\n\nDer Datensatz enthält 23522 Beobachtungen.",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übungsblatt"
-    ]
+    "text": "Code\n# Packages\npkgs &lt;- c(\n  \"tidyverse\",\n  \"survminer\", \n  \"ggsurvfit\", \n  \"survival\",\n  \"grid\",\n  \"gridExtra\",\n  \"sjPlot\",\n  \"broom\",\n  \"dotwhisker\"\n) \n\n## Install uninstalled packages\nlapply(pkgs[!(pkgs %in% installed.packages())], install.packages)\n\n## Load all packages to library\nlapply(pkgs, library, character.only = TRUE)"
   },
   {
-    "objectID": "uebungen/1_uebungsblatt.html#datenexploration-1",
-    "href": "uebungen/1_uebungsblatt.html#datenexploration-1",
-    "title": "1. Übungsblatt",
+    "objectID": "uebungen/2_abgabe_NACHNAME.html#daten-einlesen-1-punkt",
+    "href": "uebungen/2_abgabe_NACHNAME.html#daten-einlesen-1-punkt",
+    "title": "2. Abgabe (Ereignisdatenanalyse)",
     "section": "",
-    "text": "Schauen wir uns die ersten Zeilen des Datensatzes an, um einen ersten Überblick über den Datensatz zu gewinnen.\n\n\nCode\nhead(df)",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übungsblatt"
-    ]
+    "text": "In dieser Abgabe replizieren Sie Ergebnisse der Ereignisdatenanalyse in einem veröffentlichten Artikel:\nIschinsky, E., & Tisch, D. (2022). Women in the Global Super Rich. An Analysis of the Forbes World’s Billionaires List, 2010–2023. Australian Feminist Studies, 37(114), 458–474. https://doi.org/10.1080/08164649.2023.2243649\nDen Datensatz können sie hier herunterladen: https://osf.io/yekqx/ oder auch auf der Kurswebsite.\nLesen Sie den Datensatz ein und speichern Sie ihn als df."
   },
   {
-    "objectID": "uebungen/1_uebungsblatt.html#welche-variablen-sind-im-datensatz-enthalten",
-    "href": "uebungen/1_uebungsblatt.html#welche-variablen-sind-im-datensatz-enthalten",
-    "title": "1. Übungsblatt",
-    "section": "",
-    "text": "Code\n# Namen der Variablen\nnames(df)\n\n\n [1] \"id\"          \"syear\"       \"sex\"         \"alter\"       \"anz_pers\"   \n [6] \"anz_kind\"    \"bildung\"     \"erwerb\"      \"branche\"     \"gesund_org\" \n[11] \"lebensz_org\" \"einkommenj1\" \"einkommenj2\" \"einkommenm1\" \"einkommenm2\"\n\n\nCode\n#Namen, Datentyp und erste Einträge der Variablen\nglimpse(df)\n\n\nRows: 23,522\nColumns: 15\n$ id          &lt;int&gt; 194, 194, 194, 194, 194, 19052, 27495, 27495, 27495, 22539…\n$ syear       &lt;int&gt; 2015, 2016, 2017, 2018, 2019, 2015, 2016, 2018, 2019, 2015…\n$ sex         &lt;chr&gt; \"[1] weiblich\", \"[1] weiblich\", \"[1] weiblich\", \"[1] weibl…\n$ alter       &lt;int&gt; 59, 60, 61, 62, 63, 74, 35, 37, 38, 85, 73, 74, 43, 44, 45…\n$ anz_pers    &lt;int&gt; 2, 2, 2, 2, 2, 2, 3, 3, 3, 2, 1, 1, 4, 4, 4, 4, 4, 2, 2, 2…\n$ anz_kind    &lt;int&gt; 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 2, 2, 2, 2, 2, 0, 0, 0…\n$ bildung     &lt;dbl&gt; 10.5, 10.5, 10.5, 10.5, 10.5, 10.0, 15.0, 15.0, 15.0, 18.0…\n$ erwerb      &lt;chr&gt; \"[2] Teilzeitbeschäftigung\", \"[2] Teilzeitbeschäftigung\", …\n$ branche     &lt;chr&gt; \"[84] Oeffentliche Verwaltung, Verteidigung; Sozialversich…\n$ gesund_org  &lt;chr&gt; \"[4] Weniger gut\", \"[3] Zufriedenstellend\", \"[3] Zufrieden…\n$ lebensz_org &lt;chr&gt; \"6\", \"5\", \"7\", \"5\", \"6\", \"8\", \"8\", \"8\", \"8\", \"8\", \"5\", \"8\"…\n$ einkommenj1 &lt;dbl&gt; 28678.94, 19962.29, 22227.68, 22100.38, 23157.92, 0.00, 14…\n$ einkommenj2 &lt;dbl&gt; 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.…\n$ einkommenm1 &lt;dbl&gt; 1659.1285, 1809.3364, 1849.0375, 1616.5137, 1901.0012, 0.0…\n$ einkommenm2 &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übungsblatt"
-    ]
+    "objectID": "uebungen/2_abgabe_NACHNAME.html#wieviele-beobachtungen-enthält-der-datensatz-1-punkt",
+    "href": "uebungen/2_abgabe_NACHNAME.html#wieviele-beobachtungen-enthält-der-datensatz-1-punkt",
+    "title": "2. Abgabe (Ereignisdatenanalyse)",
+    "section": "2.1 Wieviele Beobachtungen enthält der Datensatz? [1 Punkt]",
+    "text": "2.1 Wieviele Beobachtungen enthält der Datensatz? [1 Punkt]"
   },
   {
-    "objectID": "uebungen/1_uebungsblatt.html#frauen-im-datensatz",
-    "href": "uebungen/1_uebungsblatt.html#frauen-im-datensatz",
-    "title": "1. Übungsblatt",
-    "section": "2.1 Frauen im Datensatz",
-    "text": "2.1 Frauen im Datensatz\nWie viele Beobachtungen im Datensatz sind Frauen?\n\n\nCode\ntable(df$sex)\n\n\n\n[0] männlich [1] weiblich \n       10762        12760",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übungsblatt"
-    ]
+    "objectID": "uebungen/2_abgabe_NACHNAME.html#wieviele-personen-enthält-der-datensatz-1-punkt",
+    "href": "uebungen/2_abgabe_NACHNAME.html#wieviele-personen-enthält-der-datensatz-1-punkt",
+    "title": "2. Abgabe (Ereignisdatenanalyse)",
+    "section": "2.2 Wieviele Personen enthält der Datensatz? [1 Punkt]",
+    "text": "2.2 Wieviele Personen enthält der Datensatz? [1 Punkt]"
   },
   {
-    "objectID": "uebungen/1_uebungsblatt.html#balkendiagramm-mit-ggplot",
-    "href": "uebungen/1_uebungsblatt.html#balkendiagramm-mit-ggplot",
-    "title": "1. Übungsblatt",
-    "section": "2.2 Balkendiagramm mit ggplot()",
-    "text": "2.2 Balkendiagramm mit ggplot()\nErstelle ein Balkendiagramm, das die Verteilung des Alters darstellt.\n\n\nCode\nggplot(df, aes(x = alter)) +\n  geom_bar(fill = \"skyblue\", color = \"black\") +\n  labs(\n    title = \"Verteilung des Alters\",\n    x = \"Alter\",\n    y = \"Häufigkeit\"\n  ) +\n  theme_minimal()",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übungsblatt"
-    ]
+    "objectID": "uebungen/2_abgabe_NACHNAME.html#wieso-unterscheidet-sich-die-anzahl-an-personen-von-der-anzahl-an-beobachtungen-2-punkte",
+    "href": "uebungen/2_abgabe_NACHNAME.html#wieso-unterscheidet-sich-die-anzahl-an-personen-von-der-anzahl-an-beobachtungen-2-punkte",
+    "title": "2. Abgabe (Ereignisdatenanalyse)",
+    "section": "2.3 Wieso unterscheidet sich die Anzahl an Personen von der Anzahl an Beobachtungen? [2 Punkte]",
+    "text": "2.3 Wieso unterscheidet sich die Anzahl an Personen von der Anzahl an Beobachtungen? [2 Punkte]"
   },
   {
-    "objectID": "uebungen/1_uebungsblatt.html#summary-statistics",
-    "href": "uebungen/1_uebungsblatt.html#summary-statistics",
-    "title": "1. Übungsblatt",
-    "section": "2.3 Summary Statistics",
-    "text": "2.3 Summary Statistics\nWir alt ist die jüngste und wie alt die älteste Person?\n\n\nCode\nsummary(df$alter)\n\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n  17.00   34.00   48.00   48.28   62.00  102.00",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übungsblatt"
-    ]
+    "objectID": "uebungen/2_abgabe_NACHNAME.html#anzahl-weiblicher-und-männlicher-analyseeinheiten-2-punkte",
+    "href": "uebungen/2_abgabe_NACHNAME.html#anzahl-weiblicher-und-männlicher-analyseeinheiten-2-punkte",
+    "title": "2. Abgabe (Ereignisdatenanalyse)",
+    "section": "2.4 Anzahl weiblicher und männlicher Analyseeinheiten [2 Punkte]",
+    "text": "2.4 Anzahl weiblicher und männlicher Analyseeinheiten [2 Punkte]\nWie viele weibliche Beobachtungen (= Zeilen bzw. Analyseeinheiten) und wie viele männliche Beobachtungen gibt es im Datensatz?"
   },
   {
-    "objectID": "uebungen/1_uebungsblatt.html#variablentypen",
-    "href": "uebungen/1_uebungsblatt.html#variablentypen",
-    "title": "1. Übungsblatt",
-    "section": "2.4 Variablentypen",
-    "text": "2.4 Variablentypen\nWelcher Variablentyp ist Geschlecht (sex)? Welcher Alter? Welcher Bildung?\n\n\nCode\nglimpse(df)\n\n\nRows: 23,522\nColumns: 15\n$ id          &lt;int&gt; 194, 194, 194, 194, 194, 19052, 27495, 27495, 27495, 22539…\n$ syear       &lt;int&gt; 2015, 2016, 2017, 2018, 2019, 2015, 2016, 2018, 2019, 2015…\n$ sex         &lt;chr&gt; \"[1] weiblich\", \"[1] weiblich\", \"[1] weiblich\", \"[1] weibl…\n$ alter       &lt;int&gt; 59, 60, 61, 62, 63, 74, 35, 37, 38, 85, 73, 74, 43, 44, 45…\n$ anz_pers    &lt;int&gt; 2, 2, 2, 2, 2, 2, 3, 3, 3, 2, 1, 1, 4, 4, 4, 4, 4, 2, 2, 2…\n$ anz_kind    &lt;int&gt; 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 2, 2, 2, 2, 2, 0, 0, 0…\n$ bildung     &lt;dbl&gt; 10.5, 10.5, 10.5, 10.5, 10.5, 10.0, 15.0, 15.0, 15.0, 18.0…\n$ erwerb      &lt;chr&gt; \"[2] Teilzeitbeschäftigung\", \"[2] Teilzeitbeschäftigung\", …\n$ branche     &lt;chr&gt; \"[84] Oeffentliche Verwaltung, Verteidigung; Sozialversich…\n$ gesund_org  &lt;chr&gt; \"[4] Weniger gut\", \"[3] Zufriedenstellend\", \"[3] Zufrieden…\n$ lebensz_org &lt;chr&gt; \"6\", \"5\", \"7\", \"5\", \"6\", \"8\", \"8\", \"8\", \"8\", \"8\", \"5\", \"8\"…\n$ einkommenj1 &lt;dbl&gt; 28678.94, 19962.29, 22227.68, 22100.38, 23157.92, 0.00, 14…\n$ einkommenj2 &lt;dbl&gt; 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.000, 0.…\n$ einkommenm1 &lt;dbl&gt; 1659.1285, 1809.3364, 1849.0375, 1616.5137, 1901.0012, 0.0…\n$ einkommenm2 &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übungsblatt"
-    ]
+    "objectID": "uebungen/2_abgabe_NACHNAME.html#was-ist-das-ziel-einer-ereignisdatenanalyse-2-punkte",
+    "href": "uebungen/2_abgabe_NACHNAME.html#was-ist-das-ziel-einer-ereignisdatenanalyse-2-punkte",
+    "title": "2. Abgabe (Ereignisdatenanalyse)",
+    "section": "3.1 Was ist das Ziel einer Ereignisdatenanalyse? [2 Punkte]",
+    "text": "3.1 Was ist das Ziel einer Ereignisdatenanalyse? [2 Punkte]"
   },
   {
-    "objectID": "uebungen/1_uebungsblatt.html#kreuz-tabellen",
-    "href": "uebungen/1_uebungsblatt.html#kreuz-tabellen",
-    "title": "1. Übungsblatt",
-    "section": "2.5 (Kreuz-)tabellen",
-    "text": "2.5 (Kreuz-)tabellen\nWie viele Beobachtungen gibt es pro Jahr? Und getrennt nach Geschlecht?\n\n\nCode\ntable(df$syear)\n\n\n\n2015 2016 2017 2018 2019 \n5527 4987 4720 4351 3937 \n\n\nCode\ntable(df$syear, df$sex)\n\n\n      \n       [0] männlich [1] weiblich\n  2015         2533         2994\n  2016         2291         2696\n  2017         2167         2553\n  2018         1992         2359\n  2019         1779         2158",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übungsblatt"
-    ]
+    "objectID": "uebungen/2_abgabe_NACHNAME.html#wahrscheinlichkeit-5-jahre-auf-der-forbes-liste-zu-stehen-5-punkte",
+    "href": "uebungen/2_abgabe_NACHNAME.html#wahrscheinlichkeit-5-jahre-auf-der-forbes-liste-zu-stehen-5-punkte",
+    "title": "2. Abgabe (Ereignisdatenanalyse)",
+    "section": "3.2 Wahrscheinlichkeit, 5 Jahre auf der Forbes Liste zu stehen [5 Punkte]",
+    "text": "3.2 Wahrscheinlichkeit, 5 Jahre auf der Forbes Liste zu stehen [5 Punkte]\nWie hoch ist die 5-Jahres-Überlebensrate (5 Jahre in Folge auf der Forbes Liste zu stehen)?\nWie hoch ist die 5-Jahres-Überlebensrate für Frauen? Und für Männer?"
   },
   {
-    "objectID": "uebungen/1_uebungsblatt.html#datensatz-exploration",
-    "href": "uebungen/1_uebungsblatt.html#datensatz-exploration",
-    "title": "1. Übungsblatt",
-    "section": "2.6 Datensatz Exploration",
-    "text": "2.6 Datensatz Exploration\nWas beinhaltet die Variable “einkommenj1” und “einkommenj2”?\n\n\nCode\ndf_labels",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übungsblatt"
-    ]
-  },
-  {
-    "objectID": "uebungen/1_uebungsblatt.html#vektor",
-    "href": "uebungen/1_uebungsblatt.html#vektor",
-    "title": "1. Übungsblatt",
-    "section": "2.7 Vektor",
-    "text": "2.7 Vektor\nErstelle einen Vektor, der die Ausprägungen der Variable “gesund_org” enthält. Und schaue Dir diesen Vektor an.\n\n\nCode\n# Eindeutige Ausprägungen der Variable 'gesund_org'\nvektor_gesund_org &lt;- unique(df$gesund_org)\n\n# Ausgabe der eindeutigen Ausprägungen\nprint(vektor_gesund_org)\n\n\n[1] \"[4] Weniger gut\"       \"[3] Zufriedenstellend\" \"[5] Schlecht\"         \n[4] \"[2] Gut\"               \"\"                      \"[1] Sehr gut\"",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übungsblatt"
-    ]
-  },
-  {
-    "objectID": "uebungen/1_uebungsblatt.html#data-wrlangling",
-    "href": "uebungen/1_uebungsblatt.html#data-wrlangling",
-    "title": "1. Übungsblatt",
-    "section": "2.8 Data wrlangling",
-    "text": "2.8 Data wrlangling\nWir möchten den subjektiven Gesundheitsstatus als numerische Variable nutzen. Wir müssen daher die Variable gesund_org in eine numerische Variable umwandeln. Achte auf fehlende Werte.\n\n\nCode\ntable(df$gesund_org, useNA = \"always\")\n\n\n\n                               [1] Sehr gut               [2] Gut \n                  102                  2535                  9488 \n[3] Zufriedenstellend       [4] Weniger gut          [5] Schlecht \n                 7576                  3089                   732 \n                 &lt;NA&gt; \n                    0 \n\n\nCode\n# Ersetze leere Zeichenketten \"\" durch NA in der Spalte 'gesund_org'\ndf$gesund_org[df$gesund_org == \"\"] &lt;- NA\n\n# Extrahiere die numerischen Werte aus der Spalte 'gesund_org'\ndf$gesund_org_numeric &lt;- as.numeric(sub(\"\\\\[([0-9]+)\\\\].*\", \"\\\\1\", df$gesund_org))\n\n# Überprüfe die Änderungen\ntable(df$gesund_org_numeric, useNA = \"always\")\n\n\n\n   1    2    3    4    5 &lt;NA&gt; \n2535 9488 7576 3089  732  102 \n\n\nCode\ntable(df$gesund_org, useNA = \"always\")\n\n\n\n         [1] Sehr gut               [2] Gut [3] Zufriedenstellend \n                 2535                  9488                  7576 \n      [4] Weniger gut          [5] Schlecht                  &lt;NA&gt; \n                 3089                   732                   102",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übungsblatt"
-    ]
-  },
-  {
-    "objectID": "uebungen/1_uebungsblatt.html#balkendiagramm",
-    "href": "uebungen/1_uebungsblatt.html#balkendiagramm",
-    "title": "1. Übungsblatt",
-    "section": "2.9 Balkendiagramm",
-    "text": "2.9 Balkendiagramm\nStelle die Verteilung des subjetiven Gesundheitsstatus graphisch dar\n\n\nCode\n# Barplot erstellen\nggplot(df, aes(x = factor(gesund_org_numeric))) +\n  geom_bar(fill = \"skyblue\", color = \"black\") +\n  labs(\n    title = \"Univariate Verteilung des subjektiven Gesundheitsstatus\",\n    x = \"Subjektiver Gesundheitsstatus (1 = Sehr gut, 5 = Schlecht)\",\n    y = \"Häufigkeit\"\n  ) +\n  theme_minimal()",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übungsblatt"
-    ]
-  },
-  {
-    "objectID": "uebungen/1_uebungsblatt.html#fehlende-werte",
-    "href": "uebungen/1_uebungsblatt.html#fehlende-werte",
-    "title": "1. Übungsblatt",
-    "section": "2.10 Fehlende Werte",
-    "text": "2.10 Fehlende Werte\nGibt es fehlende Werte auf der Variable monatliches Einkommen (einkommenm1) und auf der Variable Alter?\n\n\nCode\ntable(df$alter, useNA = \"always\")\n\n\n\n  17   18   19   20   21   22   23   24   25   26   27   28   29   30   31   32 \n 472  470  437  392  347  290  281  263  244  254  283  282  293  304  337  341 \n  33   34   35   36   37   38   39   40   41   42   43   44   45   46   47   48 \n 331  368  387  387  379  397  413  430  447  450  454  434  450  466  466  473 \n  49   50   51   52   53   54   55   56   57   58   59   60   61   62   63   64 \n 500  517  526  518  479  447  412  381  381  359  339  336  326  296  298  312 \n  65   66   67   68   69   70   71   72   73   74   75   76   77   78   79   80 \n 325  314  309  294  272  239  242  244  246  256  276  271  270  247  223  192 \n  81   82   83   84   85   86   87   88   89   90   91   92   93   94   95   96 \n 156  124  105   82   74   64   47   46   36   28   19   18   13   11    8    5 \n  97   98   99  100  101  102 &lt;NA&gt; \n   5    4    3    3    1    1    0 \n\n\nCode\nsummary(df$einkommenm1)\n\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n    0.0     0.0   852.9  1645.6  2687.4 35260.9",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übungsblatt"
-    ]
-  },
-  {
-    "objectID": "uebungen/1_uebungsblatt.html#zusammenhangsanalyse",
-    "href": "uebungen/1_uebungsblatt.html#zusammenhangsanalyse",
-    "title": "1. Übungsblatt",
-    "section": "2.11 Zusammenhangsanalyse",
-    "text": "2.11 Zusammenhangsanalyse\nSchaue Dir den Zusammenhang von subjektiven Gesundheitsstatus und Alter graphisch mit Hilfe eines Scatterplots an. Beschränke die Daten auf das Jahr 2019 und auf Personen, die jünger als 65 Jahre alt sind.\n\n\nCode\n# Scatterplot mit ggplot2 erstellen\nggplot(df %&gt;% filter(syear==\"2019\", alter &lt; 65), aes(x = alter , y = einkommenm1)) +\n  geom_point(color = \"blue\", alpha = 0.6) +  # Punkte hinzufügen\n  geom_smooth(method = \"lm\", color = \"red\", se = TRUE) +  # Lineare Trendlinie mit Konfidenzintervall\n  labs(\n    title = \"Zusammenhang zwischen Einkommen und Alter\",\n    x = \"Alter\",\n    y = \"Einkommen\"\n  ) +\n  theme_minimal()  # Minimalistisches Theme\n\n\n`geom_smooth()` using formula = 'y ~ x'",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übungsblatt"
-    ]
-  },
-  {
-    "objectID": "uebungen/1_uebungsblatt.html#zusammenhangsanalyse-mit-log.-daten",
-    "href": "uebungen/1_uebungsblatt.html#zusammenhangsanalyse-mit-log.-daten",
-    "title": "1. Übungsblatt",
-    "section": "2.12 Zusammenhangsanalyse mit log. Daten",
-    "text": "2.12 Zusammenhangsanalyse mit log. Daten\nUnd nun mit logarithmiertem Einkommen. Was fällt auf?\n\n\nCode\n# Scatterplot mit ggplot2 erstellen\nggplot(df %&gt;% filter(syear==\"2019\", alter &lt; 65), aes(x = alter , y = log(einkommenm1))) +\n  geom_point(color = \"blue\", alpha = 0.6) +  # Punkte hinzufügen\n  geom_smooth(method = \"lm\", color = \"red\", se = TRUE) +  # Lineare Trendlinie mit Konfidenzintervall\n  labs(\n    title = \"Zusammenhang zwischen Einkommen und Alter\",\n    x = \"Alter\",\n    y = \"Einkommen, log.\"\n  ) +\n  theme_minimal()  # Minimalistisches Theme\n\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\nWarning: Removed 660 rows containing non-finite outside the scale range\n(`stat_smooth()`).",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übungsblatt"
-    ]
-  },
-  {
-    "objectID": "uebungen/1_uebungsblatt.html#render",
-    "href": "uebungen/1_uebungsblatt.html#render",
-    "title": "1. Übungsblatt",
-    "section": "2.13 Render",
-    "text": "2.13 Render\nWandle dieses Dokument in ein PDF und ein HTML Dokument um. Wo wird es gespeichert?",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "1 - Übungsblatt"
-    ]
+    "objectID": "uebungen/2_abgabe_NACHNAME.html#interpretation-2-punkte",
+    "href": "uebungen/2_abgabe_NACHNAME.html#interpretation-2-punkte",
+    "title": "2. Abgabe (Ereignisdatenanalyse)",
+    "section": "5.1 Interpretation [2 Punkte]",
+    "text": "5.1 Interpretation [2 Punkte]\nInterpretieren Sie den Koeffizienten zugehörig zur Variable female im ersten Modell (Modell beinhaltet nur die unabhänigen Variablen female und selfmade)."
   }
 ]

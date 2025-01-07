@@ -550,6 +550,36 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImNoZWNrIjp0cnVlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVl
 </div>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="do">## Load all packages to library</span></span>
 <span id="cb4-2"><a></a><span class="fu">lapply</span>(pkgs, library, <span class="at">character.only =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'tidyverse' was built under R version 4.2.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'ggplot2' was built under R version 4.2.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'tibble' was built under R version 4.2.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'tidyr' was built under R version 4.2.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'readr' was built under R version 4.2.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'purrr' was built under R version 4.2.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'dplyr' was built under R version 4.2.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'stringr' was built under R version 4.2.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'forcats' was built under R version 4.2.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'lubridate' was built under R version 4.2.3</code></pre>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
 [1] "stevedata" "stats"     "graphics"  "grDevices" "utils"     "datasets" 
@@ -574,17 +604,17 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImNoZWNrIjp0cnVlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVl
 [13] "stats"         "graphics"      "grDevices"     "utils"        
 [17] "datasets"      "methods"       "base"         </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="co"># set default theme and larger font size for ggplot2</span></span>
-<span id="cb6-2"><a></a>ggplot2<span class="sc">::</span><span class="fu">theme_set</span>(ggplot2<span class="sc">::</span><span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">16</span>))</span>
-<span id="cb6-3"><a></a></span>
-<span id="cb6-4"><a></a><span class="co"># set default figure parameters for knitr</span></span>
-<span id="cb6-5"><a></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(</span>
-<span id="cb6-6"><a></a>  <span class="at">fig.width =</span> <span class="dv">8</span>,</span>
-<span id="cb6-7"><a></a>  <span class="at">fig.asp =</span> <span class="fl">0.618</span>,</span>
-<span id="cb6-8"><a></a>  <span class="at">fig.retina =</span> <span class="dv">3</span>,</span>
-<span id="cb6-9"><a></a>  <span class="at">dpi =</span> <span class="dv">300</span>,</span>
-<span id="cb6-10"><a></a>  <span class="at">out.width =</span> <span class="st">"80%"</span></span>
-<span id="cb6-11"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="co"># set default theme and larger font size for ggplot2</span></span>
+<span id="cb16-2"><a></a>ggplot2<span class="sc">::</span><span class="fu">theme_set</span>(ggplot2<span class="sc">::</span><span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">16</span>))</span>
+<span id="cb16-3"><a></a></span>
+<span id="cb16-4"><a></a><span class="co"># set default figure parameters for knitr</span></span>
+<span id="cb16-5"><a></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(</span>
+<span id="cb16-6"><a></a>  <span class="at">fig.width =</span> <span class="dv">8</span>,</span>
+<span id="cb16-7"><a></a>  <span class="at">fig.asp =</span> <span class="fl">0.618</span>,</span>
+<span id="cb16-8"><a></a>  <span class="at">fig.retina =</span> <span class="dv">3</span>,</span>
+<span id="cb16-9"><a></a>  <span class="at">dpi =</span> <span class="dv">300</span>,</span>
+<span id="cb16-10"><a></a>  <span class="at">out.width =</span> <span class="st">"80%"</span></span>
+<span id="cb16-11"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section></section>
 <section>
@@ -607,10 +637,10 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImNoZWNrIjp0cnVlLCJlZGl0Ijp0cnVlLCJldmFsIjp0cnVl
 <li>realrinc: respondent’s base income (in constant 1986 USD)</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>df <span class="ot">&lt;-</span> stevedata<span class="sc">::</span>gss_wages <span class="sc">%&gt;%</span> <span class="fu">filter</span>(year<span class="sc">==</span><span class="dv">2018</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb7-2"><a></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(age)) <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(realrinc))</span>
-<span id="cb7-3"><a></a>         </span>
-<span id="cb7-4"><a></a><span class="fu">glimpse</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>df <span class="ot">&lt;-</span> stevedata<span class="sc">::</span>gss_wages <span class="sc">%&gt;%</span> <span class="fu">filter</span>(year<span class="sc">==</span><span class="dv">2018</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb17-2"><a></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(age)) <span class="sc">%&gt;%</span> <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(realrinc))</span>
+<span id="cb17-3"><a></a>         </span>
+<span id="cb17-4"><a></a><span class="fu">glimpse</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 1,358
 Columns: 11
@@ -630,8 +660,17 @@ $ maritalcat &lt;chr&gt; "Married", "Married", "Divorced", "Never Married", "Wid
 </section>
 <section id="datenvisualisierung" class="slide level2">
 <h2>Datenvisualisierung</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">ggplot</span>(df, </span>
+<span id="cb19-2"><a></a>       <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> <span class="fu">log</span>(realrinc))) <span class="sc">+</span></span>
+<span id="cb19-3"><a></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb19-4"><a></a>  <span class="fu">labs</span>(</span>
+<span id="cb19-5"><a></a>    <span class="at">x =</span> <span class="st">"Age"</span> , </span>
+<span id="cb19-6"><a></a>    <span class="at">y =</span> <span class="st">"Log(income)"</span></span>
+<span id="cb19-7"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
-<img data-src="1_seminar_files/figure-revealjs/unnamed-chunk-5-1.png" style="width:80.0%" class="r-stretch"></section></section>
+</div>
+<img data-src="1_seminar_files/figure-html/unnamed-chunk-5-1.png" style="width:80.0%" class="r-stretch"></section></section>
 <section>
 <section id="regressionsmodel" class="title-slide slide level1 center">
 <h1>Regressionsmodel</h1>
@@ -640,8 +679,23 @@ $ maritalcat &lt;chr&gt; "Married", "Married", "Divorced", "Never Married", "Wid
 <section id="fit-a-line" class="slide level2">
 <h2>Fit a line</h2>
 <p>… um die Beziehung zwischen Alter und Einkommen zu <em>beschreiben</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> df, </span>
+<span id="cb20-2"><a></a>            <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> <span class="fu">log</span>(realrinc))) <span class="sc">+</span></span>
+<span id="cb20-3"><a></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb20-4"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">color =</span> <span class="st">"purple"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb20-5"><a></a>  <span class="fu">labs</span>(</span>
+<span id="cb20-6"><a></a>    <span class="at">x =</span> <span class="st">"Age"</span> , </span>
+<span id="cb20-7"><a></a>    <span class="at">y =</span> <span class="st">"Log(income)"</span></span>
+<span id="cb20-8"><a></a>  )</span>
+<span id="cb20-9"><a></a></span>
+<span id="cb20-10"><a></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
 
-<img data-src="1_seminar_files/figure-revealjs/unnamed-chunk-6-1.png" style="width:70.0%" class="r-stretch"></section>
+</div>
+<img data-src="1_seminar_files/figure-html/unnamed-chunk-6-1.png" style="width:70.0%" class="r-stretch"></section>
 <section id="terminologie" class="slide level2">
 <h2>Terminologie</h2>
 <center>
@@ -655,10 +709,14 @@ X → Y
 </ul>
 </div><div class="column" style="width:70%;">
 <div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="1_seminar_files/figure-revealjs/unnamed-chunk-7-1.png" style="width:100.0%"></p>
+<p><img data-src="1_seminar_files/figure-html/unnamed-chunk-7-1.png" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -684,10 +742,27 @@ X → Y
 \]</span></p>
 </div><div class="column" style="width:70%;">
 <div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(realrinc) <span class="sc">~</span> age, <span class="at">data =</span> df)</span>
+<span id="cb24-2"><a></a>df<span class="sc">$</span>predicted <span class="ot">&lt;-</span> <span class="fu">predict</span>(m)</span>
+<span id="cb24-3"><a></a></span>
+<span id="cb24-4"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> df, </span>
+<span id="cb24-5"><a></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> <span class="fu">log</span>(realrinc))) <span class="sc">+</span></span>
+<span id="cb24-6"><a></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb24-7"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">color =</span> <span class="st">"purple"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb24-8"><a></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"X"</span>, <span class="at">y =</span> <span class="st">"Y"</span>) <span class="sc">+</span></span>
+<span id="cb24-9"><a></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb24-10"><a></a>  <span class="fu">theme</span>(</span>
+<span id="cb24-11"><a></a>    <span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb24-12"><a></a>    <span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>(), </span>
+<span id="cb24-13"><a></a>    <span class="at">axis.ticks.y =</span> <span class="fu">element_blank</span>()</span>
+<span id="cb24-14"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="1_seminar_files/figure-revealjs/unnamed-chunk-8-1.png" style="width:80.0%"></p>
+<p><img data-src="1_seminar_files/figure-html/unnamed-chunk-8-1.png" style="width:80.0%"></p>
 </figure>
 </div>
 </div>
@@ -704,10 +779,13 @@ X → Y
 \end{aligned}\]</span></p>
 </div><div class="column" style="width:70%;">
 <div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="1_seminar_files/figure-revealjs/unnamed-chunk-9-1.png" style="width:80.0%"></p>
+<p><img data-src="1_seminar_files/figure-html/unnamed-chunk-9-1.png" style="width:80.0%"></p>
 </figure>
 </div>
 </div>
@@ -746,10 +824,16 @@ X → Y
 <div class="tab-content">
 <div id="tabset-1-1">
 <div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> df, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> <span class="fu">log</span>(realrinc))) <span class="sc">+</span></span>
+<span id="cb27-2"><a></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb27-3"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">color =</span> <span class="st">"purple"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb27-4"><a></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">xend =</span> age, <span class="at">y =</span> <span class="fu">log</span>(realrinc), <span class="at">yend =</span> <span class="fu">predict</span>(m)), <span class="at">color =</span> <span class="st">"steel blue"</span>) <span class="sc">+</span></span>
+<span id="cb27-5"><a></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Alter"</span>, <span class="at">y =</span> <span class="st">"Einkommen"</span>) <span class="sc">+</span></span>
+<span id="cb27-6"><a></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="1_seminar_files/figure-revealjs/unnamed-chunk-10-1.png" style="width:80.0%"></p>
+<p><img data-src="1_seminar_files/figure-html/unnamed-chunk-10-1.png" style="width:80.0%"></p>
 </figure>
 </div>
 </div>
@@ -757,16 +841,19 @@ X → Y
 </div>
 <div id="tabset-1-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> df, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> <span class="fu">log</span>(realrinc))) <span class="sc">+</span></span>
-<span id="cb9-2"><a></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb9-3"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">color =</span> <span class="st">"purple"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb9-4"><a></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">xend =</span> age, <span class="at">y =</span> <span class="fu">log</span>(realrinc), <span class="at">yend =</span> <span class="fu">predict</span>(m)), <span class="at">color =</span> <span class="st">"steel blue"</span>) <span class="sc">+</span></span>
-<span id="cb9-5"><a></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Alter"</span>, <span class="at">y =</span> <span class="st">"Einkommen"</span>) <span class="sc">+</span></span>
-<span id="cb9-6"><a></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> df, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> <span class="fu">log</span>(realrinc))) <span class="sc">+</span></span>
+<span id="cb28-2"><a></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb28-3"><a></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">color =</span> <span class="st">"purple"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb28-4"><a></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">xend =</span> age, <span class="at">y =</span> <span class="fu">log</span>(realrinc), <span class="at">yend =</span> <span class="fu">predict</span>(m)), <span class="at">color =</span> <span class="st">"steel blue"</span>) <span class="sc">+</span></span>
+<span id="cb28-5"><a></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Alter"</span>, <span class="at">y =</span> <span class="st">"Einkommen"</span>) <span class="sc">+</span></span>
+<span id="cb28-6"><a></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="1_seminar_files/figure-revealjs/unnamed-chunk-11-1.png" style="width:80.0%"></p>
+<p><img data-src="1_seminar_files/figure-html/unnamed-chunk-11-1.png" style="width:80.0%"></p>
 </figure>
 </div>
 </div>
@@ -815,6 +902,8 @@ X → Y
 <div class="tab-content">
 <div id="tabset-2-1">
 <div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a>m_income <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(realrinc) <span class="sc">~</span> age, <span class="at">data =</span> df)</span>
+<span id="cb30-2"><a></a>m_income   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -828,8 +917,8 @@ Coefficients:
 </div>
 <div id="tabset-2-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>m_income <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(realrinc) <span class="sc">~</span> age, <span class="at">data =</span> df)</span>
-<span id="cb11-2"><a></a>m_income  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a>m_income <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(realrinc) <span class="sc">~</span> age, <span class="at">data =</span> df)</span>
+<span id="cb32-2"><a></a>m_income  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -853,6 +942,8 @@ Coefficients:
 <section id="interpretation-2" class="slide level2 smaller">
 <h2>Interpretation</h2>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a>m_income <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(realrinc) <span class="sc">~</span> age, <span class="at">data =</span> df)</span>
+<span id="cb34-2"><a></a>m_income    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -887,23 +978,23 @@ Coefficients:
 </div>
 <div id="tabset-3-2">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="co"># Create a new data frame for age = 28</span></span>
-<span id="cb14-2"><a></a>new_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">age =</span> <span class="dv">28</span>)</span>
-<span id="cb14-3"><a></a></span>
-<span id="cb14-4"><a></a></span>
-<span id="cb14-5"><a></a><span class="co"># Predict log(realrinc) for age = 28</span></span>
-<span id="cb14-6"><a></a>predicted_log_income <span class="ot">&lt;-</span> <span class="fu">predict</span>(m_income, <span class="at">newdata =</span> new_data)</span>
-<span id="cb14-7"><a></a></span>
-<span id="cb14-8"><a></a><span class="co"># Optionally reverse the log transformation</span></span>
-<span id="cb14-9"><a></a>predicted_real_income <span class="ot">&lt;-</span> <span class="fu">exp</span>(predicted_log_income)</span>
-<span id="cb14-10"><a></a></span>
-<span id="cb14-11"><a></a><span class="co"># View results</span></span>
-<span id="cb14-12"><a></a>predicted_log_income  <span class="co"># log(realrinc)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a><span class="co"># Create a new data frame for age = 28</span></span>
+<span id="cb36-2"><a></a>new_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">age =</span> <span class="dv">28</span>)</span>
+<span id="cb36-3"><a></a></span>
+<span id="cb36-4"><a></a></span>
+<span id="cb36-5"><a></a><span class="co"># Predict log(realrinc) for age = 28</span></span>
+<span id="cb36-6"><a></a>predicted_log_income <span class="ot">&lt;-</span> <span class="fu">predict</span>(m_income, <span class="at">newdata =</span> new_data)</span>
+<span id="cb36-7"><a></a></span>
+<span id="cb36-8"><a></a><span class="co"># Optionally reverse the log transformation</span></span>
+<span id="cb36-9"><a></a>predicted_real_income <span class="ot">&lt;-</span> <span class="fu">exp</span>(predicted_log_income)</span>
+<span id="cb36-10"><a></a></span>
+<span id="cb36-11"><a></a><span class="co"># View results</span></span>
+<span id="cb36-12"><a></a>predicted_log_income  <span class="co"># log(realrinc)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       1 
 9.316802 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>predicted_real_income <span class="co"># real income</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a>predicted_real_income <span class="co"># real income</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       1 
 11123.35 </code></pre>
@@ -1008,7 +1099,7 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImNhcHRpb24iOiLDnGJ1bmcgR2VzY2hsZWNodGVydW50ZXJz
 <div class="hint webr-ojs-exercise exercise-hint d-none" data-exercise="ex1">
 <p>Du brauchst die Variablen Geschlecht und Einkommen. Du findest sie, wenn Du Die alle Variablen anzeigen lässt:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">names</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a><span class="fu">names</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "year"       "realrinc"   "age"        "occ10"      "occrecode" 
  [6] "prestg10"   "childs"     "wrkstat"    "gender"     "educcat"   
@@ -1079,7 +1170,7 @@ eyJhdHRyIjp7ImF1dG9ydW4iOnRydWUsImNoZWNrIjpmYWxzZSwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1
 <div class="hint webr-ojs-exercise exercise-hint d-none" data-exercise="ex2">
 <p>Das findest Du heraus, indem Du dir die Daten anschaust</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="fu">names</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a><span class="fu">names</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "year"       "realrinc"   "age"        "occ10"      "occrecode" 
  [6] "prestg10"   "childs"     "wrkstat"    "gender"     "educcat"   
@@ -1383,44 +1474,6 @@ W10=
     window._ojs.selfContained = false;
     window._ojs.runtime.interpretFromScriptTags();
     </script>
-    
-    <script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        // dispatch for htmlwidgets
-        function fireSlideEnter() {
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-        }
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-          fireSlideEnter();
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
-    </script>
-
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
