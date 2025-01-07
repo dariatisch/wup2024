@@ -30,3 +30,7 @@ Abgabe 1 (Paneldaten):
 [✍️](/uebungen/1_abgabe_NACHNAME.html "1. Abgabe") 
 [✍️](downloads/1_abgabe_NACHNAME.qmd "1. Abgabe zum Download")      
 
+Abgabe 2 (Ereignisdaten):
+[✍️](/uebungen/2_abgabe_NACHNAME.html "2. Abgabe") 
+[✍️](downloads/2_abgabe_NACHNAME.qmd "2. Abgabe zum Download")   
+[📚](downloads/forbes_constant.csv "Datensatz zum Download")   
