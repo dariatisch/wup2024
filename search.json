@@ -615,7 +615,7 @@
     "href": "slides/3_seminar.html#analyseverfahren",
     "title": "3. Seminar: Ereignisdaten",
     "section": "Analyseverfahren",
-    "text": "Analyseverfahren\n\nNicht-parametrische Verfahren (deskriptive Verfahren)\n\nKeine Annahmen über Verteilung, nur über Wirkungsweisen von Variablen\nBeispiel: Kaplan-Meier, Sterbetafelmethode\n\nParametrische Regressionsmodelle\n\nVerlauf der Hazardrate (baseline hazard) wird spezifiziert\nKovariateneinflüsse werden spezifiziert\nBeispiel: Exponentialmodell, Weibull-Modell, Gompertz-Modell\n\nSemi-parametrische Regressionsmodelle\n\nVerlauf der Hazardrate bleibt unspezifiziert\nKovariateneinflüsse werden spezifiziert\nBeispiel: Cox-Regressionen"
+    "text": "Analyseverfahren\n\nNicht-parametrische Verfahren (deskriptive Verfahren)\n\nKeine Annahmen über Verteilung, nur über Wirkungsweisen von Variablen\nBeispiel: Kaplan-Meier, Sterbetafelmethode\n\nParametrische Regressionsmodelle\n\nVerlauf der Hazardrate (baseline hazard) wird spezifiziert\nKovariateneinflüsse werden spezifiziert\nBeispiel: Exponentialmodell, Weibull-Modell, Gompertz-Modell\n\nSemi-parametrische Regressionsmodelle\n\nVerlauf der Hazardrate bleibt unspezifiziert\nKovariateneinflüsse werden spezifiziert\nBeispiel: Cox-Regressionen\n\n\n\n\nBEi KM: rechtszenztrierung kein Problem"
   },
   {
     "objectID": "slides/3_seminar.html#analyseverfahren-1",
@@ -650,18 +650,32 @@
     "href": "slides/3_seminar.html#erstellen-von-survival-objects",
     "title": "3. Seminar: Ereignisdaten",
     "section": "Erstellen von “survival objects”",
-    "text": "Erstellen von “survival objects”\nDie Surv() Funktion aus dem the {survival} Paket erstellt ein “survival object”. Schauen wir und die ersten 10 Beobachtungen an:\n\nOutputCode\n\n\n\nlibrary(survival)\nlibrary(dplyr)\n\ndf = lung\ndf &lt;- df %&gt;% \n  mutate(\n    dead = recode(status, `1` = 0, `2` = 1),\n    karnofsky_hoch = ifelse(ph.karno &gt;80, 1, 0)\n  )\nSurv(df$time, df$dead)[1:10]\n\n [1]  306   455  1010+  210   883  1022+  310   361   218   166 \n\n\n\n\n\nlibrary(survival)\nlibrary(dplyr)\nlibrary(ggsurvfit)\n\nLoading required package: ggplot2\n\ndf = lung\ndf &lt;- df %&gt;% \n  mutate(\n    dead = recode(status, `1` = 0, `2` = 1),\n    karnofsky_hoch = ifelse(ph.karno &gt;80, 1, 0)\n  )\nSurv(df$time, df$dead)[1:10]\n\n [1]  306   455  1010+  210   883  1022+  310   361   218   166"
+    "text": "Erstellen von “survival objects”\nDie Surv() Funktion aus dem the {survival} Paket erstellt ein “survival object”. Schauen wir und die ersten 10 Beobachtungen an:\n\nOutputCode\n\n\n\n\n [1]  306   455  1010+  210   883  1022+  310   361   218   166 \n\n\n\n\n\nlibrary(survival)\nlibrary(dplyr)\nlibrary(ggsurvfit)\n\ndf = lung\ndf &lt;- df %&gt;% \n  mutate(\n    dead = recode(status, `1` = 0, `2` = 1),\n    karnofsky_hoch = ifelse(ph.karno &gt;80, 1, 0)\n  )\nSurv(df$time, df$dead)[1:10]\n\n [1]  306   455  1010+  210   883  1022+  310   361   218   166"
+  },
+  {
+    "objectID": "slides/3_seminar.html#tage-überlebenswahrscheinlichkeit",
+    "href": "slides/3_seminar.html#tage-überlebenswahrscheinlichkeit",
+    "title": "3. Seminar: Ereignisdaten",
+    "section": "100-Tage Überlebenswahrscheinlichkeit",
+    "text": "100-Tage Überlebenswahrscheinlichkeit\nUntersuchen wir die Überlebenswahrscheinlichkeit nach X Tagen:"
   },
   {
     "objectID": "slides/3_seminar.html#erstellen-von-kaplan-meier-kurven",
     "href": "slides/3_seminar.html#erstellen-von-kaplan-meier-kurven",
     "title": "3. Seminar: Ereignisdaten",
     "section": "Erstellen von Kaplan-Meier Kurven",
-    "text": "Erstellen von Kaplan-Meier Kurven\nKaplan-Meier-Methode gängigste Methode zur Visualisierung von Überlebenswahrscheinlichkeiten\n\nOutputCode\n\n\n\nsurvfit2(Surv(time, dead) ~ 1, data = df) %&gt;% \n  ggsurvfit() +\n  labs(\n    x = \"Days\",\n    y = \"Overall survival probability\"\n  )+ \n  add_confidence_interval() +\n  add_risktable()\n\n\n\n\n\n\n\n\n\n\n\nsurvfit2(Surv(time, dead) ~ 1, data = df) %&gt;% \n  ggsurvfit() +\n  labs(\n    x = \"Days\",\n    y = \"Overall survival probability\"\n  )+ \n  add_confidence_interval() +\n  add_risktable()"
+    "text": "Erstellen von Kaplan-Meier Kurven\nKaplan-Meier-Formel zur Schätzung der Überlebensfunktion:\n\\[\n\\widehat{S}(t) = \\prod_{i: t_i \\leq t} \\left(1 - \\frac{d_i}{n_i}\\right)\n\\]\n\n\\(\\widehat{S}(t)\\): Geschätzte Wahrscheinlichkeit, dass Individuum über den Zeitpunkt \\(t\\) hinaus überlebt.\n\\(\\prod\\): Produktsymbol. Überlebenswahrscheinlichkeit \\(\\widehat{S}(t)\\)wird durch Multiplikation berechnet wird.\n\\(t_i\\): Zeitpunkt, an dem ein Ereignis beobachtet wird\n\\(d_i\\): Anzahl der Ereignisse, die zum Zeitpunkt \\(t_i\\) eintreten.\n\\(n_i\\): Anzahl der Personen, die unmittelbar vor dem Zeitpunkt \\(t_i\\) noch „at risk“ sind\n\\(\\left(1 - \\frac{d_i}{n_i}\\right)\\): Anteil der Überlebenden zum Zeitpunkt \\(t_i\\)."
   },
   {
     "objectID": "slides/3_seminar.html#erstellen-von-kaplan-meier-kurven-1",
     "href": "slides/3_seminar.html#erstellen-von-kaplan-meier-kurven-1",
+    "title": "3. Seminar: Ereignisdaten",
+    "section": "Erstellen von Kaplan-Meier Kurven",
+    "text": "Erstellen von Kaplan-Meier Kurven\nKaplan-Meier-Methode gängigste Methode zur Visualisierung von Überlebenswahrscheinlichkeiten\n\nOutputCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nsurvfit2(Surv(time, dead) ~ 1, data = df) %&gt;% \n  ggsurvfit() +\n  labs(\n    x = \"Days\",\n    y = \"Overall survival probability\"\n  )+ \n  add_confidence_interval() +\n  add_risktable()"
+  },
+  {
+    "objectID": "slides/3_seminar.html#erstellen-von-kaplan-meier-kurven-2",
+    "href": "slides/3_seminar.html#erstellen-von-kaplan-meier-kurven-2",
     "title": "3. Seminar: Ereignisdaten",
     "section": "Erstellen von Kaplan-Meier Kurven",
     "text": "Erstellen von Kaplan-Meier Kurven\nProbiert selbst:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSolution\n\n\nLösung:\nlibrary(survival)\nlibrary(dplyr)\nlibrary(ggsurvfit)\n\nsurvfit2(Surv(time, dead) ~ 1, data = df) %&gt;% \n  ggsurvfit() +\n  labs(\n    x = \"Days\",\n    y = \"Overall survival probability\"\n  )+ \n  add_confidence_interval() +\n  add_risktable()"
@@ -671,7 +685,7 @@
     "href": "slides/3_seminar.html#erstellen-von-kaplan-meier-kurven-nach-karnofsky-index",
     "title": "3. Seminar: Ereignisdaten",
     "section": "Erstellen von Kaplan-Meier Kurven nach Karnofsky-Index",
-    "text": "Erstellen von Kaplan-Meier Kurven nach Karnofsky-Index\nUnterscheiden sich PatientInnen mit niedrigem oder hohem Karnofsky-Index?\n\nOutputCode\n\n\n\nsurvfit2(Surv(time, dead) ~ karnofsky_hoch, data = df) %&gt;% \n  ggsurvfit() +\n  labs(\n    x = \"Tage\",\n    y = \"Überlebenswahrscheinlichkeit\",\n    color = \"Karnofsky-Index\"\n  )+ \n  add_confidence_interval() +\n  add_risktable() + \n scale_color_manual(values = c('darkblue', 'pink'),  labels = c(\"&lt;=80\", \"&gt;80\") ) +\n  scale_fill_manual(values = c('darkblue', 'pink'),  labels = c(\"&lt;=80\", \"&gt;80\") ) +\n  theme_minimal() + guides(fill = \"none\")\n\n\n\n\n\n\n\n\n\n\n\nsurvfit2(Surv(time, dead) ~ karnofsky_hoch, data = df) %&gt;% \n  ggsurvfit() +\n  labs(\n    x = \"Tage\",\n    y = \"Überlebenswahrscheinlichkeit\",\n    color = \"Karnofsky-Index\"\n  )+ \n  add_confidence_interval() +\n  add_risktable() + \n scale_color_manual(values = c('darkblue', 'pink'),  labels = c(\"&lt;=80\", \"&gt;80\") ) +\n  scale_fill_manual(values = c('darkblue', 'pink'),  labels = c(\"&lt;=80\", \"&gt;80\") ) +\n  theme_minimal() + guides(fill = \"none\")"
+    "text": "Erstellen von Kaplan-Meier Kurven nach Karnofsky-Index\nUnterscheiden sich PatientInnen mit niedrigem oder hohem Karnofsky-Index?\n\nOutputCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nsurvfit2(Surv(time, dead) ~ karnofsky_hoch, data = df) %&gt;% \n  ggsurvfit() +\n  labs(\n    x = \"Tage\",\n    y = \"Überlebenswahrscheinlichkeit\",\n    color = \"Karnofsky-Index\"\n  )+ \n  add_confidence_interval() +\n  add_risktable() + \n scale_color_manual(values = c('darkblue', 'pink'),  labels = c(\"&lt;=80\", \"&gt;80\") ) +\n  scale_fill_manual(values = c('darkblue', 'pink'),  labels = c(\"&lt;=80\", \"&gt;80\") ) +\n  theme_minimal() + guides(fill = \"none\")"
   },
   {
     "objectID": "slides/3_seminar.html#cox-proportional-hazards-model",
@@ -692,14 +706,14 @@
     "href": "slides/3_seminar.html#cox-proportional-hazards-model-2",
     "title": "3. Seminar: Ereignisdaten",
     "section": "Cox Proportional Hazards Model",
-    "text": "Cox Proportional Hazards Model\n\nOutputCode\n\n\n\nlibrary(sjPlot)\nmodel1 = coxph(Surv(time, dead) ~ karnofsky_hoch, data = df)\nsummary(model1)\n\nCall:\ncoxph(formula = Surv(time, dead) ~ karnofsky_hoch, data = df)\n\n  n= 227, number of events= 164 \n   (1 observation deleted due to missingness)\n\n                  coef exp(coef) se(coef)     z Pr(&gt;|z|)   \nkarnofsky_hoch -0.4436    0.6417   0.1596 -2.78  0.00544 **\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n               exp(coef) exp(-coef) lower .95 upper .95\nkarnofsky_hoch    0.6417      1.558    0.4694    0.8774\n\nConcordance= 0.569  (se = 0.022 )\nLikelihood ratio test= 7.88  on 1 df,   p=0.005\nWald test            = 7.73  on 1 df,   p=0.005\nScore (logrank) test = 7.85  on 1 df,   p=0.005\n\n\n\n\n\nlibrary(sjPlot)\nmodel1 = coxph(Surv(time, dead) ~ karnofsky_hoch, data = df)\nsummary(model1)\n\nCall:\ncoxph(formula = Surv(time, dead) ~ karnofsky_hoch, data = df)\n\n  n= 227, number of events= 164 \n   (1 observation deleted due to missingness)\n\n                  coef exp(coef) se(coef)     z Pr(&gt;|z|)   \nkarnofsky_hoch -0.4436    0.6417   0.1596 -2.78  0.00544 **\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n               exp(coef) exp(-coef) lower .95 upper .95\nkarnofsky_hoch    0.6417      1.558    0.4694    0.8774\n\nConcordance= 0.569  (se = 0.022 )\nLikelihood ratio test= 7.88  on 1 df,   p=0.005\nWald test            = 7.73  on 1 df,   p=0.005\nScore (logrank) test = 7.85  on 1 df,   p=0.005"
+    "text": "Cox Proportional Hazards Model\n\nOutputCode\n\n\n\n\nCall:\ncoxph(formula = Surv(time, dead) ~ karnofsky_hoch, data = df)\n\n  n= 227, number of events= 164 \n   (1 Beobachtung als fehlend gelöscht)\n\n                  coef exp(coef) se(coef)     z Pr(&gt;|z|)   \nkarnofsky_hoch -0.4436    0.6417   0.1596 -2.78  0.00544 **\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n               exp(coef) exp(-coef) lower .95 upper .95\nkarnofsky_hoch    0.6417      1.558    0.4694    0.8774\n\nConcordance= 0.569  (se = 0.022 )\nLikelihood ratio test= 7.88  on 1 df,   p=0.005\nWald test            = 7.73  on 1 df,   p=0.005\nScore (logrank) test = 7.85  on 1 df,   p=0.005\n\n\n\n\n\nlibrary(sjPlot)\nmodel1 = coxph(Surv(time, dead) ~ karnofsky_hoch, data = df)\nsummary(model1)\n\nCall:\ncoxph(formula = Surv(time, dead) ~ karnofsky_hoch, data = df)\n\n  n= 227, number of events= 164 \n   (1 Beobachtung als fehlend gelöscht)\n\n                  coef exp(coef) se(coef)     z Pr(&gt;|z|)   \nkarnofsky_hoch -0.4436    0.6417   0.1596 -2.78  0.00544 **\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n               exp(coef) exp(-coef) lower .95 upper .95\nkarnofsky_hoch    0.6417      1.558    0.4694    0.8774\n\nConcordance= 0.569  (se = 0.022 )\nLikelihood ratio test= 7.88  on 1 df,   p=0.005\nWald test            = 7.73  on 1 df,   p=0.005\nScore (logrank) test = 7.85  on 1 df,   p=0.005"
   },
   {
     "objectID": "slides/3_seminar.html#cox-proportional-hazards-model-interpretation",
     "href": "slides/3_seminar.html#cox-proportional-hazards-model-interpretation",
     "title": "3. Seminar: Ereignisdaten",
     "section": "Cox Proportional Hazards Model, Interpretation",
-    "text": "Cox Proportional Hazards Model, Interpretation\n\nInterpretationCode\n\n\nDas Risiko zu sterben (in jedem kurzen Zeitraum) ist höher bei Personen mit einem Karnofsky-Index kleiner-gleich 80 im Vergleich zu Personen mit einem Karnofsky-Index über 80.\nHazard-Ratio: Personen mit einem Karnofsky-Index über 80 haben ein 36% geringeres Risiko zu sterben (in jedem kurzen Zeitraum) als Personen mit einem Karnofsky-Index unter/gleich 80. Oder: Personen mit einem Karnofsky-Index über 80 haben ein 0.64 mal so hohes Risiko zu sterben (in jedem kurzen Zeitraum) wie Personen mit einem Karnofsky-Index unter/gleich 80.\n\nHR &lt; 1: verringertes Sterberisiko\nHR &gt; 1: erhöhtes Sterberisiko\n\n\n\n\nlibrary(sjPlot)\nmodel1 = coxph(Surv(time, dead) ~ karnofsky_hoch, data = df)\ntab_model(model1,\n          show.ci = FALSE, p.style = \"stars\",\n          string.se = \"se\", string.est = \"HR\",\n          string.pred = \" \")\n\n\n\n\n \nSurv(time,dead)\n\n\n\nHR\n\n\nkarnofsky hoch\n0.64 **\n\n\nObservations\n227\n\n\nR2 Nagelkerke\n0.034\n\n\n* p&lt;0.05   ** p&lt;0.01   *** p&lt;0.001"
+    "text": "Cox Proportional Hazards Model, Interpretation\n\nInterpretationCode\n\n\nDas Risiko zu sterben (in jedem kurzen Zeitraum) ist höher bei Personen mit einem Karnofsky-Index kleiner-gleich 80 im Vergleich zu Personen mit einem Karnofsky-Index über 80.\nHazard-Ratio: Personen mit einem Karnofsky-Index über 80 haben ein 36% geringeres Risiko zu sterben (in jedem kurzen Zeitraum) als Personen mit einem Karnofsky-Index unter/gleich 80. Oder: Personen mit einem Karnofsky-Index über 80 haben ein 0.64 mal so hohes Risiko zu sterben (in jedem kurzen Zeitraum) wie Personen mit einem Karnofsky-Index unter/gleich 80.\n\nHR &lt; 1: verringertes Sterberisiko\nHR &gt; 1: erhöhtes Sterberisiko\n\n\n\n\nlibrary(sjPlot)\nmodel1 = coxph(Surv(time, dead) ~ karnofsky_hoch, data = df)\ntab_model(model1,\n          show.ci = FALSE, p.style = \"stars\",\n          string.se = \"se\", string.est = \"HR\",\n          string.pred = \" \")\n\n\n\n\n \nSurv(time, dead)\n\n\n\nHR\n\n\nkarnofsky hoch\n0.64 **\n\n\nObservations\n227\n\n\nR2 Nagelkerke\n0.034\n\n\n* p&lt;0.05   ** p&lt;0.01   *** p&lt;0.001"
   },
   {
     "objectID": "slides/3_seminar.html#proportionalitätsannahme",
@@ -713,7 +727,7 @@
     "href": "slides/3_seminar.html#ende",
     "title": "3. Seminar: Ereignisdaten",
     "section": "Ende",
-    "text": "Ende\n\nDieser Foliensatz profitierte in großen Teilen von ehemaligen Veranstaltungen von Isabel Habicht sowie von Hans-Jürgen Andreß\nWeitere Literatur:\n\nhttps://ehar.se/r/ehar2/\nhttps://www.emilyzabor.com/tutorials/survival_analysis_in_r_tutorial.html#Comparing_survival_times_between_groups"
+    "text": "Ende\n\nDieser Foliensatz profitierte in großen Teilen von ehemaligen Veranstaltungen von Isabel Habicht sowie von Hans-Jürgen Andreß\nWeitere Literatur:\n\nhttps://ehar.se/r/ehar2/\nhttps://www.emilyzabor.com/tutorials/survival_analysis_in_r_tutorial.html"
   },
   {
     "objectID": "slides/1_uebung.html#was-ist-forschungsdatenmanagement",
@@ -962,7 +976,7 @@
     "href": "schedule.html",
     "title": "Übersicht",
     "section": "",
-    "text": "Morgens\nNachmittags\n\n\n\n\n12.12.2024\nÜbersicht quantitative Methoden 🖥\nArbeitsablauf etablieren, Einführung in Quarto und R 🖥 📋 📝 📚 📚\n\n\n19.12.2024\nPaneldaten Seminar 🖥\nPaneldaten Übung 📋 📝\n\n\n09.01.2025\nEreignisdaten Seminar\nEreignisdaten Übung\n\n\n23.01.2025\nFaktorielle Umfrageexperimente Seminar\nFaktorielle Umfrageexperimente Übung\n\n\n\nLegende:\n📚 - Daten\n🖥 - Foliensatz\n📋 - Übungsblatt, Lösungen\n📝 - Übungsblatt zum Download",
+    "text": "Morgens\nNachmittags\n\n\n\n\n12.12.2024\nÜbersicht quantitative Methoden 🖥\nArbeitsablauf etablieren, Einführung in Quarto und R 🖥 📋 📝 📚 📚\n\n\n19.12.2024\nPaneldaten Seminar 🖥\nPaneldaten Übung 📋 📝\n\n\n09.01.2025\nEreignisdaten Seminar 🖥\nEreignisdaten Übung\n\n\n23.01.2025\nFaktorielle Umfrageexperimente Seminar\nFaktorielle Umfrageexperimente Übung\n\n\n\nLegende:\n📚 - Daten\n🖥 - Foliensatz\n📋 - Übungsblatt, Lösungen\n📝 - Übungsblatt zum Download",
     "crumbs": [
       "Zeitplan und Dateien",
       "Übersicht"
@@ -973,7 +987,7 @@
     "href": "schedule.html#zeitplan",
     "title": "Übersicht",
     "section": "",
-    "text": "Morgens\nNachmittags\n\n\n\n\n12.12.2024\nÜbersicht quantitative Methoden 🖥\nArbeitsablauf etablieren, Einführung in Quarto und R 🖥 📋 📝 📚 📚\n\n\n19.12.2024\nPaneldaten Seminar 🖥\nPaneldaten Übung 📋 📝\n\n\n09.01.2025\nEreignisdaten Seminar\nEreignisdaten Übung\n\n\n23.01.2025\nFaktorielle Umfrageexperimente Seminar\nFaktorielle Umfrageexperimente Übung\n\n\n\nLegende:\n📚 - Daten\n🖥 - Foliensatz\n📋 - Übungsblatt, Lösungen\n📝 - Übungsblatt zum Download",
+    "text": "Morgens\nNachmittags\n\n\n\n\n12.12.2024\nÜbersicht quantitative Methoden 🖥\nArbeitsablauf etablieren, Einführung in Quarto und R 🖥 📋 📝 📚 📚\n\n\n19.12.2024\nPaneldaten Seminar 🖥\nPaneldaten Übung 📋 📝\n\n\n09.01.2025\nEreignisdaten Seminar 🖥\nEreignisdaten Übung\n\n\n23.01.2025\nFaktorielle Umfrageexperimente Seminar\nFaktorielle Umfrageexperimente Übung\n\n\n\nLegende:\n📚 - Daten\n🖥 - Foliensatz\n📋 - Übungsblatt, Lösungen\n📝 - Übungsblatt zum Download",
     "crumbs": [
       "Zeitplan und Dateien",
       "Übersicht"
