@@ -8,7 +8,7 @@ title: "Übersicht"
 |:---:|:-----------------------------------:|:--------------------------------------:|
 |  12.12.2024  |Übersicht quantitative Methoden  [🖥](/slides/1_seminar.html "Seminarfolien")         | Arbeitsablauf etablieren, Einführung in Quarto und R   [🖥](/slides/1_uebung.html "Übungsfolien")     [📋](/uebungen/1_uebungsblatt.html "1. Übungsblatt (Lösungen)")    [📝](downloads/1_uebungsblatt_studis.qmd "Übungsblatt zum Download")    [📚](downloads/soep_labels.csv "SOEP Labels Datensatz")      [📚](downloads/soep_uebung.csv "SOEP Datensatz")              |
 |  19.12.2024  | Paneldaten Seminar  [🖥](/slides/2_seminar.html "2. Seminarfolien")        | Paneldaten Übung  [📋](/uebungen/2_uebungsblatt.html "2. Übungsblatt (Lösungen)")    [📝](downloads/2_uebungsblatt_studis.qmd "Übungsblatt zum Download")                          |
-|  09.01.2025  | Ereignisdaten Seminar          | Ereignisdaten Übung |
+|  09.01.2025  | Ereignisdaten Seminar  [🖥](/slides/3_seminar.html "Seminarfolien")            | Ereignisdaten Übung |
 |  23.01.2025  | Faktorielle Umfrageexperimente   Seminar            | Faktorielle Umfrageexperimente Übung                 |
 
 
