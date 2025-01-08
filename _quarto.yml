@@ -43,7 +43,10 @@ website:
             text: "2 - Seminar  (Paneldaten)" 	
           - href: uebungen/2_uebungsblatt.qmd
             text: "2 - Übungsblatt (Paneldaten)"  
-
+          - href: slides/3_seminar.qmd
+            text: "3 - Seminar  (Ereignisdaten)" 	
+          - href: uebungen/3_uebungsblatt.qmd
+            text: "3 - Übungsblatt (Ereignisdaten)"  
 format:
   html:
     theme: cosmo
