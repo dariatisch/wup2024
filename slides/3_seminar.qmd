@@ -45,7 +45,7 @@ Pflichtlektüre:
 ## Reaktive versus nicht-reaktive Daten {.smaller}
 
 | Reaktive Messung | Nicht-reaktive Messung |
-|--------------------------|----------------------------------------------|
+|--------------------------|---------------------------------------------|
 | Umfragedaten | Amtliche Statistik / Registerdaten |
 | Laborexperimente | Verhaltensspuren / digital trace data: z.B. Social Media, Smartphone, Wearables |
 |  | Journalistische Datensätze: z. B. Reichenlisten, WikiLeaks |
@@ -179,7 +179,7 @@ Aus: Windzio, M. (2013). Regressionsmodelle für Zustände und Ereignisse: Eine 
     -   Beispiel: Cox-Regressionen
 
 ::: notes
-- BEi KM: rechtszenztrierung kein Problem
+-   BEi KM: rechtszenztrierung kein Problem
 :::
 
 ## Analyseverfahren
@@ -243,7 +243,7 @@ names(df)
 df <- df %>% 
   mutate(
     ______ = recode(status, `1` = 0, `2` = 1),
-    ______ = recode(sex, `1` = 0, `2` = 1)
+    karnofsky_hoch = ifelse(ph.karno >80, 1, 0)
   )
 
 
@@ -308,10 +308,8 @@ Surv(df$time, df$dead)[1:10]
 
 Untersuchen wir die Überlebenswahrscheinlichkeit nach X Tagen:
 
+
 ```{webr}
-#| echo: false
-#| message: false
-#| warning: false
 library(survival)
 library(tidyverse)
 df = lung
@@ -320,15 +318,8 @@ df <- df %>%
     dead = recode(status, `1` = 0, `2` = 1),
     karnofsky_hoch = ifelse(ph.karno >80, 1, 0)
   )
-```
-
-
-
-
-```{webr}
 summary(survfit(Surv(time, dead) ~ 1, data = df), times = 100)
 ```
-
 
 ## Erstellen von Kaplan-Meier Kurven {.smaller .scrollable}
 
@@ -338,18 +329,17 @@ $$
 \widehat{S}(t) = \prod_{i: t_i \leq t} \left(1 - \frac{d_i}{n_i}\right)
 $$
 
-- $\widehat{S}(t)$: Geschätzte Wahrscheinlichkeit, dass Individuum über den Zeitpunkt $t$ hinaus überlebt.
+-   $\widehat{S}(t)$: Geschätzte Wahrscheinlichkeit, dass Individuum über den Zeitpunkt $t$ hinaus überlebt.
 
-- $\prod$: Produktsymbol. Überlebenswahrscheinlichkeit $\widehat{S}(t)$wird durch Multiplikation berechnet wird.
+-   $\prod$: Produktsymbol. Überlebenswahrscheinlichkeit $\widehat{S}(t)$wird durch Multiplikation berechnet wird.
 
-- $t_i$: Zeitpunkt, an dem ein Ereignis beobachtet wird
+-   $t_i$: Zeitpunkt, an dem ein Ereignis beobachtet wird
 
-- $d_i$: Anzahl der Ereignisse, die zum Zeitpunkt $t_i$ eintreten.
+-   $d_i$: Anzahl der Ereignisse, die zum Zeitpunkt $t_i$ eintreten.
 
-- $n_i$: Anzahl der Personen, die unmittelbar vor dem Zeitpunkt $t_i$ noch „at risk“ sind
+-   $n_i$: Anzahl der Personen, die unmittelbar vor dem Zeitpunkt $t_i$ noch „at risk“ sind
 
-- $\left(1 - \frac{d_i}{n_i}\right)$: Anteil der Überlebenden zum Zeitpunkt $t_i$.
-
+-   $\left(1 - \frac{d_i}{n_i}\right)$: Anteil der Überlebenden zum Zeitpunkt $t_i$.
 
 ## Erstellen von Kaplan-Meier Kurven {.smaller .scrollable}
 
@@ -565,7 +555,6 @@ tab_model(model1,
 ```
 :::
 
-
 ## Proportionalitätsannahme {.smaller .scrollable}
 
 Nun testen wir die Proportionalitätsannahme.
@@ -587,13 +576,11 @@ print(test_proportionality)
 plot(test_proportionality)
 ```
 
-
 ## Ende {.smaller}
 
 -   Dieser Foliensatz profitierte in großen Teilen von ehemaligen Veranstaltungen von Isabel Habicht sowie von Hans-Jürgen Andreß
 
 -   Weitere Literatur:
 
-    -   [https://ehar.se/r/ehar2/](https://ehar.se/r/ehar2/)
-    -   [https://www.emilyzabor.com/tutorials/survival_analysis_in_r_tutorial.html](https://www.emilyzabor.com/tutorials/survival_analysis_in_r_tutorial.html)
-    
+    -   <https://ehar.se/r/ehar2/>
+    -   <https://www.emilyzabor.com/tutorials/survival_analysis_in_r_tutorial.html>
