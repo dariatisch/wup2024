@@ -38,15 +38,19 @@ website:
           - href: slides/1_uebung.qmd
             text: "1 - Übung"
           - href: uebungen/1_uebungsblatt.qmd
-            text: "1 - Übungsblatt"  
+            text: "1 - Übungsblatt"
           - href: slides/2_seminar.qmd
-            text: "2 - Seminar  (Paneldaten)" 	
+            text: "2 - Seminar  (Paneldaten)"
           - href: uebungen/2_uebungsblatt.qmd
-            text: "2 - Übungsblatt (Paneldaten)"  
+            text: "2 - Übungsblatt (Paneldaten)"
           - href: slides/3_seminar.qmd
-            text: "3 - Seminar  (Ereignisdaten)" 	
+            text: "3 - Seminar  (Ereignisdaten)"
           - href: uebungen/3_uebungsblatt.qmd
-            text: "3 - Übungsblatt (Ereignisdaten)"  
+            text: "3 - Übungsblatt (Ereignisdaten)"
+          - href: slides/4_seminar.qmd
+            text: "4 - Seminar  (Faktorielle Umfrageexperimente)"
+          - href: uebungen/4_uebungsblatt.qmd
+            text: "4 - Übungsblatt (Faktorielle Umfrageexperimente)"
 format:
   html:
     theme: cosmo
