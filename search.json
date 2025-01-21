@@ -4,7 +4,7 @@
     "href": "uebungen/4_uebungsblatt.html",
     "title": "4. Übungsblatt (Faktorielle Umfrageexperimente)",
     "section": "",
-    "text": "Code\n# Packages\npkgs &lt;- c(\n  \"tidyverse\",\n  \"sjPlot\",\n  \"haven\",\n  \"labelled\" ,\n  \"sandwich\",\n  \"lmtest\"\n) \n\n## Install uninstalled packages\nlapply(pkgs[!(pkgs %in% installed.packages())], install.packages)\n\n## Load all packages to library\nlapply(pkgs, library, character.only = TRUE)\n\n\n\n\n\nIn dieser Übung replizieren wir die Ergebnisse folgender Studie:\nTisch, Daria, and Tamara Gutfleisch. ‘Unequal but Just? Experimental Evidence on Distributive Justice Principles in Parental Inter Vivos Transfers’. Socio-Economic Review 21, no. 3 (2023): 1369–90.\nDer Datensatz kann hier heruntergeladen werden.\nSchenkungen von Eltern an deren Kinder sind von der moralischen Entscheidung geprägt, welches Kind wie viel erhalten soll. So können Eltern Schenkungen zwischen Kindern nach unterschiedlichen Gerechtigkeitsprinzipien aufteilen. Wenden sie das Gleichheitsprinzip an, schenken sie allen Kindern gleich viel. Wenden sie das Bedürfnisprinzip an, schenken sie den Kindern, die größere Bedürfnisse haben (z. B. Arbeitslosigkeit), mehr. Wenden sie das Austauschprinzip an, schenken sie den Kindern mehr, die im Gegenzug mehr für die Eltern machen (z. B. im Haushalt der Eltern helfen). Wenden sie das Anspruchsprinzip an, schenken sie den Kindern mehr, die bestimmte angeborene Statuscharakteristiken haben (z. B. Erstgeborene). Wir wollen untersuchen, inwiefern diese Prinzipien im Kontext von elterlichen Schenkungen von den Befragten befürwortet werden. Unterstützen die Befragten diese Prinzipien im selben Maße für Töchter und Söhne?\n\n\n\n\n\nCode\n# Load the data file\ndf &lt;- read.csv(\"../daten/just_transfers.csv\")\n\n\n\n\n\n\n\nCode\n# Load the variable labels\nvariable_labels &lt;- read.csv(\"../daten/just_transfers_variable_labels.csv\", row.names = 1, stringsAsFactors = FALSE)\n\n# View variable labels\n#print(variable_labels)\n\n\n# Loop through the labels and assign them to variables in the dataset\nfor (var in names(variable_labels)) {\n  if (var %in% names(df)) {\n    var_label(df[[var]]) &lt;- variable_labels[[var]]\n  }\n}\n\n\n\n\n\n\n\nCode\n# Load the value labels\nvalue_labels &lt;- read.csv(\"../daten/value_labels.csv\", stringsAsFactors = FALSE)\n\n# View value labels\nhead(value_labels)",
+    "text": "Code\n# Packages\npkgs &lt;- c(\n  \"tidyverse\",\n  \"sjPlot\",\n  \"haven\",\n  \"labelled\" ,\n  \"sandwich\",\n  \"lmtest\",\n  \"Hmisc\"\n) \n\n## Install uninstalled packages\nlapply(pkgs[!(pkgs %in% installed.packages())], install.packages)\n\n## Load all packages to library\nlapply(pkgs, library, character.only = TRUE)\n\n\n\n\n\nIn dieser Übung replizieren wir die Ergebnisse folgender Studie:\nTisch, Daria, and Tamara Gutfleisch. ‘Unequal but Just? Experimental Evidence on Distributive Justice Principles in Parental Inter Vivos Transfers’. Socio-Economic Review 21, no. 3 (2023): 1369–90.\nDer Datensatz kann hier heruntergeladen werden.\nSchenkungen von Eltern an deren Kinder sind von der moralischen Entscheidung geprägt, welches Kind wie viel erhalten soll. So können Eltern Schenkungen zwischen Kindern nach unterschiedlichen Gerechtigkeitsprinzipien aufteilen. Wenden sie das Gleichheitsprinzip an, schenken sie allen Kindern gleich viel. Wenden sie das Bedürfnisprinzip an, schenken sie den Kindern, die größere Bedürfnisse haben (z. B. Arbeitslosigkeit), mehr. Wenden sie das Austauschprinzip an, schenken sie den Kindern mehr, die im Gegenzug mehr für die Eltern machen (z. B. im Haushalt der Eltern helfen). Wenden sie das Anspruchsprinzip an, schenken sie den Kindern mehr, die bestimmte angeborene Statuscharakteristiken haben (z. B. Erstgeborene). Wir wollen untersuchen, inwiefern diese Prinzipien im Kontext von elterlichen Schenkungen von den Befragten befürwortet werden. Unterstützen die Befragten diese Prinzipien im selben Maße für Töchter und Söhne?\n\n\n\n\n\nCode\n# Load the data file\ndf &lt;- read.csv(\"../daten/just_transfers.csv\")\n\n\n\n\n\n\n\nCode\n# Load the variable labels\nvariable_labels &lt;- read.csv(\"../daten/just_transfers_variable_labels.csv\", row.names = 1, stringsAsFactors = FALSE)\n\n# View variable labels\n#print(variable_labels)\n\n\n# Loop through the labels and assign them to variables in the dataset\nfor (var in names(variable_labels)) {\n  if (var %in% names(df)) {\n    var_label(df[[var]]) &lt;- variable_labels[[var]]\n  }\n}\n\n\n\n\n\n\n\nCode\n# Load the value labels\nvalue_labels &lt;- read.csv(\"../daten/value_labels.csv\", stringsAsFactors = FALSE)\n\n# View value labels\nhead(value_labels)",
     "crumbs": [
       "Zeitplan und Dateien",
       "4 - Übungsblatt (Faktorielle Umfrageexperimente)"
@@ -15,7 +15,7 @@
     "href": "uebungen/4_uebungsblatt.html#packages-installieren-und-laden",
     "title": "4. Übungsblatt (Faktorielle Umfrageexperimente)",
     "section": "",
-    "text": "Code\n# Packages\npkgs &lt;- c(\n  \"tidyverse\",\n  \"sjPlot\",\n  \"haven\",\n  \"labelled\" ,\n  \"sandwich\",\n  \"lmtest\"\n) \n\n## Install uninstalled packages\nlapply(pkgs[!(pkgs %in% installed.packages())], install.packages)\n\n## Load all packages to library\nlapply(pkgs, library, character.only = TRUE)",
+    "text": "Code\n# Packages\npkgs &lt;- c(\n  \"tidyverse\",\n  \"sjPlot\",\n  \"haven\",\n  \"labelled\" ,\n  \"sandwich\",\n  \"lmtest\",\n  \"Hmisc\"\n) \n\n## Install uninstalled packages\nlapply(pkgs[!(pkgs %in% installed.packages())], install.packages)\n\n## Load all packages to library\nlapply(pkgs, library, character.only = TRUE)",
     "crumbs": [
       "Zeitplan und Dateien",
       "4 - Übungsblatt (Faktorielle Umfrageexperimente)"
@@ -121,11 +121,44 @@
     ]
   },
   {
+    "objectID": "uebungen/4_uebungsblatt.html#dimensionen-und-ausprägungen",
+    "href": "uebungen/4_uebungsblatt.html#dimensionen-und-ausprägungen",
+    "title": "4. Übungsblatt (Faktorielle Umfrageexperimente)",
+    "section": "2.6 Dimensionen und Ausprägungen",
+    "text": "2.6 Dimensionen und Ausprägungen\nWelche Dimensionen gibt es und welche Ausprägungen können diese aufweisen? Tipp: Nutze den Datensatz: value_labels\n\n\nCode\nhead(value_labels, 9)",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "4 - Übungsblatt (Faktorielle Umfrageexperimente)"
+    ]
+  },
+  {
+    "objectID": "uebungen/4_uebungsblatt.html#sind-die-dimensionen-orthogonal",
+    "href": "uebungen/4_uebungsblatt.html#sind-die-dimensionen-orthogonal",
+    "title": "4. Übungsblatt (Faktorielle Umfrageexperimente)",
+    "section": "3.1 Sind die Dimensionen orthogonal?",
+    "text": "3.1 Sind die Dimensionen orthogonal?\n\n\nCode\n# Dummy-Variablen mit dplyr erstellen\ndf &lt;- df %&gt;%\n  mutate(\n    # Dummy-Variablen für firstborn\n    firstborn_1 = if_else(firstborn == 1, 1, 0),\n    firstborn_2 = if_else(firstborn == 2, 1, 0),\n    firstborn_3 = if_else(firstborn == 3, 1, 0),\n    \n    # Dummy-Variablen für help\n    help_1 = if_else(help == 1, 1, 0),\n    help_2 = if_else(help == 2, 1, 0),\n    help_3 = if_else(help == 3, 1, 0),\n    \n    # Dummy-Variablen für need\n    need_1 = if_else(need == 1, 1, 0),\n    need_2 = if_else(need == 2, 1, 0),\n    need_3 = if_else(need == 3, 1, 0)\n  )\n\n\n# Select relevant columns\nselected_columns &lt;- df[, c(\"firstborn_1\", \n                           \"firstborn_2\",\n                           \"firstborn_3\",\n                           \"need_1\",\n                           \"need_2\",\n                           \"need_3\",\n                           \"help_1\",\n                           \"help_2\", \n                           \"help_3\")]\n\n# Compute pairwise correlations with significance\ncor_results &lt;- rcorr(as.matrix(selected_columns))\n\n# Display results\nprint(cor_results)\n\n\n            firstborn_1 firstborn_2 firstborn_3 need_1 need_2 need_3 help_1\nfirstborn_1        1.00       -0.50       -0.50   0.02  -0.01  -0.01   0.04\nfirstborn_2       -0.50        1.00       -0.50   0.01  -0.02   0.00  -0.01\nfirstborn_3       -0.50       -0.50        1.00  -0.03   0.03   0.01  -0.03\nneed_1             0.02        0.01       -0.03   1.00  -0.50  -0.50  -0.01\nneed_2            -0.01       -0.02        0.03  -0.50   1.00  -0.50  -0.01\nneed_3            -0.01        0.00        0.01  -0.50  -0.50   1.00   0.02\nhelp_1             0.04       -0.01       -0.03  -0.01  -0.01   0.02   1.00\nhelp_2             0.00       -0.02        0.02   0.02  -0.01  -0.01  -0.50\nhelp_3            -0.04        0.04        0.01  -0.01   0.02  -0.01  -0.50\n            help_2 help_3\nfirstborn_1   0.00  -0.04\nfirstborn_2  -0.02   0.04\nfirstborn_3   0.02   0.01\nneed_1        0.02  -0.01\nneed_2       -0.01   0.02\nneed_3       -0.01  -0.01\nhelp_1       -0.50  -0.50\nhelp_2        1.00  -0.50\nhelp_3       -0.50   1.00\n\nn= 4284 \n\n\nP\n            firstborn_1 firstborn_2 firstborn_3 need_1 need_2 need_3 help_1\nfirstborn_1             0.0000      0.0000      0.2160 0.5824 0.4919 0.0060\nfirstborn_2 0.0000                  0.0000      0.4095 0.2714 0.7834 0.4095\nfirstborn_3 0.0000      0.0000                  0.0392 0.0990 0.6800 0.0542\nneed_1      0.2160      0.4095      0.0392             0.0000 0.0000 0.4919\nneed_2      0.5824      0.2714      0.0990      0.0000        0.0000 0.4919\nneed_3      0.4919      0.7834      0.6800      0.0000 0.0000        0.1692\nhelp_1      0.0060      0.4095      0.0542      0.4919 0.4919 0.1692       \nhelp_2      0.8907      0.1305      0.1692      0.1692 0.4919 0.4919 0.0000\nhelp_3      0.0039      0.0194      0.5824      0.4919 0.1692 0.4919 0.0000\n            help_2 help_3\nfirstborn_1 0.8907 0.0039\nfirstborn_2 0.1305 0.0194\nfirstborn_3 0.1692 0.5824\nneed_1      0.1692 0.4919\nneed_2      0.4919 0.1692\nneed_3      0.4919 0.4919\nhelp_1      0.0000 0.0000\nhelp_2             0.0000\nhelp_3      0.0000",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "4 - Übungsblatt (Faktorielle Umfrageexperimente)"
+    ]
+  },
+  {
+    "objectID": "uebungen/4_uebungsblatt.html#sind-die-dimensionen-ausprägungen-balanced",
+    "href": "uebungen/4_uebungsblatt.html#sind-die-dimensionen-ausprägungen-balanced",
+    "title": "4. Übungsblatt (Faktorielle Umfrageexperimente)",
+    "section": "3.2 Sind die Dimensionen / Ausprägungen balanced?",
+    "text": "3.2 Sind die Dimensionen / Ausprägungen balanced?\n\n\nCode\n# Check balance\ntable(df$firstborn)\n\n\n\n   1    2    3 \n1428 1428 1428 \n\n\nCode\ntable(df$need)\n\n\n\n   1    2    3 \n1428 1428 1428 \n\n\nCode\ntable(df$help)\n\n\n\n   1    2    3 \n1428 1428 1428",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "4 - Übungsblatt (Faktorielle Umfrageexperimente)"
+    ]
+  },
+  {
     "objectID": "uebungen/4_uebungsblatt.html#replikation-tabelle-2",
     "href": "uebungen/4_uebungsblatt.html#replikation-tabelle-2",
     "title": "4. Übungsblatt (Faktorielle Umfrageexperimente)",
-    "section": "3.1 Replikation Tabelle 2",
-    "text": "3.1 Replikation Tabelle 2\nNun wollen wir Tabelle 2 aus dem Artikel replizieren.\n\n\nCode\n# Filter für die Daten anwenden\nfiltered_data &lt;- df %&gt;%\n  filter(id_within == 1, daughter == 1)\n\n# Deskriptive Statistiken berechnen\ndescriptive_stats &lt;- filtered_data %&gt;%\n  summarise(\n    Female_Mean = mean(female, na.rm = TRUE),\n    Female_SD = sd(female, na.rm = TRUE),\n    Female_Min = min(female, na.rm = TRUE),\n    Female_Max = max(female, na.rm = TRUE),\n    Female_N = sum(!is.na(female)),\n    \n    Age_Mean = mean(age, na.rm = TRUE),\n    Age_SD = sd(age, na.rm = TRUE),\n    Age_Min = min(age, na.rm = TRUE),\n    Age_Max = max(age, na.rm = TRUE),\n    Age_N = sum(!is.na(age)),\n    \n    Child_Mean = mean(child, na.rm = TRUE),\n    Child_SD = sd(child, na.rm = TRUE),\n    Child_Min = min(child, na.rm = TRUE),\n    Child_Max = max(child, na.rm = TRUE),\n    Child_N = sum(!is.na(child)),\n    \n    Mig_Mean = mean(mig, na.rm = TRUE),\n    Mig_SD = sd(mig, na.rm = TRUE),\n    Mig_Min = min(mig, na.rm = TRUE),\n    Mig_Max = max(mig, na.rm = TRUE),\n    Mig_N = sum(!is.na(mig)),\n    \n    Gifted_Mean = mean(gifted, na.rm = TRUE),\n    Gifted_SD = sd(gifted, na.rm = TRUE),\n    Gifted_Min = min(gifted, na.rm = TRUE),\n    Gifted_Max = max(gifted, na.rm = TRUE),\n    Gifted_N = sum(!is.na(gifted)),\n    \n    IV_Received_Mean = mean(iv_received, na.rm = TRUE),\n    IV_Received_SD = sd(iv_received, na.rm = TRUE),\n    IV_Received_Min = min(iv_received, na.rm = TRUE),\n    IV_Received_Max = max(iv_received, na.rm = TRUE),\n    IV_Received_N = sum(!is.na(iv_received)),\n    \n    ABI_Mean = mean(abi, na.rm = TRUE),\n    ABI_SD = sd(abi, na.rm = TRUE),\n    ABI_Min = min(abi, na.rm = TRUE),\n    ABI_Max = max(abi, na.rm = TRUE),\n    ABI_N = sum(!is.na(abi))\n  )\n\n# Umstrukturierung der Tabelle\ndescriptive_stats_long &lt;- descriptive_stats %&gt;%\n  pivot_longer(\n    cols = everything(),\n    names_to = c(\"Variable\", \".value\"),\n    names_pattern = \"(.*)_(.*)\"\n  )\n\n# Tabelle mit sjPlot anzeigen\ntab_df(\n  descriptive_stats_long,\n  title = \"Descriptive Statistics of Respondent Characteristics\",\n  col.header = c(\"Variable\", \"Mean\", \"SD\", \"Min\", \"Max\", \"N\")\n)\n\n\n\nDescriptive Statistics of Respondent Characteristics\n\n\nVariable\nMean\nSD\nMin\nMax\nN\n\n\nFemale\n0.62\n0.49\n0\n1\n702\n\n\nAge\n44.83\n15.08\n21\n73\n705\n\n\nChild\n0.50\n0.50\n0\n1\n707\n\n\nMig\n0.12\n0.33\n0\n1\n704\n\n\nGifted\n0.66\n0.47\n0\n1\n353\n\n\nIV_Received\n0.87\n0.34\n0\n1\n711\n\n\nABI\n0.86\n0.35\n0\n1\n690",
+    "section": "4.1 Replikation Tabelle 2",
+    "text": "4.1 Replikation Tabelle 2\nNun wollen wir Tabelle 2 aus dem Artikel replizieren.\n\n\nCode\n# Filter für die Daten anwenden\nfiltered_data &lt;- df %&gt;%\n  filter(id_within == 1, daughter == 1)\n\n# Deskriptive Statistiken berechnen\ndescriptive_stats &lt;- filtered_data %&gt;%\n  summarise(\n    Female_Mean = mean(female, na.rm = TRUE),\n    Female_SD = sd(female, na.rm = TRUE),\n    Female_Min = min(female, na.rm = TRUE),\n    Female_Max = max(female, na.rm = TRUE),\n    Female_N = sum(!is.na(female)),\n    \n    Age_Mean = mean(age, na.rm = TRUE),\n    Age_SD = sd(age, na.rm = TRUE),\n    Age_Min = min(age, na.rm = TRUE),\n    Age_Max = max(age, na.rm = TRUE),\n    Age_N = sum(!is.na(age)),\n    \n    Child_Mean = mean(child, na.rm = TRUE),\n    Child_SD = sd(child, na.rm = TRUE),\n    Child_Min = min(child, na.rm = TRUE),\n    Child_Max = max(child, na.rm = TRUE),\n    Child_N = sum(!is.na(child)),\n    \n    Mig_Mean = mean(mig, na.rm = TRUE),\n    Mig_SD = sd(mig, na.rm = TRUE),\n    Mig_Min = min(mig, na.rm = TRUE),\n    Mig_Max = max(mig, na.rm = TRUE),\n    Mig_N = sum(!is.na(mig)),\n    \n    Gifted_Mean = mean(gifted, na.rm = TRUE),\n    Gifted_SD = sd(gifted, na.rm = TRUE),\n    Gifted_Min = min(gifted, na.rm = TRUE),\n    Gifted_Max = max(gifted, na.rm = TRUE),\n    Gifted_N = sum(!is.na(gifted)),\n    \n    IV_Received_Mean = mean(iv_received, na.rm = TRUE),\n    IV_Received_SD = sd(iv_received, na.rm = TRUE),\n    IV_Received_Min = min(iv_received, na.rm = TRUE),\n    IV_Received_Max = max(iv_received, na.rm = TRUE),\n    IV_Received_N = sum(!is.na(iv_received)),\n    \n    ABI_Mean = mean(abi, na.rm = TRUE),\n    ABI_SD = sd(abi, na.rm = TRUE),\n    ABI_Min = min(abi, na.rm = TRUE),\n    ABI_Max = max(abi, na.rm = TRUE),\n    ABI_N = sum(!is.na(abi))\n  )\n\n# Umstrukturierung der Tabelle\ndescriptive_stats_long &lt;- descriptive_stats %&gt;%\n  pivot_longer(\n    cols = everything(),\n    names_to = c(\"Variable\", \".value\"),\n    names_pattern = \"(.*)_(.*)\"\n  )\n\n# Tabelle mit sjPlot anzeigen\ntab_df(\n  descriptive_stats_long,\n  title = \"Descriptive Statistics of Respondent Characteristics\",\n  col.header = c(\"Variable\", \"Mean\", \"SD\", \"Min\", \"Max\", \"N\")\n)\n\n\n\nDescriptive Statistics of Respondent Characteristics\n\n\nVariable\nMean\nSD\nMin\nMax\nN\n\n\nFemale\n0.62\n0.49\n0\n1\n702\n\n\nAge\n44.83\n15.08\n21\n73\n705\n\n\nChild\n0.50\n0.50\n0\n1\n707\n\n\nMig\n0.12\n0.33\n0\n1\n704\n\n\nGifted\n0.66\n0.47\n0\n1\n353\n\n\nIV_Received\n0.87\n0.34\n0\n1\n711\n\n\nABI\n0.86\n0.35\n0\n1\n690",
     "crumbs": [
       "Zeitplan und Dateien",
       "4 - Übungsblatt (Faktorielle Umfrageexperimente)"
@@ -135,8 +168,8 @@
     "objectID": "uebungen/4_uebungsblatt.html#replikation-figure-1",
     "href": "uebungen/4_uebungsblatt.html#replikation-figure-1",
     "title": "4. Übungsblatt (Faktorielle Umfrageexperimente)",
-    "section": "3.2 Replikation Figure 1",
-    "text": "3.2 Replikation Figure 1\n\n\nCode\n# Create the histogram\nggplot(df, aes(x = child_vig)) +\n  geom_histogram(aes(y = ..count../sum(..count..)*100), binwidth = 250, \n                 fill = \"blue\", color = \"black\", alpha = 0.7) +\n  scale_y_continuous(labels = scales::percent_format(scale = 1)) +\n  labs(title = \"Histogram\",\n       x = \"Child's amount\",\n       y = \"Percent\") +\n  theme_minimal()\n\n\nWarning: The dot-dot notation (`..count..`) was deprecated in ggplot2 3.4.0.\nℹ Please use `after_stat(count)` instead.",
+    "section": "4.2 Replikation Figure 1",
+    "text": "4.2 Replikation Figure 1\n\n\nCode\n# Create the histogram\nggplot(df, aes(x = child_vig)) +\n  geom_histogram(aes(y = ..count../sum(..count..)*100), binwidth = 250, \n                 fill = \"grey\", color = \"black\", alpha = 0.7) +\n  scale_y_continuous(labels = scales::percent_format(scale = 1)) +\n  labs(title = \"Histogram\",\n       x = \"Child's amount\",\n       y = \"Percent\") +\n  theme_minimal()\n\n\nWarning: The dot-dot notation (`..count..`) was deprecated in ggplot2 3.4.0.\nℹ Please use `after_stat(count)` instead.",
     "crumbs": [
       "Zeitplan und Dateien",
       "4 - Übungsblatt (Faktorielle Umfrageexperimente)"
@@ -146,8 +179,8 @@
     "objectID": "uebungen/4_uebungsblatt.html#replikation-von-tabelle-3",
     "href": "uebungen/4_uebungsblatt.html#replikation-von-tabelle-3",
     "title": "4. Übungsblatt (Faktorielle Umfrageexperimente)",
-    "section": "4.1 Replikation von Tabelle 3",
-    "text": "4.1 Replikation von Tabelle 3\n\n\nCode\n# Ensure reference category is set to 2 for each factor\ndf$g_firstborn &lt;- relevel(as.factor(df$g_firstborn), ref = \"2\")\ndf$g_help &lt;- relevel(as.factor(df$g_help), ref = \"2\")\ndf$g_need &lt;- relevel(as.factor(df$g_need), ref = \"2\")\n\n# Run the regression model\nmodel &lt;- lm(child_vig ~ daughter * g_firstborn +\n                      g_help * daughter +\n                      g_need * daughter, \n            data = df)\n\n# Clustered standard errors\nclustered_se &lt;- coeftest(model, vcov = vcovCL, cluster = ~ id_resp)\n\n# Output the results\nsummary(model)         # Regression summary\n\n\n\nCall:\nlm(formula = child_vig ~ daughter * g_firstborn + g_help * daughter + \n    g_need * daughter, data = df)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-4989.0  -287.8     0.0   287.8  4989.0 \n\nCoefficients:\n                      Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)           4967.074     40.125 123.791  &lt; 2e-16 ***\ndaughter                65.853     56.745   1.161   0.2459    \ng_firstborn1            37.237     36.629   1.017   0.3094    \ng_firstborn3             6.346     36.615   0.173   0.8624    \ng_help1                320.686     36.613   8.759  &lt; 2e-16 ***\ng_help3               -207.280     36.619  -5.660 1.61e-08 ***\ng_need1                205.191     36.615   5.604 2.23e-08 ***\ng_need3               -313.954     36.599  -8.578  &lt; 2e-16 ***\ndaughter:g_firstborn1  -43.583     51.792  -0.842   0.4001    \ndaughter:g_firstborn3  -43.583     51.792  -0.842   0.4001    \ndaughter:g_help1      -113.406     51.783  -2.190   0.0286 *  \ndaughter:g_help3      -113.406     51.783  -2.190   0.0286 *  \ndaughter:g_need1       108.763     51.770   2.101   0.0357 *  \ndaughter:g_need3       108.763     51.770   2.101   0.0357 *  \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 691.3 on 4270 degrees of freedom\nMultiple R-squared:  0.1624,    Adjusted R-squared:  0.1599 \nF-statistic:  63.7 on 13 and 4270 DF,  p-value: &lt; 2.2e-16\n\n\nCode\nprint(clustered_se)    # Results with clustered SE\n\n\n\nt test of coefficients:\n\n                       Estimate Std. Error  t value  Pr(&gt;|t|)    \n(Intercept)           4967.0737    37.3969 132.8206 &lt; 2.2e-16 ***\ndaughter                65.8526    74.7937   0.8805   0.37866    \ng_firstborn1            37.2371    43.2121   0.8617   0.38889    \ng_firstborn3             6.3457    43.4854   0.1459   0.88399    \ng_help1                320.6862    38.9626   8.2306 2.449e-16 ***\ng_help3               -207.2799    37.9277  -5.4651 4.889e-08 ***\ng_need1                205.1905    38.6142   5.3139 1.128e-07 ***\ng_need3               -313.9540    39.6818  -7.9118 3.208e-15 ***\ndaughter:g_firstborn1  -43.5827    76.4992  -0.5697   0.56890    \ndaughter:g_firstborn3  -43.5827    76.4992  -0.5697   0.56890    \ndaughter:g_help1      -113.4063    58.6378  -1.9340   0.05318 .  \ndaughter:g_help3      -113.4063    58.6378  -1.9340   0.05318 .  \ndaughter:g_need1       108.7634    61.2365   1.7761   0.07578 .  \ndaughter:g_need3       108.7634    61.2365   1.7761   0.07578 .  \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\nCode\ntab_model(model)\n\n\n\n\n\n\n\n\n\n\n\n \nChild's amount of inter\nvivos\n\n\nPredictors\nEstimates\nCI\np\n\n\n(Intercept)\n4967.07\n4888.41 – 5045.74\n&lt;0.001\n\n\nFocal vignette person\ndaughter\n65.85\n-45.40 – 177.10\n0.246\n\n\ng firstborn: g firstborn\n1\n37.24\n-34.58 – 109.05\n0.309\n\n\ng firstborn: g firstborn\n3\n6.35\n-65.44 – 78.13\n0.862\n\n\ng help: g help 1\n320.69\n248.91 – 392.47\n&lt;0.001\n\n\ng help: g help 3\n-207.28\n-279.07 – -135.49\n&lt;0.001\n\n\ng need: g need 1\n205.19\n133.41 – 276.98\n&lt;0.001\n\n\ng need: g need 3\n-313.95\n-385.71 – -242.20\n&lt;0.001\n\n\ndaughter:g_firstborn1\n-43.58\n-145.12 – 57.96\n0.400\n\n\ndaughter:g_firstborn3\n-43.58\n-145.12 – 57.96\n0.400\n\n\ndaughter:g_help1\n-113.41\n-214.93 – -11.89\n0.029\n\n\ndaughter:g_help3\n-113.41\n-214.93 – -11.89\n0.029\n\n\ndaughter:g_need1\n108.76\n7.27 – 210.26\n0.036\n\n\ndaughter:g_need3\n108.76\n7.27 – 210.26\n0.036\n\n\nObservations\n4284\n\n\nR2 / R2 adjusted\n0.162 / 0.160",
+    "section": "5.1 Replikation von Tabelle 3",
+    "text": "5.1 Replikation von Tabelle 3\n\n\nCode\n# Stellt sicher, dass die Referenzkategorie für jeden Faktor auf 2 gesetzt ist.\ndf$g_firstborn &lt;- relevel(as.factor(df$g_firstborn), ref = \"2\")\ndf$g_help &lt;- relevel(as.factor(df$g_help), ref = \"2\")\ndf$g_need &lt;- relevel(as.factor(df$g_need), ref = \"2\")\n\n# Run the regression model\nmodel &lt;- lm(child_vig ~ daughter * g_firstborn +\n                      g_help * daughter +\n                      g_need * daughter, \n            data = df)\n\n# Clustered standard errors\nclustered_se &lt;- coeftest(model, vcov = vcovCL, cluster = ~ id_resp)\n\n# Output the results\nsummary(model)         # Regression summary\n\n\n\nCall:\nlm(formula = child_vig ~ daughter * g_firstborn + g_help * daughter + \n    g_need * daughter, data = df)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-4989.0  -287.8     0.0   287.8  4989.0 \n\nCoefficients:\n                      Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)           4967.074     40.125 123.791  &lt; 2e-16 ***\ndaughter                65.853     56.745   1.161   0.2459    \ng_firstborn1            37.237     36.629   1.017   0.3094    \ng_firstborn3             6.346     36.615   0.173   0.8624    \ng_help1                320.686     36.613   8.759  &lt; 2e-16 ***\ng_help3               -207.280     36.619  -5.660 1.61e-08 ***\ng_need1                205.191     36.615   5.604 2.23e-08 ***\ng_need3               -313.954     36.599  -8.578  &lt; 2e-16 ***\ndaughter:g_firstborn1  -43.583     51.792  -0.842   0.4001    \ndaughter:g_firstborn3  -43.583     51.792  -0.842   0.4001    \ndaughter:g_help1      -113.406     51.783  -2.190   0.0286 *  \ndaughter:g_help3      -113.406     51.783  -2.190   0.0286 *  \ndaughter:g_need1       108.763     51.770   2.101   0.0357 *  \ndaughter:g_need3       108.763     51.770   2.101   0.0357 *  \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 691.3 on 4270 degrees of freedom\nMultiple R-squared:  0.1624,    Adjusted R-squared:  0.1599 \nF-statistic:  63.7 on 13 and 4270 DF,  p-value: &lt; 2.2e-16\n\n\nCode\nprint(clustered_se)    # Results with clustered SE\n\n\n\nt test of coefficients:\n\n                       Estimate Std. Error  t value  Pr(&gt;|t|)    \n(Intercept)           4967.0737    37.3969 132.8206 &lt; 2.2e-16 ***\ndaughter                65.8526    74.7937   0.8805   0.37866    \ng_firstborn1            37.2371    43.2121   0.8617   0.38889    \ng_firstborn3             6.3457    43.4854   0.1459   0.88399    \ng_help1                320.6862    38.9626   8.2306 2.449e-16 ***\ng_help3               -207.2799    37.9277  -5.4651 4.889e-08 ***\ng_need1                205.1905    38.6142   5.3139 1.128e-07 ***\ng_need3               -313.9540    39.6818  -7.9118 3.208e-15 ***\ndaughter:g_firstborn1  -43.5827    76.4992  -0.5697   0.56890    \ndaughter:g_firstborn3  -43.5827    76.4992  -0.5697   0.56890    \ndaughter:g_help1      -113.4063    58.6378  -1.9340   0.05318 .  \ndaughter:g_help3      -113.4063    58.6378  -1.9340   0.05318 .  \ndaughter:g_need1       108.7634    61.2365   1.7761   0.07578 .  \ndaughter:g_need3       108.7634    61.2365   1.7761   0.07578 .  \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\nCode\ntab_model(model)\n\n\n\n\n\n\n\n\n\n\n\n \nChild's amount of inter\nvivos\n\n\nPredictors\nEstimates\nCI\np\n\n\n(Intercept)\n4967.07\n4888.41 – 5045.74\n&lt;0.001\n\n\nFocal vignette person\ndaughter\n65.85\n-45.40 – 177.10\n0.246\n\n\ng firstborn: g firstborn\n1\n37.24\n-34.58 – 109.05\n0.309\n\n\ng firstborn: g firstborn\n3\n6.35\n-65.44 – 78.13\n0.862\n\n\ng help: g help 1\n320.69\n248.91 – 392.47\n&lt;0.001\n\n\ng help: g help 3\n-207.28\n-279.07 – -135.49\n&lt;0.001\n\n\ng need: g need 1\n205.19\n133.41 – 276.98\n&lt;0.001\n\n\ng need: g need 3\n-313.95\n-385.71 – -242.20\n&lt;0.001\n\n\ndaughter:g_firstborn1\n-43.58\n-145.12 – 57.96\n0.400\n\n\ndaughter:g_firstborn3\n-43.58\n-145.12 – 57.96\n0.400\n\n\ndaughter:g_help1\n-113.41\n-214.93 – -11.89\n0.029\n\n\ndaughter:g_help3\n-113.41\n-214.93 – -11.89\n0.029\n\n\ndaughter:g_need1\n108.76\n7.27 – 210.26\n0.036\n\n\ndaughter:g_need3\n108.76\n7.27 – 210.26\n0.036\n\n\nObservations\n4284\n\n\nR2 / R2 adjusted\n0.162 / 0.160",
     "crumbs": [
       "Zeitplan und Dateien",
       "4 - Übungsblatt (Faktorielle Umfrageexperimente)"
@@ -686,7 +719,7 @@
     "href": "slides/4_seminar.html#experimente-1",
     "title": "4. Seminar: Faktorielle Umfrageexperimente",
     "section": "Experimente",
-    "text": "Experimente\n\nVersuchs- und Kontrollgruppe\nRandomisierung ➔ Keine unbeobachtete Heterogenität\nKontrollierte Stimulussetzung - Zeitliche Abfolge von UV und AV - Keine Endogenität\nKausalschluss\nEthische Bedenken",
+    "text": "Experimente\n\nVersuchs- und Kontrollgruppe\nRandomisierung ➔ Keine unbeobachtete Heterogenität\nKontrollierte Stimulussetzung\n\nZeitliche Abfolge von UV und AV\nKeine Endogenität\n\nKausalschluss\nEthische Bedenken",
     "crumbs": [
       "Zeitplan und Dateien",
       "4 - Seminar  (Faktorielle Umfrageexperimente)"
@@ -719,15 +752,15 @@
     "href": "slides/4_seminar.html#experiment",
     "title": "4. Seminar: Faktorielle Umfrageexperimente",
     "section": "Experiment",
-    "text": "Experiment\nVoraussetzung:\n\nMind. 2 experimentelle Gruppen\nDie Versuchspersonen werden der Kontroll- bzw. Vergleichsgruppe zufällig zugewiesen\nVersuchsgruppe („treatment group“)\nKontrollgruppe („control group“)\nDie unabhängige (zu untersuchende Variable) wird von Forschenden manipuliert",
+    "text": "Experiment\nVoraussetzung:\n\nMind. 2 experimentelle Gruppen\nDie Versuchspersonen werden der Kontroll- bzw. Vergleichsgruppe zufällig zugewiesen\nVersuchsgruppe („treatment group“)\nKontrollgruppe („control group“)\nDie unabhängige (zu untersuchende) Variable wird von Forschenden manipuliert",
     "crumbs": [
       "Zeitplan und Dateien",
       "4 - Seminar  (Faktorielle Umfrageexperimente)"
     ]
   },
   {
-    "objectID": "slides/4_seminar.html#faktorielle-umfrageexperimente-1",
-    "href": "slides/4_seminar.html#faktorielle-umfrageexperimente-1",
+    "objectID": "slides/4_seminar.html#faktorielle-umfrageexperimente",
+    "href": "slides/4_seminar.html#faktorielle-umfrageexperimente",
     "title": "4. Seminar: Faktorielle Umfrageexperimente",
     "section": "Faktorielle Umfrageexperimente",
     "text": "Faktorielle Umfrageexperimente\n\nauch: Vignettenexperimente\nVerbindet klassische Umfrageforschung mit experimenteller Versuchsanordnung\n„fiktive Situationen“: systematisches Variieren fiktiver Merkmale\nErhebt Einstellungen und normative Vorstellungen von Personen zu einem spezifischen Sachverhalt (Einstellungs- oder Verhaltensintentionen)\nWir untersuchen, wie Personen Informationen interpretieren, abwägen und handeln",
@@ -742,17 +775,6 @@
     "title": "4. Seminar: Faktorielle Umfrageexperimente",
     "section": "Fachbegriffe",
     "text": "Fachbegriffe\nVignetten = Situations- oder Personenbeschreibungen (fiktiv)\nDimensionen (dimensions) = bestimmte Inhalte dieser Kurzbeschreibungen\nAusprägungen (levels) = Dimensionen können unterschiedliche Werte annehmen\n➔ Ausprägungen der Dimensionen werden innerhalb unterschiedlicher Vignetten systematisch variiert",
-    "crumbs": [
-      "Zeitplan und Dateien",
-      "4 - Seminar  (Faktorielle Umfrageexperimente)"
-    ]
-  },
-  {
-    "objectID": "slides/4_seminar.html#randomisierung",
-    "href": "slides/4_seminar.html#randomisierung",
-    "title": "4. Seminar: Faktorielle Umfrageexperimente",
-    "section": "Randomisierung",
-    "text": "Randomisierung\n\nMehrdimensionales Design (d.h. gleichzeitige Variation mehrerer Dimensionen)\nZufällige Zuordnung der Ausprägungen der Dimensionen zu den Vignetten\nZufällige Zuordnung der Vignetten zu den Befragten",
     "crumbs": [
       "Zeitplan und Dateien",
       "4 - Seminar  (Faktorielle Umfrageexperimente)"
@@ -792,6 +814,28 @@
     ]
   },
   {
+    "objectID": "slides/4_seminar.html#vertrauen-in-andere-menschen",
+    "href": "slides/4_seminar.html#vertrauen-in-andere-menschen",
+    "title": "4. Seminar: Faktorielle Umfrageexperimente",
+    "section": "Vertrauen in andere Menschen",
+    "text": "Vertrauen in andere Menschen\n Aus: Dülmer, H. (2022). Vignetten. In: Baur, N., Blasius, J. (eds) Handbuch Methoden der empirischen Sozialforschung. Springer VS, Wiesbaden, S.865.",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "4 - Seminar  (Faktorielle Umfrageexperimente)"
+    ]
+  },
+  {
+    "objectID": "slides/4_seminar.html#faire-aufteilung-von-schenkungen",
+    "href": "slides/4_seminar.html#faire-aufteilung-von-schenkungen",
+    "title": "4. Seminar: Faktorielle Umfrageexperimente",
+    "section": "Faire Aufteilung von Schenkungen",
+    "text": "Faire Aufteilung von Schenkungen\n\nAus: Tisch, Daria, and Tamara Gutfleisch. 2023. ‘Unequal but Just? Experimental Evidence on Distributive Justice Principles in Parental Inter Vivos Transfers’. Socio-Economic Review 21, no. 3: 1369–90.",
+    "crumbs": [
+      "Zeitplan und Dateien",
+      "4 - Seminar  (Faktorielle Umfrageexperimente)"
+    ]
+  },
+  {
     "objectID": "slides/4_seminar.html#anwendungsgebiete",
     "href": "slides/4_seminar.html#anwendungsgebiete",
     "title": "4. Seminar: Faktorielle Umfrageexperimente",
@@ -807,7 +851,7 @@
     "href": "slides/4_seminar.html#vorteile-gegenüber-anderen-methoden-klassische-umfragen",
     "title": "4. Seminar: Faktorielle Umfrageexperimente",
     "section": "Vorteile gegenüber anderen Methoden: klassische Umfragen",
-    "text": "Vorteile gegenüber anderen Methoden: klassische Umfragen\n\nFS minimiert Interpretationsspielräume, wenn Ausgangssituation präzise formuliert\nIn Umfragen werden Faktoren nacheinander abgefragt (mehrere Items), in FS variieren die Faktoren (Dimensionen) innerhalb einer Vignette →„trade-offs“\nUmfragen sind anfällig für Effekte sozialer Erwünschtheit, während in FS Fragestellungen subtiler gestellt werden können (z. B. Geschlecht einer Person in Anrede oder Vornamen).\nUmfragen setzen Zufallsstichprobe voraus, um auf die Grundgesamtheit zu schließen; Vignettendesign nicht per se (randomisierte Vignetten) – interne vs. externe Validität.",
+    "text": "Vorteile gegenüber anderen Methoden: klassische Umfragen\n\nFS minimiert Interpretationsspielräume, wenn Ausgangssituation präzise formuliert\nIn Umfragen werden Faktoren nacheinander abgefragt (mehrere Items), in FS variieren die Faktoren (Dimensionen) innerhalb einer Vignette →„trade-offs“\nUmfragen sind anfällig für Effekte sozialer Erwünschtheit, während in FS Fragestellungen subtiler gestellt werden können (z. B. Geschlecht einer Person in Anrede oder Vornamen).\nUmfragen setzen Zufallsstichprobe voraus, um auf die Grundgesamtheit zu schließen; Vignettendesign nicht per se (randomisierte Vignetten) → interne vs. externe Validität.",
     "crumbs": [
       "Zeitplan und Dateien",
       "4 - Seminar  (Faktorielle Umfrageexperimente)"
@@ -818,7 +862,7 @@
     "href": "slides/4_seminar.html#vorteile-gegenüber-anderen-methoden-laborexperimenten",
     "title": "4. Seminar: Faktorielle Umfrageexperimente",
     "section": "Vorteile gegenüber anderen Methoden: Laborexperimenten",
-    "text": "Vorteile gegenüber anderen Methoden: Laborexperimenten\n\nHäufig eindimensional (nur ein Testfaktor), Vignetten mehrdimensional\nNicht anonym (Erwartungseffekte gegenüber VersuchsleiterIn)\nExterne Validität kritisch durch begrenzte Teilnehmerzahl (in Surveydesigns kann höhere Teilnehmerzahl realisiert werden); Teilnehmende der Vignettenbefragung i. d. R. heterogener.",
+    "text": "Vorteile gegenüber anderen Methoden: Laborexperimenten\n\nLaborexperimente häufig eindimensional (nur ein Testfaktor), Vignetten mehrdimensional\nLaborexperimente nicht anonym (Erwartungseffekte gegenüber VersuchsleiterIn)\nExterne Validität kritisch durch begrenzte Teilnehmerzahl (in Surveydesigns kann höhere Teilnehmerzahl realisiert werden); Teilnehmende der Vignettenbefragung i. d. R. heterogener.",
     "crumbs": [
       "Zeitplan und Dateien",
       "4 - Seminar  (Faktorielle Umfrageexperimente)"
@@ -895,7 +939,7 @@
     "href": "slides/4_seminar.html#fragen-zum-design",
     "title": "4. Seminar: Faktorielle Umfrageexperimente",
     "section": "Fragen zum Design",
-    "text": "Fragen zum Design\n\nWelche Dimensionen und Ausprägungen?\nWelche Merkmale müssen konstant gehalten werden?\nWie viele Vignetten sollten aus der Grundgesamtheit entnommen werden?\nWie viele Vignetten-Sets?\nWie viele Vignetten pro Befragten?\nWelche Methode sollte für die Zusammenstellung der Vignettenstichprobe/des Vignettensets verwendet werden (z. B. Zufallsstichproben oder Quotenpläne)\nGröße der Befragtenstichprobe (was ist realisierbar?)",
+    "text": "Fragen zum Design\n\nWelche Dimensionen und Ausprägungen?\nWelche Merkmale müssen konstant gehalten werden?\nWie viele Vignetten sollten aus der Grundgesamtheit entnommen werden?\nWie viele Vignetten-Decks?\nWie viele Vignetten pro Befragten?\nWelche Methode sollte für die Zusammenstellung der Vignettenstichprobe/des Vignettendecks verwendet werden (z. B. Zufallsstichproben, D-Effizienz, Quotenpläne)\nGröße der Befragtenstichprobe (was ist realisierbar?)",
     "crumbs": [
       "Zeitplan und Dateien",
       "4 - Seminar  (Faktorielle Umfrageexperimente)"
@@ -1781,7 +1825,7 @@
     "href": "schedule.html",
     "title": "Übersicht",
     "section": "",
-    "text": "Morgens\nNachmittags\n\n\n\n\n12.12.2024\nÜbersicht quantitative Methoden 🖥\nArbeitsablauf etablieren, Einführung in Quarto und R 🖥 📋 📝 📚 📚\n\n\n19.12.2024\nPaneldaten Seminar 🖥\nPaneldaten Übung 📋 📝\n\n\n09.01.2025\nEreignisdaten Seminar 🖥\nEreignisdaten Übung 📋 📝\n\n\n23.01.2025\nFaktorielle Umfrageexperimente Seminar 🖥\nFaktorielle Umfrageexperimente Übung 📚 📚 📚\n\n\n\nLegende:\n📚 - Daten\n🖥 - Foliensatz\n📋 - Übungsblatt, Lösungen\n📝 - Übungsblatt zum Download",
+    "text": "Morgens\nNachmittags\n\n\n\n\n12.12.2024\nÜbersicht quantitative Methoden 🖥\nArbeitsablauf etablieren, Einführung in Quarto und R 🖥 📋 📝 📚 📚\n\n\n19.12.2024\nPaneldaten Seminar 🖥\nPaneldaten Übung 📋 📝\n\n\n09.01.2025\nEreignisdaten Seminar 🖥\nEreignisdaten Übung 📋 📝\n\n\n23.01.2025\nFaktorielle Umfrageexperimente Seminar 🖥\nFaktorielle Umfrageexperimente Übung 📚 📚 📚 📋 📝\n\n\n\nLegende:\n📚 - Daten\n🖥 - Foliensatz\n📋 - Übungsblatt, Lösungen\n📝 - Übungsblatt zum Download",
     "crumbs": [
       "Zeitplan und Dateien",
       "Übersicht"
@@ -1792,7 +1836,7 @@
     "href": "schedule.html#zeitplan",
     "title": "Übersicht",
     "section": "",
-    "text": "Morgens\nNachmittags\n\n\n\n\n12.12.2024\nÜbersicht quantitative Methoden 🖥\nArbeitsablauf etablieren, Einführung in Quarto und R 🖥 📋 📝 📚 📚\n\n\n19.12.2024\nPaneldaten Seminar 🖥\nPaneldaten Übung 📋 📝\n\n\n09.01.2025\nEreignisdaten Seminar 🖥\nEreignisdaten Übung 📋 📝\n\n\n23.01.2025\nFaktorielle Umfrageexperimente Seminar 🖥\nFaktorielle Umfrageexperimente Übung 📚 📚 📚\n\n\n\nLegende:\n📚 - Daten\n🖥 - Foliensatz\n📋 - Übungsblatt, Lösungen\n📝 - Übungsblatt zum Download",
+    "text": "Morgens\nNachmittags\n\n\n\n\n12.12.2024\nÜbersicht quantitative Methoden 🖥\nArbeitsablauf etablieren, Einführung in Quarto und R 🖥 📋 📝 📚 📚\n\n\n19.12.2024\nPaneldaten Seminar 🖥\nPaneldaten Übung 📋 📝\n\n\n09.01.2025\nEreignisdaten Seminar 🖥\nEreignisdaten Übung 📋 📝\n\n\n23.01.2025\nFaktorielle Umfrageexperimente Seminar 🖥\nFaktorielle Umfrageexperimente Übung 📚 📚 📚 📋 📝\n\n\n\nLegende:\n📚 - Daten\n🖥 - Foliensatz\n📋 - Übungsblatt, Lösungen\n📝 - Übungsblatt zum Download",
     "crumbs": [
       "Zeitplan und Dateien",
       "Übersicht"
