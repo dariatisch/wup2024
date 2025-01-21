@@ -20,12 +20,7 @@ number-sections: true
 ```{r setup, include=FALSE}
 # set working directory
 knitr::opts_knit$set(root.dir = "D:/Seafile/main/teaching/2024_wuppertal/wup2024/uebungen")
-
-getwd(
-  
-)
 ```
-
 
 ## Packages installieren und laden
 
@@ -40,7 +35,8 @@ pkgs <- c(
   "haven",
   "labelled" ,
   "sandwich",
-  "lmtest"
+  "lmtest",
+  "Hmisc"
 ) 
 
 ## Install uninstalled packages
@@ -57,7 +53,7 @@ In dieser Übung replizieren wir die Ergebnisse folgender Studie:
 
 Tisch, Daria, and Tamara Gutfleisch. ‘Unequal but Just? Experimental Evidence on Distributive Justice Principles in Parental Inter Vivos Transfers’. Socio-Economic Review 21, no. 3 (2023): 1369–90.
 
-Der Datensatz kann [hier](XXX) heruntergeladen werden.
+Der Datensatz kann [hier](https://dariatisch.github.io/wup2024/downloads/just_transfers.csv) heruntergeladen werden.
 
 Schenkungen von Eltern an deren Kinder sind von der moralischen Entscheidung geprägt, welches Kind wie viel erhalten soll. So können Eltern Schenkungen zwischen Kindern nach unterschiedlichen Gerechtigkeitsprinzipien aufteilen. Wenden sie das Gleichheitsprinzip an, schenken sie allen Kindern gleich viel. Wenden sie das Bedürfnisprinzip an, schenken sie den Kindern, die größere Bedürfnisse haben (z. B. Arbeitslosigkeit), mehr. Wenden sie das Austauschprinzip an, schenken sie den Kindern mehr, die im Gegenzug mehr für die Eltern machen (z. B. im Haushalt der Eltern helfen). Wenden sie das Anspruchsprinzip an, schenken sie den Kindern mehr, die bestimmte angeborene Statuscharakteristiken haben (z. B. Erstgeborene). Wir wollen untersuchen, inwiefern diese Prinzipien im Kontext von elterlichen Schenkungen von den Befragten befürwortet werden. Unterstützen die Befragten diese Prinzipien im selben Maße für Töchter und Söhne?
 
@@ -98,15 +94,16 @@ value_labels <- read.csv("../daten/value_labels.csv", stringsAsFactors = FALSE)
 head(value_labels)
 ```
 
-
-# Fallzahlen
+# Kennenlernen des Datensatzes
 
 ## Wie viele Beobachtungen enthält der Datensatz?
+
 ```{r}
 nrow(df)
 ```
 
 ## Wie viele befragte Personen sind im Datensatz enthalten?
+
 ```{r}
 length(unique(df$id_resp))
 ```
@@ -119,18 +116,79 @@ table(df$id_within)
 1428/2
 ```
 
-
 ## Wie viele Vignetten gibt es?
 
 ```{r}
 table(df$id_vignette)
 length(unique(df$id_vignette))
 ```
+
 ## Wie viele Decks gibt es?
 
 ```{r}
 table(df$deck)
 length(unique(df$deck))
+```
+## Dimensionen und Ausprägungen
+
+Welche Dimensionen gibt es und welche Ausprägungen können diese aufweisen?
+Tipp: Nutze den Datensatz: value_labels
+
+```{r}
+head(value_labels, 9)
+```
+
+# Orthogonalität und Balance
+
+## Sind die Dimensionen orthogonal?
+
+```{r}
+# Dummy-Variablen mit dplyr erstellen
+df <- df %>%
+  mutate(
+    # Dummy-Variablen für firstborn
+    firstborn_1 = if_else(firstborn == 1, 1, 0),
+    firstborn_2 = if_else(firstborn == 2, 1, 0),
+    firstborn_3 = if_else(firstborn == 3, 1, 0),
+    
+    # Dummy-Variablen für help
+    help_1 = if_else(help == 1, 1, 0),
+    help_2 = if_else(help == 2, 1, 0),
+    help_3 = if_else(help == 3, 1, 0),
+    
+    # Dummy-Variablen für need
+    need_1 = if_else(need == 1, 1, 0),
+    need_2 = if_else(need == 2, 1, 0),
+    need_3 = if_else(need == 3, 1, 0)
+  )
+
+
+# Select relevant columns
+selected_columns <- df[, c("firstborn_1", 
+                           "firstborn_2",
+                           "firstborn_3",
+                           "need_1",
+                           "need_2",
+                           "need_3",
+                           "help_1",
+                           "help_2", 
+                           "help_3")]
+
+# Compute pairwise correlations with significance
+cor_results <- rcorr(as.matrix(selected_columns))
+
+# Display results
+print(cor_results)
+
+```
+
+## Sind die Dimensionen / Ausprägungen balanced?
+
+```{r}
+# Check balance
+table(df$firstborn)
+table(df$need)
+table(df$help)
 ```
 
 # Deskriptive Statistik
@@ -138,6 +196,7 @@ length(unique(df$deck))
 ## Replikation Tabelle 2
 
 Nun wollen wir Tabelle 2 aus dem Artikel replizieren.
+
 ```{r}
 
 # Filter für die Daten anwenden
@@ -213,7 +272,7 @@ tab_df(
 # Create the histogram
 ggplot(df, aes(x = child_vig)) +
   geom_histogram(aes(y = ..count../sum(..count..)*100), binwidth = 250, 
-                 fill = "blue", color = "black", alpha = 0.7) +
+                 fill = "grey", color = "black", alpha = 0.7) +
   scale_y_continuous(labels = scales::percent_format(scale = 1)) +
   labs(title = "Histogram",
        x = "Child's amount",
@@ -221,14 +280,13 @@ ggplot(df, aes(x = child_vig)) +
   theme_minimal()
 ```
 
-
 # Regression
 
 ## Replikation von Tabelle 3
 
 ```{r}
 
-# Ensure reference category is set to 2 for each factor
+# Stellt sicher, dass die Referenzkategorie für jeden Faktor auf 2 gesetzt ist.
 df$g_firstborn <- relevel(as.factor(df$g_firstborn), ref = "2")
 df$g_help <- relevel(as.factor(df$g_help), ref = "2")
 df$g_need <- relevel(as.factor(df$g_need), ref = "2")
@@ -247,7 +305,6 @@ summary(model)         # Regression summary
 print(clustered_se)    # Results with clustered SE
 tab_model(model)
 ```
-
 
 # Render
 

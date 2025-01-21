@@ -23,9 +23,6 @@ editor: visual
 engine: knitr
 ---
 
-
-# Faktorielle Umfrageexperimente
-
 ## Heutige Sitzung {.smaller}
 
 1.  Kausalität und Erhebungsdesign
@@ -56,7 +53,9 @@ Pflichtlektüre:
 
 -   Randomisierung ➔ Keine unbeobachtete Heterogenität
 
--   Kontrollierte Stimulussetzung - Zeitliche Abfolge von UV und AV - Keine Endogenität
+-   Kontrollierte Stimulussetzung 
+    - Zeitliche Abfolge von UV und AV 
+    - Keine Endogenität
 
 -   Kausalschluss
 
@@ -95,7 +94,7 @@ Aus: Berger, Roger, und Tobias Wolbring, 2015: Kontrafaktische Kausalität und e
 
 -   Kontrollgruppe („control group“)
 
--   Die unabhängige (zu untersuchende Variable) wird von Forschenden manipuliert
+-   Die unabhängige (zu untersuchende) Variable wird von Forschenden manipuliert
 
 # Faktorielle Umfrageexperimente (factorial surveys)
 
@@ -105,9 +104,7 @@ Aus: Berger, Roger, und Tobias Wolbring, 2015: Kontrafaktische Kausalität und e
 -   Verbindet klassische Umfrageforschung mit experimenteller Versuchsanordnung
 -   „fiktive Situationen“: systematisches Variieren fiktiver Merkmale
 -   Erhebt Einstellungen und normative Vorstellungen von Personen zu einem spezifischen Sachverhalt (Einstellungs- oder Verhaltensintentionen)
--   Wir untersuchen, wie Personen Informationen interpretieren, abwägen und  handeln
-
-
+-   Wir untersuchen, wie Personen Informationen interpretieren, abwägen und handeln
 
 ## Fachbegriffe
 
@@ -119,13 +116,7 @@ Aus: Berger, Roger, und Tobias Wolbring, 2015: Kontrafaktische Kausalität und e
 
 ➔ Ausprägungen der Dimensionen werden innerhalb unterschiedlicher Vignetten systematisch variiert
 
-## Randomisierung
-
--   Mehrdimensionales Design (d.h. gleichzeitige Variation mehrerer Dimensionen)
-
--   Zufällige Zuordnung der Ausprägungen der Dimensionen zu den Vignetten
-
-- Zufällige Zuordnung der Vignetten zu den Befragten
+# Beispiele
 
 ## Akzeptanz von Fortpflanzungsmedizin {.smaller}
 
@@ -145,7 +136,20 @@ Aus: Rost, K., & Arnold, N. (2018). Die Vignettenanalyse in den Sozialwissenscha
 
 Aus: Rost, K., & Arnold, N. (2018). Die Vignettenanalyse in den Sozialwissenschaften: eine anwendungsorientierte Einführung. Rainer Hampp Verlag.
 
-## Anwendungsgebiete
+
+## Vertrauen in andere Menschen  {.smaller}
+![](images/dülmer.png)
+Aus: Dülmer, H. (2022). Vignetten. In: Baur, N., Blasius, J. (eds) Handbuch Methoden der empirischen Sozialforschung. Springer VS, Wiesbaden, S.865.
+
+## Faire Aufteilung von Schenkungen
+
+![](images/vignette.png)
+
+Aus: Tisch, Daria, and Tamara Gutfleisch. 2023. ‘Unequal but Just? Experimental Evidence on Distributive Justice Principles in Parental Inter Vivos Transfers’. Socio-Economic Review 21, no. 3: 1369–90.
+
+
+
+## Anwendungsgebiete  {.smaller}
 
 -   Erforschung soziale Normen/ ethische Prinzipien („Einstellung zu…“)
 
@@ -165,7 +169,7 @@ Aus: Rost, K., & Arnold, N. (2018). Die Vignettenanalyse in den Sozialwissenscha
 
     -   Steuerreform, Sozialhilfereform, Rentenreform
 
-## Vorteile gegenüber anderen Methoden: klassische Umfragen
+## Vorteile gegenüber anderen Methoden: klassische Umfragen  {.smaller}
 
 -   FS minimiert Interpretationsspielräume, wenn Ausgangssituation präzise formuliert
 
@@ -173,12 +177,12 @@ Aus: Rost, K., & Arnold, N. (2018). Die Vignettenanalyse in den Sozialwissenscha
 
 -   Umfragen sind anfällig für Effekte sozialer Erwünschtheit, während in FS Fragestellungen subtiler gestellt werden können (z. B. Geschlecht einer Person in Anrede oder Vornamen).
 
--   Umfragen setzen Zufallsstichprobe voraus, um auf die Grundgesamtheit zu schließen; Vignettendesign nicht per se (randomisierte Vignetten) – interne vs. externe Validität.
+-   Umfragen setzen Zufallsstichprobe voraus, um auf die Grundgesamtheit zu schließen; Vignettendesign nicht per se (randomisierte Vignetten) → interne vs. externe Validität.
 
 ## Vorteile gegenüber anderen Methoden: Laborexperimenten
 
--   Häufig eindimensional (nur ein Testfaktor), Vignetten mehrdimensional
--   Nicht anonym (Erwartungseffekte gegenüber VersuchsleiterIn)
+-   Laborexperimente häufig eindimensional (nur ein Testfaktor), Vignetten mehrdimensional
+-   Laborexperimente nicht anonym (Erwartungseffekte gegenüber VersuchsleiterIn)
 -   Externe Validität kritisch durch begrenzte Teilnehmerzahl (in Surveydesigns kann höhere Teilnehmerzahl realisiert werden); Teilnehmende der Vignettenbefragung i. d. R. heterogener.
 
 ## Vorteile gegenüber anderen Methoden: Beobachtungsmethoden
@@ -205,24 +209,19 @@ Wie erstelle ich meine Vignetten?
 :::
 :::::
 
-
 ## Beispiel 2 {.smaller}
 
 ::::: columns
 ::: {.column width="40%"}
-
 **Vignettenpopulation**: 3\*3\*3 = 27 Vignetten
 
 Tisch, Daria, and Tamara Gutfleisch. 2023. ‘Unequal but Just? Experimental Evidence on Distributive Justice Principles in Parental Inter Vivos Transfers’. Socio-Economic Review 21, no. 3: 1369–90.
-
 :::
 
 ::: {.column width="60%"}
 ![](images/dimensionen.png)
-
 :::
 :::::
-
 
 ## Bedingungen eines effizienten Designs
 
@@ -262,43 +261,41 @@ Tisch, Daria, and Tamara Gutfleisch. 2023. ‘Unequal but Just? Experimental Evi
     -   Zahl
     -   Aufteilung von z.B. Geld
 
-
 ## Fragen zum Design
 
-- Welche Dimensionen und Ausprägungen?
+-   Welche Dimensionen und Ausprägungen?
 
-- Welche Merkmale müssen konstant gehalten werden?
+-   Welche Merkmale müssen konstant gehalten werden?
 
-- Wie viele Vignetten sollten aus der Grundgesamtheit entnommen werden?
+-   Wie viele Vignetten sollten aus der Grundgesamtheit entnommen werden?
 
-- Wie viele Vignetten-Sets?
+-   Wie viele Vignetten-Decks?
 
-- Wie viele Vignetten pro Befragten?
+-   Wie viele Vignetten pro Befragten?
 
-- Welche Methode sollte für die Zusammenstellung der Vignettenstichprobe/des Vignettensets verwendet werden
-(z. B. Zufallsstichproben oder Quotenpläne)
+-   Welche Methode sollte für die Zusammenstellung der Vignettenstichprobe/des Vignettendecks verwendet werden (z. B. Zufallsstichproben, D-Effizienz, Quotenpläne)
 
-- Größe der Befragtenstichprobe (was ist realisierbar?)
-
-
-
+-   Größe der Befragtenstichprobe (was ist realisierbar?)
 
 ## Datenauswertung {.smaller}
 
-- Orthogonalität und Balance prüfen
+-   Orthogonalität und Balance prüfen
 
-- Deskriptiv: Häufigkeiten der einzelnen Urteile
+-   Deskriptiv: Häufigkeiten der einzelnen Urteile
 
-- Multiple Regressionsanalyse
+-   Multiple Regressionsanalyse
 
-    - Hierarchische Datenstruktur
-    - Vignette evaluations (Level 1) nested within respondents (Level 2)
-    - Erfordert die Anwendung von statistischen Modellen, die die Cluster berücksichtigen
-    
-          - OLS mit robusten geclusterten Standardfehlern auf der Ebene der Befragten
-          
-          - Mehrebenen-Modelle 
+    -   Hierarchische Datenstruktur
 
+    -   Vignette evaluations (Level 1) nested within respondents (Level 2)
+
+    -   Erfordert die Anwendung von statistischen Modellen, die die Cluster berücksichtigen
+
+        ```         
+        - OLS mit robusten geclusterten Standardfehlern auf der Ebene der Befragten
+
+        - Mehrebenen-Modelle 
+        ```
 
 ```{r}
 #| echo: false
@@ -361,17 +358,19 @@ write.csv(value_labels_df, "value_labels.csv", row.names = FALSE)
 ```
 
 ## Beispiel: Faire Aufteilung von Schenkungen
+
 ![](images/vignette.png)
 
 ## Beispiel: Faire Aufteilung von Schenkungen
-![](images/dimensionen.png)
 
+![](images/dimensionen.png)
 
 ## Datenstruktur {.scrollable}
 
 ```{r}
 look_for(df)
 ```
+
 Pos 1: Befragten ID
 
 Pos 3: Vignetten ID
@@ -384,8 +383,6 @@ Pos 13-15: Urteil der Befragten
 
 Pos 16-42: Charakteristiken der Befragten
 
-
-
 ## Ende {.smaller}
 
 -   Dieser Foliensatz profitierte in großen Teilen von ehemaligen Veranstaltungen von Isabel Habicht sowie Tamara Gutfleisch.
@@ -394,9 +391,4 @@ Pos 16-42: Charakteristiken der Befragten
 
     -   Auspurg, K., & Hinz, T. (2015). Factorial survey experiments. SAGE Publications, Inc., https://doi.org/10.4135/9781483398075
     -   Rost, K., & Arnold, N. (2018). Die Vignettenanalyse in den Sozialwissenschaften: eine anwendungsorientierte Einführung. Rainer Hampp Verlag.
-    - Tamara Gutfleisch. (2021). An introduction to factorial survey experiments. National Centre for Research Methods online learning resource. Available at https://www.ncrm.ac.uk/resources/online/all/?main&id=20781 [accessed: 20 January 2025]
-
-
-
-
-
+    -   Tamara Gutfleisch. (2021). An introduction to factorial survey experiments. National Centre for Research Methods online learning resource. Available at https://www.ncrm.ac.uk/resources/online/all/?main&id=20781 \[accessed: 20 January 2025\]
