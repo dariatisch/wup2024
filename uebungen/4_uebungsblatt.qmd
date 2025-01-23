@@ -129,10 +129,10 @@ length(unique(df$id_vignette))
 table(df$deck)
 length(unique(df$deck))
 ```
+
 ## Dimensionen und Ausprägungen
 
-Welche Dimensionen gibt es und welche Ausprägungen können diese aufweisen?
-Tipp: Nutze den Datensatz: value_labels
+Welche Dimensionen gibt es und welche Ausprägungen können diese aufweisen? Tipp: Nutze den Datensatz: value_labels
 
 ```{r}
 head(value_labels, 9)

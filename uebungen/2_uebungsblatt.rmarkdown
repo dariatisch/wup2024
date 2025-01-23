@@ -13,16 +13,52 @@ editor: visual
 number-sections: true
 ---
 
+
+
+
+
+
+
+
+
+
 # Organisation
 
 ## Arbeitsverzeichnis festsetzen
+
+
+
+
+
+
+
+
+
 
 ```{r}
 # set working directory
 setwd("D:/Seafile/main/teaching/2024_wuppertal/studis/uebungen")
 ```
 
+
+
+
+
+
+
+
+
+
 ## Packages installieren und laden
+
+
+
+
+
+
+
+
+
 
 ```{r}
 #| echo: true
@@ -44,9 +80,27 @@ lapply(pkgs, library, character.only = TRUE)
 
 ```
 
+
+
+
+
+
+
+
+
+
 ## Daten einlesen
 
 Wir arbeiten wieder mit dem Übungsdatensatz des SOEP (DOI:10.5684/soep.practice.v36). Es werden zwei Datensätze eingelesen. Der erste Datensatz enthalt die tatsächlichen Umfragedaten, der zweite Datensatz enthält die Variablenlabels.
+
+
+
+
+
+
+
+
+
 
 ```{r}
 # read data
@@ -65,6 +119,15 @@ for (i in 1:nrow(df_labels)) {
 get_label(df)
 ```
 
+
+
+
+
+
+
+
+
+
 # Datenaufbereitung
 
 In dieser Übung möchten wir herausfinden, welche Faktoren mit Lebenszufriedenheit (lebensz_org) zusammenhängen. Denkbar wären zum Beispiel: Geschlecht (sex), Alter(alter), Anzahl an Kindern im Haushalt (anz_kind), Bildung (bildung) und Einkommen (einkommenj1).
@@ -76,6 +139,15 @@ Um die Analysen durchzuführen, müssen wir die Variablen erst einmal aufbereite
 
 ## Lebenszufriedenheit
 
+
+
+
+
+
+
+
+
+
 ```{r}
 table(df$lebensz_org, useNA = "always")
 
@@ -85,7 +157,25 @@ df = df %>%
 table(df$lz, useNA = "always")
 ```
 
+
+
+
+
+
+
+
+
+
 ## Geschlecht
+
+
+
+
+
+
+
+
+
 
 ```{r}
 table(df$sex, useNA = "always")
@@ -96,14 +186,50 @@ df = df %>%
 table(df$female, useNA = "always")
 ```
 
+
+
+
+
+
+
+
+
+
 ## Alter
+
+
+
+
+
+
+
+
+
 
 ```{r}
 table(df$alter, useNA = "always")
 class(df$alter)
 ```
 
+
+
+
+
+
+
+
+
+
 ## Anzahl an Kindern im Haushalt
+
+
+
+
+
+
+
+
+
 
 ```{r}
 table(df$anz_kind, useNA = "always")
@@ -111,7 +237,25 @@ class(df$anz_kind)
 sum(is.na(df$anz_kind))
 ```
 
+
+
+
+
+
+
+
+
+
 ## Bildung
+
+
+
+
+
+
+
+
+
 
 ```{r}
 table(df$bildung, useNA = "always")
@@ -119,7 +263,25 @@ class(df$bildung)
 sum(is.na(df$bildung))
 ```
 
+
+
+
+
+
+
+
+
+
 ## Einkommen
+
+
+
+
+
+
+
+
+
 
 ```{r}
 summary(df$einkommenj1)
@@ -127,22 +289,76 @@ class(df$einkommenj1)
 sum(is.na(df$einkommenj1))
 ```
 
+
+
+
+
+
+
+
+
+
 ## Analysesample bilden
 
 (a) Selektiere nur die Variablen, die wir brauchen
+
+
+
+
+
+
+
+
+
 
 ```{r}
 df = df %>%
   select(id,syear, lz,female, alter, anz_kind, bildung, einkommenj1)
 ```
 
+
+
+
+
+
+
+
+
+
 (b) Nun bilden wir das Analysesample. Wir wenden "listwise deletion".
+
+
+
+
+
+
+
+
+
 
 ```{r}
 df_listwise <- df[complete.cases(df[, c("lz","female", "alter", "anz_kind", "bildung", "einkommenj1")]), ]
 ```
 
+
+
+
+
+
+
+
+
+
 (c) Wie viele Beobachtungen gehen uns verloren?
+
+
+
+
+
+
+
+
+
 
 ```{r}
 # Initialize a data frame to store the results
@@ -181,30 +397,102 @@ results
 df <- df[complete.cases(df[, c("lz","female", "alter", "anz_kind", "bildung", "einkommenj1")]), ]
 ```
 
+
+
+
+
+
+
+
+
+
 # Datenexploration
 
 ## Wieviele Personenjahre sind im Datensatz?
+
+
+
+
+
+
+
+
+
 
 ```{r}
 nrow(df)
 ```
 
+
+
+
+
+
+
+
+
+
 ## Wie viele Personen sind im Datensatz?
+
+
+
+
+
+
+
+
+
 
 ```{r}
 length(unique(df$id))
 
 ```
 
+
+
+
+
+
+
+
+
+
 ## Wieviele Personen nehmen pro Jahr teil?
+
+
+
+
+
+
+
+
+
 
 ```{r}
 table(df$syear) 
 ```
 
+
+
+
+
+
+
+
+
+
 Wir haben also ein sogenanntes "unbalanced panel".
 
 ## Was ist das Durchschnittsalter im Jahr 2015
+
+
+
+
+
+
+
+
+
 
 ```{r}
 # Berechnung des Durchschnittsalters für das Jahr 2015
@@ -219,7 +507,25 @@ durchschnittsalter <- df %>%
 cat("Das Durchschnittsalter im Jahr 2015 beträgt:", round(durchschnittsalter,2), "Jahre.")
 ```
 
+
+
+
+
+
+
+
+
+
 ## Welche Variablen sind zeitkonstant und welche zeitveränderlich?
+
+
+
+
+
+
+
+
+
 
 ```{r}
 # Analyse: Zeitkonstante und zeitveränderliche Variablen
@@ -243,7 +549,25 @@ cat("\nZeitveränderliche Variablen:\n", zeitveraenderlich)
 
 ```
 
+
+
+
+
+
+
+
+
+
 ## Wie viele Personen nahmen an allen fünf Wellen teil? Und wie viele Jahre nahmen Personen durchschnittlich teil?
+
+
+
+
+
+
+
+
+
 
 ```{r}
 # Anteil der Personen, die an allen fünf Wellen teilgenommen haben
@@ -256,11 +580,29 @@ table(data_summary$years_observed)  # Verteilung der Beobachtungsjahre
 mean(data_summary$years_observed)
 ```
 
+
+
+
+
+
+
+
+
+
 # Regressionen
 
 ## Schätze ein POLS Modell
 
 ... und interepretiere die Koeffizienten.
+
+
+
+
+
+
+
+
+
 
 ```{r}
 m_pol <- plm(lz ~ female + alter + anz_kind + bildung + einkommenj1, data = df,
@@ -270,9 +612,27 @@ tab_model(m_pol,
           dv.labels = paste("POLS Model", sep = ""))
 ```
 
+
+
+
+
+
+
+
+
+
 ## Schätze ein BE Modell
 
 ... und interepretiere die Koeffizienten.
+
+
+
+
+
+
+
+
+
 
 ```{r}
 m_be <- plm(lz ~ female + alter + anz_kind + bildung + einkommenj1, data = df,
@@ -282,9 +642,27 @@ tab_model(m_be,
           dv.labels = paste("BE Model", sep = ""))
 ```
 
+
+
+
+
+
+
+
+
+
 ## Schätze ein FE Modell
 
 ... und interepretiere die Koeffizienten.
+
+
+
+
+
+
+
+
+
 
 ```{r}
 m_fe <- plm(lz ~ female + alter + anz_kind + bildung + einkommenj1 , data = df,
@@ -296,9 +674,27 @@ tab_model(m_fe,
           dv.labels = paste("FE Model (", num_groups, " Groups)", sep = ""))
 ```
 
+
+
+
+
+
+
+
+
+
 ## Schätze ein RE Modell
 
 ... und interepretiere die Koeffizienten.
+
+
+
+
+
+
+
+
+
 
 ```{r}
 m_re <- plm(lz ~ female + alter + anz_kind + bildung + einkommenj1, data = df,
@@ -310,14 +706,41 @@ tab_model(m_re,
           dv.labels = paste("RE Model (", num_groups, " Groups)", sep = ""))
 ```
 
+
+
+
+
+
+
+
+
+
 ## Vergleich
 
 Vergleiche die vier Modelle.
+
+
+
+
+
+
+
+
+
 
 ```{r}
 tab_model(m_pol, m_be, m_fe , m_re, show.ci = FALSE,
           dv.labels = c("POLS", "BE", "FE", "RE"))
 ```
+
+
+
+
+
+
+
+
+
 
 a)  Warum wird im FE kein Koeffizient für *female* geschätzt?
 
@@ -327,9 +750,27 @@ b)  Warum ist die Anzahl an Beobachtungen im BE Modell kleiner als die Anzahl an
 
 Sollen wir das RE oder das FE Modell nutzen? Führe einen Hausman Test durch. Wie entscheidest Du Dich?
 
+
+
+
+
+
+
+
+
+
 ```{r}
 phtest(m_fe, m_re)
 ```
+
+
+
+
+
+
+
+
+
 
 ## Kausalanalyse
 
@@ -343,3 +784,4 @@ Wandle dieses Dokument in ein PDF und ein HTML Dokument um.
 
 -   [R for Data Science](https://r4ds.had.co.nz/)
 -   https://ruettenauer.github.io/Panel-Data-Analysis/
+
